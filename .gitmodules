@@ -25,12 +25,6 @@
 [submodule "ros_packages/mrs_uav_manager"]
 	path = ros_packages/mrs_uav_manager
 	url = git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
-[submodule "ros_packages/mrs_serial"]
-	path = ros_packages/mrs_serial
-	url = git@mrs.felk.cvut.cz:uav/utils/mrs_serial.git
 [submodule "ros_packages/mrs_msgs"]
 	path = ros_packages/mrs_msgs
 	url = git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
-[submodule "ros_packages/mrs_auto_exposure"]
-	path = ros_packages/mrs_auto_exposure
-	url = git@mrs.felk.cvut.cz:uav/core/mrs_auto_exposure.git
