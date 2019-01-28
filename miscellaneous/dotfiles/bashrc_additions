@@ -1,0 +1,46 @@
+# set editor and shell
+export SHELL=/bin/bash
+export TMUX_BIN=/usr/local/bin/tmux
+
+# allows killing process with all its children
+killp () {
+
+  if [ $# -eq 0 ]; then
+    pes=$( cat ) 
+  else
+    pes=$1
+  fi
+  
+	for child in $(ps -o pid,ppid -ax | \
+   awk "{ if ( \$2 == $pes ) { print \$1 }}")
+  do
+    # echo "Killing child process $child because ppid = $pes"
+    killp $child
+  done
+        
+  # echo "killing $1"
+  kill -9 "$1" > /dev/null 2> /dev/null
+}
+
+gitPullPush() {
+
+ branch=`git branch | grep \* | sed 's/\* \([a-Z]*\)/\1/'`
+
+ if [ $# -eq 0 ]; then
+  git pull origin "$branch"
+  git push origin "$branch"
+ else
+  git pull "$1" "$branch"
+  git push "$1" "$branch"
+ fi
+}
+
+# create alisases
+alias ra='ranger'
+alias sb="source ~/.bashrc"
+alias gppl="gitPullPush local"
+alias gppo="gitPullPush origin"
+alias :q=exit
+
+# source tmuxinator
+source ~/git/uav_core/utils/tmuxinator/completion/tmuxinator.bash

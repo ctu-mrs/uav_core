@@ -1,0 +1,67 @@
+host mrs.felk.cvut.cz
+     hostname mrs.felk.cvut.cz
+     user git
+     identityfile ~/.ssh/id_rsa_drone_login
+
+host github.com
+     hostname github.com
+     user git
+     identityfile ~/.ssh/id_rsa
+
+host 192.168.0.11
+     hostname 192.168.0.11
+     user git
+     identityfile ~/.ssh/id_rsa_mbzirc_login
+
+host DOG.local
+     hostname DOG.local
+     user git
+     identityfile ~/.ssh/id_rsa_mbzirc_login
+
+Host uav1
+     Hostname 192.168.0.101
+     User mrs
+     IdentityFile ~/.ssh/id_rsa_mbzirc_login
+     #ForwardX11 yes
+
+Host uav2
+     Hostname 192.168.0.102
+     User mrs
+     IdentityFile ~/.ssh/id_rsa_mbzirc_login
+     #ForwardX11 yes
+
+Host uav3
+     Hostname 192.168.0.103
+     User mrs
+     IdentityFile ~/.ssh/id_rsa_mbzirc_login
+     #ForwardX11 yes
+
+Host uav4
+     Hostname 192.168.0.104
+     User mrs
+     IdentityFile ~/.ssh/id_rsa_mbzirc_login
+     #ForwardX11 yes
+
+Host uav5
+     Hostname 192.168.0.105
+     User mrs
+     IdentityFile ~/.ssh/id_rsa_mbzirc_login
+     #ForwardX11 yes
+
+Host uav6
+     Hostname 192.168.0.106
+     User mrs
+     IdentityFile ~/.ssh/id_rsa_mbzirc_login
+     #ForwardX11 yes
+
+Host uav7
+     Hostname 192.168.0.107
+     User mrs
+     IdentityFile ~/.ssh/id_rsa_mbzirc_login
+     #ForwardX11 yes
+
+Host uav8
+     Hostname 192.168.0.108
+     User mrs
+     IdentityFile ~/.ssh/id_rsa_mbzirc_login
+     #ForwardX11 yes
