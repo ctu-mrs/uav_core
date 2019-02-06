@@ -15,11 +15,11 @@ input=(
 "
   'Spawn' "waitForSimulation; spawn 1 --run --delete --enable-rangefinder --enable-bluefox --enable-ground-truth --file ~/mrs_workspace/src/uav_core/ros_packages/mrs_odometry/config/init_pose/init_pose.csv
 "
-  'MRS_control' "waitForOdometry; roslaunch mrs_mav_manager simulation_f550_gps.launch
+  'MRS_control' "waitForOdometry; roslaunch mrs_uav_manager simulation_f550_gps.launch
 "
 'AprilDetection' " waitForControl; roslaunch apriltags2_ros continuous_detection.launch
 "
-  "PrepareUAV" "waitForControl; rosservice call /$UAV_NAME/mavros/cmd/arming 1; rosservice call /$UAV_NAME/control_manager/motors 1; rosservice call /$UAV_NAME/mavros/set_mode 0 offboard; rosservice call /$UAV_NAME/mav_manager/takeoff;
+  "PrepareUAV" "waitForControl; rosservice call /$UAV_NAME/mavros/cmd/arming 1; rosservice call /$UAV_NAME/control_manager/motors 1; rosservice call /$UAV_NAME/mavros/set_mode 0 offboard; rosservice call /$UAV_NAME/uav_manager/takeoff;
 "
   'Camera_follow' "waitForOdometry; gz camera -c gzclient_camera -f uav1
 "

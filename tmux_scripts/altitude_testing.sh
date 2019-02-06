@@ -15,11 +15,11 @@ input=(
 "
   'Spawn' "waitForSimulation; spawn 1 --run --delete --enable-rangefinder --enable-ground-truth --file ~/mrs_workspace/src/uav_core/ros_packages/mrs_odometry/config/init_pose/init_pose.csv
 "
-  'MRS_control' "waitForOdometry; roslaunch mrs_mav_manager simulation_f550_gps.launch
+  'MRS_control' "waitForOdometry; roslaunch mrs_uav_manager simulation_f550_gps.launch
 "
-  "PrepareUAV" "waitForControl; rosservice call /$UAV_NAME/mavros/cmd/arming 1; rosservice call /$UAV_NAME/control_manager/motors 1; rosservice call /$UAV_NAME/mavros/set_mode 0 offboard; rosservice call /$UAV_NAME/mav_manager/takeoff;
+  "PrepareUAV" "waitForControl; rosservice call /$UAV_NAME/mavros/cmd/arming 1; rosservice call /$UAV_NAME/control_manager/motors 1; rosservice call /$UAV_NAME/mavros/set_mode 0 offboard; rosservice call /$UAV_NAME/uav_manager/takeoff;
 "
-  "Land" "waitForControl; rosservice call /$UAV_NAME/mav_manager/land;"
+  "Land" "waitForControl; rosservice call /$UAV_NAME/uav_manager/land;"
   'GoTo' "rosservice call /$UAV_NAME/control_manager/goto \"goal: [0.0, 0.0, 3.0, 0.0]\""
   'GoToRelative' "rosservice call /$UAV_NAME/control_manager/goto_relative \"goal: [0.0, 0.0, 0.0, 0.0]\""
   'RVIZ' "waitForOdometry; nice -n 15 rosrun rviz rviz -d ~/mrs_workspace/src/uav_core/ros_packages/mrs_odometry/rviz/uav1_odometry_single.rviz
