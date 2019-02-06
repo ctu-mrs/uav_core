@@ -6,8 +6,10 @@ SUBFOLDER="test"
 
 #############################################
 
-MY_PATH=`dirname "$0"`
-MY_PATH=`( cd "$MY_PATH" && pwd )`
+# MY_PATH=`dirname "$0"`
+# MY_PATH=`( cd "$MY_PATH" && pwd )`
+
+MY_PATH="./"
 
 # parse the .gitmodules files in the PATH
 if [ -f "$MY_PATH/$1/.gitmodules" ]; then
@@ -112,9 +114,8 @@ if [ -z "$1" ]; then
   # push the local repo
   git remote remove local
   git remote add local "$USERNAME@$ADDRESS:~/$SUBFOLDER/$SUB_PATH/$REPO_NAME"
-  git push --all local -u
   git add .gitmodules
   git commit -m "switched .gitmodules to local"
-  git push
+  git push --all local -u
 
 fi

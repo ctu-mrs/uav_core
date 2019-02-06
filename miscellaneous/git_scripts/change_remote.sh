@@ -5,8 +5,10 @@ ADDRESS="mrs.felk.cvut.cz"
 
 #############################################
 
-MY_PATH=`dirname "$0"`
-MY_PATH=`( cd "$MY_PATH" && pwd )`
+# MY_PATH=`dirname "$0"`
+# MY_PATH=`( cd "$MY_PATH" && pwd )`
+
+MY_PATH="./"
 
 # parse the .gitmodules files in the PATH
 if [ -f "$MY_PATH/$1/.gitmodules" ]; then
