@@ -10,20 +10,20 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
 # define commands
 # 'name' 'command'
 input=(
-  # 'Rosbag' 'waitForRos; roslaunch mrs_main record.launch project_name:='"$PROJECT_NAME"'
+  # 'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"'
 # '
   'OptFlow' 'waitForRos; roslaunch optic_flow uav.launch
 '
-  'Sensors' 'waitForRos; roslaunch mrs_main sensors_pixgarm.launch
+  'Sensors' 'waitForRos; roslaunch mrs_general sensors_pixgarm.launch
 '
-  'MRS_control' 'waitForRos; roslaunch mrs_mav_manager f450_pixgarm_multistar.launch
+  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f450_pixgarm_multistar.launch
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
-	'Takeoff' 'rosservice call /'"$UAV_NAME"'/mav_manager/takeoff'
+	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   'GoTo' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [0.0, 0.0, 1.5, 1.9]"'
   'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
-	'Land' 'rosservice call /'"$UAV_NAME"'/mav_manager/land'
-	'LandHome' 'rosservice call /'"$UAV_NAME"'/mav_manager/land_home'
+	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
+	'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
   'E_hover' 'rosservice call /'"$UAV_NAME"'/control_manager/ehover' 
   'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
