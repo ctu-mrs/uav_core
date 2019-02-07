@@ -28,3 +28,6 @@
 [submodule "ros_packages/mrs_msgs"]
 	path = ros_packages/mrs_msgs
 	url = git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
+[submodule "ros_packages/mavros"]
+	path = ros_packages/mavros
+	url = https://github.com/mavlink/mavros
