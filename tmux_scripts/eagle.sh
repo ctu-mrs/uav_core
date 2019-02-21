@@ -16,28 +16,23 @@ input=(
 '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager eagle.launch
 '
-  'ChangeMode' 'waitForOdometry; rosservice call /uav10/odometry/change_estimator_type_string '
-  'SetConstraints' 'waitForOdometry; rosservice call /uav10/gain_manager/set_constraints  '
+  'UAV_detection' 'waitForRos; roslaunch uav_localize localization_pipeline.launch
+'
+  'Estimator' 'waitForOdometry; roslaunch intercept_estimator simulation.launch
+'
+  'Interceptor' 'waitForOdometry; roslaunch interceptor interceptor.launch
+'
+	'Start_Intercept' 'rosservice call /'"$UAV_NAME"'/interceptor/start_interception'
+	'Stop_Intercept' 'rosservice call /'"$UAV_NAME"'/interceptor/stop_interception'
+	'ARM_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_arm'
+	'SAFE_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_safe'
+	'FIRE_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_fire'
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-	'Headless' 'rosservice call /'"$UAV_NAME"'/control_manager/mpc_tracker/headless 1'
   'GoTo' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [0.0, 0.0, 1.5, 1.9]"'
   'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
-  'GoTo_left' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [5.0, 5.0, 1.5, 1.9]"'
-  'GoTo_right' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [-5.0, -5.0, 1.5, 1.9]"'
 	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
 	'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
-  'Hover' 'rosservice call /'"$UAV_NAME"'/control_manager/hover' 
-  'E_hover' 'rosservice call /'"$UAV_NAME"'/control_manager/ehover' 
-  'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
-'
-  'Show_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
-'
-  'Mav_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
-'
-  'Orb_slam' 'waitForRos; roslaunch orb_slam uav.launch'
-  'diag' 'waitForRos; rostopic echo /diagnostics
-'
 	'KernelLog' 'tail -f /var/log/kern.log -n 100
 '
   'roscore' 'roscore
