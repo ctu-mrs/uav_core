@@ -101,7 +101,24 @@ do
 	tmux new-window -t $SESSION_NAME:$(($i+1)) -n "${names[$i]}"
 done
 
-sleep 2
+# add pane splitter for mrs_status
+tmux new-window -t $SESSION_NAME:$((${#names[*]}+1)) -n "mrs_status"
+
+# clear mrs status file so that no clutter is displayed
+truncate -s 0 /tmp/status.txt
+
+# split all panes
+pes=""
+for ((i=0; i < ((${#names[*]}+2)); i++));
+do
+  pes=$pes"tmux split-window -d -t $SESSION_NAME:$(($i))"
+  pes=$pes"tmux send-keys -t $SESSION_NAME:$(($i)) 'tail -F /tmp/status.txt'"
+  pes=$pes"tmux select-pane -U -t $(($i))"
+done
+
+tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
+
+sleep 6
 
 # start loggers
 for ((i=0; i < ${#names[*]}; i++));
@@ -109,17 +126,25 @@ do
 	tmux pipe-pane -t $SESSION_NAME:$(($i+1)) -o "ts | cat >> $TMUX_DIR/$(($i+1))_${names[$i]}.log"
 done
 
-sleep 2
-
 # send commands
 for ((i=0; i < ${#cmds[*]}; i++));
 do
 	tmux send-keys -t $SESSION_NAME:$(($i+1)) "${pre_input};${cmds[$i]}"
 done
 
-sleep 2
+pes="sleep 1;"
+for ((i=0; i < ((${#names[*]}+2)); i++));
+do
+  pes=$pes"tmux select-window -t $SESSION_NAME:$(($i))"
+  pes=$pes"tmux resize-pane -U -t $(($i)) 150"
+  pes=$pes"tmux resize-pane -D -t $(($i)) 7"
+done
 
-tmux select-window -t $SESSION_NAME:3
+pes=$pes"tmux select-window -t $SESSION_NAME:4"
+pes=$pes"waitForRos; roslaunch mrs_status f550.launch >> /tmp/status.txt"
+
+tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
+
 tmux -2 attach-session -t $SESSION_NAME
 
 clear
