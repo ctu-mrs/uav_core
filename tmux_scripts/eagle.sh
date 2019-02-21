@@ -16,28 +16,23 @@ input=(
 '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager eagle.launch
 '
-  'ChangeMode' 'waitForOdometry; rosservice call /uav10/odometry/change_estimator_type_string '
-  'SetConstraints' 'waitForOdometry; rosservice call /uav10/gain_manager/set_constraints  '
+  'UAV_detection' 'waitForRos; roslaunch uav_localize localization_pipeline.launch
+'
+  'Estimator' 'waitForOdometry; roslaunch intercept_estimator simulation.launch
+'
+  'Interceptor' 'waitForOdometry; roslaunch interceptor interceptor.launch
+'
+	'Start_Intercept' 'rosservice call /'"$UAV_NAME"'/interceptor/start_interception'
+	'Stop_Intercept' 'rosservice call /'"$UAV_NAME"'/interceptor/stop_interception'
+	'ARM_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_arm'
+	'SAFE_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_safe'
+	'FIRE_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_fire'
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-	'Headless' 'rosservice call /'"$UAV_NAME"'/control_manager/mpc_tracker/headless 1'
   'GoTo' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [0.0, 0.0, 1.5, 1.9]"'
   'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
-  'GoTo_left' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [5.0, 5.0, 1.5, 1.9]"'
-  'GoTo_right' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [-5.0, -5.0, 1.5, 1.9]"'
 	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
 	'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
-  'Hover' 'rosservice call /'"$UAV_NAME"'/control_manager/hover' 
-  'E_hover' 'rosservice call /'"$UAV_NAME"'/control_manager/ehover' 
-  'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
-'
-  'Show_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
-'
-  'Mav_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
-'
-  'Orb_slam' 'waitForRos; roslaunch orb_slam uav.launch'
-  'diag' 'waitForRos; rostopic echo /diagnostics
-'
 	'KernelLog' 'tail -f /var/log/kern.log -n 100
 '
   'roscore' 'roscore
@@ -101,7 +96,24 @@ do
 	tmux new-window -t $SESSION_NAME:$(($i+1)) -n "${names[$i]}"
 done
 
-sleep 2
+# add pane splitter for mrs_status
+tmux new-window -t $SESSION_NAME:$((${#names[*]}+1)) -n "mrs_status"
+
+# clear mrs status file so that no clutter is displayed
+truncate -s 0 /tmp/status.txt
+
+# split all panes
+pes=""
+for ((i=0; i < ((${#names[*]}+2)); i++));
+do
+  pes=$pes"tmux split-window -d -t $SESSION_NAME:$(($i))"
+  pes=$pes"tmux send-keys -t $SESSION_NAME:$(($i)) 'tail -F /tmp/status.txt'"
+  pes=$pes"tmux select-pane -U -t $(($i))"
+done
+
+tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
+
+sleep 6
 
 # start loggers
 for ((i=0; i < ${#names[*]}; i++));
@@ -109,17 +121,25 @@ do
 	tmux pipe-pane -t $SESSION_NAME:$(($i+1)) -o "ts | cat >> $TMUX_DIR/$(($i+1))_${names[$i]}.log"
 done
 
-sleep 2
-
 # send commands
 for ((i=0; i < ${#cmds[*]}; i++));
 do
 	tmux send-keys -t $SESSION_NAME:$(($i+1)) "${pre_input};${cmds[$i]}"
 done
 
-sleep 2
+pes="sleep 1;"
+for ((i=0; i < ((${#names[*]}+2)); i++));
+do
+  pes=$pes"tmux select-window -t $SESSION_NAME:$(($i))"
+  pes=$pes"tmux resize-pane -U -t $(($i)) 150"
+  pes=$pes"tmux resize-pane -D -t $(($i)) 7"
+done
 
-tmux select-window -t $SESSION_NAME:3
+pes=$pes"tmux select-window -t $SESSION_NAME:4"
+pes=$pes"waitForRos; roslaunch mrs_status f550.launch >> /tmp/status.txt"
+
+tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
+
 tmux -2 attach-session -t $SESSION_NAME
 
 clear
