@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_NAME=just_flying
+PROJECT_NAME=darpa
 
 MAIN_DIR=~/"bag_files"
 
@@ -133,7 +133,7 @@ do
 done
 
 pes=$pes"tmux select-window -t $SESSION_NAME:4"
-pes=$pes"waitForRos; roslaunch mrs_status f550.launch >> /tmp/status.txt"
+pes=$pes"waitForRos; roslaunch mrs_status f550_darpa.launch >> /tmp/status.txt"
 
 tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 
