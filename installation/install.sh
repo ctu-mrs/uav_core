@@ -64,6 +64,18 @@ command catkin profile set default
 cd src
 ln -s ~/git/uav_core
 
+# install bluefox
+UNAME_PROC=`uname -m`
+if [ "$UNAME_PROC" == "armv7l" ] ; then
+  echo "installing bluefox for armv71 architecture"
+  cd ~/git/uav_core/ros_packages/bluefox2/install/arm/
+  ./install_mvBlueFOX_ARM.sh --unattended
+else
+  echo "installing bluefox for x86_64 architecture"
+  cd ~/git/uav_core/ros_packages/bluefox2/install/x86/
+  ./install_mvBlueFOX.sh --unattended
+fi
+
 # clone uav_modules repository
 default=y
 while true; do
@@ -88,18 +100,6 @@ while true; do
     # link it to mrs_workspace
     cd ~/$ROS_WORKSPACE/src
     ln -s ~/git/uav_modules
-
-    # install bluefox
-    UNAME_PROC=`uname -m`
-    if [ "$UNAME_PROC" == "armv7l" ] ; then
-      echo "installing bluefox for armv71 architecture"
-      cd ~/git/uav_modules/ros_packages/bluefox2/install/arm/
-      ./install_mvBlueFOX_ARM.sh --unattended
-    else
-      echo "installing bluefox for x86_64 architecture"
-      cd ~/git/uav_modules/ros_packages/bluefox2/install/x86/
-      ./install_mvBlueFOX.sh --unattended
-    fi
 
     break
   elif [[ $response =~ ^(n|N)=$ ]]
