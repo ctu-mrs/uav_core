@@ -1,38 +1,35 @@
 #!/bin/bash
 
-PROJECT_NAME=just_flying
+PROJECT_NAME=darpa
 
 MAIN_DIR=~/"bag_files"
 
 # following commands will be executed first, in each window
-pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME;"
+pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
 
 # define commands
 # 'name' 'command'
 input=(
-  'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"'
-  '
-  'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
+  'Rosbag' 'waitForRos; roslaunch mrs_general record_stola_josef.launch project_name:='"$PROJECT_NAME"''
+  'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav10.launch
 '
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager eagle.launch
+  'Sensors' 'waitForRos; roslaunch mrs_general sensors_stola.launch
 '
-  'UAV_detection' 'waitForRos; roslaunch uav_localize localization_pipeline.launch
+  'OrbSlam' 'waitForRos; roslaunch orb_slam stola_josef.launch
 '
-  'Estimator' 'waitForOdometry; roslaunch intercept_estimator simulation.launch
+  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550.launch
 '
-  'Interceptor' 'waitForOdometry; roslaunch interceptor interceptor.launch
-'
-	'Start_Intercept' 'rosservice call /'"$UAV_NAME"'/interceptor/start_interception'
-	'Stop_Intercept' 'rosservice call /'"$UAV_NAME"'/interceptor/stop_interception'
-	'ARM_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_arm'
-	'SAFE_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_safe'
-	'FIRE_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_fire'
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   'GoTo' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [0.0, 0.0, 1.5, 1.9]"'
   'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
 	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
-	'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
+  'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
+'
+  'Show_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
+'
+  'Mav_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
+'
 	'KernelLog' 'tail -f /var/log/kern.log -n 100
 '
   'roscore' 'roscore
@@ -136,7 +133,7 @@ do
 done
 
 pes=$pes"tmux select-window -t $SESSION_NAME:4"
-pes=$pes"waitForRos; roslaunch mrs_status f550.launch >> /tmp/status.txt"
+pes=$pes"waitForRos; roslaunch mrs_status f550_darpa.launch >> /tmp/status.txt"
 
 tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 
