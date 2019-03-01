@@ -37,3 +37,6 @@
 [submodule "ros_packages/camera_base"]
 	path = ros_packages/camera_base
 	url = git@mrs.felk.cvut.cz:uav/drivers/camera_base
+[submodule "ros_packages/bluefox2"]
+	path = ros_packages/bluefox2
+	url = git@mrs.felk.cvut.cz:uav/drivers/bluefox2
