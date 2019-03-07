@@ -31,12 +31,3 @@
 [submodule "ros_packages/mavros"]
 	path = ros_packages/mavros
 	url = https://github.com/mavlink/mavros
-[submodule "ros_packages/mrs_auto_exposure"]
-	path = ros_packages/mrs_auto_exposure
-	url = git@mrs.felk.cvut.cz:uav/utils/mrs_auto_exposure
-[submodule "ros_packages/camera_base"]
-	path = ros_packages/camera_base
-	url = git@mrs.felk.cvut.cz:uav/drivers/camera_base
-[submodule "ros_packages/bluefox2"]
-	path = ros_packages/bluefox2
-	url = git@mrs.felk.cvut.cz:uav/drivers/bluefox2
