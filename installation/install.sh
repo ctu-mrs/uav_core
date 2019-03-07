@@ -64,9 +64,6 @@ command catkin profile set default
 cd src
 ln -s ~/git/uav_core
 
-# install bluefox
-cd uav_core/ros_packages/bluefox2/install
-bash install.sh
 
 # clone uav_modules repository
 default=y
@@ -92,6 +89,10 @@ while true; do
     # link it to mrs_workspace
     cd ~/$ROS_WORKSPACE/src
     ln -s ~/git/uav_modules
+
+    # install bluefox
+    cd uav_modules/ros_packages/bluefox2/install
+    bash install.sh
 
     break
   elif [[ $response =~ ^(n|N)=$ ]]
