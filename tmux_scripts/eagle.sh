@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_NAME=just_flying
+PROJECT_NAME=eagling
 
 MAIN_DIR=~/"bag_files"
 
