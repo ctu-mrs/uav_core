@@ -5,23 +5,25 @@ PROJECT_NAME=darpa
 MAIN_DIR=~/"bag_files"
 
 # following commands will be executed first, in each window
-pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
+pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME; export DISPLAY=:1"
 
 # define commands
 # 'name' 'command'
 input=(
-  'Rosbag' 'waitForRos; roslaunch mrs_general record_stola_josef.launch project_name:='"$PROJECT_NAME"''
+  'Rosbag' 'waitForRos; roslaunch mrs_general record_stola_josef.launch project_name:='"$PROJECT_NAME"'
+'
   'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav10.launch
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_stola.launch
 '
-  'OrbSlam' 'waitForRos; roslaunch orb_slam stola_josef.launch
-'
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550.launch
+  'OrbSlam' 'waitForRos; roslaunch orb_slam stola_josef.launch'
+  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_new_esc.launch
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-  'GoTo' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [0.0, 0.0, 1.5, 1.9]"'
+  'CMD' 'waitForRos; rostopic echo /uav10/control_manager/attitude_cmd
+'
+  'GoTo_FCU' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
   'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
 	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
   'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
