@@ -16,7 +16,7 @@ input=(
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_stola.launch
 '
-  'OrbSlam' 'waitForRos; roslaunch orb_slam stola_josef.launch'
+  'RealSense' 'waitForRos; roslaunch realsense_d435 stola_josef.launch'
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_new_esc.launch
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'

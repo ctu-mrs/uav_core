@@ -16,14 +16,14 @@ input=(
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550.launch
+  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_new_esc.launch
 '
-  'T265' 'waitForRos; roslaunch realsense_d435 uav_t265.launch
-'
+  'sweep_scanner' 'waitForRos; rosservice call '"$UAV_NAME"'/sweep_scanner/start'
+  'T265' 'waitForRos; roslaunch realsense_d435 uav_t265.launch'
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   'ChangeEstimator' 'waitForOdometry; rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string T265'
-  'GoTo' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [0.0, 0.0, 1.5, 1.9]"'
+  'GoTo_FCU' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
   'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
 	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
 	'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
