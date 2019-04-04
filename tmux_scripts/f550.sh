@@ -10,16 +10,14 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
 # define commands
 # 'name' 'command'
 input=(
-  'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"'
-'
+  'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"''
   'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav10.launch
 '
-  'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
+  'Sensors' 'waitForRos; roslaunch mrs_general sensors_stola.launch
 '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_new_esc.launch
 '
   'sweep_scanner' 'waitForRos; rosservice call '"$UAV_NAME"'/sweep_scanner/start'
-  'T265' 'waitForRos; roslaunch realsense_d435 uav_t265.launch'
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   'ChangeEstimator' 'waitForOdometry; rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string T265'
