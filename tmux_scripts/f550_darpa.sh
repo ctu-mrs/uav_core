@@ -18,6 +18,8 @@ input=(
   'RealSense' 'waitForRos; roslaunch realsense_d435 stola_josef.launch'
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_darpa_uav5.launch
 '
+  'Bumper' 'waitForOdometry; roslaunch mrs_bumper bumper.launch
+'
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   'CMD' 'waitForRos; rostopic echo /uav10/control_manager/attitude_cmd
