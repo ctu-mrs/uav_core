@@ -21,7 +21,7 @@ input=(
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-  'CMD' 'waitForRos; rostopic echo /uav10/control_manager/attitude_cmd
+  'CMD' 'waitForRos; rostopic echo /'"$UAV_NAME"'/control_manager/attitude_cmd
 '
   'Tunnel' 'waitForOdometry; roslaunch tunnel_flier simulation.launch
 '
