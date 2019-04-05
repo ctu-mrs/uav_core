@@ -15,7 +15,6 @@ input=(
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_darpa.launch
 '
-  'RealSense' 'waitForRos; roslaunch realsense_d435 stola_josef.launch'
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_darpa_uav5.launch
 '
   'Bumper' 'waitForOdometry; roslaunch mrs_bumper bumper.launch
@@ -24,7 +23,8 @@ input=(
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   'CMD' 'waitForRos; rostopic echo /uav10/control_manager/attitude_cmd
 '
-  'Tunnel' 'waitForOdometry; roslaunch tunnel_flier simulation.launch'
+  'Tunnel' 'waitForOdometry; roslaunch tunnel_flier simulation.launch
+  '
   'Start' 'rosservice call /'"$UAV_NAME"'/tunnel_flier/start'
   'GoTo_FCU' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
   'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
