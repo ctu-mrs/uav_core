@@ -10,8 +10,7 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME; export DIS
 # define commands
 # 'name' 'command'
 input=(
-  'Rosbag' 'waitForRos; roslaunch mrs_general record_stola_josef.launch project_name:='"$PROJECT_NAME"'
-'
+  'Rosbag' 'waitForRos; roslaunch mrs_general record_stola_josef.launch project_name:='"$PROJECT_NAME"''
   'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav5.launch
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_darpa.launch
@@ -22,7 +21,7 @@ input=(
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-  'CMD' 'waitForRos; rostopic echo /uav10/control_manager/attitude_cmd
+  'CMD' 'waitForRos; rostopic echo /'"$UAV_NAME"'/control_manager/attitude_cmd
 '
   'Tunnel' 'waitForOdometry; roslaunch tunnel_flier simulation.launch
 '
