@@ -20,11 +20,13 @@ input=(
 '
   'Bumper' 'waitForOdometry; roslaunch mrs_bumper bumper.launch
 '
+  'orb_slam' 'waitForOdometry; roslaunch orb_slam uav_darpa.launch'
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   'CMD' 'waitForRos; rostopic echo /'"$UAV_NAME"'/control_manager/attitude_cmd
 '
-  'Tunnel' 'waitForOdometry; roslaunch tunnel_flier simulation.launch'
+  'Tunnel' 'waitForOdometry; roslaunch tunnel_flier simulation.launch
+'
   'Start' 'rosservice call /'"$UAV_NAME"'/tunnel_flier/start'
   'GoTo_FCU' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
   'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
