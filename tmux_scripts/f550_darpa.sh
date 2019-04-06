@@ -16,7 +16,7 @@ input=(
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_darpa.launch
 '
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_darpa_uav10.launch
+  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_darpa.launch
 '
   'Bumper' 'waitForOdometry; roslaunch mrs_bumper bumper.launch
 '
