@@ -9,5 +9,6 @@ mavlink stream -d /dev/ttyS2 -s LOCAL_POSITION_NED -r 100
 mavlink stream -d /dev/ttyS2 -s GLOBAL_POSITION_INT -r 100
 mavlink stream -d /dev/ttyS2 -s SYS_STATUS -r 10
 mavlink stream -d /dev/ttyS2 -s DISTANCE_SENSOR -r 100
+mavlink stream -d /dev/ttyS2 -s HEARTBEAT -r 100
 usleep 100000
 
