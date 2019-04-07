@@ -18,6 +18,8 @@ input=(
 '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_darpa.launch
 '
+	'AutoStart' 'waitForRos; roslaunch mrs_general automatic_start_darpa.launch
+'
   'Thrust' 'waitForOdometry; rostopic echo /uav10/mavros/setpoint_raw/target_attitude/thrust
 '
   'Bumper' 'waitForOdometry; roslaunch mrs_bumper bumper.launch
