@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_NAME=darpa_saturday
+PROJECT_NAME=darpa_sunday
 
 MAIN_DIR=~/"bag_files"
 
