@@ -1,4 +1,17 @@
 #!/bin/bash
+### BEGIN INIT INFO
+# Provides: miner
+# Required-Start:    $local_fs $network dbus
+# Required-Stop:     $local_fs $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: start the uav
+### END INIT INFO
+if [ "$(id -u)" == "0" ]; then
+  exec sudo -u mrs "$0" "$@" 
+fi
+
+source /home/mrs/.bashrc
 
 PROJECT_NAME=darpa_sunday
 
@@ -16,6 +29,8 @@ input=(
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_darpa.launch
 '
+  'cameras' 'waitForRos; sleep 2; roslaunch mrs_general bluefox_darpa.launch
+  '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_darpa.launch
 '
 	'AutoStart' 'waitForRos; roslaunch mrs_general automatic_start_darpa.launch
@@ -24,8 +39,11 @@ input=(
 '
   'Bumper' 'waitForOdometry; roslaunch mrs_bumper bumper.launch
 '
+  'jetson' 'waitForOdometry; sleep 10; roslaunch detection_localize uav_detect_and_localize.launch
+  '
   'orb_slam' 'waitForOdometry; roslaunch mrs_orb_slam uav_darpa.launch'
-	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
+	'MotorsOn' 'waitForControl; sleep 10; rosservice call /'"$UAV_NAME"'/control_manager/motors 1
+'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   'Tunnel' 'waitForOdometry; roslaunch tunnel_flier simulation.launch
 '
@@ -54,7 +72,7 @@ SESSION_NAME=mav
 
 if [ -z ${TMUX} ];
 then
-  TMUX= tmux new-session -s "$SESSION_NAME" -d
+  TMUX= /usr/bin/tmux new-session -s "$SESSION_NAME" -d
   echo "Starting new session."
 else
   echo "Already in tmux, leave it first."
@@ -98,11 +116,11 @@ done
 # run tmux windows
 for ((i=0; i < ${#names[*]}; i++));
 do
-	tmux new-window -t $SESSION_NAME:$(($i+1)) -n "${names[$i]}"
+	/usr/bin/tmux new-window -t $SESSION_NAME:$(($i+1)) -n "${names[$i]}"
 done
 
 # add pane splitter for mrs_status
-tmux new-window -t $SESSION_NAME:$((${#names[*]}+1)) -n "mrs_status"
+/usr/bin/tmux new-window -t $SESSION_NAME:$((${#names[*]}+1)) -n "mrs_status"
 
 # clear mrs status file so that no clutter is displayed
 truncate -s 0 /tmp/status.txt
@@ -111,40 +129,40 @@ truncate -s 0 /tmp/status.txt
 pes=""
 for ((i=0; i < ((${#names[*]}+2)); i++));
 do
-  pes=$pes"tmux split-window -d -t $SESSION_NAME:$(($i))"
-  pes=$pes"tmux send-keys -t $SESSION_NAME:$(($i)) 'tail -F /tmp/status.txt'"
-  pes=$pes"tmux select-pane -U -t $(($i))"
+  pes=$pes"/usr/bin/tmux split-window -d -t $SESSION_NAME:$(($i))"
+  pes=$pes"/usr/bin/tmux send-keys -t $SESSION_NAME:$(($i)) 'tail -F /tmp/status.txt'"
+  pes=$pes"/usr/bin/tmux select-pane -U -t $(($i))"
 done
 
-tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
+/usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 
 sleep 6
 
 # start loggers
 for ((i=0; i < ${#names[*]}; i++));
 do
-	tmux pipe-pane -t $SESSION_NAME:$(($i+1)) -o "ts | cat >> $TMUX_DIR/$(($i+1))_${names[$i]}.log"
+	/usr/bin/tmux pipe-pane -t $SESSION_NAME:$(($i+1)) -o "ts | cat >> $TMUX_DIR/$(($i+1))_${names[$i]}.log"
 done
 
 # send commands
 for ((i=0; i < ${#cmds[*]}; i++));
 do
-	tmux send-keys -t $SESSION_NAME:$(($i+1)) "${pre_input};${cmds[$i]}"
+	/usr/bin/tmux send-keys -t $SESSION_NAME:$(($i+1)) "${pre_input};${cmds[$i]}"
 done
 
 pes="sleep 1;"
 for ((i=0; i < ((${#names[*]}+2)); i++));
 do
-  pes=$pes"tmux select-window -t $SESSION_NAME:$(($i))"
-  pes=$pes"tmux resize-pane -U -t $(($i)) 150"
-  pes=$pes"tmux resize-pane -D -t $(($i)) 7"
+  pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:$(($i))"
+  pes=$pes"/usr/bin/tmux resize-pane -U -t $(($i)) 150"
+  pes=$pes"/usr/bin/tmux resize-pane -D -t $(($i)) 7"
 done
 
-pes=$pes"tmux select-window -t $SESSION_NAME:4"
+pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:4"
 pes=$pes"waitForRos; roslaunch mrs_status f550_darpa.launch >> /tmp/status.txt"
 
-tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
+/usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 
-tmux -2 attach-session -t $SESSION_NAME
+/usr/bin/tmux -2 attach-session -t $SESSION_NAME
 
-clear
+# clear
