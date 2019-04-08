@@ -24,7 +24,7 @@ input=(
 '
   'Bumper' 'waitForOdometry; roslaunch mrs_bumper bumper.launch
 '
-  'orb_slam' 'waitForOdometry; roslaunch orb_slam uav_darpa.launch'
+  'orb_slam' 'waitForOdometry; roslaunch mrs_orb_slam uav_darpa.launch'
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   'Tunnel' 'waitForOdometry; roslaunch tunnel_flier simulation.launch
