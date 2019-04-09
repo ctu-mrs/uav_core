@@ -13,7 +13,7 @@ fi
 
 source /home/mrs/.bashrc
 
-PROJECT_NAME=darpa_sunday
+PROJECT_NAME=darpa_test_day
 
 MAIN_DIR=~/"bag_files"
 
@@ -30,7 +30,7 @@ input=(
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_darpa.launch
 '
   'cameras' 'waitForRos; sleep 2; roslaunch mrs_general bluefox_darpa.launch
-  '
+'
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_darpa.launch
 '
 	'AutoStart' 'waitForRos; roslaunch mrs_general automatic_start_darpa.launch
@@ -39,8 +39,8 @@ input=(
 '
   'Bumper' 'waitForOdometry; roslaunch mrs_bumper bumper.launch
 '
-  'jetson' 'waitForOdometry; sleep 10; roslaunch detection_localize uav_detect_and_localize.launch
-  '
+  'jetson' 'waitForControl; sleep 25; roslaunch detection_localize uav_detect_and_localize.launch
+'
   'orb_slam' 'waitForOdometry; roslaunch mrs_orb_slam uav_darpa.launch'
 	'MotorsOn' 'waitForControl; sleep 10; rosservice call /'"$UAV_NAME"'/control_manager/motors 1
 '
