@@ -338,31 +338,11 @@ def plot_sheduled_data(profiler_data, required_time_start, required_time_end):
 
 if __name__ == "__main__":
 
-    # bag_file = "/home/vojta/workspace/bag_files/test.bag"
-    # uav_name = "uav10"
-
-    # start_time = 60
-    # stop_time = 65
-
-    # # rosbag 2
-    # start_time = 130
-    # stop_time = 141
-
-    # # rosbag 3
-    # bag_file = "/home/klaxalk/flight3.bag"
-    # start_time = 1536104469+75
-    # stop_time = 1536104469+80
-
-    bag_file = "/home/klaxalk/realsense_orb_slam_all_cameras.bag"
+    bag_file = "/home/klaxalk/_2019-04-06-19-32-31.bag"
     uav_name = "uav10"
-    start_time = 1536778918.60
-    stop_time = 1536778928.60
-    out_file_name = "orb_slam.txt"
-
-    # bag_file = "/home/klaxalk/gain_tuning_2.bag"
-    # start_time = 1535491286+200
-    # stop_time  = 1535491286+205
+    start_time = 1554571951+120
+    stop_time = 1554571951+122
 
     [data, start_time, end_time] = loadProfilerDataFromRosbag(bag_file, uav_name, start_time, stop_time)
-    plot_all_data_separately(data, start_time, end_time)
-    # plot_sheduled_data(data, start_time, end_time)
+    # plot_all_data_separately(data, start_time, end_time)
+    plot_sheduled_data(data, start_time, end_time)
