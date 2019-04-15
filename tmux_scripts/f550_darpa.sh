@@ -13,7 +13,7 @@ fi
 
 source /home/mrs/.bashrc
 
-PROJECT_NAME=darpa_test_day
+PROJECT_NAME=darpa_challenge_day
 
 MAIN_DIR=~/"bag_files"
 
