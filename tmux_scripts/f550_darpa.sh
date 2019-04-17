@@ -1,6 +1,19 @@
 #!/bin/bash
+### BEGIN INIT INFO
+# Provides: miner
+# Required-Start:    $local_fs $network dbus
+# Required-Stop:     $local_fs $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: start the uav
+### END INIT INFO
+if [ "$(id -u)" == "0" ]; then
+  exec sudo -u mrs "$0" "$@" 
+fi
 
-PROJECT_NAME=darpa
+source /home/mrs/.bashrc
+
+PROJECT_NAME=darpa_challenge_day
 
 MAIN_DIR=~/"bag_files"
 
@@ -11,32 +24,44 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME; export DIS
 # 'name' 'command'
 input=(
   'Rosbag' 'waitForRos; roslaunch mrs_general record_stola_josef.launch project_name:='"$PROJECT_NAME"'
+  '
+  'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav10_dark.launch
 '
-  'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav10.launch
+  'Sensors' 'waitForRos; roslaunch mrs_general sensors_darpa.launch
 '
-  'Sensors' 'waitForRos; roslaunch mrs_general sensors_stola.launch
+  'cameras' 'waitForRos; sleep 2; roslaunch mrs_general bluefox_darpa.launch
 '
-  'OrbSlam' 'waitForRos; roslaunch orb_slam stola_josef.launch
+  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_darpa.launch
 '
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_new_esc.launch
+	'AutoStart' 'waitForRos; roslaunch mrs_general automatic_start_darpa.launch
 '
-	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
+  'Thrust' 'waitForOdometry; rostopic echo /uav10/mavros/setpoint_raw/target_attitude/thrust
+'
+  'Bumper' 'waitForOdometry; roslaunch mrs_bumper bumper.launch
+'
+  'jetson' 'waitForControl; sleep 25; roslaunch detection_localize uav_detect_and_localize.launch
+'
+  'orb_slam' 'waitForOdometry; roslaunch mrs_orb_slam uav_darpa.launch'
+	'MotorsOn' 'waitForControl; sleep 10; rosservice call /'"$UAV_NAME"'/control_manager/motors 1
+'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-  'GoTo' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [0.0, 0.0, 1.5, 1.9]"'
-  'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
-	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
-  'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
+  'Tunnel' 'waitForOdometry; roslaunch tunnel_flier simulation.launch
 '
-  'Show_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
+  'Start' 'rosservice call /'"$UAV_NAME"'/tunnel_flier/start'
+  'goto_fcu' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
+	'land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
+  'odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
-  'Mav_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
+  'att_cmd' 'waitForRos; rostopic echo /'"$UAV_NAME"'/control_manager/attitude_cmd
+'
+  'odom_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
+'
+  'mavros_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
 '
 	'KernelLog' 'tail -f /var/log/kern.log -n 100
 '
   'roscore' 'roscore
 '
-  'Multimaster' 'waitForRos; roslaunch mrs_multimaster server.launch'
-	'KILL_ALL' 'dmesg; tmux kill-session -t '
 )
 
 ###########################
@@ -47,7 +72,7 @@ SESSION_NAME=mav
 
 if [ -z ${TMUX} ];
 then
-  TMUX= tmux new-session -s "$SESSION_NAME" -d
+  TMUX= /usr/bin/tmux new-session -s "$SESSION_NAME" -d
   echo "Starting new session."
 else
   echo "Already in tmux, leave it first."
@@ -91,11 +116,11 @@ done
 # run tmux windows
 for ((i=0; i < ${#names[*]}; i++));
 do
-	tmux new-window -t $SESSION_NAME:$(($i+1)) -n "${names[$i]}"
+	/usr/bin/tmux new-window -t $SESSION_NAME:$(($i+1)) -n "${names[$i]}"
 done
 
 # add pane splitter for mrs_status
-tmux new-window -t $SESSION_NAME:$((${#names[*]}+1)) -n "mrs_status"
+/usr/bin/tmux new-window -t $SESSION_NAME:$((${#names[*]}+1)) -n "mrs_status"
 
 # clear mrs status file so that no clutter is displayed
 truncate -s 0 /tmp/status.txt
@@ -104,40 +129,40 @@ truncate -s 0 /tmp/status.txt
 pes=""
 for ((i=0; i < ((${#names[*]}+2)); i++));
 do
-  pes=$pes"tmux split-window -d -t $SESSION_NAME:$(($i))"
-  pes=$pes"tmux send-keys -t $SESSION_NAME:$(($i)) 'tail -F /tmp/status.txt'"
-  pes=$pes"tmux select-pane -U -t $(($i))"
+  pes=$pes"/usr/bin/tmux split-window -d -t $SESSION_NAME:$(($i))"
+  pes=$pes"/usr/bin/tmux send-keys -t $SESSION_NAME:$(($i)) 'tail -F /tmp/status.txt'"
+  pes=$pes"/usr/bin/tmux select-pane -U -t $(($i))"
 done
 
-tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
+/usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 
 sleep 6
 
 # start loggers
 for ((i=0; i < ${#names[*]}; i++));
 do
-	tmux pipe-pane -t $SESSION_NAME:$(($i+1)) -o "ts | cat >> $TMUX_DIR/$(($i+1))_${names[$i]}.log"
+	/usr/bin/tmux pipe-pane -t $SESSION_NAME:$(($i+1)) -o "ts | cat >> $TMUX_DIR/$(($i+1))_${names[$i]}.log"
 done
 
 # send commands
 for ((i=0; i < ${#cmds[*]}; i++));
 do
-	tmux send-keys -t $SESSION_NAME:$(($i+1)) "${pre_input};${cmds[$i]}"
+	/usr/bin/tmux send-keys -t $SESSION_NAME:$(($i+1)) "${pre_input};${cmds[$i]}"
 done
 
 pes="sleep 1;"
 for ((i=0; i < ((${#names[*]}+2)); i++));
 do
-  pes=$pes"tmux select-window -t $SESSION_NAME:$(($i))"
-  pes=$pes"tmux resize-pane -U -t $(($i)) 150"
-  pes=$pes"tmux resize-pane -D -t $(($i)) 7"
+  pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:$(($i))"
+  pes=$pes"/usr/bin/tmux resize-pane -U -t $(($i)) 150"
+  pes=$pes"/usr/bin/tmux resize-pane -D -t $(($i)) 7"
 done
 
-pes=$pes"tmux select-window -t $SESSION_NAME:4"
+pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:4"
 pes=$pes"waitForRos; roslaunch mrs_status f550_darpa.launch >> /tmp/status.txt"
 
-tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
+/usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 
-tmux -2 attach-session -t $SESSION_NAME
+/usr/bin/tmux -2 attach-session -t $SESSION_NAME
 
-clear
+# clear

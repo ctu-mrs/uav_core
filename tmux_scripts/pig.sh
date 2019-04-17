@@ -13,9 +13,11 @@ input=(
   'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"'
 '
   'OptFlow' 'waitForRos; roslaunch optic_flow uav.launch'
-  'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
+  'Sensors' 'waitForRos; roslaunch mrs_general sensors_pig.launch
 '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager pig.launch
+'
+  'pig_odom' 'waitForRos; roslaunch mrs_uav_manager pig_odom.launch
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
