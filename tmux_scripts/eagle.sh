@@ -16,6 +16,8 @@ input=(
 '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager eagle.launch
 '
+  'AutomaticStart' 'waitForRos; roslaunch mrs_general automatic_start_eagle.launch
+'
   'UAV_detection' 'waitForRos; roslaunch uav_localize localization_pipeline.launch
 '
   'Estimator' 'waitForOdometry; roslaunch intercept_estimator simulation.launch
