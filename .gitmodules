@@ -30,7 +30,7 @@
 	url = git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
 [submodule "ros_packages/mavros"]
 	path = ros_packages/mavros
-	url = git@mrs.felk.cvut.cz:uav/core/mavros.git
+	url = git@mrs.felk.cvut.cz:uav/mavros.git
 [submodule "lib/mavlink/mavlink"]
 	path = lib/mavlink
 	url = git@mrs.felk.cvut.cz:uav/mavlink
