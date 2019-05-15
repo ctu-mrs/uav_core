@@ -5,8 +5,8 @@
 sudo apt-get -y remove ros-melodic-mavros* ros-melodic-mavlink* ros-melodic-libmavconn
 sudo apt-get -y install python-pip python3-pip
 
-sudo pip install --user future
-sudo pip3 install --user future
+pip install --user future
+pip3 install --user future
 
 echo ""
 echo #########################
