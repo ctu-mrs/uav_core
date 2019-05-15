@@ -31,3 +31,6 @@
 [submodule "ros_packages/mavros"]
 	path = ros_packages/mavros
 	url = https://github.com/mavlink/mavros
+[submodule "lib/mavlink/mavlink"]
+	path = lib/mavlink/mavlink
+	url = git@mrs.felk.cvut.cz:uav/mavlink
