@@ -12,7 +12,7 @@ git clean -fd
 git reset --hard
 git submodule deinit -f .
 git submodule sync
-git submodule update --remote --init --recursive
+git submodule update --init --recursive
 
 # compile mavlink
 cd "$UAV_CORE_PATH/installation/scripts"
