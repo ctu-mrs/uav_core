@@ -1,12 +1,12 @@
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
-sudo apt-get install ros-melodic-tf2-geometry-msgs
-
 UAV_CORE_PATH=`dirname "$0"`
 UAV_CORE_PATH=`( cd "$UAV_CORE_PATH" && pwd )`
 
 cd "$UAV_CORE_PATH"
+
+./installation/scripts/install_dependencies.sh
 
 git clean -fd
 git reset --hard
