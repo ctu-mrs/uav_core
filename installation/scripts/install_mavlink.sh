@@ -3,10 +3,10 @@
 
 # remove the default installation of mavlink, etc.
 sudo apt-get -y remove ros-melodic-mavros* ros-melodic-mavlink* ros-melodic-libmavconn
-sudo apt-get -y install python-pip python3-pip
 
-pip install --user future
-pip3 install --user future
+# sudo apt-get -y install python-pip python3-pip
+# pip install --user future
+# pip3 install --user future
 
 echo ""
 echo #########################
@@ -32,3 +32,9 @@ rm -rf build
 sudo rm -rf /usr/share/mavlink
 sudo mkdir /usr/share/mavlink
 sudo cp -r ros/* /usr/share/mavlink/
+
+echo ""
+echo #################
+echo MAVLINK WAS BUILT
+echo #################
+echo ""
