@@ -47,6 +47,29 @@ while true; do
 done
 
 #############################################
+# install mavlink
+#############################################
+
+default=y
+while true; do
+  [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall mavlink? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  response=`echo $resp | sed -r 's/(.*)$/\1=/'`
+
+  if [[ $response =~ ^(y|Y)=$ ]]
+  then
+
+    bash $MY_PATH/scripts/install_mavlink.sh
+
+    break
+  elif [[ $response =~ ^(n|N)=$ ]]
+  then
+    break
+  else
+    echo " What? \"$resp\" is not a correct answer. Try y+Enter."
+  fi
+done
+
+#############################################
 # Prepare ros workspace
 #############################################
 
