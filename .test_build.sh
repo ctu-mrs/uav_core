@@ -3,14 +3,19 @@ sudo apt-get upgrade -y
 
 sudo apt-get install ros-melodic-tf2-geometry-msgs
 
-git submodule deinit -f .
-git submodule sync
-git submodule update --init --recursive
 UAV_CORE_PATH=`dirname "$0"`
 UAV_CORE_PATH=`( cd "$UAV_CORE_PATH" && pwd )`
 
+cd "$UAV_CORE_PATH"
+
+git clean -fd
+git reset --hard
+git submodule deinit -f .
+git submodule sync
+git submodule update --remote --init --recursive
+
 # compile mavlink
-cd $UAV_CORE_PATH/installation/scripts
+cd "$UAV_CORE_PATH/installation/scripts"
 ./install_mavlink.sh
 
 # source installation/scripts/download_binaries.sh
