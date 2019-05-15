@@ -11,6 +11,7 @@ MY_PATH=`( cd "$MY_PATH" && pwd )`
 sudo apt-get -y install python3-pip
 pip install --user future
 
+# install mavlink headers
 cd "$MY_PATH/../../lib/mavlink/"
 mkdir build
 cd build
@@ -19,3 +20,8 @@ make
 sudo make install
 cd ..
 rm -rf build
+
+# copy the ros makefile and config
+sudo rm -rf /usr/share/mavlink
+sudo mkdir /usr/share/mavlink
+sudo cp -r ros/* /usr/share/mavlink/
