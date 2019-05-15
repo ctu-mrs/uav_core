@@ -10,7 +10,7 @@ MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
 
 sudo apt-get -y install python3-pip
-pip install --user future
+sudo pip install --user future
 
 # install mavlink headers
 cd "$MY_PATH/../../lib/mavlink/"
