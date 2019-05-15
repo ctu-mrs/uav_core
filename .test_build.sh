@@ -9,6 +9,10 @@ git submodule update --init --recursive
 UAV_CORE_PATH=`dirname "$0"`
 UAV_CORE_PATH=`( cd "$UAV_CORE_PATH" && pwd )`
 
+# compile mavlink
+cd $UAV_CORE_PATH/installation/scripts
+./install_mavlink.sh
+
 # source installation/scripts/download_binaries.sh
 # echo "binaries downloaded and configured"
 cd $UAV_CORE_PATH
