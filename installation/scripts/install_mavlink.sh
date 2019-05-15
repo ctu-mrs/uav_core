@@ -5,12 +5,18 @@
 sudo apt-get -y remove ros-melodic-mavros* ros-melodic-mavlink* ros-melodic-libmavconn
 sudo apt-get -y install python-pip python3-pip
 
+sudo pip install --user future
+sudo pip3 install --user future
+
+echo ""
+echo #########################
+echo STARTING TO BUILD MAVLINK
+echo #########################
+echo ""
+
 # get the path to this script
 MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
-
-sudo apt-get -y install python3-pip
-sudo pip install --user future
 
 # install mavlink headers
 cd "$MY_PATH/../../lib/mavlink/"
