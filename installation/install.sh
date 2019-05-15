@@ -103,14 +103,6 @@ while true; do
 done
 
 #############################################
-# Prepare catkin profiles
-#############################################
-
-catkin config --profile default --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-catkin config --profile release --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-catkin profile set default
-
-#############################################
 # Compile the workspace for the first time
 #############################################
 
