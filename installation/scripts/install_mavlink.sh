@@ -3,7 +3,7 @@
 
 # remove the default installation of mavlink, etc.
 sudo apt-get -y remove ros-melodic-mavros* ros-melodic-mavlink* ros-melodic-libmavconn
-sudo apt-get -y install python3-pip
+sudo apt-get -y install python-pip python3-pip
 
 # get the path to this script
 MY_PATH=`dirname "$0"`
