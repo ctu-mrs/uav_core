@@ -23,6 +23,37 @@ $MY_PATH/scripts/install_mrs_certificate.sh
 $MY_PATH/scripts/install_git_lfs.sh
 
 #############################################
+# Install Tomas's Linux Setup
+#############################################
+
+default=y
+while true; do
+  [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall Linux setup? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  response=`echo $resp | sed -r 's/(.*)$/\1=/'`
+
+  if [[ $response =~ ^(y|Y)=$ ]]
+  then
+
+    #############################################
+    # Clone Tomas's linux-setup repository
+    #############################################
+
+    cd ~/git
+    git clone https://github.com/klaxalk/linux-setup
+
+    cd ~/git/linux-setup
+    bash install.sh
+
+    break
+  elif [[ $response =~ ^(n|N)=$ ]]
+  then
+    break
+  else
+    echo " What? \"$resp\" is not a correct answer. Try y+Enter."
+  fi
+done
+
+#############################################
 # Install ROS?
 #############################################
 
@@ -100,7 +131,7 @@ while true; do
 
     # clone the repo
     git clone --recursive git@mrs.felk.cvut.cz:uav/uav_modules.git
-  
+
     cd ~/git/uav_modules
     git pull
 
@@ -213,37 +244,6 @@ while true; do
 
     cd simulation/installation
     ./install.sh
-
-    break
-  elif [[ $response =~ ^(n|N)=$ ]]
-  then
-    break
-  else
-    echo " What? \"$resp\" is not a correct answer. Try y+Enter."
-  fi
-done
-
-#############################################
-# Install vim-IDE
-#############################################
-
-default=y
-while true; do
-  [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall vim-IDE? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
-  response=`echo $resp | sed -r 's/(.*)$/\1=/'`
-
-  if [[ $response =~ ^(y|Y)=$ ]]
-  then
-
-    #############################################
-    # Clone Tomas's linux-setup repository
-    #############################################
-
-    cd ~/git
-    git clone https://github.com/klaxalk/linux-setup
-
-    cd ~/git/linux-setup
-    bash install.sh
 
     break
   elif [[ $response =~ ^(n|N)=$ ]]
