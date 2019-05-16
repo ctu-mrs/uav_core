@@ -34,3 +34,6 @@
 [submodule "lib/mavlink"]
 	path = lib/mavlink
 	url = git@mrs.felk.cvut.cz:uav/mavlink
+[submodule "lib/mavlink-gbp-release"]
+	path = lib/mavlink-gbp-release
+	url = https://github.com/mavlink/mavlink-gbp-release
