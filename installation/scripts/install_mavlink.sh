@@ -4,8 +4,8 @@
 # remove the default installation of mavlink, etc.
 sudo apt-get -y remove ros-melodic-mavros* ros-melodic-mavlink* ros-melodic-libmavconn
 
-pip install --user future
-pip3 install --user future
+sudo pip install --user future
+sudo pip3 install --user future
 
 echo ""
 echo #########################
@@ -18,19 +18,23 @@ MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
 
 # install mavlink headers
-cd "$MY_PATH/../../lib/mavlink/"
+
+# pull the correct version of mavlink
+cd "$MY_PATH/../../lib/mavlink-gbp-release/"
+git checkout 11581c867d9e0263b429dc146805e9cd7c90c10a # release/melodic/mavlink/2018.11.11-0
+bloom-generate rosdebian --os-name ubuntu --ros-distro melodic
+
+# build it
 mkdir build
 cd build
 cmake ../
 make
-sudo make install
-cd ..
-rm -rf build
 
-# copy the ros makefile and config
-sudo rm -rf /usr/share/mavlink
-sudo mkdir /usr/share/mavlink
-sudo cp -r ros/* /usr/share/mavlink/
+# install it
+sudo make install
+
+cd "$MY_PATH/../../lib/mavlink-gbp-release/"
+git clean -fd
 
 echo ""
 echo #################
