@@ -1,5 +1,6 @@
 #!/bin/bash
 # author: Robert Penicka
+
 echo "Installing mrs.felk.cvut.cz certificate in order to enable https requests"
 CERT_LOCATION=/tmp/mrs.crt
 

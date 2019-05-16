@@ -47,6 +47,29 @@ while true; do
 done
 
 #############################################
+# install mavlink
+#############################################
+
+default=y
+while true; do
+  [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall mavlink? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  response=`echo $resp | sed -r 's/(.*)$/\1=/'`
+
+  if [[ $response =~ ^(y|Y)=$ ]]
+  then
+
+    bash $MY_PATH/scripts/install_mavlink.sh
+
+    break
+  elif [[ $response =~ ^(n|N)=$ ]]
+  then
+    break
+  else
+    echo " What? \"$resp\" is not a correct answer. Try y+Enter."
+  fi
+done
+
+#############################################
 # Prepare ros workspace
 #############################################
 
@@ -101,14 +124,6 @@ while true; do
     echo " What? \"$resp\" is not a correct answer. Try y+Enter."
   fi
 done
-
-#############################################
-# Prepare catkin profiles
-#############################################
-
-catkin config --profile default --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-catkin config --profile release --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-catkin profile set default
 
 #############################################
 # Compile the workspace for the first time
