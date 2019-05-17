@@ -9,3 +9,5 @@
 
 # Runtime-python
 *.pyc
+
+.gitman
