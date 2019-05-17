@@ -1,54 +1,237 @@
 location: .gitman
 sources:
-- name: mrs_general
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_general.git
-  rev: devel
-  link: ros_packages/mrs_general
-- name: mrs_controllers
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_controllers.git
-  rev: devel
-  link: ros_packages/mrs_controllers
-- name: mrs_trackers
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_trackers.git
-  rev: devel
-  link: ros_packages/mrs_trackers
-- name: mrs_odometry
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_odometry.git
-  rev: devel
-  link: ros_packages/mrs_odometry
-- name: mrs_optic_flow
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_optic_flow.git
-  rev: devel
-  link: ros_packages/mrs_optic_flow
-- name: mrs_status
-  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_status.git
-  rev: devel
-  link: ros_packages/mrs_status
-- name: mrs_lib
-  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_lib.git
-  rev: master
-  link: ros_packages/mrs_lib
-- name: mrs_mavros_interface
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_mavros_interface.git
-  rev: devel
-  link: ros_packages/mrs_mavros_interface
-- name: mrs_uav_manager
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
-  rev: devel
-  link: ros_packages/mrs_uav_manager
-- name: mrs_msgs
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
-  rev: devel
-  link: ros_packages/mrs_msgs
-- name: mavros
-  repo: git@mrs.felk.cvut.cz:uav/mavros.git
-  rev: 0.26.3
-  link: ros_packages/mavros
 - name: mavlink
+  type: git
   repo: git@mrs.felk.cvut.cz:uav/mavlink.git
+  sparse_paths:
+  -
   rev: 41d89df
   link: lib/mavlink
+  scripts:
+  -
 - name: mavlink-gbp-release
+  type: git
   repo: https://github.com/mavlink/mavlink-gbp-release
+  sparse_paths:
+  -
   rev: 11581c867d9e0263b429dc146805e9cd7c90c10a
   link: lib/mavlink-gbp-release
+  scripts:
+  -
+- name: mavros
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/mavros.git
+  sparse_paths:
+  -
+  rev: 0.26.3
+  link: ros_packages/mavros
+  scripts:
+  -
+- name: mrs_controllers
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_controllers.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_controllers
+  scripts:
+  -
+- name: mrs_general
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_general.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_general
+  scripts:
+  -
+- name: mrs_lib
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_lib.git
+  sparse_paths:
+  -
+  rev: master
+  link: ros_packages/mrs_lib
+  scripts:
+  -
+- name: mrs_mavros_interface
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_mavros_interface.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_mavros_interface
+  scripts:
+  -
+- name: mrs_msgs
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_msgs
+  scripts:
+  -
+- name: mrs_odometry
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_odometry.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_odometry
+  scripts:
+  -
+- name: mrs_optic_flow
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_optic_flow.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_optic_flow
+  scripts:
+  -
+- name: mrs_status
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_status.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_status
+  scripts:
+  -
+- name: mrs_trackers
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_trackers.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_trackers
+  scripts:
+  -
+- name: mrs_uav_manager
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_uav_manager
+  scripts:
+  -
+sources_locked:
+- name: mavlink
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/mavlink.git
+  sparse_paths:
+  -
+  rev: 41d89df68890cb430a579d79d6beea02d4e31490
+  link: lib/mavlink
+  scripts:
+  -
+- name: mavlink-gbp-release
+  type: git
+  repo: https://github.com/mavlink/mavlink-gbp-release
+  sparse_paths:
+  -
+  rev: 11581c867d9e0263b429dc146805e9cd7c90c10a
+  link: lib/mavlink-gbp-release
+  scripts:
+  -
+- name: mavros
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/mavros.git
+  sparse_paths:
+  -
+  rev: 005ebd94e74fba8b43c8f08bcd866f91fa6a3f07
+  link: ros_packages/mavros
+  scripts:
+  -
+- name: mrs_controllers
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_controllers.git
+  sparse_paths:
+  -
+  rev: 557758582832ad3a60242fdcfee38afb802bc991
+  link: ros_packages/mrs_controllers
+  scripts:
+  -
+- name: mrs_general
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_general.git
+  sparse_paths:
+  -
+  rev: 25f84afb53dd531b4ec63e127d1e6a89c45c5a8a
+  link: ros_packages/mrs_general
+  scripts:
+  -
+- name: mrs_lib
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_lib.git
+  sparse_paths:
+  -
+  rev: f4b26be5b7736ef3de366e201de867958409c019
+  link: ros_packages/mrs_lib
+  scripts:
+  -
+- name: mrs_mavros_interface
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_mavros_interface.git
+  sparse_paths:
+  -
+  rev: 7c3fbbc3419d2b6564b2b4281edaeb2dfeb76a1b
+  link: ros_packages/mrs_mavros_interface
+  scripts:
+  -
+- name: mrs_msgs
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
+  sparse_paths:
+  -
+  rev: 58ee63ef76135274d74956aa084356afa5bbb217
+  link: ros_packages/mrs_msgs
+  scripts:
+  -
+- name: mrs_odometry
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_odometry.git
+  sparse_paths:
+  -
+  rev: 505313cca5bb3c1366afc1abb48bd7089144a09b
+  link: ros_packages/mrs_odometry
+  scripts:
+  -
+- name: mrs_optic_flow
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_optic_flow.git
+  sparse_paths:
+  -
+  rev: b75924186d80d4fce1ece5c2f6c48c802d4159c4
+  link: ros_packages/mrs_optic_flow
+  scripts:
+  -
+- name: mrs_status
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_status.git
+  sparse_paths:
+  -
+  rev: 1fb1e0d665c242407f05316db3b8b3253da08650
+  link: ros_packages/mrs_status
+  scripts:
+  -
+- name: mrs_trackers
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_trackers.git
+  sparse_paths:
+  -
+  rev: c2876e29b95831f26a72ca96898ca161fab3029b
+  link: ros_packages/mrs_trackers
+  scripts:
+  -
+- name: mrs_uav_manager
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
+  sparse_paths:
+  -
+  rev: 563349c414b4ddc1e8c897ad52c89f6d5d73a76b
+  link: ros_packages/mrs_uav_manager
+  scripts:
+  -
