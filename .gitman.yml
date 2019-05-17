@@ -109,15 +109,6 @@ sources:
   scripts:
   - git submodule update --init --recursive
 sources_locked:
-- name: mavlink
-  type: git
-  repo: git@mrs.felk.cvut.cz:uav/mavlink.git
-  sparse_paths:
-  -
-  rev: 41d89df68890cb430a579d79d6beea02d4e31490
-  link: lib/mavlink
-  scripts:
-  - git submodule update --init --recursive
 - name: mavlink-gbp-release
   type: git
   repo: https://github.com/mavlink/mavlink-gbp-release
@@ -150,7 +141,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_general.git
   sparse_paths:
   -
-  rev: 935d8a37ad02f4cd37c2224f54405dbef055d3e7
+  rev: 5a5bfe4384cc34b2865df63005329309f1e5ff3b
   link: ros_packages/mrs_general
   scripts:
   - git submodule update --init --recursive
