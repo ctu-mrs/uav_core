@@ -1,7 +1,7 @@
 host mrs.felk.cvut.cz
      hostname mrs.felk.cvut.cz
      user git
-     identityfile ~/.ssh/id_rsa_drone_login
+     identityfile ~/.ssh/id_rsa
 
 host github.com
      hostname github.com
@@ -62,6 +62,12 @@ Host uav7
 
 Host uav8
      Hostname 192.168.0.108
+     User mrs
+     IdentityFile ~/.ssh/id_rsa_mbzirc_login
+     #ForwardX11 yes
+
+Host pig
+     Hostname 192.168.0.143
      User mrs
      IdentityFile ~/.ssh/id_rsa_mbzirc_login
      #ForwardX11 yes

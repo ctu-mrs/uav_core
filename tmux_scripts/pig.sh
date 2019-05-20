@@ -12,7 +12,8 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
 input=(
   'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"'
 '
-  'OptFlow' 'waitForRos; roslaunch optic_flow uav.launch'
+  # 'OptFlow' 'waitForRos; roslaunch mrs_optic_flow pig.launch
+# '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_pig.launch
 '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager pig.launch
