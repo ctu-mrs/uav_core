@@ -105,7 +105,7 @@ done
 #############################################
 
 cd "$HOME/git/uav_core"
-gitman install
+gitman install --force
 
 #############################################
 # Prepare ros workspace
@@ -141,7 +141,7 @@ while true; do
 
     cd ~/git/uav_modules
     git pull
-    gitman install
+    gitman install --force
 
     # update its submodules
     cd ~/git/uav_modules
