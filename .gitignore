@@ -1,4 +1,3 @@
-
 # ignore temp files
 *~
 
@@ -9,3 +8,5 @@
 
 # Runtime-python
 *.pyc
+
+.gitman
