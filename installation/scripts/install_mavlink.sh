@@ -4,8 +4,8 @@
 # remove the default installation of mavlink, etc.
 sudo apt-get -y remove ros-melodic-mavros* ros-melodic-mavlink* ros-melodic-libmavconn
 
-sudo pip install --user future
-sudo pip3 install --user future
+sudo -H pip install --user future
+sudo -H pip3 install --user future
 
 echo ""
 echo #########################
