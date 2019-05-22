@@ -7,6 +7,21 @@ sudo usermod -a -G dialout $USER
 # but if you run install.sh directly...
 sudo apt-get -y install git expect
 
+
+unattended=0
+subinstall_params=""
+for param in "$@"
+do
+  echo $param
+  if [ $param="--unattended" ]; then
+    echo "installing in unattended mode"
+    unattended=1
+    subinstall_params="--unattended"
+  fi
+done
+
+
+#exit 1
 # get the path to this script
 MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
@@ -27,10 +42,15 @@ $MY_PATH/scripts/install_git_lfs.sh
 #############################################
 
 default=y
-while true; do
-  [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall Linux setup? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+while true ; do
+  if [[ "$unattended" == "1" ]]
+  then
+    resp=$default
+  else
+    [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall Linux setup? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; } 
+  fi
   response=`echo $resp | sed -r 's/(.*)$/\1=/'`
-
+  
   if [[ $response =~ ^(y|Y)=$ ]]
   then
 
@@ -42,7 +62,7 @@ while true; do
     git clone https://github.com/klaxalk/linux-setup
 
     cd ~/git/linux-setup
-    bash install.sh
+    bash install.sh $subinstall_params
 
     break
   elif [[ $response =~ ^(n|N)=$ ]]
@@ -59,7 +79,12 @@ done
 
 default=y
 while true; do
-  [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall ROS? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  if [[ "$unattended" == "1" ]]
+  then
+    resp=$default
+  else
+    [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall ROS? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  fi
   response=`echo $resp | sed -r 's/(.*)$/\1=/'`
 
   if [[ $response =~ ^(y|Y)=$ ]]
@@ -83,7 +108,12 @@ done
 
 default=y
 while true; do
-  [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall mavlink? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  if [[ "$unattended" == "1" ]]
+  then
+    resp=$default
+  else
+    [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall mavlink? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  fi
   response=`echo $resp | sed -r 's/(.*)$/\1=/'`
 
   if [[ $response =~ ^(y|Y)=$ ]]
@@ -99,13 +129,6 @@ while true; do
     echo " What? \"$resp\" is not a correct answer. Try y+Enter."
   fi
 done
-
-#############################################
-# install sub-repos in uav_core
-#############################################
-
-cd "$HOME/git/uav_core"
-gitman install --force
 
 #############################################
 # Prepare ros workspace
@@ -128,7 +151,12 @@ ln -s ~/git/uav_core
 # clone uav_modules repository
 default=y
 while true; do
-  [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mClone uav_modules repository? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  if [[ "$unattended" == "1" ]]
+  then
+    resp=$default
+  else
+    [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mClone uav_modules repository? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  fi
   response=`echo $resp | sed -r 's/(.*)$/\1=/'`
 
   if [[ $response =~ ^(y|Y)=$ ]]
@@ -141,7 +169,6 @@ while true; do
 
     cd ~/git/uav_modules
     git pull
-    gitman install --force
 
     # update its submodules
     cd ~/git/uav_modules
@@ -178,7 +205,12 @@ catkin build
 
 default=y
 while true; do
-  [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mSet up student\'s workspace? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  if [[ "$unattended" == "1" ]]
+  then
+    resp=$default
+  else
+    [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mSet up student\'s workspace? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  fi
   response=`echo $resp | sed -r 's/(.*)$/\1=/'`
 
   if [[ $response =~ ^(y|Y)=$ ]]
@@ -236,7 +268,12 @@ fi
 
 default=y
 while true; do
-  [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall simulation? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  if [[ "$unattended" == "1" ]]
+  then
+    resp=$default
+  else
+    [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall simulation? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
+  fi
   response=`echo $resp | sed -r 's/(.*)$/\1=/'`
 
   if [[ $response =~ ^(y|Y)=$ ]]
