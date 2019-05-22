@@ -1,0 +1,219 @@
+location: .gitman
+sources:
+- name: mavlink-gbp-release
+  type: git
+  repo: https://github.com/mavlink/mavlink-gbp-release
+  sparse_paths:
+  -
+  rev: 11581c867d9e0263b429dc146805e9cd7c90c10a
+  link: lib/mavlink-gbp-release
+  scripts:
+  - git submodule update --init --recursive
+- name: mavros
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/mavros.git
+  sparse_paths:
+  -
+  rev: 0.26.3
+  link: ros_packages/mavros
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_controllers
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_controllers.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_controllers
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_general
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_general.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_general
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_lib
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_lib.git
+  sparse_paths:
+  -
+  rev: master
+  link: ros_packages/mrs_lib
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_mavros_interface
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_mavros_interface.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_mavros_interface
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_msgs
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_msgs
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_odometry
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_odometry.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_odometry
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_optic_flow
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_optic_flow.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_optic_flow
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_status
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_status.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_status
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_trackers
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_trackers.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_trackers
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_uav_manager
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
+  sparse_paths:
+  -
+  rev: devel
+  link: ros_packages/mrs_uav_manager
+  scripts:
+  - git submodule update --init --recursive
+sources_locked:
+- name: mavlink-gbp-release
+  type: git
+  repo: https://github.com/mavlink/mavlink-gbp-release
+  sparse_paths:
+  -
+  rev: 11581c867d9e0263b429dc146805e9cd7c90c10a
+  link: lib/mavlink-gbp-release
+  scripts:
+  - git submodule update --init --recursive
+- name: mavros
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/mavros.git
+  sparse_paths:
+  -
+  rev: 005ebd94e74fba8b43c8f08bcd866f91fa6a3f07
+  link: ros_packages/mavros
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_controllers
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_controllers.git
+  sparse_paths:
+  -
+  rev: 11fedecf5e89bbaf71f63000190a9e8687eea012
+  link: ros_packages/mrs_controllers
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_general
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_general.git
+  sparse_paths:
+  -
+  rev: 1c5d0908263ede11da8fa8e12126e2eab78ea8b9
+  link: ros_packages/mrs_general
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_lib
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_lib.git
+  sparse_paths:
+  -
+  rev: 5281f69778f6bc69ca9cdf87625b8283bdf4e218
+  link: ros_packages/mrs_lib
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_mavros_interface
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_mavros_interface.git
+  sparse_paths:
+  -
+  rev: 6257e1225e4946b700fbfaf1f10ac51821e95a13
+  link: ros_packages/mrs_mavros_interface
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_msgs
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
+  sparse_paths:
+  -
+  rev: 53cb2cadf6838a08fa57ea82abfb6cab2fdcf496
+  link: ros_packages/mrs_msgs
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_odometry
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_odometry.git
+  sparse_paths:
+  -
+  rev: 2bd5c45fb0817c9c78b54c04397b77f4ff9fef62
+  link: ros_packages/mrs_odometry
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_optic_flow
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_optic_flow.git
+  sparse_paths:
+  -
+  rev: 3d8a85190ee47e2efd75b482fe0365d4aae1d49c
+  link: ros_packages/mrs_optic_flow
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_status
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_status.git
+  sparse_paths:
+  -
+  rev: 7091489d7d98585cf17361c082f6cf37764f26b3
+  link: ros_packages/mrs_status
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_trackers
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_trackers.git
+  sparse_paths:
+  -
+  rev: 1f1bc361babc0bc38ebceb4990a916a91af2dd04
+  link: ros_packages/mrs_trackers
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_uav_manager
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
+  sparse_paths:
+  -
+  rev: f7dc0fca051a1f3f07c52de5ca1fe124794e288c
+  link: ros_packages/mrs_uav_manager
+  scripts:
+  - git submodule update --init --recursive
