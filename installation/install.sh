@@ -101,6 +101,13 @@ while true; do
 done
 
 #############################################
+# install sub-repos in uav_core
+#############################################
+
+cd "$HOME/git/uav_core"
+gitman install
+
+#############################################
 # Prepare ros workspace
 #############################################
 
@@ -134,6 +141,7 @@ while true; do
 
     cd ~/git/uav_modules
     git pull
+    gitman install
 
     # update its submodules
     cd ~/git/uav_modules
