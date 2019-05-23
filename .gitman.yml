@@ -168,7 +168,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
   sparse_paths:
   -
-  rev: 8439579a3e475f23927aca3ef390ae3934b3379d
+  rev: 7f1d90c0a33291bf3e2dff848e02bfb990f3207c
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
