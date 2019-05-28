@@ -5,7 +5,7 @@ sources:
   repo: https://github.com/mavlink/mavlink-gbp-release
   sparse_paths:
   -
-  rev: 11581c867d9e0263b429dc146805e9cd7c90c10a
+  rev: a131e4bd665d2dc7f822797faf13d783fcd4bb8a
   link: lib/mavlink-gbp-release
   scripts:
   - git submodule update --init --recursive
@@ -14,7 +14,7 @@ sources:
   repo: git@mrs.felk.cvut.cz:uav/mavros.git
   sparse_paths:
   -
-  rev: 0.26.3
+  rev: 0.30.0
   link: ros_packages/mavros
   scripts:
   - git submodule update --init --recursive
@@ -114,7 +114,7 @@ sources_locked:
   repo: https://github.com/mavlink/mavlink-gbp-release
   sparse_paths:
   -
-  rev: 11581c867d9e0263b429dc146805e9cd7c90c10a
+  rev: a131e4bd665d2dc7f822797faf13d783fcd4bb8a
   link: lib/mavlink-gbp-release
   scripts:
   - git submodule update --init --recursive
@@ -123,7 +123,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/mavros.git
   sparse_paths:
   -
-  rev: 005ebd94e74fba8b43c8f08bcd866f91fa6a3f07
+  rev: e6fd4513e610bec82a7dbbfbaa72947ee4e94121
   link: ros_packages/mavros
   scripts:
   - git submodule update --init --recursive
@@ -132,7 +132,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_controllers.git
   sparse_paths:
   -
-  rev: ed63e2f47bb9e869a01d16b2b12f1346f375a34e
+  rev: dbba988a48c97f953cf1c67f062ff03f8f413712
   link: ros_packages/mrs_controllers
   scripts:
   - git submodule update --init --recursive
@@ -177,7 +177,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_odometry.git
   sparse_paths:
   -
-  rev: 1d983859559bfdf8e7d318044856d9920b12f838
+  rev: 4891c3cfc4745fc164a5a5e403f47cb060ad5b11
   link: ros_packages/mrs_odometry
   scripts:
   - git submodule update --init --recursive
@@ -213,7 +213,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
   sparse_paths:
   -
-  rev: 54eace35daa58ba16fd4160632121816431e861a
+  rev: 37af23092855d6fc186ccb9a01b4a067af2ecc09
   link: ros_packages/mrs_uav_manager
   scripts:
   - git submodule update --init --recursive

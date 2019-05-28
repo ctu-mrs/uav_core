@@ -23,7 +23,7 @@ MY_PATH=`( cd "$MY_PATH" && pwd )`
 
 # pull the correct version of mavlink
 cd "$MY_PATH/../../lib/mavlink-gbp-release/"
-git checkout 11581c867d9e0263b429dc146805e9cd7c90c10a # release/melodic/mavlink/2018.11.11-0
+# git checkout a131e4bd665d2dc7f822797faf13d783fcd4bb8a # release/melodic/mavlink/2019.5.20-1
 bloom-generate rosdebian --os-name ubuntu --ros-distro melodic
 
 # build it
