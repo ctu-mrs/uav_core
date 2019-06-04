@@ -29,6 +29,8 @@ Paste following code into your terminal and press **enter**
 cd /tmp
 echo 'mkdir -p ~/git
 cd ~/git
+sudo apt update
+sudo apt upgrade
 sudo apt-get -y install git expect
 expect -c "
 spawn git clone git@mrs.felk.cvut.cz:uav/uav_core.git
