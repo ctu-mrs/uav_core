@@ -22,6 +22,9 @@ catkin profile set reldeb
 
 # clone templates repository
 cd src
-git clone --recursive git@mrs.felk.cvut.cz:uav/templates
+
+# TODO templates are out of date
+# git clone --recursive git@mrs.felk.cvut.cz:uav/templates
+
 cd ~/$MY_WORKSPACE
 catkin build
