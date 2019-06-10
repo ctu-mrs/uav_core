@@ -103,6 +103,13 @@ while true; do
 done
 
 #############################################
+# install sub-repos in uav_core
+#############################################
+
+cd "$HOME/git/uav_core"
+gitman install --force
+
+#############################################
 # install mavlink
 #############################################
 
@@ -129,13 +136,6 @@ while true; do
     echo " What? \"$resp\" is not a correct answer. Try y+Enter."
   fi
 done
-
-#############################################
-# install sub-repos in uav_core
-#############################################
-
-cd "$HOME/git/uav_core"
-gitman install --force
 
 #############################################
 # Prepare ros workspace
