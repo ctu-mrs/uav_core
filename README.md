@@ -1,7 +1,7 @@
 # The core modules for UAV
 
 ## System requirements
-Required OS is Ubuntu 18.04 LTS or its flavours that can install ROS Melodic. Suggested variant of OS installation is dual boot instead of virtualization that can be slow and can not handle well the simulation GUI.
+Required OS is Ubuntu 18.04 LTS 64-bit or its flavours that can install ROS Melodic. Suggested variant of OS installation is dual boot instead of virtualization that can be slow and can not handle well the simulation GUI.
 
 ## For newcomers I suggest reading our [wiki](https://mrs.felk.cvut.cz/gitlab/uav/uav_core/wikis/home)
 The wiki pages contain some basic informations for better understanding of the system.
