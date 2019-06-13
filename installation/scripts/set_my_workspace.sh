@@ -11,14 +11,20 @@ MY_WORKSPACE=workspace
 mkdir -p ~/$MY_WORKSPACE/src
 
 cd ~/$MY_WORKSPACE
-catkin init
-catkin config --extend ~/mrs_workspace/devel
+command catkin init
 
 # set build profiles
 catkin config --profile debug --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native -fno-diagnostics-color'  -DCMAKE_C_FLAGS='-march=native -fno-diagnostics-color'
+catkin profile set debug
+catkin config --extend ~/mrs_workspace/devel
+
 catkin config --profile release --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native -fno-diagnostics-color'  -DCMAKE_C_FLAGS='-march=native -fno-diagnostics-color'
+catkin profile set release
+catkin config --extend ~/mrs_workspace/devel
+
 catkin config --profile reldeb --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native -fno-diagnostics-color' -DCMAKE_C_FLAGS='-march=native -fno-diagnostics-color'
 catkin profile set reldeb
+catkin config --extend ~/mrs_workspace/devel
 
 # clone templates repository
 cd src
@@ -27,4 +33,4 @@ cd src
 # git clone --recursive git@mrs.felk.cvut.cz:uav/templates
 
 cd ~/$MY_WORKSPACE
-catkin build
+command catkin build
