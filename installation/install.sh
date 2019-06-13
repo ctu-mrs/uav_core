@@ -205,7 +205,11 @@ done
 
 cd ~/$ROS_WORKSPACE
 source /opt/ros/melodic/setup.bash
-catkin build
+command catkin build
+
+# after sucessfully building mavros, install libgeo
+cd ~/git/uav_core/ros_packages/mavros/mavros/scripts
+sudo ./install_geographiclib_datasets.sh
 
 #############################################
 # Set up student's ros workspace
