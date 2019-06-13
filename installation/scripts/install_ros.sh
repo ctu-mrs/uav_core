@@ -8,11 +8,3 @@ sudo apt -y install ros-melodic-desktop-full
 sudo rosdep init
 sudo rosdep fix-permissions
 rosdep update
-
-#############################################                                           
-# install dependencies for libgeographiclib                                             
-#############################################                                           
-act_path=`pwd`                    
-cd /opt/ros/melodic/lib/mavros            
-sudo ./install_geographiclib_datasets.sh
-cd $act_path
