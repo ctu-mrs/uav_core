@@ -306,6 +306,7 @@ while true; do
     git clone git@mrs.felk.cvut.cz:uav/simulation.git
 
     cd simulation/installation
+    git pull
     ./install.sh
 
     break
