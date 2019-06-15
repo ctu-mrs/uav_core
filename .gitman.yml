@@ -132,7 +132,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_controllers.git
   sparse_paths:
   -
-  rev: dbba988a48c97f953cf1c67f062ff03f8f413712
+  rev: da6aa31e3ff68fae0b7e7d877f7f083b145585fc
   link: ros_packages/mrs_controllers
   scripts:
   - git submodule update --init --recursive
@@ -141,7 +141,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_general.git
   sparse_paths:
   -
-  rev: 33422e85889da90a1f37cc49427ccce0a7e64ab1
+  rev: 59103966ecd35334dd781b221a6851a001c100b3
   link: ros_packages/mrs_general
   scripts:
   - git submodule update --init --recursive
@@ -168,7 +168,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
   sparse_paths:
   -
-  rev: 7f1d90c0a33291bf3e2dff848e02bfb990f3207c
+  rev: aaf9d1e8f145d9dd32f2edfbfb050705b04161f7
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
@@ -177,7 +177,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_odometry.git
   sparse_paths:
   -
-  rev: 305c130e362b8ceb5cb32ba48f6376ac2c1bc0e0
+  rev: 5f2c3e3c06c2838f5012d0b127f659594937b0ea
   link: ros_packages/mrs_odometry
   scripts:
   - git submodule update --init --recursive
@@ -195,7 +195,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/utils/mrs_status.git
   sparse_paths:
   -
-  rev: 9b29b76098c45503f86a7ec57c298fcc39b1ef96
+  rev: 94fe1cfe00dc9c28a425313bb9f07c1f164f4e48
   link: ros_packages/mrs_status
   scripts:
   - git submodule update --init --recursive
@@ -204,7 +204,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_trackers.git
   sparse_paths:
   -
-  rev: 5f641ab10a745a1eca1af50e1ddc6abf03885d07
+  rev: 0e8465d4c67050ba1228a6655061a361f99791f5
   link: ros_packages/mrs_trackers
   scripts:
   - git submodule update --init --recursive
@@ -213,7 +213,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
   sparse_paths:
   -
-  rev: e9b5d40e37f87f9b98721d3a5f5ca5953755bb8f
+  rev: ea595b462a0c542f7d052f6ba595776c30e529ed
   link: ros_packages/mrs_uav_manager
   scripts:
   - git submodule update --init --recursive
