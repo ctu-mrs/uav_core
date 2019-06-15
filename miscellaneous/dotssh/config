@@ -1,12 +1,7 @@
 host mrs.felk.cvut.cz
      hostname mrs.felk.cvut.cz
      user git
-     identityfile ~/.ssh/id_rsa
-
-host github.com
-     hostname github.com
-     user git
-     identityfile ~/.ssh/id_rsa
+     identityfile ~/.ssh/id_rsa_drone_login
 
 host 192.168.0.11
      hostname 192.168.0.11
