@@ -63,6 +63,12 @@ while true ; do
 
     cd ~/git/linux-setup
     bash install.sh $subinstall_params
+    
+    sudo systemctl disable apt-daily.service
+    sudo systemctl disable apt-daily.timer
+
+    sudo systemctl disable apt-daily-upgrade.timer
+    sudo systemctl disable apt-daily-upgrade.service
 
     break
   elif [[ $response =~ ^(n|N)=$ ]]
