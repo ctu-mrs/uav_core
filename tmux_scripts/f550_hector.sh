@@ -15,7 +15,7 @@ input=(
 '
   'Hector' 'waitForRos; roslaunch hector_mapping uav.launch
 '
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f450_hector.launch
+  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_hector.launch
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
