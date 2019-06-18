@@ -19,6 +19,10 @@ gitman install --force
 cd "$UAV_CORE_PATH/installation/scripts"
 ./install_mavlink.sh
 
+sudo rosdep init
+sudo rosdep fix-permissions
+rosdep update
+
 # source installation/scripts/download_binaries.sh
 # echo "binaries downloaded and configured"
 cd $UAV_CORE_PATH
