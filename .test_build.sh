@@ -30,8 +30,8 @@ ln -s $UAV_CORE_PATH $ROS_WORKSPACE/src/uav_core
 cd $ROS_WORKSPACE
 source /opt/ros/melodic/setup.bash
 
-sudo rosdep init
-sudo rosdep fix-permissions
+#sudo rosdep init
+#sudo rosdep fix-permissions
 rosdep update
 
 catkin init
