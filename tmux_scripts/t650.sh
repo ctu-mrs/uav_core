@@ -14,8 +14,6 @@ input=(
   '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
-  'tersus' 'waitForRos; roslaunch tersus_gps_driver test.launch
-'
   'bluefox' 'waitForRos; roslaunch bluefox2 single_node.launch
 '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager t650.launch
