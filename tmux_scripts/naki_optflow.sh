@@ -18,7 +18,7 @@ input=(
 '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager naki_optflow.launch
 '
-  'Sony Camera' 'rosservice call / handheld_camera_manager camera.launch
+  'Sony Camera' 'waitForRos; roslaunch handheld_camera_manager camera.launch
 '
 	'Camera Capture' 'rosservice call /'"$UAV_NAME"'/camera/capture_image'
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
