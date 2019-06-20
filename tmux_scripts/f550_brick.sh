@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_NAME=just_flying
+PROJECT_NAME=brick
 
 MAIN_DIR=~/"bag_files"
 
@@ -10,28 +10,25 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME;"
 # define commands
 # 'name' 'command'
 input=(
-  'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"'
+  'Rosbag' 'waitForRos; roslaunch mrs_general record_brick.launch project_name:='"$PROJECT_NAME"'
  '
   'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav10_dark.launch
 '
+  'BrickDetection' 'waitForRos; sleep 8; roslaunch brick_detection uav10.launch
+' 
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_hector.launch
-'
-  'Hector' 'waitForRos; roslaunch hector_mapping uav.launch
 '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_hector.launch
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
 	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
-  'ChangeEst' 'rosservice call /uav1/odometry/change_estimator_type_string HECTOR'
-  'ChangeHdgEst' 'rosservice call /uav1/odometry/change_hdg_estimator_type_string HECTOR'
   'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
   'Show_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
 '
   'Mav_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
 '
-  'Orb_slam' 'waitForRos; roslaunch orb_slam uav.launch'
   'diag' 'waitForRos; rostopic echo /diagnostics
 '
 	'KernelLog' 'tail -f /var/log/kern.log -n 100
