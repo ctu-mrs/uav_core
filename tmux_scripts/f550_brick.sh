@@ -14,7 +14,7 @@ input=(
  '
   'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav10_dark.launch
 '
-  'BrickDetection' 'waitForRos; sleep 8; roslaunch brick_detection uav10.launch
+  'BrickDetection' 'waitForRos; roslaunch brick_detection uav10.launch
 ' 
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_hector.launch
 '
