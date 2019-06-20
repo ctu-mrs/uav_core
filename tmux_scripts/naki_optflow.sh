@@ -1,33 +1,33 @@
 #!/bin/bash
 
-PROJECT_NAME=just_flying
+PROJECT_NAME=naki_optflow
 
 MAIN_DIR=~/"bag_files"
 
 # following commands will be executed first, in each window
-pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME;"
+pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
 
 # define commands
 # 'name' 'command'
 input=(
   'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"'
   '
-  'OptFlow' 'waitForRos; roslaunch optic_flow uav.launch'
-  'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
+  'Sensors' 'waitForRos; roslaunch mrs_general sensors_naki.launch
 '
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager naki.launch
+  'OptFlow' 'waitForRos; roslaunch mrs_optic_flow naki_outdoor_down_facing.launch
 '
-  'SetConstraints' 'waitForOdometry; rosservice call /'"$UAV_NAME"'/gain_manager/set_constraints'
+  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager naki_optflow.launch
+'
+  'Sony Camera' 'rosservice call / handheld_camera_manager camera.launch
+'
+	'Camera Capture' 'rosservice call /'"$UAV_NAME"'/camera/capture_image'
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-	'Headless' 'rosservice call /'"$UAV_NAME"'/control_manager/mpc_tracker/headless 1'
-  'GoTo' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [0.0, 0.0, 1.5, 1.9]"'
+  # 'ChangeEstimator' 'waitForOdometry; rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string T265'
+  'GoTo_FCU' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
   'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
-  'GoTo_left' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [5.0, 5.0, 1.5, 1.9]"'
-  'GoTo_right' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [-5.0, -5.0, 1.5, 1.9]"'
 	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
 	'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
-  'Hover' 'rosservice call /'"$UAV_NAME"'/control_manager/hover' 
   'E_hover' 'rosservice call /'"$UAV_NAME"'/control_manager/ehover' 
   'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
@@ -35,14 +35,11 @@ input=(
 '
   'Mav_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
 '
-  'Orb_slam' 'waitForRos; roslaunch orb_slam uav.launch'
-  'diag' 'waitForRos; rostopic echo /diagnostics
-'
 	'KernelLog' 'tail -f /var/log/kern.log -n 100
 '
   'roscore' 'roscore
 '
-  'Multimaster' 'waitForRos; roslaunch mrs_multimaster server.launch'
+  # 'Multimaster' 'waitForRos; roslaunch mrs_multimaster server.launch'
 	'KILL_ALL' 'dmesg; tmux kill-session -t '
 )
 
@@ -101,7 +98,24 @@ do
 	tmux new-window -t $SESSION_NAME:$(($i+1)) -n "${names[$i]}"
 done
 
-sleep 2
+# add pane splitter for mrs_status
+tmux new-window -t $SESSION_NAME:$((${#names[*]}+1)) -n "mrs_status"
+
+# clear mrs status file so that no clutter is displayed
+truncate -s 0 /tmp/status.txt
+
+# split all panes
+pes=""
+for ((i=0; i < ((${#names[*]}+2)); i++));
+do
+  pes=$pes"tmux split-window -d -t $SESSION_NAME:$(($i))"
+  pes=$pes"tmux send-keys -t $SESSION_NAME:$(($i)) 'tail -F /tmp/status.txt'"
+  pes=$pes"tmux select-pane -U -t $(($i))"
+done
+
+tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
+
+sleep 6
 
 # start loggers
 for ((i=0; i < ${#names[*]}; i++));
@@ -109,17 +123,25 @@ do
 	tmux pipe-pane -t $SESSION_NAME:$(($i+1)) -o "ts | cat >> $TMUX_DIR/$(($i+1))_${names[$i]}.log"
 done
 
-sleep 2
-
 # send commands
 for ((i=0; i < ${#cmds[*]}; i++));
 do
 	tmux send-keys -t $SESSION_NAME:$(($i+1)) "${pre_input};${cmds[$i]}"
 done
 
-sleep 2
+pes="sleep 1;"
+for ((i=0; i < ((${#names[*]}+2)); i++));
+do
+  pes=$pes"tmux select-window -t $SESSION_NAME:$(($i))"
+  pes=$pes"tmux resize-pane -U -t $(($i)) 150"
+  pes=$pes"tmux resize-pane -D -t $(($i)) 7"
+done
 
-tmux select-window -t $SESSION_NAME:3
+pes=$pes"tmux select-window -t $SESSION_NAME:4"
+pes=$pes"waitForRos; roslaunch mrs_status naki.launch >> /tmp/status.txt"
+
+tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
+
 tmux -2 attach-session -t $SESSION_NAME
 
 clear
