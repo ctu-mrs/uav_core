@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_NAME=just_flying
+PROJECT_NAME=brick
 
 MAIN_DIR=~/"bag_files"
 
@@ -10,11 +10,11 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME;"
 # define commands
 # 'name' 'command'
 input=(
-  'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"'
+  'Rosbag' 'waitForRos; roslaunch mrs_general record_brick.launch project_name:='"$PROJECT_NAME"'
  '
   'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav10_dark.launch
 '
-  'BrickDetection' 'waitForRos; roslaunch brick_detection uav10.launch
+  'BrickDetection' 'waitForRos; sleep 8; roslaunch brick_detection uav10.launch
 ' 
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_hector.launch
 '
