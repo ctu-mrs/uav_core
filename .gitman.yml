@@ -177,7 +177,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_odometry.git
   sparse_paths:
   -
-  rev: ae0796ed7e692aba0b6552cd0c60527554233a8b
+  rev: 9557c685467d87ee5ae5ca063d6bba506a5516a6
   link: ros_packages/mrs_odometry
   scripts:
   - git submodule update --init --recursive
@@ -186,7 +186,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_optic_flow.git
   sparse_paths:
   -
-  rev: e3cf7de57a0bc42b5735dbe049e8c77b0f497698
+  rev: 1a57be42c65e5532b7a437548c70a905e36d763f
   link: ros_packages/mrs_optic_flow
   scripts:
   - git submodule update --init --recursive
@@ -213,7 +213,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
   sparse_paths:
   -
-  rev: 3e8a970e69b169e66c3df44cfc88dde35759f134
+  rev: c3bbf8f8d923986cc0443e092100045224f52496
   link: ros_packages/mrs_uav_manager
   scripts:
   - git submodule update --init --recursive
