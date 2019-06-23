@@ -12,16 +12,21 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME;"
 input=(
   'Rosbag' 'waitForRos; roslaunch mrs_general record_brick.launch project_name:='"$PROJECT_NAME"'
  '
-  'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav10_dark.launch
-'
-  'BrickDetection' 'waitForRos; roslaunch brick_detection uav10.launch
-' 
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_hector.launch
 '
+  'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav10_dark.launch
+'
+  'BrickDetection' 'waitForRos; sleep 5; roslaunch brick_detection uav10.launch
+' 
+  'BrickEstimation' 'waitForRos; roslaunch brick_estimation f550.launch
+' 
+  'BrickGrasping' 'waitForRos; roslaunch brick_grasping f550.launch
+' 
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_hector.launch
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
+	'Start' 'rosservice call /'"$UAV_NAME"'/brick_grasping/start 1'
 	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
   'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
@@ -133,7 +138,7 @@ do
   pes=$pes"tmux resize-pane -D -t $(($i)) 7"
 done
 
-pes=$pes"tmux select-window -t $SESSION_NAME:4"
+pes=$pes"tmux select-window -t $SESSION_NAME:7"
 pes=$pes"waitForRos; roslaunch mrs_status f550_hector.launch >> /tmp/status.txt"
 
 tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"

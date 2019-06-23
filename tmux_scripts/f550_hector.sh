@@ -18,13 +18,18 @@ input=(
 '
   'Hector' 'waitForRos; roslaunch hector_mapping uav.launch
 '
+  'Tunnel' 'waitForOdometry; roslaunch tunnel_flier simulation.launch
+'
+  'Fly' 'rosservice call /'"$UAV_NAME"'/tunnel_flier/start'
+  'Bumper' 'waitForOdometry; roslaunch mrs_bumper bumper.launch
+'
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_hector.launch
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
 	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
-  'ChangeEst' 'rosservice call /uav1/odometry/change_estimator_type_string HECTOR'
-  'ChangeHdgEst' 'rosservice call /uav1/odometry/change_hdg_estimator_type_string HECTOR'
+  'ChangeEst' 'rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string HECTOR'
+  'ChangeHdgEst' 'rosservice call /'"$UAV_NAME"'/odometry/change_hdg_estimator_type_string HECTOR'
   'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
   'Show_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
