@@ -90,7 +90,7 @@ def loadProfilerDataFromRosbag(bag_filename, uav_name, required_time_start = 0, 
         with open(cache_filename, 'wb') as output:  # Overwrites any existing file.
             cache = [bag_filename, profiler_data]
             pickle.dump(cache, output, pickle.HIGHEST_PROTOCOL)
-
+            print("cache file saved")
 
     if required_time_end == 0:
         required_time_end = time_end
@@ -132,6 +132,10 @@ def plot_all_data_separately(profiler_data, required_time_start, required_time_e
         end_time = rosbag_utils.getStampTimeSec(msg.stamp)
 
         if msg.event == msg.END:
+
+            if msg.real_start == 0:
+                print("start time 0")
+                continue
 
             times[index].append(msg.real_start)
             data[index].append(index + visualization_step)
@@ -338,11 +342,11 @@ def plot_sheduled_data(profiler_data, required_time_start, required_time_end):
 
 if __name__ == "__main__":
 
-    bag_file = "/home/klaxalk/_2019-04-06-19-32-31.bag"
-    uav_name = "uav10"
-    start_time = 1554571951+120
-    stop_time = 1554571951+122
+    bag_file = "/home/klaxalk/22_2019_06_21_12_22_14/_2019-06-21-12-22-26.bag"
+    uav_name = "uav5"
+    start_time = 1561112697-1.5
+    stop_time = 1561112697+1.5
 
     [data, start_time, end_time] = loadProfilerDataFromRosbag(bag_file, uav_name, start_time, stop_time)
-    # plot_all_data_separately(data, start_time, end_time)
-    plot_sheduled_data(data, start_time, end_time)
+    plot_all_data_separately(data, start_time, end_time)
+    # plot_sheduled_data(data, start_time, end_time)
