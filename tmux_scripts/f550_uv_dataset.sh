@@ -18,7 +18,7 @@ input=(
 '
   # 'bluefox' 'waitForRos; roslaunch bluefox2 single_node.launch
 # '
-  'uvdar_core' 'waitForControl; roslaunch uvdar test_simulation_observe.launch
+  'uvdar_core' 'waitForControl; roslaunch uvdar start_dataset_2t.launch
 '
   'uvdar_kalman' 'waitForControl; roslaunch uvdar uvdar uvdar_kalman.launch
 '
