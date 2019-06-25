@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_NAME=just_flying
+PROJECT_NAME=uv_dataset
 
 MAIN_DIR=~/"bag_files"
 
@@ -10,14 +10,14 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
 # define commands
 # 'name' 'command'
 input=(
-  'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"'
+  'Rosbag' 'waitForRos; roslaunch uvdar record_dataset.launch project_name:='"$PROJECT_NAME"'
   '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
   'tersus' 'waitForRos; roslaunch tersus_gps_driver test.launch
 '
-  # 'bluefox' 'waitForRos; roslaunch bluefox2 single_node.launch
-# '
+  'bluefox' 'waitForRos; roslaunch uvdar bluefox_basic.launch device:='"$BLUEFOX"' camera_name:=bluefox fps:=3 aec:=true
+'
   'uvdar_core' 'waitForControl; roslaunch uvdar start_dataset_2t.launch
 '
   'uvdar_kalman' 'waitForControl; roslaunch uvdar uvdar uvdar_kalman.launch
