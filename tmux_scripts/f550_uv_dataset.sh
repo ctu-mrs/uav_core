@@ -20,7 +20,7 @@ input=(
 '
   'uvdar_core' 'waitForControl; roslaunch uvdar start_dataset_2t.launch
 '
-  'uvdar_kalman' 'waitForControl; roslaunch uvdar uvdar uvdar_kalman.launch
+  'uvdar_kalman' 'waitForControl; roslaunch uvdar uvdar_kalman.launch
 '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550.launch
 '
