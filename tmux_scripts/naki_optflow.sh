@@ -1,49 +1,45 @@
 #!/bin/bash
 
-PROJECT_NAME=just_flying
+PROJECT_NAME=naki_optflow
 
 MAIN_DIR=~/"bag_files"
 
 # following commands will be executed first, in each window
-pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME;"
+pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
 
 # define commands
 # 'name' 'command'
 input=(
   'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"'
- '
-  'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav10_dark.launch
+  '
+  'Sensors' 'waitForRos; roslaunch mrs_general sensors_naki.launch
 '
-  'Sensors' 'waitForRos; roslaunch mrs_general sensors_hector.launch
+  'OptFlow' 'waitForRos; roslaunch mrs_optic_flow naki_outdoor_down_facing.launch
 '
-  'Hector' 'waitForRos; roslaunch hector_mapping uav.launch
+  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager naki_optflow.launch
 '
-  'Tunnel' 'waitForOdometry; roslaunch tunnel_flier simulation.launch
+  'Sony Camera' 'waitForRos; roslaunch handheld_camera_manager camera.launch
 '
-  'Fly' 'rosservice call /'"$UAV_NAME"'/tunnel_flier/start'
-  'Bumper' 'waitForOdometry; roslaunch mrs_bumper bumper.launch
-'
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550_hector.launch
-'
+	'Camera Capture' 'rosservice call /'"$UAV_NAME"'/camera/capture_image'
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
+  # 'ChangeEstimator' 'waitForOdometry; rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string T265'
+  'GoTo_FCU' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
+  'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
 	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
-  'ChangeEst' 'rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string HECTOR'
-  'ChangeHdgEst' 'rosservice call /'"$UAV_NAME"'/odometry/change_hdg_estimator_type_string HECTOR'
+	'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
+  'E_hover' 'rosservice call /'"$UAV_NAME"'/control_manager/ehover' 
   'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
   'Show_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
 '
   'Mav_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
 '
-  'Orb_slam' 'waitForRos; roslaunch orb_slam uav.launch'
-  'diag' 'waitForRos; rostopic echo /diagnostics
-'
 	'KernelLog' 'tail -f /var/log/kern.log -n 100
 '
   'roscore' 'roscore
 '
-  'Multimaster' 'waitForRos; roslaunch mrs_multimaster server.launch'
+  # 'Multimaster' 'waitForRos; roslaunch mrs_multimaster server.launch'
 	'KILL_ALL' 'dmesg; tmux kill-session -t '
 )
 
@@ -142,11 +138,10 @@ do
 done
 
 pes=$pes"tmux select-window -t $SESSION_NAME:4"
-pes=$pes"waitForRos; roslaunch mrs_status f550_hector.launch >> /tmp/status.txt"
+pes=$pes"waitForRos; roslaunch mrs_status naki.launch >> /tmp/status.txt"
 
 tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 
 tmux -2 attach-session -t $SESSION_NAME
 
 clear
-

@@ -8,6 +8,7 @@ sudo pip install --user future
 sudo -H pip install --user future
 sudo pip3 install --user future
 sudo -H pip3 install --user future
+sudo apt -y install python-future python3-future
 
 echo ""
 echo #########################
