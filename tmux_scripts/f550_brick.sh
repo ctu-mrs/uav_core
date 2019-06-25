@@ -16,7 +16,7 @@ input=(
 '
   'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav10_dark.launch
 '
-  'BrickDetection' 'waitForRos; sleep 5; roslaunch brick_detection uav10.launch
+  'BrickDetection' 'waitForRos; sleep 10; roslaunch brick_detection uav10.launch
 ' 
   'BrickEstimation' 'waitForRos; roslaunch brick_estimation f550.launch
 ' 
@@ -138,7 +138,7 @@ do
   pes=$pes"tmux resize-pane -D -t $(($i)) 7"
 done
 
-pes=$pes"tmux select-window -t $SESSION_NAME:7"
+pes=$pes"tmux select-window -t $SESSION_NAME:4"
 pes=$pes"waitForRos; roslaunch mrs_status f550_hector.launch >> /tmp/status.txt"
 
 tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
