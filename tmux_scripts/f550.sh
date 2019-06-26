@@ -38,7 +38,8 @@ input=(
 '
   'roscore' 'roscore
 '
-  'Multimaster' 'waitForRos; roslaunch mrs_multimaster server.launch'
+  'Multimaster' 'waitForRos; roslaunch mrs_multimaster server.launch
+'
 	'KILL_ALL' 'dmesg; tmux kill-session -t '
 )
 
