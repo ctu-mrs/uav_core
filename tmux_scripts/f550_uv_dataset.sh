@@ -13,44 +13,44 @@ input=(
   'Rosbag' 'waitForRos; roslaunch uvdar record_dataset.launch project_name:='"$PROJECT_NAME"'
   '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
-'
+  '
   'tersus' 'waitForRos; roslaunch tersus_gps_driver test.launch
-'
+  '
   'bluefox' 'waitForRos; roslaunch uvdar bluefox_basic.launch device:='"$BLUEFOX"' camera_name:=bluefox fps:=3 aec:=true
-'
+  '
   'uvdar_core' 'waitForControl; roslaunch uvdar start_dataset_2t.launch
-'
+  '
   'uvdar_kalman' 'waitForControl; roslaunch uvdar uvdar_kalman.launch
-'
+  '
   'uvdar_reprojection' 'waitForControl; roslaunch uvdar reprojector.launch
-'
+  '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550.launch
-'
-	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
-	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-
+  '
+  'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
+  'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   #git@mrs.felk.cvut.cz:milocihlar/uv_dataset_trajectory.git
-	'Load_traj' 'roslaunch uv_dataset_trajectory multimaster_trajectories_loader.launch'
-	'To_start' 'roslaunch uv_dataset_trajectory multimaster_fly_to_start.launch'
-	'Start_following' 'roslaunch uv_dataset_trajectory multimaster_start_following.launch'
+  'Load_traj' 'roslaunch uv_dataset_trajectory multimaster_trajectories_loader.launch'
+  'To_start' 'roslaunch uv_dataset_trajectory multimaster_fly_to_start.launch'
+  'Start_following' 'roslaunch uv_dataset_trajectory multimaster_start_following.launch'
   'ChangeEstimator' 'waitForOdometry; rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string T265'
   'GoTo_FCU' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
   'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
-	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
-	'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
-  'E_hover' 'rosservice call /'"$UAV_NAME"'/control_manager/ehover' 
+  'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
+  'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
+  'E_hover' 'rosservice call /'"$UAV_NAME"'/control_manager/ehover'
   'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
-'
+  '
   'Show_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
-'
+  '
   'Mav_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
-'
-	'KernelLog' 'tail -f /var/log/kern.log -n 100
-'
+  '
+  'KernelLog' 'tail -f /var/log/kern.log -n 100
+  '
   'roscore' 'roscore
-'
-  'Multimaster' 'waitForRos; roslaunch mrs_multimaster server.launch'
-	'KILL_ALL' 'dmesg; tmux kill-session -t '
+  '
+  'Nimbro' 'waitForRos; roslaunch mrs_general udp_communication.launch
+  '
+  'KILL_ALL' 'dmesg; tmux kill-session -t '
 )
 
 ###########################
@@ -71,7 +71,7 @@ fi
 # get the iterator
 ITERATOR_FILE="$MAIN_DIR/$PROJECT_NAME"/iterator.txt
 if [ -e "$ITERATOR_FILE" ]
-then 
+then
   ITERATOR=`cat "$ITERATOR_FILE"`
   ITERATOR=$(($ITERATOR+1))
 else
@@ -79,7 +79,7 @@ else
   touch "$ITERATOR_FILE"
   ITERATOR="0"
 fi
-echo "$ITERATOR" > "$ITERATOR_FILE"   
+echo "$ITERATOR" > "$ITERATOR_FILE"
 
 # create file for logging terminals' output
 LOG_DIR="$MAIN_DIR/$PROJECT_NAME/"
@@ -98,14 +98,14 @@ ln -sf "$SUBLOG_DIR" "$MAIN_DIR/latest"
 # create arrays of names and commands
 for ((i=0; i < ${#input[*]}; i++));
 do
-  ((i%2==0)) && names[$i/2]="${input[$i]}" 
-	((i%2==1)) && cmds[$i/2]="${input[$i]}"
+  ((i%2==0)) && names[$i/2]="${input[$i]}"
+  ((i%2==1)) && cmds[$i/2]="${input[$i]}"
 done
 
 # run tmux windows
 for ((i=0; i < ${#names[*]}; i++));
 do
-	tmux new-window -t $SESSION_NAME:$(($i+1)) -n "${names[$i]}"
+  tmux new-window -t $SESSION_NAME:$(($i+1)) -n "${names[$i]}"
 done
 
 # add pane splitter for mrs_status
@@ -130,13 +130,13 @@ sleep 6
 # start loggers
 for ((i=0; i < ${#names[*]}; i++));
 do
-	tmux pipe-pane -t $SESSION_NAME:$(($i+1)) -o "ts | cat >> $TMUX_DIR/$(($i+1))_${names[$i]}.log"
+  tmux pipe-pane -t $SESSION_NAME:$(($i+1)) -o "ts | cat >> $TMUX_DIR/$(($i+1))_${names[$i]}.log"
 done
 
 # send commands
 for ((i=0; i < ${#cmds[*]}; i++));
 do
-	tmux send-keys -t $SESSION_NAME:$(($i+1)) "${pre_input};${cmds[$i]}"
+  tmux send-keys -t $SESSION_NAME:$(($i+1)) "${pre_input};${cmds[$i]}"
 done
 
 pes="sleep 1;"
