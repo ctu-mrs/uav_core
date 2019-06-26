@@ -22,8 +22,7 @@ input=(
   '
   'uvdar_kalman' 'waitForControl; roslaunch uvdar uvdar_kalman.launch
   '
-  'uvdar_reprojection' 'waitForControl; roslaunch uvdar reprojector.launch
-  '
+  'uvdar_reprojection' 'waitForControl; roslaunch uvdar reprojector.launch'
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550.launch
   '
   'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
