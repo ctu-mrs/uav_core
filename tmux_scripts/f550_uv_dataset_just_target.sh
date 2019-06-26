@@ -18,12 +18,6 @@ input=(
 '
   'bluefox' 'waitForRos; roslaunch uvdar bluefox_basic.launch device:='"$BLUEFOX"' camera_name:=bluefox fps:=3 aec:=true
 '
-  'uvdar_core' 'waitForControl; roslaunch uvdar start_dataset_2t.launch
-'
-  'uvdar_kalman' 'waitForControl; roslaunch uvdar uvdar_kalman.launch
-'
-  'uvdar_reprojection' 'waitForControl; roslaunch uvdar reprojector.launch
-'
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550.launch
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
