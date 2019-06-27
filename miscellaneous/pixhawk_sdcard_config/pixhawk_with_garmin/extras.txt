@@ -1,6 +1,5 @@
 mavlink stop-all
 mavlink start -d /dev/ttyS2 -b 921600
-mavlink start -d /dev/ttyS1 -b 57600
 mavlink stream -d /dev/ttyS2 -s ATTITUDE -r 100
 mavlink stream -d /dev/ttyS2 -s ATTITUDE_TARGET -r 100
 mavlink stream -d /dev/ttyS2 -s HIGHRES_IMU -r 100
