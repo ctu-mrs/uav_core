@@ -15,10 +15,10 @@ git submodule sync
 git submodule update --init --recursive
 gitman install --force
 
-# compile mavlink
-cd "$UAV_CORE_PATH/installation/scripts"
-./install_mavlink.sh
-source ~/.bashrc
+# ---- compile mavlink ---- 
+# it has to be done manually when the version change
+#cd "$UAV_CORE_PATH/installation/scripts"
+#./install_mavlink.sh
 
 # source installation/scripts/download_binaries.sh
 # echo "binaries downloaded and configured"
