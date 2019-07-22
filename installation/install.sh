@@ -7,7 +7,6 @@ sudo usermod -a -G dialout $USER
 # but if you run install.sh directly...
 sudo apt-get -y install git expect
 
-
 unattended=0
 subinstall_params=""
 for param in "$@"
@@ -19,7 +18,6 @@ do
     subinstall_params="--unattended"
   fi
 done
-
 
 #exit 1
 # get the path to this script
