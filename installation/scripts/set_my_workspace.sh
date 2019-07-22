@@ -29,8 +29,7 @@ catkin config --extend ~/mrs_workspace/devel
 # clone templates repository
 cd src
 
-# TODO templates are out of date
-# git clone --recursive git@mrs.felk.cvut.cz:uav/templates
+git clone --recursive git@mrs.felk.cvut.cz:uav/examples/example_packages
 
 cd ~/$MY_WORKSPACE
 command catkin build
