@@ -20,6 +20,8 @@ input=(
 '
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550.launch
 '
+  'Nimbro' 'waitForRos; roslaunch mrs_general udp_communication.launch
+'
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   'ChangeEstimator' 'waitForOdometry; rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string T265'
@@ -37,8 +39,6 @@ input=(
 	'KernelLog' 'tail -f /var/log/kern.log -n 100
 '
   'roscore' 'roscore
-'
-  'Multimaster' 'waitForRos; roslaunch mrs_multimaster server.launch
 '
 	'KILL_ALL' 'dmesg; tmux kill-session -t '
 )
@@ -137,7 +137,7 @@ do
   pes=$pes"tmux resize-pane -D -t $(($i)) 7"
 done
 
-pes=$pes"tmux select-window -t $SESSION_NAME:4"
+pes=$pes"tmux select-window -t $SESSION_NAME:5"
 pes=$pes"waitForRos; roslaunch mrs_status f550.launch >> /tmp/status.txt"
 
 tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
