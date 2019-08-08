@@ -4,7 +4,7 @@ After=network.target suspend.target hibernate.target hybrid-sleep.target
 
 [Service]
 Type=oneshot
-ExecStart=/home/mrs/f450_darpa.sh
+ExecStart=/home/mrs/tmux.sh
 RemainAfterExit=true
 
 [Install]

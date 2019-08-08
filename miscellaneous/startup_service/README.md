@@ -20,7 +20,7 @@
 # Short-Description: start the uav
 ### END INIT INFO
 if [ "$(id -u)" == "0" ]; then
-  exec sudo -u mrs "$0" "$@" 
+  exec sudo -u mrs "$0" "$@"
 fi
 
 source /home/mrs/.bashrc
