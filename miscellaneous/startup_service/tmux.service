@@ -1,0 +1,11 @@
+[Unit]
+Description=Tmux for Darpa
+After=network.target suspend.target hibernate.target hybrid-sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/mrs/f450_darpa.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=suspend.target hibernate.target hybrid-sleep.target multi-user.target

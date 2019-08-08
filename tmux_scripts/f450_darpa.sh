@@ -164,6 +164,6 @@ pes=$pes"waitForRos; roslaunch mrs_status f450_pixgarm.launch >> /tmp/status.txt
 
 /usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 
-/usr/bin/tmux -2 attach-session -t $SESSION_NAME
+# /usr/bin/tmux -2 attach-session -t $SESSION_NAME
 
 # clear
