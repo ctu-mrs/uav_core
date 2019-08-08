@@ -31,7 +31,9 @@ input=(
 '
   'Hector' 'waitForOdometry; roslaunch hector_mapping uav.launch
 '
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f450_pixgarm_multistar_darpa.launch
+  # 'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f450_pixgarm_multistar_darpa.launch
+# '
+  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f450_pixgarm_new_esc_darpa.launch
 '
 	'AutoStart' 'waitForRos; roslaunch mrs_general automatic_start_darpa.launch
 '
