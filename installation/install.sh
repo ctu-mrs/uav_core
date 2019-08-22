@@ -191,11 +191,11 @@ while true; do
     ln -s ~/git/uav_modules
 
     # install bluefox
-    cd uav_modules/ros_packages/bluefox2/install
+    cd ~/$ROS_WORKSPACE/src/uav_modules/ros_packages/bluefox2/install
     bash install.sh
 
     # install realsense
-    cd uav_modules/ros_packages/realsense_d435/scripts
+    cd ~/$ROS_WORKSPACE/src/uav_modules/ros_packages/realsense_d435/scripts
     bash install_realsense_d435.sh
 
     break
