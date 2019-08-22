@@ -194,6 +194,10 @@ while true; do
     cd uav_modules/ros_packages/bluefox2/install
     bash install.sh
 
+    # install realsense
+    cd uav_modules/ros_packages/realsense_d435/scripts
+    bash install_realsense_d435.sh
+
     break
   elif [[ $response =~ ^(n|N)=$ ]]
   then
