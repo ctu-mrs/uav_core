@@ -45,7 +45,7 @@ if [ "$response" = "200" ]; then
     	echo "config already exists"
 	    if [[ "yes" == $(ask_yes_or_no "Do you want to replace it?") ]];then
 	    	mv -f config_tmp config
-	    	chmod 400 config
+	    	chmod 644 config
 	    	echo "replaced"
 	    else
 	    	rm -f config_tmp
@@ -53,7 +53,7 @@ if [ "$response" = "200" ]; then
 		fi
 	else
 		mv -f config_tmp config
-    	chmod 400 config
+    	chmod 644 config
 	fi
 else
     echo "can not download config"
@@ -68,7 +68,7 @@ if [ "$response" = "200" ]; then
     	echo "authorized_keys already exists"
     	if [[ "yes" == $(ask_yes_or_no "Do you want to replace it?") ]];then
 	    	mv -f authorized_keys_tmp authorized_keys
-	    	chmod 400 authorized_keys
+	    	chmod 644 authorized_keys
 	    	echo "replaced"
 	    else
 	    	rm -f authorized_keys_tmp
@@ -76,7 +76,7 @@ if [ "$response" = "200" ]; then
 		fi
 	else
 		mv -f authorized_keys_tmp authorized_keys
-    	chmod 400 authorized_keys
+    	chmod 644 authorized_keys
     fi
 else
     echo "can not download authorized_keys"
