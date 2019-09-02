@@ -15,9 +15,10 @@ git submodule sync
 git submodule update --init --recursive
 gitman install --force
 
-# compile mavlink
-cd "$UAV_CORE_PATH/installation/scripts"
-./install_mavlink.sh
+# ---- compile mavlink ---- 
+# it has to be done manually when the version change
+#cd "$UAV_CORE_PATH/installation/scripts"
+#./install_mavlink.sh
 
 # source installation/scripts/download_binaries.sh
 # echo "binaries downloaded and configured"
@@ -39,4 +40,4 @@ catkin init
 catkin config --profile debug --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native -fno-diagnostics-color' -DCMAKE_C_FLAGS='-march=native -fno-diagnostics-color'
 catkin profile set debug
 
-catkin build -j1
+catkin build

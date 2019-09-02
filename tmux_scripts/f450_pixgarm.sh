@@ -16,6 +16,8 @@ input=(
 # '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors_pixgarm.launch
 '
+  'Nimbro' 'waitForRos; roslaunch mrs_general udp_communication.launch
+'
   'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f450_pixgarm_multistar.launch
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'

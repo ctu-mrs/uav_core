@@ -7,7 +7,6 @@ sudo usermod -a -G dialout $USER
 # but if you run install.sh directly...
 sudo apt-get -y install git expect
 
-
 unattended=0
 subinstall_params=""
 for param in "$@"
@@ -19,7 +18,6 @@ do
     subinstall_params="--unattended"
   fi
 done
-
 
 #exit 1
 # get the path to this script
@@ -193,8 +191,12 @@ while true; do
     ln -s ~/git/uav_modules
 
     # install bluefox
-    cd uav_modules/ros_packages/bluefox2/install
+    cd ~/$ROS_WORKSPACE/src/uav_modules/ros_packages/bluefox2/install
     bash install.sh
+
+    # install realsense
+    cd ~/$ROS_WORKSPACE/src/uav_modules/ros_packages/realsense_d435/scripts
+    bash install_realsense_d435.sh
 
     break
   elif [[ $response =~ ^(n|N)=$ ]]

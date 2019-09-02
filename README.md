@@ -61,6 +61,8 @@ mv templates my_own_nodes
 Then create your own repo here - https://mrs.felk.cvut.cz/gitlab/projects/new
 Follow Command line instructions for "Git global setup" and "Existing folder or Git repository" where use the my_own_nodes as the mentioned existing_folder.
 
+If you are taking part in the IEEE RAS Summer School, please use e.g. https://github.com/ or https://bitbucket.org/ if you want to create your own repository.
+
 ## Polishing your ~/.bashrc file
 
 The **~/.bashrc** file, is the main "configuration hub" for your terminal session and for the ROS system aswell.
