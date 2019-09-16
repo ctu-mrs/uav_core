@@ -15,11 +15,11 @@ input=(
   'UAV_TYPE' 'f550' '{f550, f450, t650, ...}'
   'PROPULSION_TYPE' 'default' '{default, new_esc, ...}'
   'ODOMETRY_TYPE' 'gps' '{gps, optflow, hector, vio, ...}'
-  'ODOMETRY_TYPE' 'gps' '{gps, optflow, hector, vio, ...}'
   'INITIAL_DISTURBANCE_X' '0.0' '[N]'
   'INITIAL_DISTURBANCE_Y' '0.0' '[N]'
   'STANDALONE' 'false' ''
   'SWAP_GARMINS' 'false' ''
+  'SENSORS' '' '{garmin_down, garmin_up, rplidar, realsense_front, teraranger}'
 )
 
 # create arrays
