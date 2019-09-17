@@ -10,9 +10,9 @@ RCFILE=~/."$SNAME"rc
 # variable name, value, commentary
 input=(
   'UAV_NAME' 'uav1' ''
-  'UAV_MASS' '3.0' '[kg]'
+  'UAV_MASS' '3.0' '[kg], used only with real UAV'
   'RUN_TYPE' 'simulation' '{simulation, uav}'
-  'UAV_TYPE' 'f550' '{f550, f450, t650, ...}'
+  'UAV_TYPE' 'f550' '{f550, f450, t650}'
   'PROPULSION_TYPE' 'default' '{default, new_esc, ...}'
   'ODOMETRY_TYPE' 'gps' '{gps, optflow, hector, vio, ...}'
   'INITIAL_DISTURBANCE_X' '0.0' '[N]'
