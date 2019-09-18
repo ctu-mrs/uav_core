@@ -78,6 +78,11 @@ while true ; do
 done
 
 #############################################
+# Install debugging tools
+#############################################
+bash $APPCONFIG_PATH/gdb/install.sh $subinstall_params
+
+#############################################
 # Install ROS?
 #############################################
 
