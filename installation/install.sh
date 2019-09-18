@@ -80,7 +80,12 @@ done
 #############################################
 # Install debugging tools
 #############################################
+
 bash $MY_PATH/gdb/install.sh $subinstall_params
+
+bash $MY_PATH/tmux/install.sh $subinstall_params
+
+bash $MY_PATH/tmuxinator/install.sh $subinstall_params
 
 #############################################
 # Install ROS?

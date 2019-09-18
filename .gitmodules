@@ -1,0 +1,6 @@
+[submodule "submodules/tmux"]
+	path = submodules/tmux
+	url = http://github.com/tmux/tmux.git
+[submodule "submodules/tmuxinator"]
+	path = submodules/tmuxinator
+	url = http://github.com/tmuxinator/tmuxinator.git
