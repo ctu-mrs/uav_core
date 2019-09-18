@@ -45,10 +45,10 @@ while true ; do
   then
     resp=$default
   else
-    [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall Linux setup? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; } 
+    [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall Linux setup? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
   fi
   response=`echo $resp | sed -r 's/(.*)$/\1=/'`
-  
+
   if [[ $response =~ ^(y|Y)=$ ]]
   then
 
@@ -61,7 +61,7 @@ while true ; do
 
     cd ~/git/linux-setup
     bash install.sh $subinstall_params
-    
+
     sudo systemctl disable apt-daily.service
     sudo systemctl disable apt-daily.timer
 
@@ -279,6 +279,21 @@ if [ "$num" -lt "1" ]; then
 
   # set bashrc
 echo "$line" >> ~/.bashrc
+
+fi
+
+#############################################
+# add sourcing of shell additions to .bashrc
+#############################################
+
+num=`cat ~/.bashrc | grep "shell_additions.sh" | wc -l`
+if [ "$num" -lt "1" ]; then
+
+  echo "Adding source to .bashrc"
+  # set bashrc
+  echo "
+# source uav_core shell additions
+source $MY_PATH/miscellaneous/shell_additions/shell_additions.sh" >> ~/.bashrc
 
 fi
 
