@@ -80,7 +80,7 @@ done
 #############################################
 # Install debugging tools
 #############################################
-bash $MY_PATH/installation/gdb/install.sh $subinstall_params
+bash $MY_PATH/gdb/install.sh $subinstall_params
 
 #############################################
 # Install ROS?
@@ -325,7 +325,7 @@ fi
 # Add environment variables to .bashrc
 #############################################
 
-$MY_PATH/scripts/setup_rc_variables.sh
+bash $MY_PATH/../miscellaneous/scripts/setup_rc_variables.sh
 
 #############################################
 # Prepare simulation
