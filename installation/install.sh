@@ -45,10 +45,10 @@ while true ; do
   then
     resp=$default
   else
-    [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall Linux setup? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; } 
+    [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall Linux setup? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
   fi
   response=`echo $resp | sed -r 's/(.*)$/\1=/'`
-  
+
   if [[ $response =~ ^(y|Y)=$ ]]
   then
 
@@ -61,7 +61,7 @@ while true ; do
 
     cd ~/git/linux-setup
     bash install.sh $subinstall_params
-    
+
     sudo systemctl disable apt-daily.service
     sudo systemctl disable apt-daily.timer
 
@@ -76,6 +76,16 @@ while true ; do
     echo " What? \"$resp\" is not a correct answer. Try y+Enter."
   fi
 done
+
+#############################################
+# Install debugging tools
+#############################################
+
+bash $MY_PATH/gdb/install.sh $subinstall_params
+
+bash $MY_PATH/tmux/install.sh $subinstall_params
+
+bash $MY_PATH/tmuxinator/install.sh $subinstall_params
 
 #############################################
 # Install ROS?
@@ -248,6 +258,23 @@ while true; do
 done
 
 #############################################
+# adding GIT_PATH variable to .bashrc
+#############################################
+
+# add variable for path to the git repository
+num=`cat ~/.bashrc | grep "GIT_PATH" | wc -l`
+if [ "$num" -lt "1" ]; then
+
+  TEMP=`( cd "$MY_PATH/../../" && pwd )`
+
+  echo "Adding GIT_PATH variable to .bashrc"
+  # set bashrc
+  echo "
+# path to the git root
+export GIT_PATH=$TEMP" >> ~/.bashrc
+fi
+
+#############################################
 # Add sourcing of ROS to bashrc
 #############################################
 
@@ -281,6 +308,29 @@ if [ "$num" -lt "1" ]; then
 echo "$line" >> ~/.bashrc
 
 fi
+
+#############################################
+# add sourcing of shell additions to .bashrc
+#############################################
+
+num=`cat ~/.bashrc | grep "shell_additions.sh" | wc -l`
+if [ "$num" -lt "1" ]; then
+
+  TEMP=`( cd "$MY_PATH/../miscellaneous/shell_additions" && pwd )`
+
+  echo "Adding source to .bashrc"
+  # set bashrc
+  echo "
+# source uav_core shell additions
+source $TEMP/shell_additions.sh" >> ~/.bashrc
+
+fi
+
+#############################################
+# Add environment variables to .bashrc
+#############################################
+
+bash $MY_PATH/../miscellaneous/scripts/setup_rc_variables.sh
 
 #############################################
 # Prepare simulation
@@ -320,7 +370,9 @@ while true; do
   fi
 done
 
-toilet All done
+echo ""
+echo All done
+echo ""
 
 cd ~
 source .bashrc

@@ -25,34 +25,34 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME; export DIS
 input=(
   'Rosbag' 'waitForRos; roslaunch mrs_general record_stola_josef.launch project_name:='"$PROJECT_NAME"'
 '
-  'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav.launch
-'
-  'Sensors' 'waitForRos; roslaunch mrs_general sensors_darpa.launch
+  # 'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav.launch
+# '
+  'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
   'Hector' 'waitForOdometry; roslaunch hector_mapping uav.launch
 '
   # 'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f450_pixgarm_multistar_darpa.launch
 # '
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f450_pixgarm_new_esc_darpa.launch
+  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager mrs_control.launch
 '
-	'AutoStart' 'waitForRos; roslaunch mrs_general automatic_start_darpa.launch
-'
+	# 'AutoStart' 'waitForRos; roslaunch mrs_general automatic_start_darpa.launch
+# '
   'fuse_hdg' 'rosservice call /'"$UAV_NAME"'/odometry/change_hdg_estimator_type_string hector'
   'fuse_lat' 'rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string hector'
-  'estop' 'waitForOdometry; roslaunch mrs_serial estop.launch
-'
+  # 'estop' 'waitForOdometry; roslaunch mrs_serial estop.launch
+# '
   'Bumper' 'waitForRos; roslaunch mrs_bumper bumper_darpa.launch
 '
 	'MotorsOn' 'waitForControlManager; rosservice call /'"$UAV_NAME"'/control_manager/motors 1
 '
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-  'Flier' 'waitForOdometry; roslaunch forest_flier uav.launch
-'
-  'goto_tunnel' 'rosservice call /'"$UAV_NAME"'/forest_flier/goto "goal: [5.0, 0.0, 2.0, 0.0]"'
-  'return' 'rosservice call /'"$UAV_NAME"'/forest_flier/return"'
-  'Start' 'rosservice call /'"$UAV_NAME"'/tunnel_flier/start'
-  'goto_fcu' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
-	'land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
+  # 'Flier' 'waitForOdometry; roslaunch forest_flier uav.launch
+# '
+  # 'goto_tunnel' 'rosservice call /'"$UAV_NAME"'/forest_flier/goto "goal: [5.0, 0.0, 2.0, 0.0]"'
+  # 'return' 'rosservice call /'"$UAV_NAME"'/forest_flier/return"'
+  # 'Start' 'rosservice call /'"$UAV_NAME"'/tunnel_flier/start'
+  # 'goto_fcu' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
+	# 'land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
   'odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
   'att_cmd' 'waitForRos; rostopic echo /'"$UAV_NAME"'/control_manager/attitude_cmd
