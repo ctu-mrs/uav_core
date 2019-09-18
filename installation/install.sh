@@ -311,13 +311,13 @@ fi
 num=`cat ~/.bashrc | grep "shell_additions.sh" | wc -l`
 if [ "$num" -lt "1" ]; then
 
-  TEMP=`( cd "$MY_PATH/../miscellaneous/shell_additions/shell_additions.sh" && pwd )`
+  TEMP=`( cd "$MY_PATH/../miscellaneous/shell_additions" && pwd )`
 
   echo "Adding source to .bashrc"
   # set bashrc
   echo "
 # source uav_core shell additions
-source $TEMP" >> ~/.bashrc
+source $TEMP/shell_additions.sh" >> ~/.bashrc
 
 fi
 
