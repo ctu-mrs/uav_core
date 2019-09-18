@@ -253,6 +253,23 @@ while true; do
 done
 
 #############################################
+# adding GIT_PATH variable to .bashrc
+#############################################
+
+# add variable for path to the git repository
+num=`cat ~/.bashrc | grep "GIT_PATH" | wc -l`
+if [ "$num" -lt "1" ]; then
+
+  TEMP=`( cd "$MY_PATH/../../" && pwd )`
+
+  echo "Adding GIT_PATH variable to .bashrc"
+  # set bashrc
+  echo "
+# path to the git root
+export GIT_PATH=$TEMP" >> ~/.bashrc
+fi
+
+#############################################
 # Add sourcing of ROS to bashrc
 #############################################
 
@@ -294,11 +311,13 @@ fi
 num=`cat ~/.bashrc | grep "shell_additions.sh" | wc -l`
 if [ "$num" -lt "1" ]; then
 
+  TEMP=`( cd "$MY_PATH/../miscellaneous/shell_additions/shell_additions.sh" && pwd )`
+
   echo "Adding source to .bashrc"
   # set bashrc
   echo "
 # source uav_core shell additions
-source $MY_PATH/miscellaneous/shell_additions/shell_additions.sh" >> ~/.bashrc
+source $TEMP" >> ~/.bashrc
 
 fi
 
@@ -346,7 +365,9 @@ while true; do
   fi
 done
 
-toilet All done
+echo ""
+echo All done
+echo ""
 
 cd ~
 source .bashrc
