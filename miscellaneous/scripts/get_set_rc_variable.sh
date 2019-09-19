@@ -6,7 +6,7 @@ else
   RCFILE="$1"
 fi
 
-num=`cat $RCFILE | grep "^export $1" | wc -l`
+num=`cat $RCFILE | grep "^export $2" | wc -l`
 
 if [ "$num" -lt "1" ]; then
   
