@@ -10,14 +10,14 @@ input=(
   'UAV_NAME' 'uav1' ''
   'UAV_MASS' '3.0' '[kg], used only with real UAV'
   'RUN_TYPE' 'simulation' '{simulation, uav}'
-  'UAV_TYPE' 'f550' '{f550, f450, t650}'
+  'UAV_TYPE' 'f550' '{f550, f450, t650, eagle, naki}'
   'PROPULSION_TYPE' 'default' '{default, new_esc, ...}'
   'ODOMETRY_TYPE' 'gps' '{gps, optflow, hector, vio, ...}'
-  'INITIAL_DISTURBANCE_X' '0.0' '[N]'
-  'INITIAL_DISTURBANCE_Y' '0.0' '[N]'
-  'STANDALONE' 'false' ''
-  'SWAP_GARMINS' 'false' ''
-  'SENSORS' '' '{garmin_down, garmin_up, rplidar, realsense_front, teraranger}'
+  'INITIAL_DISTURBANCE_X' '0.0' '[N], external disturbance in the body frame'
+  'INITIAL_DISTURBANCE_Y' '0.0' '[N], external disturbance in the body frame'
+  'STANDALONE' 'false' 'disables the core nodelete manager'
+  'SWAP_GARMINS' 'false' 'swap up/down garmins'
+  'SENSORS' '' '{garmin_down, garmin_up, rplidar, realsense_front, teraranger, bluefox_optflow}'
 )
 
 # create arrays
