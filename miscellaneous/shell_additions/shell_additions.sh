@@ -1,5 +1,32 @@
 UAV_CORE_PATH=$GIT_PATH/uav_core/
 
+# disable gitman caching
+export GITMAN_CACHE_DISABLE=1
+
+# #{ generating ctags
+
+# use ctags to generate code tags
+
+# generate projects' tags
+if [ -z $TMUX ]; then
+
+  if [ ! -e ~/tags ]; then
+    ctagscmd="ctags --fields=+l -f ~/tags $CTAGS_SOURCE_DIR"
+    $UAV_CORE_PATH/miscellaneous/scripts/detacher.sh "$ctagscmd"
+  fi
+
+  if [ ! -e ~/tags-once ]; then
+    # generate `once generated tags`, e.g. ROS's tags
+    if [ ! -e $(eval echo "$CTAGS_FILE_ONCE") ]; then
+      ctagscmd="ctags --fields=+l -f $CTAGS_FILE_ONCE $CTAGS_ONCE_SOURCE_DIR"
+      $UAV_CORE_PATH/miscellaneous/scripts/detacher.sh "$ctagscmd"
+    fi
+  fi
+
+fi
+
+# #}
+
 # #{ killp()
 
 # allows killing process with all its children
@@ -54,6 +81,7 @@ alias sb="sourceShellDotfile"
 # #{ cd()
 
 SYMLINK_LIST_PATH="/tmp/symlink_list.txt"
+SYMLINK_ARRAY_PATH="/tmp/symlink_array.sh"
 
 # generate the symlink list
 # if we are not in TMUX
@@ -67,7 +95,9 @@ if [ -z $TMUX ]; then
   fi
 fi
 
-if [ -e "$SYMLINK_LIST_PATH" ]; then
+# when the symlink list is generated, post-process it to create a shell file
+# with the definition of the array
+if [ ! -e "$SYMLINK_ARRAY_PATH" ] && [ -e "$SYMLINK_LIST_PATH" ]; then
 
   # parse the csv file and extract file paths
   i="1"
@@ -80,6 +110,30 @@ if [ -e "$SYMLINK_LIST_PATH" ]; then
 
     i=$(expr $i + 1)
   done < "$SYMLINK_LIST_PATH"
+
+  echo "SYMLINK_LIST_PATHS1=(" > $SYMLINK_ARRAY_PATH
+  i="0"
+  for ((i=0; i < ${#SYMLINK_LIST_PATHS1[*]}; i++));
+  do
+    echo "\"${SYMLINK_LIST_PATHS1[$i]}\" " >> $SYMLINK_ARRAY_PATH
+  done
+  echo ")
+  " >> $SYMLINK_ARRAY_PATH
+
+  echo "SYMLINK_LIST_PATHS2=(" >> $SYMLINK_ARRAY_PATH
+  i="0"
+  for ((i=0; i < ${#SYMLINK_LIST_PATHS2[*]}; i++));
+  do
+    echo "\"${SYMLINK_LIST_PATHS2[$i]}\" " >> $SYMLINK_ARRAY_PATH
+  done
+  echo ")" >> $SYMLINK_ARRAY_PATH
+
+fi
+
+# if the array file exists, just source it
+if [ -e "$SYMLINK_ARRAY_PATH" ]; then
+
+  source $SYMLINK_ARRAY_PATH
 
 fi
 
@@ -125,32 +179,6 @@ CURRENT_PATH=`pwd`
 cd "$CURRENT_PATH"
 
 # #}
-
-# #{ sourceShellDotfile()
-
-getRcFile() {
-
-  case "$SHELL" in
-    *bash*)
-      RCFILE="$HOME/.bashrc"
-      ;;
-    *zsh*)
-      RCFILE="$HOME/.zshrc"
-      ;;
-  esac
-
-  echo "$RCFILE"
-}
-
-sourceShellDotfile() {
-
-  RCFILE=$( getRcFile )
-
-  source "$RCFILE"
-}
-
-# #}
-alias sb="sourceShellDotfile"
 
 ## --------------------------------------------------------------
 ## |                             Git                            |
@@ -265,6 +293,50 @@ alias glog="git log --graph --abbrev-commit --date=relative --pretty=format:'%Cr
 ## |                         ROS aliases                        |
 ## --------------------------------------------------------------
 
+# #{ catkin()
+
+catkin() {
+
+  case $* in
+
+    init*)
+
+      # give me the path to root of the repo we are in
+      ROOT_DIR=`git rev-parse --show-toplevel` 2> /dev/null
+
+      command catkin "$@"
+      command catkin config --profile debug --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
+      command catkin config --profile release --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
+      command catkin config --profile reldeb --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
+
+      command catkin profile set reldeb
+      ;;
+
+    build*|b|bt)
+
+      PACKAGES=$(catkin list)
+      if [ -z "$PACKAGES" ]; then
+        echo "Cannot compile, not in a workspace"
+      else
+        command catkin "$@"
+      fi
+
+      ;;
+
+    *)
+      command catkin $@
+      ;;
+
+    esac
+  }
+
+# #}
+alias cb="catkin build"
+
+## --------------------------------------------------------------
+## |                       waitFor* macros                      |
+## --------------------------------------------------------------
+
 # #{ waitForRos()
 
 waitForRos() {
@@ -340,60 +412,13 @@ waitForMpc() {
 
 # #}
 
-# #{ catkin()
+# #{ waitForCompile()
 
-# EPIGEN_ADD_BLOCK_MATOUS {
-# export BEEP="/usr/share/sounds/ubuntu/notifications/Blip.ogg"
-# which paplay > /dev/null
-# if [ $? -eq 0 ]; then
-#   alias beep='paplay $BEEP'
-# else
-#   alias beep='espeak BEEP'
-# fi
-# EPIGEN_ADD_BLOCK_MATOUS }
-
-catkin() {
-
-  case $* in
-
-    init*)
-
-      # give me the path to root of the repo we are in
-      ROOT_DIR=`git rev-parse --show-toplevel` 2> /dev/null
-
-      command catkin "$@"
-      command catkin config --profile debug --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
-      command catkin config --profile release --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
-      command catkin config --profile reldeb --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
-
-      command catkin profile set reldeb
-      ;;
-
-    build*|b|bt)
-
-      PACKAGES=$(catkin list)
-      if [ -z "$PACKAGES" ]; then
-        echo "Cannot compile, not in a workspace"
-      else
-
-# EPIGEN_DEL_BLOCK_MATOUS {
-        command catkin "$@"
-# EPIGEN_DEL_BLOCK_MATOUS }
-
-# EPIGEN_ADD_BLOCK_MATOUS {
-        # command catkin "$@" && beep || espeak -v cs "sprav si to vole"
-# EPIGEN_ADD_BLOCK_MATOUS }
-
-      fi
-
-      ;;
-
-    *)
-      command catkin $@
-      ;;
-
-    esac
-  }
+waitForCompile() {
+  while timeout 3s  ps aux | grep "catkin build" | grep -v grep > /dev/null 2>&1; do
+    echo "waiting for compilation to complete"
+    sleep 1;
+  done
+}
 
 # #}
-alias cb="catkin build"
