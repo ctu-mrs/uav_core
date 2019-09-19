@@ -223,7 +223,8 @@ done
 
 cd ~/$ROS_WORKSPACE
 source /opt/ros/melodic/setup.bash
-command catkin build
+command catkin build mavros
+command catkin build -c
 
 # after sucessfully building mavros, install libgeo
 cd ~/git/uav_core/ros_packages/mavros/mavros/scripts
