@@ -84,9 +84,17 @@ source ~/git/simulation/install/share/simulation/setup.sh
 # tells gazebo, where it should look for our 3D models for simulation
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/git/simulation/gazebo_files/models
 
-# mass of a drone is set here (mainly for "the real world", where each drone has unique mass)
-# the simulated drone's mass should be ~3.0 kg
-export UAV_MASS=3.0
+export UAV_NAME="uav1" 
+export UAV_MASS="3.0" # [kg], used only with real UAV
+export RUN_TYPE="simulation" # {simulation, uav}
+export UAV_TYPE="f550" # {f550, f450, t650}
+export PROPULSION_TYPE="default" # {default, new_esc, ...}
+export ODOMETRY_TYPE="gps" # {gps, optflow, hector, vio, ...}
+export INITIAL_DISTURBANCE_X="0.0" # [N]
+export INITIAL_DISTURBANCE_Y="0.0" # [N]
+export STANDALONE="false" 
+export SWAP_GARMINS="false" 
+export SENSORS="" # {garmin_down, garmin_up, rplidar, realsense_front, teraranger}
 
 #####################################################################
 # Following code provides settings for Tomas's linux-setup repository
@@ -108,6 +116,9 @@ export ROS_WORKSPACE="~/mrs_workspace ~/workspace"
 
 # want to run tmux automatically with new terminal?
 export RUN_TMUX=true
+
+# uav_core shell additions
+source ~/git/uav_core/miscellaneous/shell_additions/shell_additions.sh
 
 # sourcing tomas's tmux preparation
 source ~/git/linux-setup/appconfig/bash/dotbashrc
