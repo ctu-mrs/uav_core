@@ -5,8 +5,6 @@ MY_PATH=`( cd "$MY_PATH" && pwd )`
 
 cd $MY_PATH
 
-RCFILE=~/."$SNAME"rc
-
 # variable name, value, commentary
 input=(
   'UAV_NAME' 'uav1' ''
