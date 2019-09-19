@@ -14,13 +14,10 @@ input=(
   '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
-  'tersus' 'waitForRos; roslaunch tersus_gps_driver test.launch
+  'Tersus' 'waitForRos; roslaunch tersus_gps_driver test.launch'
+  'Control' 'waitForRos; roslaunch mrs_general core.launch
 '
-  'bluefox' 'waitForRos; roslaunch bluefox2 single_node.launch
-'
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f550.launch
-'
-  'Nimbro' 'waitForRos; roslaunch mrs_general udp_communication.launch
+  'Nimbro' 'waitForRos; roslaunch mrs_general nimbro.launch
 '
 	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
 	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'

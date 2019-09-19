@@ -5,7 +5,7 @@ PROJECT_NAME=eagling
 MAIN_DIR=~/"bag_files"
 
 # following commands will be executed first, in each window
-pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME;"
+pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
 
 # define commands
 # 'name' 'command'
@@ -14,7 +14,7 @@ input=(
   '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager eagle.launch
+  'MRS_control' 'waitForRos; roslaunch mrs_general core.launch
 '
   'AutomaticStart' 'waitForRos; roslaunch mrs_general automatic_start_eagle.launch
 '

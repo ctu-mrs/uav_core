@@ -25,15 +25,11 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME; export DIS
 input=(
   'Rosbag' 'waitForRos; roslaunch mrs_general record_stola_josef.launch project_name:='"$PROJECT_NAME"'
 '
-  # 'OptFlow' 'waitForRos; roslaunch mrs_optic_flow uav.launch
-# '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
   'Hector' 'waitForOdometry; roslaunch hector_mapping uav.launch
 '
-  # 'MRS_control' 'waitForRos; roslaunch mrs_uav_manager f450_pixgarm_multistar_darpa.launch
-# '
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager mrs_control.launch
+  'MRS_control' 'waitForRos; roslaunch mrs_general core.launch
 '
 	# 'AutoStart' 'waitForRos; roslaunch mrs_general automatic_start_darpa.launch
 # '

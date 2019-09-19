@@ -12,11 +12,11 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
 input=(
   'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"'
   '
-  'Sensors' 'waitForRos; roslaunch mrs_general sensors_naki.launch
+  'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
-  'OptFlow' 'waitForRos; roslaunch mrs_optic_flow naki_outdoor_down_facing.launch
+  'OptFlow' 'waitForRos; roslaunch mrs_optic_flow optic_flow.launch
 '
-  'MRS_control' 'waitForRos; roslaunch mrs_uav_manager naki_optflow.launch
+  'MRS_control' 'waitForRos; roslaunch mrs_general core.launch
 '
   'Sony Camera' 'waitForRos; roslaunch handheld_camera_manager camera.launch
 '
