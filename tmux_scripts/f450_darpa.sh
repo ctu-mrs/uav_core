@@ -11,7 +11,7 @@ if [ "$(id -u)" == "0" ]; then
   exec sudo -u mrs "$0" "$@"
 fi
 
-source /home/mrs/.bashrc
+source $HOME/.bashrc
 
 PROJECT_NAME=darpa_testing
 
@@ -29,7 +29,7 @@ input=(
 '
   'Hector' 'waitForOdometry; roslaunch hector_mapping uav.launch
 '
-  'MRS_control' 'waitForRos; roslaunch mrs_general core.launch
+  'Control' 'waitForRos; roslaunch mrs_general core.launch
 '
   # 'AutoStart' 'waitForRos; roslaunch mrs_general automatic_start_darpa.launch
 # '
@@ -62,6 +62,8 @@ input=(
   'roscore' 'roscore
 '
 )
+
+init_window="Control"
 
 ###########################
 ### DO NOT MODIFY BELOW ###
@@ -162,7 +164,16 @@ do
   pes=$pes"/usr/bin/tmux resize-pane -D -t $(($i)) 7"
 done
 
-pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:4"
+# identify the index of the init window
+init_index=0
+for ((i=0; i < ((${#names[*]})); i++));
+do
+  if [ ${names[$i]} == "$init_window" ]; then
+    init_index=$(expr $i + 1)
+  fi
+done
+
+pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:$init_index"
 pes=$pes"waitForRos; roslaunch mrs_status f450_pixgarm.launch >> /tmp/status.txt"
 
 /usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"

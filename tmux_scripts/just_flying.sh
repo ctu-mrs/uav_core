@@ -11,7 +11,7 @@ if [ "$(id -u)" == "0" ]; then
   exec sudo -u mrs "$0" "$@"
 fi
 
-source /home/mrs/.bashrc
+source $HOME/.bashrc
 
 PROJECT_NAME=just_flying
 
@@ -52,6 +52,8 @@ input=(
 '
   'KILL_ALL' 'dmesg; tmux kill-session -t '
 )
+
+init_window="Control"
 
 ###########################
 ### DO NOT MODIFY BELOW ###
@@ -152,11 +154,13 @@ do
   pes=$pes"/usr/bin/tmux resize-pane -D -t $(($i)) 7"
 done
 
-pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:4"
-pes=$pes"waitForRos; roslaunch mrs_status f550.launch >> /tmp/status.txt"
+# identify the index of the init window
+init_index=0
+for ((i=0; i < ((${#names[*]})); i++));
+do
+  if [ ${names[$i]} == "$init_window" ]; then
+    init_index=$(expr $i + 1)
+  fi
+done
 
-/usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
-
-/usr/bin/tmux -2 attach-session -t $SESSION_NAME
-
-clear
+pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:$init_index"

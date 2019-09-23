@@ -11,7 +11,7 @@ if [ "$(id -u)" == "0" ]; then
   exec sudo -u mrs "$0" "$@"
 fi
 
-source /home/mrs/.bashrc
+source $HOME/.bashrc
 
 PROJECT_NAME=eagling
 
@@ -27,7 +27,7 @@ input=(
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
-  'MRS_control' 'waitForRos; roslaunch mrs_general core.launch
+  'Control' 'waitForRos; roslaunch mrs_general core.launch
 '
   'AutomaticStart' 'waitForRos; roslaunch mrs_general automatic_start_eagle.launch
 '
@@ -55,6 +55,8 @@ input=(
   'Multimaster' 'waitForRos; roslaunch mrs_multimaster server.launch'
   'KILL_ALL' 'dmesg; tmux kill-session -t '
 )
+
+init_window="Control"
 
 ###########################
 ### DO NOT MODIFY BELOW ###
@@ -155,7 +157,16 @@ do
   pes=$pes"/usr/bin/tmux resize-pane -D -t $(($i)) 7"
 done
 
-pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:4"
+# identify the index of the init window
+init_index=0
+for ((i=0; i < ((${#names[*]})); i++));
+do
+  if [ ${names[$i]} == "$init_window" ]; then
+    init_index=$(expr $i + 1)
+  fi
+done
+
+pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:$init_index"
 pes=$pes"waitForRos; roslaunch mrs_status f550.launch >> /tmp/status.txt"
 
 /usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
