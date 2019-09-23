@@ -1,4 +1,17 @@
 #!/bin/bash
+### BEGIN INIT INFO
+# Provides: tmux
+# Required-Start:    $local_fs $network dbus
+# Required-Stop:     $local_fs $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: start the uav
+### END INIT INFO
+if [ "$(id -u)" == "0" ]; then
+  exec sudo -u mrs "$0" "$@"
+fi
+
+source /home/mrs/.bashrc
 
 PROJECT_NAME=eagling
 
@@ -24,23 +37,23 @@ input=(
 '
   'Interceptor' 'waitForOdometry; roslaunch interceptor interceptor.launch
 '
-	'Start_Intercept' 'rosservice call /'"$UAV_NAME"'/interceptor/start_interception'
-	'Stop_Intercept' 'rosservice call /'"$UAV_NAME"'/interceptor/stop_interception'
-	'ARM_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_arm'
-	'SAFE_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_safe'
-	'FIRE_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_fire'
-	'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
-	'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
+  'Start_Intercept' 'rosservice call /'"$UAV_NAME"'/interceptor/start_interception'
+  'Stop_Intercept' 'rosservice call /'"$UAV_NAME"'/interceptor/stop_interception'
+  'ARM_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_arm'
+  'SAFE_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_safe'
+  'FIRE_GUN' 'rosservice call /'"$UAV_NAME"'/netgun_fire'
+  'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
+  'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   'GoTo' 'rosservice call /'"$UAV_NAME"'/control_manager/goto "goal: [0.0, 0.0, 1.5, 1.9]"'
   'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
-	'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
-	'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
-	'KernelLog' 'tail -f /var/log/kern.log -n 100
+  'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
+  'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
+  'KernelLog' 'tail -f /var/log/kern.log -n 100
 '
   'roscore' 'roscore
 '
   'Multimaster' 'waitForRos; roslaunch mrs_multimaster server.launch'
-	'KILL_ALL' 'dmesg; tmux kill-session -t '
+  'KILL_ALL' 'dmesg; tmux kill-session -t '
 )
 
 ###########################
@@ -49,9 +62,14 @@ input=(
 
 SESSION_NAME=mav
 
+# Absolute path to this script. /home/user/bin/foo.sh
+SCRIPT=$(readlink -f $0)
+# Absolute path this script is in. /home/user/bin
+SCRIPTPATH=`dirname $SCRIPT`
+
 if [ -z ${TMUX} ];
 then
-  TMUX= tmux new-session -s "$SESSION_NAME" -d
+  TMUX= /usr/bin/tmux new-session -s "$SESSION_NAME" -d
   echo "Starting new session."
 else
   echo "Already in tmux, leave it first."
@@ -61,7 +79,7 @@ fi
 # get the iterator
 ITERATOR_FILE="$MAIN_DIR/$PROJECT_NAME"/iterator.txt
 if [ -e "$ITERATOR_FILE" ]
-then 
+then
   ITERATOR=`cat "$ITERATOR_FILE"`
   ITERATOR=$(($ITERATOR+1))
 else
@@ -69,7 +87,7 @@ else
   touch "$ITERATOR_FILE"
   ITERATOR="0"
 fi
-echo "$ITERATOR" > "$ITERATOR_FILE"   
+echo "$ITERATOR" > "$ITERATOR_FILE"
 
 # create file for logging terminals' output
 LOG_DIR="$MAIN_DIR/$PROJECT_NAME/"
@@ -88,18 +106,18 @@ ln -sf "$SUBLOG_DIR" "$MAIN_DIR/latest"
 # create arrays of names and commands
 for ((i=0; i < ${#input[*]}; i++));
 do
-  ((i%2==0)) && names[$i/2]="${input[$i]}" 
-	((i%2==1)) && cmds[$i/2]="${input[$i]}"
+  ((i%2==0)) && names[$i/2]="${input[$i]}"
+  ((i%2==1)) && cmds[$i/2]="${input[$i]}"
 done
 
 # run tmux windows
 for ((i=0; i < ${#names[*]}; i++));
 do
-	tmux new-window -t $SESSION_NAME:$(($i+1)) -n "${names[$i]}"
+  /usr/bin/tmux new-window -t $SESSION_NAME:$(($i+1)) -n "${names[$i]}"
 done
 
 # add pane splitter for mrs_status
-tmux new-window -t $SESSION_NAME:$((${#names[*]}+1)) -n "mrs_status"
+/usr/bin/tmux new-window -t $SESSION_NAME:$((${#names[*]}+1)) -n "mrs_status"
 
 # clear mrs status file so that no clutter is displayed
 truncate -s 0 /tmp/status.txt
@@ -108,40 +126,40 @@ truncate -s 0 /tmp/status.txt
 pes=""
 for ((i=0; i < ((${#names[*]}+2)); i++));
 do
-  pes=$pes"tmux split-window -d -t $SESSION_NAME:$(($i))"
-  pes=$pes"tmux send-keys -t $SESSION_NAME:$(($i)) 'tail -F /tmp/status.txt'"
-  pes=$pes"tmux select-pane -U -t $(($i))"
+  pes=$pes"/usr/bin/tmux split-window -d -t $SESSION_NAME:$(($i))"
+  pes=$pes"/usr/bin/tmux send-keys -t $SESSION_NAME:$(($i)) 'tail -F /tmp/status.txt'"
+  pes=$pes"/usr/bin/tmux select-pane -U -t $(($i))"
 done
 
-tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
+/usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 
 sleep 6
 
 # start loggers
 for ((i=0; i < ${#names[*]}; i++));
 do
-	tmux pipe-pane -t $SESSION_NAME:$(($i+1)) -o "ts | cat >> $TMUX_DIR/$(($i+1))_${names[$i]}.log"
+  /usr/bin/tmux pipe-pane -t $SESSION_NAME:$(($i+1)) -o "ts | cat >> $TMUX_DIR/$(($i+1))_${names[$i]}.log"
 done
 
 # send commands
 for ((i=0; i < ${#cmds[*]}; i++));
 do
-	tmux send-keys -t $SESSION_NAME:$(($i+1)) "${pre_input};${cmds[$i]}"
+  tmux send-keys -t $SESSION_NAME:$(($i+1)) "cd $SCRIPTPATH;${pre_input};${cmds[$i]}"
 done
 
 pes="sleep 1;"
 for ((i=0; i < ((${#names[*]}+2)); i++));
 do
-  pes=$pes"tmux select-window -t $SESSION_NAME:$(($i))"
-  pes=$pes"tmux resize-pane -U -t $(($i)) 150"
-  pes=$pes"tmux resize-pane -D -t $(($i)) 7"
+  pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:$(($i))"
+  pes=$pes"/usr/bin/tmux resize-pane -U -t $(($i)) 150"
+  pes=$pes"/usr/bin/tmux resize-pane -D -t $(($i)) 7"
 done
 
-pes=$pes"tmux select-window -t $SESSION_NAME:4"
+pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:4"
 pes=$pes"waitForRos; roslaunch mrs_status f550.launch >> /tmp/status.txt"
 
-tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
+/usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 
-tmux -2 attach-session -t $SESSION_NAME
+/usr/bin/tmux -2 attach-session -t $SESSION_NAME
 
 clear
