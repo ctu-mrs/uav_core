@@ -10,8 +10,8 @@ pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
 # define commands
 # 'name' 'command'
 input=(
-  'Rosbag' 'waitForRos; roslaunch mrs_general record.launch project_name:='"$PROJECT_NAME"'
-  '
+  'Rosbag' 'waitForRos; rosrun mrs_general record.sh
+'
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
   'Tersus' 'waitForRos; roslaunch tersus_gps_driver test.launch'
