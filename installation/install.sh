@@ -36,46 +36,14 @@ $MY_PATH/scripts/install_mrs_certificate.sh
 $MY_PATH/scripts/install_git_lfs.sh
 
 #############################################
-# Install Tomas's Linux Setup
+# Disable automatic update over apt
 #############################################
 
-default=y
-while true ; do
-  if [[ "$unattended" == "1" ]]
-  then
-    resp=$default
-  else
-    [[ -t 0 ]] && { read -t 10 -n 2 -p $'\e[1;32mInstall Linux setup? [y/n] (default: '"$default"$')\e[0m\n' resp || resp=$default ; }
-  fi
-  response=`echo $resp | sed -r 's/(.*)$/\1=/'`
+sudo systemctl disable apt-daily.service
+sudo systemctl disable apt-daily.timer
 
-  if [[ $response =~ ^(y|Y)=$ ]]
-  then
-
-    #############################################
-    # Clone Tomas's linux-setup repository
-    #############################################
-
-    cd ~/git
-    git clone https://github.com/klaxalk/linux-setup
-
-    cd ~/git/linux-setup
-    bash install.sh $subinstall_params
-
-    sudo systemctl disable apt-daily.service
-    sudo systemctl disable apt-daily.timer
-
-    sudo systemctl disable apt-daily-upgrade.timer
-    sudo systemctl disable apt-daily-upgrade.service
-
-    break
-  elif [[ $response =~ ^(n|N)=$ ]]
-  then
-    break
-  else
-    echo " What? \"$resp\" is not a correct answer. Try y+Enter."
-  fi
-done
+sudo systemctl disable apt-daily-upgrade.timer
+sudo systemctl disable apt-daily-upgrade.service
 
 #############################################
 # Install debugging tools

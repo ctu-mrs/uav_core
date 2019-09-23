@@ -22,7 +22,7 @@ and add contents of a file **~/.ssh/id_rsa.pub** as a new key to your account at
 cat ~/.ssh/id_rsa.pub
 ```
 
-## Cloning and running automatic installation
+## Installing the uav_core
 
 Paste following code into your terminal and press **enter**
 ```bash
@@ -42,6 +42,24 @@ expect {
 cd ~/git/uav_core/installation
 git pull
 ./install.sh' > clone.sh && source clone.sh
+```
+
+## Installing Tomas's linux-setup
+
+This repo install's Tomas's Linux environment.
+*Beware!* This might alter you existing configuration of some Linux tools (Vim, Tmux, i3wm, ranger, ...).
+Refer to its [README](https://github.com/klaxalk/linux-setup/blob/master/README.md), for more information.
+Installation is *not* obligatory and the MRS system will work without it.
+
+Paste following code into your terminal and press **enter**
+```bash
+cd /tmp
+echo "mkdir -p ~/git
+cd ~/git
+sudo apt-get -y install git
+git clone https://github.com/klaxalk/linux-setup.git
+cd linux-setup
+./install.sh" > run.sh && source run.sh
 ```
 
 ## Use template for your own repo
