@@ -35,7 +35,7 @@ while true; do
   if [[ $response =~ ^(y|Y)=$ ]]
   then
 
-    toilet Installing tmux
+    echo Installing tmux
 
     if [ -n "$BEAVER" ]; then
 

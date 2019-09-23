@@ -29,7 +29,7 @@ while true; do
   if [[ $response =~ ^(y|Y)=$ ]]
   then
 
-    toilet Installing tmuxinator
+    echo Installing tmuxinator
 
     # install tmuxinator
     cd $APP_PATH/../../submodules/tmuxinator
