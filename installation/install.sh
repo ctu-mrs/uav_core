@@ -46,16 +46,6 @@ sudo systemctl disable apt-daily-upgrade.timer
 sudo systemctl disable apt-daily-upgrade.service
 
 #############################################
-# Install debugging tools
-#############################################
-
-bash $MY_PATH/gdb/install.sh $subinstall_params
-
-bash $MY_PATH/tmux/install.sh $subinstall_params
-
-bash $MY_PATH/tmuxinator/install.sh $subinstall_params
-
-#############################################
 # Install ROS?
 #############################################
 
@@ -83,6 +73,24 @@ while true; do
     echo " What? \"$resp\" is not a correct answer. Try y+Enter."
   fi
 done
+
+#############################################
+# Install debugging tools
+#############################################
+
+bash $MY_PATH/gdb/install.sh $subinstall_params
+
+#############################################
+# Install tmux
+#############################################
+
+bash $MY_PATH/tmux/install.sh $subinstall_params
+
+#############################################
+# Install tmuxinator
+#############################################
+
+bash $MY_PATH/tmuxinator/install.sh $subinstall_params
 
 #############################################
 # install sub-repos in uav_core
