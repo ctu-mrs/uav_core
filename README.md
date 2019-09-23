@@ -47,7 +47,7 @@ git pull
 ## Installing Tomas's linux-setup
 
 This repo install's Tomas's Linux environment.
-*Beware!* This might alter you existing configuration of some Linux tools (Vim, Tmux, i3wm, ranger, ...).
+**Beware!** This might alter you existing configuration of some Linux tools (Vim, Tmux, i3wm, ranger, ...).
 Refer to its [README](https://github.com/klaxalk/linux-setup/blob/master/README.md), for more information.
 Installation is *not* obligatory and the MRS system will work without it.
 
