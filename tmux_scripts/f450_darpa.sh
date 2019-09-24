@@ -39,8 +39,7 @@ input=(
 # '
   'Bumper' 'waitForRos; roslaunch mrs_bumper bumper_darpa.launch
 '
-  'MotorsOn' 'waitForControlManager; rosservice call /'"$UAV_NAME"'/control_manager/motors 1
-'
+  'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
   'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
   # 'Flier' 'waitForOdometry; roslaunch forest_flier uav.launch
 # '
