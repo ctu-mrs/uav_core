@@ -2,15 +2,15 @@
 
 % masses of UAV
 mass = [
-3.4;
-4.3;
-5.51;
+3.60;
+4.2;
+4.78;
 ];
 
 % thrusts needed to hover
 thrust = [
-0.49;
-0.56;
+0.515;
+0.59;
 0.66;
 ];
 
