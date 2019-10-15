@@ -1,4 +1,3 @@
-mavlink stop-all
 mavlink start -d /dev/ttyS2 -b 921600
 mavlink stream -d /dev/ttyS2 -s ATTITUDE -r 100
 mavlink stream -d /dev/ttyS2 -s ATTITUDE_TARGET -r 100
@@ -10,4 +9,3 @@ mavlink stream -d /dev/ttyS2 -s SYS_STATUS -r 10
 mavlink stream -d /dev/ttyS2 -s DISTANCE_SENSOR -r 100
 mavlink stream -d /dev/ttyS2 -s HEARTBEAT -r 100
 usleep 100000
-

@@ -29,7 +29,7 @@ input=(
 '
   'Hector' 'waitForOdometry; roslaunch hector_mapping uav.launch
 '
-  'Control' 'waitForRos; roslaunch mrs_general core.launch
+  'Control' 'waitForRos; roslaunch mrs_general core.launch config_control_manager:=./custom_configs/control_manager.yaml
 '
   'OpticFlow' 'waitForRos; roslaunch mrs_optic_flow optic_flow.launch
 '
@@ -39,7 +39,7 @@ input=(
   'fuse_lat' 'rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string hector'
   # 'estop' 'waitForOdometry; roslaunch mrs_serial estop.launch
 # '
-  'Bumper' 'waitForRos; roslaunch mrs_bumper bumper_darpa.launch
+  'Bumper' 'waitForRos; roslaunch mrs_bumper bumper.launch
 '
   'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
   'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
