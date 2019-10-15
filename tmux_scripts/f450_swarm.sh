@@ -13,7 +13,7 @@ fi
 
 source $HOME/.bashrc
 
-PROJECT_NAME=darpa_testing
+PROJECT_NAME=swarm
 
 MAIN_DIR=~/"bag_files"
 
@@ -33,23 +33,12 @@ input=(
 '
   'OpticFlow' 'waitForRos; roslaunch mrs_optic_flow optic_flow.launch
 '
-  # 'AutoStart' 'waitForRos; roslaunch mrs_general automatic_start_darpa.launch
-# '
   'fuse_hdg' 'rosservice call /'"$UAV_NAME"'/odometry/change_hdg_estimator_type_string hector'
   'fuse_lat' 'rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string hector'
-  # 'estop' 'waitForOdometry; roslaunch mrs_serial estop.launch
-# '
   'Bumper' 'waitForRos; roslaunch mrs_bumper bumper_darpa.launch
 '
   'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
   'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-  # 'Flier' 'waitForOdometry; roslaunch forest_flier uav.launch
-# '
-  # 'goto_tunnel' 'rosservice call /'"$UAV_NAME"'/forest_flier/goto "goal: [5.0, 0.0, 2.0, 0.0]"'
-  # 'return' 'rosservice call /'"$UAV_NAME"'/forest_flier/return"'
-  # 'Start' 'rosservice call /'"$UAV_NAME"'/tunnel_flier/start'
-  # 'goto_fcu' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
-  # 'land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
   'odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
   'att_cmd' 'waitForRos; rostopic echo /'"$UAV_NAME"'/control_manager/attitude_cmd
