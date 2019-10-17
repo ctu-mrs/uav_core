@@ -3,6 +3,7 @@ trackers : [
   "MpcTracker",
   "LandoffTracker",
   "NullTracker",
+  "JoyTracker",
 ]
 
 # - list of names of dynamically loaded controllers
@@ -11,6 +12,7 @@ controllers : [
   "MpcController",
   "FailsafeController",
   "EmergencyController",
+  "AttitudeController",
 ]
 
 obstacle_bumper:

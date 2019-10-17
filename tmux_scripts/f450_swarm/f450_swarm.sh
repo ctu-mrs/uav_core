@@ -33,7 +33,7 @@ input=(
 '
   'Hector' 'waitForOdometry; roslaunch hector_mapping uav.launch
 '
-  'Bumper' 'waitForRos; roslaunch mrs_bumper bumper_darpa.launch
+  'Bumper' 'waitForRos; roslaunch mrs_bumper bumper.launch
 '
   'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
   'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
