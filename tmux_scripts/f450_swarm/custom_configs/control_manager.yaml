@@ -1,0 +1,32 @@
+# - list of names of dynamically loaded trackers
+trackers : [
+  "MpcTracker",
+  "LandoffTracker",
+  "NullTracker",
+]
+
+# - list of names of dynamically loaded controllers
+controllers : [
+  "So3Controller",
+  "MpcController",
+  "FailsafeController",
+  "EmergencyController",
+]
+
+obstacle_bumper:
+
+  enabled: true
+
+  horizontal_distance: 2.0 # [m]
+  vertical_distance: 2.0 # [m]
+
+  # true: the drone will move away from obstacles that appear within the radius
+  repulsion:
+
+    enabled: true
+
+    horizontal_distance: 1.9 # [m]
+    horizontal_offset: 0.2 # [m] by how much to repulse from the horizontal_distance limit
+
+    vertical_distance: 1.9 # [m]
+    vertical_offset: 0.2 # [m]

@@ -27,25 +27,23 @@ input=(
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
-  'Hector' 'waitForOdometry; roslaunch hector_mapping uav.launch
-'
-  'Control' 'waitForRos; roslaunch mrs_general core.launch
+  'Control' 'waitForRos; roslaunch mrs_general core.launch config_odometry:=./custom_configs/odometry.yaml config_control_manager:=./custom_configs/control_manager.yaml config_uav_manager:=./custom_configs/uav_manager.yaml
 '
   'OpticFlow' 'waitForRos; roslaunch mrs_optic_flow optic_flow.launch
 '
-  'fuse_hdg' 'rosservice call /'"$UAV_NAME"'/odometry/change_hdg_estimator_type_string hector'
-  'fuse_lat' 'rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string hector'
+  'Hector' 'waitForOdometry; roslaunch hector_mapping uav.launch
+'
   'Bumper' 'waitForRos; roslaunch mrs_bumper bumper_darpa.launch
 '
   'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
   'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-  'odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
+  'Odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
-  'att_cmd' 'waitForRos; rostopic echo /'"$UAV_NAME"'/control_manager/attitude_cmd
+  'AttitudeCmd' 'waitForRos; rostopic echo /'"$UAV_NAME"'/control_manager/attitude_cmd
 '
-  'odom_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
+  'OdomDiag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
 '
-  'mavros_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
+  'MavrosDiag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
 '
   'KernelLog' 'tail -f /var/log/kern.log -n 100
 '
