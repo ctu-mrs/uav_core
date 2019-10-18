@@ -27,7 +27,7 @@ input=(
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
-  'Control' 'waitForRos; roslaunch mrs_general core.launch config_odometry:=./custom_configs/odometry.yaml config_control_manager:=./custom_configs/control_manager.yaml config_uav_manager:=./custom_configs/uav_manager.yaml
+  'Control' 'waitForRos; roslaunch mrs_general core.launch config_odometry:=./custom_configs/odometry.yaml config_control_manager:=./custom_configs/control_manager.yaml config_uav_manager:=./custom_configs/uav_manager.yaml config_constraint_manager:=./custom_configs/constraint_manager.yaml
 '
   'OpticFlow' 'waitForRos; roslaunch mrs_optic_flow optic_flow.launch
 '
