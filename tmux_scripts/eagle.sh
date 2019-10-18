@@ -167,7 +167,7 @@ do
 done
 
 pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:$init_index"
-pes=$pes"waitForRos; roslaunch mrs_status f550.launch >> /tmp/status.txt"
+pes=$pes"waitForRos; roslaunch mrs_status status.launch >> /tmp/status.txt"
 
 /usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 
