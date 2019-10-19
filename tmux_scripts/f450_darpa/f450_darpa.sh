@@ -95,7 +95,7 @@ then
 else
   echo "iterator.txt does not exist, creating it"
   touch "$ITERATOR_FILE"
-  ITERATOR="0"
+  ITERATOR="1"
 fi
 echo "$ITERATOR" > "$ITERATOR_FILE"
 
