@@ -141,7 +141,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_general.git
   sparse_paths:
   -
-  rev: 0ce4c71bdb8192821f67dbd60d1f335ea33eae9b
+  rev: b22ed2e6fee9568f86798ee1cbed137860172ab8
   link: ros_packages/mrs_general
   scripts:
   - git submodule update --init --recursive
@@ -186,7 +186,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_optic_flow.git
   sparse_paths:
   -
-  rev: 2441d19e695e6a84473b4eb5b8bb935bf3569df8
+  rev: 4e1f2e4c3fd2613efba34d8a7bbddc0f72c9827d
   link: ros_packages/mrs_optic_flow
   scripts:
   - git submodule update --init --recursive
