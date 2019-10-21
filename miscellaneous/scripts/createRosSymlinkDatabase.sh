@@ -39,19 +39,20 @@ do
 
   # "original" = where the link is pointing to
   original=$(readlink "$dir")
-
+  
   # if the "original" path is not empty
   if [[ ! -z "$original" ]];
   then
 
     # if the "original" path starts with "."
     # which means its a relative link
-    if [[ "$original" == "."* ]]
+    if [[ "$original" == "."* ]] || [[ "$original" != *\/* ]]
     then
-
+      #echo "original1 $original"
       # resolve the relative link
       temp="${dir%/*}/$original"
       original=`( builtin cd "$temp" && pwd )`
+      #echo "original2 $original"
     fi
 
     # the linked path must not contain /git/
@@ -60,6 +61,7 @@ do
       echo -e "\e[31mReject $dir\e[39m"
       continue
     else
+      #echo "original final $original"
       echo -e "\e[32mAccept: $dir -> $original\e[39m"
     fi
 
