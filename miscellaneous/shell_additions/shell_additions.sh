@@ -91,7 +91,7 @@ if [ -z $TMUX ]; then
   if [ ! -e "$SYMLINK_LIST_PATH" ]; then
 
     # create the symlink list
-    $UAV_CORE_PATH/miscellaneous/scripts/detacher.sh ~/.scripts/createRosSymlinkDatabase.sh
+    $UAV_CORE_PATH/miscellaneous/scripts/detacher.sh $UAV_CORE_PATH/miscellaneous/scripts/createRosSymlinkDatabase.sh
   fi
 fi
 
