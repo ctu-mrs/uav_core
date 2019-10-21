@@ -103,6 +103,11 @@ if [ ! -e "$SYMLINK_ARRAY_PATH" ] && [ -e "$SYMLINK_LIST_PATH" ]; then
   i="1"
   while IFS=, read -r path1 path2; do
 
+    if [[ "$path1" != *ctop_planner* ]] || [[ "$path2" != *ctop_planner* ]]
+    then
+      continue
+    fi
+
     SYMLINK_LIST_PATHS1[$i]=`eval echo "$path1"`
     SYMLINK_LIST_PATHS2[$i]=`eval echo "$path2"`
 
