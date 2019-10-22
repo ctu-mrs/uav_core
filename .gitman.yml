@@ -204,7 +204,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_trackers.git
   sparse_paths:
   -
-  rev: 56f22376c874ed7d11402966495b9ac739288083
+  rev: daa21111d8e8649c833c5ebc599eb25e3b677528
   link: ros_packages/mrs_trackers
   scripts:
   - git submodule update --init --recursive
@@ -213,7 +213,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
   sparse_paths:
   -
-  rev: 4fa13f77153fe6a549421632e183c6a8901d5012
+  rev: 1f35180fd5c95dbe6b9861fc30a78db2fdc552bb
   link: ros_packages/mrs_uav_manager
   scripts:
   - git submodule update --init --recursive
