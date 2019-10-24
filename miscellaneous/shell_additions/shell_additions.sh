@@ -91,7 +91,7 @@ if [ -z $TMUX ]; then
   if [ ! -e "$SYMLINK_LIST_PATH" ]; then
 
     # create the symlink list
-    $UAV_CORE_PATH/miscellaneous/scripts/detacher.sh ~/.scripts/createRosSymlinkDatabase.sh
+    $UAV_CORE_PATH/miscellaneous/scripts/detacher.sh $UAV_CORE_PATH/miscellaneous/scripts/createRosSymlinkDatabase.sh
   fi
 fi
 
@@ -102,6 +102,11 @@ if [ ! -e "$SYMLINK_ARRAY_PATH" ] && [ -e "$SYMLINK_LIST_PATH" ]; then
   # parse the csv file and extract file paths
   i="1"
   while IFS=, read -r path1 path2; do
+
+    #if [[ "$path1" != *ctop_planner* ]] || [[ "$path2" != *ctop_planner* ]]
+    #then
+    #  continue
+    #fi
 
     SYMLINK_LIST_PATHS1[$i]=`eval echo "$path1"`
     SYMLINK_LIST_PATHS2[$i]=`eval echo "$path2"`

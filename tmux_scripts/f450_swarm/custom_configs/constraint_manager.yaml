@@ -1,0 +1,47 @@
+constraints: [
+  "slow",
+  "medium",
+  "fast",
+  "swarm",
+]
+
+constraint_management:
+
+  # list of allowed gains per odometry mode
+  allowed_constraints:
+    HECTOR: ["swarm"]
+    OPTFLOW: ["swarm"]
+
+  # those gains will be used automatically when a localization mode switches
+  # and the current gains are not in the allowed list (next paragraphs)
+  fallback_constraints:
+    HECTOR: "swarm"
+    OPTFLOW: "swarm"
+
+swarm:
+
+  horizontal:
+    speed: 1.0
+    acceleration: 1.0
+    jerk: 1.0
+    snap: 3.0
+
+  vertical:
+
+    ascending:
+      speed: 1.0
+      acceleration: 1.0
+      jerk: 2.0
+      snap: 2.0
+
+    descending:
+      speed: 1.0
+      acceleration: 1.0
+      jerk: 2.0
+      snap: 2.0
+
+  yaw:
+    speed: 0.5
+    acceleration: 0.5
+    jerk: 3.0
+    snap: 5.0

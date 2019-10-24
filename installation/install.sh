@@ -93,6 +93,12 @@ bash $MY_PATH/tmux/install.sh $subinstall_params
 bash $MY_PATH/tmuxinator/install.sh $subinstall_params
 
 #############################################
+# Install ag
+#############################################
+
+bash $MY_PATH/silver_searcher/install.sh $subinstall_params
+
+#############################################
 # install sub-repos in uav_core
 #############################################
 

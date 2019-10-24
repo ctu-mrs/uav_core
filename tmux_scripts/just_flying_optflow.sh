@@ -27,10 +27,9 @@ input=(
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
-  'Tersus' 'waitForRos; roslaunch tersus_gps_driver test.launch'
-  'Control' 'waitForRos; roslaunch mrs_general core.launch
+  'OptFlow' 'waitForRos; roslaunch mrs_optic_flow optic_flow.launch
 '
-  'Nimbro' 'waitForRos; roslaunch mrs_general nimbro.launch
+  'Control' 'waitForRos; roslaunch mrs_general core.launch
 '
   'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
   'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'

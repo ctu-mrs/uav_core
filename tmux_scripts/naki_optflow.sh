@@ -87,7 +87,7 @@ then
 else
   echo "iterator.txt does not exist, creating it"
   touch "$ITERATOR_FILE"
-  ITERATOR="0"
+  ITERATOR="1"
 fi
 echo "$ITERATOR" > "$ITERATOR_FILE"
 
@@ -167,7 +167,7 @@ do
 done
 
 pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:$init_index"
-pes=$pes"waitForRos; roslaunch mrs_status naki.launch >> /tmp/status.txt"
+pes=$pes"waitForRos; roslaunch mrs_status status.launch >> /tmp/status.txt"
 
 /usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 

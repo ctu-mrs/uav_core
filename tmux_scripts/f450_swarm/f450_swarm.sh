@@ -13,44 +13,42 @@ fi
 
 source $HOME/.bashrc
 
-PROJECT_NAME=just_flying
+PROJECT_NAME=swarm
 
 MAIN_DIR=~/"bag_files"
 
 # following commands will be executed first, in each window
-pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
+pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME; export DISPLAY=:1"
 
 # define commands
 # 'name' 'command'
 input=(
-  'Rosbag' 'waitForRos; rosrun mrs_general record.sh
+  'Rosbag' 'waitForRos; rosrun mrs_general record_darpa.sh
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
-  'Tersus' 'waitForRos; roslaunch tersus_gps_driver test.launch'
-  'Control' 'waitForRos; roslaunch mrs_general core.launch
+  'Control' 'waitForRos; roslaunch mrs_general core.launch config_odometry:=./custom_configs/odometry.yaml config_control_manager:=./custom_configs/control_manager.yaml config_uav_manager:=./custom_configs/uav_manager.yaml config_constraint_manager:=./custom_configs/constraint_manager.yaml
 '
-  'Nimbro' 'waitForRos; roslaunch mrs_general nimbro.launch
+  'OpticFlow' 'waitForRos; roslaunch mrs_optic_flow optic_flow.launch
+'
+  'Hector' 'waitForOdometry; roslaunch hector_mapping uav.launch
+'
+  'Bumper' 'waitForRos; roslaunch mrs_bumper bumper.launch
 '
   'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
   'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-  'ChangeEstimator' 'waitForOdometry; rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string T265'
-  'GoTo_FCU' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
-  'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
-  'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
-  'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
-  'E_hover' 'rosservice call /'"$UAV_NAME"'/control_manager/ehover'
-  'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
+  'Odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
-  'Show_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
+  'AttitudeCmd' 'waitForRos; rostopic echo /'"$UAV_NAME"'/control_manager/attitude_cmd
 '
-  'Mav_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
+  'OdomDiag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
+'
+  'MavrosDiag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
 '
   'KernelLog' 'tail -f /var/log/kern.log -n 100
 '
   'roscore' 'roscore
 '
-  'KILL_ALL' 'dmesg; tmux kill-session -t '
 )
 
 init_window="Control"

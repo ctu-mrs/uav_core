@@ -31,6 +31,8 @@ input=(
 '
   'Control' 'waitForRos; roslaunch mrs_general core.launch config_control_manager:=./custom_configs/control_manager.yaml
 '
+  'OpticFlow' 'waitForRos; roslaunch mrs_optic_flow optic_flow.launch
+'
   # 'AutoStart' 'waitForRos; roslaunch mrs_general automatic_start_darpa.launch
 # '
   'fuse_hdg' 'rosservice call /'"$UAV_NAME"'/odometry/change_hdg_estimator_type_string hector'
@@ -93,7 +95,7 @@ then
 else
   echo "iterator.txt does not exist, creating it"
   touch "$ITERATOR_FILE"
-  ITERATOR="0"
+  ITERATOR="1"
 fi
 echo "$ITERATOR" > "$ITERATOR_FILE"
 
@@ -173,7 +175,7 @@ do
 done
 
 pes=$pes"/usr/bin/tmux select-window -t $SESSION_NAME:$init_index"
-pes=$pes"waitForRos; roslaunch mrs_status f450_pixgarm.launch >> /tmp/status.txt"
+pes=$pes"waitForRos; roslaunch mrs_status status.launch >> /tmp/status.txt"
 
 /usr/bin/tmux send-keys -t $SESSION_NAME:$((${#names[*]}+1)) "${pes}"
 
