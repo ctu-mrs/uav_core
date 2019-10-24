@@ -1,6 +1,6 @@
 #!/bin/bash
 
-key_name="~/.ssh/id_rsa_mbzirc_login"
+key_name="~/.ssh/id_rsa_drone_login"
 
 input=(
   'alfa' 'uav60' '192.168.0.160'
