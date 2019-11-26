@@ -14,7 +14,7 @@ sources:
   repo: git@mrs.felk.cvut.cz:uav/mavros.git
   sparse_paths:
   -
-  rev: d5dc656440b81118ce76543fe18962924a9051eb
+  rev: header_fix
   link: ros_packages/mavros
   scripts:
   - git submodule update --init --recursive
@@ -123,7 +123,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/mavros.git
   sparse_paths:
   -
-  rev: 563c8610f539bf8978087306b289a1b6ffc1013e
+  rev: 0cf50af8dfcf32b320bfb4b8b7630e500b569af9
   link: ros_packages/mavros
   scripts:
   - git submodule update --init --recursive
@@ -141,7 +141,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_general.git
   sparse_paths:
   -
-  rev: b90ac6def81634b14dba2f42d0d58dbe10b38c2a
+  rev: 386efea93b7515bf62eacc09fa00304c1cb03795
   link: ros_packages/mrs_general
   scripts:
   - git submodule update --init --recursive
