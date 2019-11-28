@@ -27,13 +27,14 @@ input=(
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
- 'bluefox' 'waitForRos; roslaunch uvdar bluefox_basic.launch device:='"$BLUEFOX"' camera_name:=bluefox fps:=3 aec:=true agc:=true                        
+ 'bluefox' 'waitForRos; roslaunch uvdar bluefox_basic.launch device:='"$BLUEFOX"' camera_name:=bluefox fps:=3 aec:=true agc:=false                        
 '
-'uvdar_core' 'waitForRos; roslaunch uvdar start_dataset_1t.launch
+'uvdar_core' 'waitForRos; sleep 10; roslaunch uvdar start_dataset_1t.launch
 '                                                                                                                                                       
-'uvdar_kalman' 'waitForRos; roslaunch uvdar uvdar_kalman.launch frame:=fcu_'"$UAV_NAME"'
+'uvdar_kalman' 'waitForRos; roslaunch uvdar uvdar_kalman.launch frame:='"$UAV_NAME"'/fcu filter_count:=1
 '                                                                                                                                                       
-'uvdar_reprojection' 'if [ $TEST -ne "true" ]; then waitForRos; waitForControl; fi; roslaunch uvdar reprojector.launch frame_estimate:=fcu_'"$UAV_NAME"''
+'uvdar_reprojection' 'if [ $TEST -ne "true" ]; then waitForRos; waitForControl; fi; roslaunch uvdar reprojector.launch frame_estimate:='"$UAV_NAME"'/fcu yaw_diff:=0.06 pitch_diff:=0.00 
+'
   # 'Tersus' 'waitForRos; roslaunch tersus_gps_driver test.launch'
   # 'Control' 'waitForRos; roslaunch mrs_general core.launch
 # '
