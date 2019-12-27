@@ -205,8 +205,8 @@ done
 
 cd ~/$ROS_WORKSPACE
 source /opt/ros/melodic/setup.bash
-command catkin build mavros --mem_limit 75%
-command catkin build -c --mem_limit 75%
+command catkin build mavros --mem-limit 75%
+command catkin build -c --mem-limit 75%
 
 # after sucessfully building mavros, install libgeo
 cd ~/git/uav_core/ros_packages/mavros/mavros/scripts
