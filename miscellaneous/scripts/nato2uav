@@ -52,7 +52,7 @@ def main():
     args = parser.parse_args()
 
     name = args.name
-    mode = args.mode[0]
+    mode = args.mode
     src_col = 0
     dst_col = 1
     prepend = ""
