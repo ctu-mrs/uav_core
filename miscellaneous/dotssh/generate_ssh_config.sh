@@ -1,6 +1,6 @@
 #!/bin/bash
 
-key_name="~/.ssh/id_rsa_mbzirc_login"
+key_name="~/.ssh/id_rsa_drone_login"
 
 input=(
   'alfa' 'uav60' '192.168.69.160'
@@ -13,6 +13,9 @@ input=(
   'hotel' 'uav67' '192.168.69.167'
   'india' 'uav68' '192.168.69.168'
   'juliett' 'uav69' '192.168.69.169'
+  'kilo' 'uav69' '192.168.69.169'
+  'lima' 'uav70' '192.168.69.170'
+  'mike' 'uav71' '192.168.69.171'
   'papa' 'uav45' '192.168.69.145'
   'quebec' 'uav47' '192.168.69.147'
   'romeo' 'uav49' '192.168.69.149'

@@ -1,0 +1,96 @@
+#!/usr/bin/env python
+import argparse
+from enum import Enum
+import sys
+
+ip_wlan_pre = "192.168.0."
+ip_eth_pre = "10.10.20."
+
+uav_list = [
+    ("alpha", "60", "T650"),
+    ("bravo", "61", "T650"),
+    ("charlie", "62", "T650"),
+    ("delta", "63", "T650"),
+    ("echo", "64", "T650"),
+    ("foxtrot", "65", "T650"),
+    ("golf", "66", "T650"),
+    ("hotel", "67", "T650"),
+    ("india", "68", "T650"),
+    ("juliett", "69", "T650"),
+
+    ("papa", "45", "F450"),
+    ("quebec", "47", "F450"),
+    ("romeo", "49", "F450"),
+    ("sierra", "46", "F450"),
+]
+
+def find_uav(value, column):
+    for row in uav_list:
+        if row[column] == value:
+            return row
+    return ("not found", "-1", "unknown")
+
+class Mode(Enum):
+    n2u = 'n2u'
+    n2t = 'n2t'
+    n2ip = 'n2ip'
+    n2ip_eth = 'n2ip_eth'
+
+    u2n = 'u2n'
+    u2t = 'u2t'
+    u2ip = 'u2ip'
+    u2ip_eth = 'u2ip_eth'
+
+    def __str__(self):
+        return self.value
+
+def main():
+    parser = argparse.ArgumentParser(description="A tool to convert NATO names to UAV numbers, UAV types etc.")
+
+    parser.add_argument("name", help="the NATO name of the UAV if using n2* mode or the number of the UAV if using u2* mode")
+    parser.add_argument("--mode", nargs=1, type=Mode, choices=list(Mode), default=Mode.n2u, help="which mode to use. Modes starting with 'n' convert from NATO name, modes starting with 'u' convert from UAV number. Mode name after '2' specifies to what to convert. Possible values include 'n' for NATO name, 'u' for UAV number, 't' for UAV type, 'ip' for UAV WLAN IP address and 'ip_eth' for UAV Ethernet IP address. E.g. 'u2ip' will convert UAV number to its WLAN IP address.")
+    args = parser.parse_args()
+
+    name = args.name
+    mode = args.mode
+    src_col = 0
+    dst_col = 1
+    prepend = ""
+    if mode == Mode.n2u:
+        src_col = 0
+        dst_col = 1
+    elif mode == Mode.u2n:
+        src_col = 1
+        dst_col = 0
+    elif mode == Mode.n2t:
+        src_col = 0
+        dst_col = 2
+    elif mode == Mode.u2t:
+        src_col = 1
+        dst_col = 2
+    elif mode == Mode.n2ip:
+        src_col = 0
+        dst_col = 1
+        prepend = ip_wlan_pre
+    elif mode == Mode.n2ip_eth:
+        src_col = 0
+        dst_col = 1
+        prepend = ip_eth_pre
+    elif mode == Mode.u2ip:
+        src_col = 1
+        dst_col = 1
+        prepend = ip_wlan_pre
+    elif mode == Mode.u2ip_eth:
+        src_col = 1
+        dst_col = 1
+        prepend = ip_eth_pre
+    else:
+        sys.stderr.write("Unknown mode: {}".format(mode))
+    row = find_uav(name, src_col)
+    output = prepend + row[dst_col]
+    print(output)
+
+
+
+if __name__ == "__main__":
+    main()
