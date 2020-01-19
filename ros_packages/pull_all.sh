@@ -6,27 +6,35 @@ MY_PATH=`( cd "$MY_PATH" && pwd )`
 
 cd $MY_PATH
 
-dirs=(
-"mrs_controllers"
-"mrs_general"
-"mrs_lib"
-"mrs_mavros_interface"
-"mrs_msgs"
-"mrs_odometry"
-"mrs_optic_flow"
-"mrs_status"
-"mrs_trackers"
-"mrs_uav_manager"
+input=(
+"mrs_controllers" "master"
+"mrs_general" "master"
+"mrs_lib" "master"
+"mrs_mavros_interface" "master"
+"mrs_msgs" "master"
+"mrs_odometry" "master"
+"mrs_optic_flow" "master"
+"mrs_status" "master"
+"mrs_trackers" "master"
+"mrs_uav_manager" "master"
 )
 
+# create arrays of names and commands
+for ((i=0; i < ${#input[*]}; i++));
+do
+  ((i%2==0)) && repos[$i/2]="${input[$i]}"
+  ((i%2==1)) && branches[$i/2]="${input[$i]}"
+done
+
 # copy the files
-for ((i=0; i < ${#dirs[*]}; i++));
+for ((i=0; i < ((${#repos[*]})); i++));
 do
 
-  echo Pulling ${dirs[$i]}
+  echo Pulling "${repos[$i]}", branch ${branches[$i]}
 
-  cd ${dirs[$i]}
+  cd ${repos[$i]}
 
+  git checkout ${branches[$i]}
   git pull
 
   cd ..
