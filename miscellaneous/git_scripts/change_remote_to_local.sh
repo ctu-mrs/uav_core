@@ -4,7 +4,7 @@ import os, sys, copy
 #configs
 
 GLOBAL_REPO_LOCATION = "git@mrs.felk.cvut.cz"
-LOCAL_REPO_LOCATION = "git@localhost"
+LOCAL_REPO_LOCATION = "git@nuc7"
 CREATE_NEW_REMOTE_FOLDERS = False
 PUSH_TO_NEW_SERVER = False
 DEBUG = False
@@ -131,6 +131,9 @@ def print_help(arguments):
 
 if __name__ == "__main__":
 
+        change_from_repo = GLOBAL_REPO_LOCATION
+        change_to_repo = LOCAL_REPO_LOCATION
+
 	#parse arguments
 	arguments = sys.argv
 	if "-h" in arguments or "--help" in arguments:
@@ -156,7 +159,7 @@ if __name__ == "__main__":
 
 	#parse repos from gitman.yml and filter changable ones
 	all_repos = load_repos()
-	old_repos = filter_old_repos(all_repos,change_from_repo)
+	old_repos = filter_old_repos(all_repos, change_from_repo)
 	
 	#change links and create repos of all changable in gitman.yml
 	num_changed = 0
