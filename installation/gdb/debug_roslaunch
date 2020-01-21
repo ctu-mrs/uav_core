@@ -16,7 +16,7 @@ fi
 orig_tty=`tty`
 tmpfile=$(mktemp /tmp/debug_roslaunch_env.XXXXXXXX)
 export -p > $tmpfile
-pre_cmd="source $HOME/.bashrc; source $tmpfile"
+pre_cmd="source $HOME/.bashrc; source $tmpfile; rm $tmpfile"
 gdb_cmd="gdb -ex 'tty $orig_tty' -ex run --args $@"
 cmd="$pre_cmd; $gdb_cmd; exit"
 tmux split-window -h "bash -c \"$cmd\""
