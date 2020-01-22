@@ -319,11 +319,17 @@ catkin() {
 
     build*|b|bt)
 
+      if [ $HOST == uav* ]]; then
+        memlimit="--mem-limit 75%"
+      else
+        memlimit=""
+      fi
+
       PACKAGES=$(catkin list)
       if [ -z "$PACKAGES" ]; then
         echo "Cannot compile, probably not in a workspace (call catkin list, if the result is empty, build you workspace in its root first)."
       else
-        command catkin "$@"
+        command catkin "$memlimit" "$@"
       fi
 
       ;;
