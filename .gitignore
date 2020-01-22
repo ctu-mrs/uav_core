@@ -10,3 +10,4 @@
 *.pyc
 
 .gitman
+.gitman.old
