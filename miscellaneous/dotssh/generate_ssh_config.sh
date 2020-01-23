@@ -43,6 +43,8 @@ done
 hostname=( "${hostname[@]}" "${nato[@]}" )
 ip=( "${ip[@]}" "${ip[@]}" )
 
+my_hostname=$( cat /etc/hostname )
+
 for ((i=0; i < ${#hostname[*]}; i++)); do
 
   num=`cat ~/.ssh/config | grep "host ${hostname[i]}" | wc -l`
@@ -79,10 +81,16 @@ for ((i=0; i < ${#hostname[*]}; i++)); do
 
   fi
 
-  sudo bash -c "echo ${ip[i]} ${hostname[i]} >> /etc/hosts"
+  # only do it if its another uav
+  # this is neccessary for NimbroNetwork
+  if [[ $my_hostname ~= $hostname ]]; then
 
-  sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/${ip[i]}/norm ddGp" -c "wqa" -- "/etc/hosts"
-  sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "normal Go" -c "wqa" -- "/etc/hosts"
+    sudo bash -c "echo ${ip[i]} ${hostname[i]} >> /etc/hosts"
+
+    sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/${ip[i]}/norm ddGp" -c "wqa" -- "/etc/hosts"
+    sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "normal Go" -c "wqa" -- "/etc/hosts"
+
+  fi
 
 done
 
