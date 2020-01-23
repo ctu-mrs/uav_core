@@ -75,15 +75,15 @@ for ((i=0; i < ${#hostname[*]}; i++)); do
 
   else
 
-    echo Updating entry in /etc/hosts for ${hostname[i]} ${ip[i]}
-
     sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/.*${hostname[i]}/norm dd" -c "wqa" -- "/etc/hosts"
 
   fi
 
   # only do it if its another uav
   # this is neccessary for NimbroNetwork
-  if [[ $my_hostname ~= $hostname ]]; then
+  if [[ "$my_hostname" != "${hostname[i]}" ]]; then
+
+    echo Updating entry in /etc/hosts for ${hostname[i]} ${ip[i]}
 
     sudo bash -c "echo ${ip[i]} ${hostname[i]} >> /etc/hosts"
 

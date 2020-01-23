@@ -21,6 +21,7 @@ input=(
   'PIXGARM' 'false' 'true if Garmin lidar is connected throught Pixhawk'
   'SENSORS' '' '{garmin_down, garmin_up, rplidar, realsense_front, teraranger, bluefox_optflow}'
   'WORLD_NAME' 'simulation' 'e.g.: "simulation" <= mrs_general/config/world_simulation.yaml'
+  'MRS_STATUS' '' '{dynamics, balloon, avoidance}'
 )
 
 # create arrays
