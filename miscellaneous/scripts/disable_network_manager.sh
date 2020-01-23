@@ -11,3 +11,5 @@ sudo systemctl disable NetworkManager-dispatcher.service
 
 sudo systemctl stop network-manager.service
 sudo systemctl disable network-manager.service
+
+sudo netplan apply
