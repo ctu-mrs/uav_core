@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 sudo systemctl stop NetworkManager.service
 sudo systemctl disable NetworkManager.service
