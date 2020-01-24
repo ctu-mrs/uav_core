@@ -319,7 +319,7 @@ catkin() {
 
     build*|b|bt)
 
-      if [ $HOST == uav* ]]; then
+      if [[ "$HOST" == "uav*" ]]; then
         memlimit="--mem-limit 75%"
       else
         memlimit=""
