@@ -319,8 +319,10 @@ catkin() {
 
     build*|b|bt)
 
-      if [[ "$HOST" == "uav*" ]]; then
-        memlimit="--mem-limit 75%"
+      hostname=$( cat /etc/hostname )
+
+      if [[ "$hostname" == "uav*" ]]; then
+        memlimit="--mem-limit 50%"
       else
         memlimit=""
       fi
