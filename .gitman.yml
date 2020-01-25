@@ -195,7 +195,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/utils/mrs_status.git
   sparse_paths:
   -
-  rev: a2b144a0b2e5867d49acf54927fb99caaee08bd7
+  rev: 5fd42e0ae6ca5796aae07be968edb41b72621e04
   link: ros_packages/mrs_status
   scripts:
   - git submodule update --init --recursive

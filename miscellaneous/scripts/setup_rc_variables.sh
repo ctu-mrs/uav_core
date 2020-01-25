@@ -19,9 +19,9 @@ input=(
   'STANDALONE' 'false' 'disables the core nodelete manager'
   'SWAP_GARMINS' 'false' 'swap up/down garmins'
   'PIXGARM' 'false' 'true if Garmin lidar is connected throught Pixhawk'
-  'SENSORS' '' '{garmin_down, garmin_up, rplidar, realsense_front, teraranger, bluefox_optflow}'
+  'SENSORS' '' '{garmin_down, garmin_up, rplidar, realsense_front, teraranger, bluefox_optflow, realsense_brick, bluefox_brick}'
   'WORLD_NAME' 'simulation' 'e.g.: "simulation" <= mrs_general/config/world_simulation.yaml'
-  'MRS_STATUS' 'readme' '{readme, dynamics, balloon, avoidance, control_error}'
+  'MRS_STATUS' 'readme' '{readme, dynamics, balloon, avoidance, control_error, gripper}'
 )
 
 # create arrays
