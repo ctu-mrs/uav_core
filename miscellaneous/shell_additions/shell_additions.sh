@@ -337,7 +337,7 @@ catkin() {
       if [ -z "$PACKAGES" ]; then
         echo "Cannot compile, probably not in a workspace (call catkin list, if the result is empty, build you workspace in its root first)."
       else
-        command catkin "$memlimit" "$@"
+        command catkin "$@" "$memlimit"
       fi
 
       ;;
