@@ -101,6 +101,10 @@ if [ ! -e "$SYMLINK_ARRAY_PATH" ] && [ -e "$SYMLINK_LIST_PATH" ]; then
 
   # parse the csv file and extract file paths
   i="1"
+
+  SYMLINK_LIST_PATHS1=()
+  SYMLINK_LIST_PATHS2=()
+
   while IFS=, read -r path1 path2; do
 
     if [[ "$path1" == *ctop_planner* ]] || [[ "$path2" == *ctop_planner* ]]
@@ -118,7 +122,7 @@ if [ ! -e "$SYMLINK_ARRAY_PATH" ] && [ -e "$SYMLINK_LIST_PATH" ]; then
 
   echo "SYMLINK_LIST_PATHS1=(" > $SYMLINK_ARRAY_PATH
   i="0"
-  for ((i=0; i < ${#SYMLINK_LIST_PATHS1[*]}; i++));
+  for ((i=1; i < ${#SYMLINK_LIST_PATHS1[*]}+1; i++));
   do
     echo "\"${SYMLINK_LIST_PATHS1[$i]}\" " >> $SYMLINK_ARRAY_PATH
   done
@@ -127,7 +131,7 @@ if [ ! -e "$SYMLINK_ARRAY_PATH" ] && [ -e "$SYMLINK_LIST_PATH" ]; then
 
   echo "SYMLINK_LIST_PATHS2=(" >> $SYMLINK_ARRAY_PATH
   i="0"
-  for ((i=0; i < ${#SYMLINK_LIST_PATHS2[*]}; i++));
+  for ((i=1; i < ${#SYMLINK_LIST_PATHS2[*]}+1; i++));
   do
     echo "\"${SYMLINK_LIST_PATHS2[$i]}\" " >> $SYMLINK_ARRAY_PATH
   done
@@ -157,10 +161,12 @@ cd() {
     new_path=`pwd`
 
     # test original paths for prefix
+
     # echo ""
     j="1"
     for ((i=1; i < ${#SYMLINK_LIST_PATHS1[*]}+1; i++));
     do
+
       if [[ "$new_path" == *${SYMLINK_LIST_PATHS2[$i]}* ]]
       then
         # echo "found prefix: ${SYMLINK_LIST_PATHS1[$i]} -> ${SYMLINK_LIST_PATHS2[$i]} for $new_path"
