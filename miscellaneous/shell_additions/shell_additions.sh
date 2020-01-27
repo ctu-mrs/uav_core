@@ -327,7 +327,7 @@ catkin() {
 
       hostname=$( cat /etc/hostname )
 
-      if [[ "$hostname" == "uav*" ]]; then
+      if [[ $hostname == uav* ]]; then
         memlimit="--mem-limit 50%"
       else
         memlimit=""
@@ -337,7 +337,12 @@ catkin() {
       if [ -z "$PACKAGES" ]; then
         echo "Cannot compile, probably not in a workspace (call catkin list, if the result is empty, build you workspace in its root first)."
       else
-        command catkin "$@" "$memlimit"
+        if [ -z "$memlimit" ]; then
+          command catkin "$@"
+        else
+          echo "Detected UAV PC, compiling with $memlimit"
+          command catkin "$@" $memlimit
+        fi
       fi
 
       ;;
