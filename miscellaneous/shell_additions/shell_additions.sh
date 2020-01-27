@@ -100,7 +100,7 @@ fi
 if [ ! -e "$SYMLINK_ARRAY_PATH" ] && [ -e "$SYMLINK_LIST_PATH" ]; then
 
   # parse the csv file and extract file paths
-  i="1"
+  i="0"
 
   SYMLINK_LIST_PATHS1=()
   SYMLINK_LIST_PATHS2=()
