@@ -132,7 +132,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_controllers.git
   sparse_paths:
   -
-  rev: 1e0b197b863d786e56366e707f187ea76fd6656f
+  rev: e9cae69cf494d3c26a63d07332ac56271a712c61
   link: ros_packages/mrs_controllers
   scripts:
   - git submodule update --init --recursive
