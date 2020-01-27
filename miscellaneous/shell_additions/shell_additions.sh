@@ -162,7 +162,7 @@ cd() {
     # test original paths for prefix
 
     # echo ""
-    j="0"
+    j="1"
     for ((i=0; i < ${#SYMLINK_LIST_PATHS1[*]}; i++));
     do
 
@@ -178,7 +178,7 @@ cd() {
       fi
     done
 
-    if [ "$j" -ge "1" ]
+    if [ "$j" -ge "2" ]
     then
       builtin cd "$new_path"
     fi
