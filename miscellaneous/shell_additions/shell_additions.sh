@@ -148,7 +148,6 @@ fi
 
 cd() {
 
-  # if ag is missing, run normal "cd"
   if [ -z SYMLINK_LIST_PATHS1 ]; then
 
     builtin cd "$@"
@@ -163,11 +162,11 @@ cd() {
     # test original paths for prefix
 
     # echo ""
-    j="1"
-    for ((i=1; i < ${#SYMLINK_LIST_PATHS1[*]}+1; i++));
+    j="0"
+    for ((i=0; i < ${#SYMLINK_LIST_PATHS1[*]}; i++));
     do
 
-      if [[ "$new_path" == *${SYMLINK_LIST_PATHS2[$i]}* ]]
+      if [[ $new_path == *${SYMLINK_LIST_PATHS2[$i]}* ]]
       then
         # echo "found prefix: ${SYMLINK_LIST_PATHS1[$i]} -> ${SYMLINK_LIST_PATHS2[$i]} for $new_path"
         # echo substracted: ${new_path#*${SYMLINK_LIST_PATHS2[$i]}}
@@ -179,7 +178,7 @@ cd() {
       fi
     done
 
-    if [ "$j" -ge "2" ]
+    if [ "$j" -ge "1" ]
     then
       builtin cd "$new_path"
     fi
