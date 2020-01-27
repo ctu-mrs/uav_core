@@ -100,7 +100,7 @@ fi
 if [ ! -e "$SYMLINK_ARRAY_PATH" ] && [ -e "$SYMLINK_LIST_PATH" ]; then
 
   # parse the csv file and extract file paths
-  i="0"
+  i="1"
 
   SYMLINK_LIST_PATHS1=()
   SYMLINK_LIST_PATHS2=()
@@ -121,7 +121,7 @@ if [ ! -e "$SYMLINK_ARRAY_PATH" ] && [ -e "$SYMLINK_LIST_PATH" ]; then
   done < "$SYMLINK_LIST_PATH"
 
   echo "SYMLINK_LIST_PATHS1=(" > $SYMLINK_ARRAY_PATH
-  i="0"
+  i="1"
   for ((i=1; i < ${#SYMLINK_LIST_PATHS1[*]}+1; i++));
   do
     echo "\"${SYMLINK_LIST_PATHS1[$i]}\" " >> $SYMLINK_ARRAY_PATH
@@ -163,7 +163,7 @@ cd() {
 
     # echo ""
     j="1"
-    for ((i=0; i < ${#SYMLINK_LIST_PATHS1[*]}; i++));
+    for ((i=1; i < ${#SYMLINK_LIST_PATHS1[*]}+1; i++));
     do
 
       if [[ $new_path == *${SYMLINK_LIST_PATHS2[$i]}* ]]
