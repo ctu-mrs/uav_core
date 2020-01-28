@@ -121,7 +121,6 @@ if [ ! -e "$SYMLINK_ARRAY_PATH" ] && [ -e "$SYMLINK_LIST_PATH" ]; then
   done < "$SYMLINK_LIST_PATH"
 
   echo "SYMLINK_LIST_PATHS1=(" > $SYMLINK_ARRAY_PATH
-  i="1"
   for ((i=1; i < ${#SYMLINK_LIST_PATHS1[*]}+1; i++));
   do
     echo "\"${SYMLINK_LIST_PATHS1[$i]}\" " >> $SYMLINK_ARRAY_PATH
@@ -130,7 +129,6 @@ if [ ! -e "$SYMLINK_ARRAY_PATH" ] && [ -e "$SYMLINK_LIST_PATH" ]; then
   " >> $SYMLINK_ARRAY_PATH
 
   echo "SYMLINK_LIST_PATHS2=(" >> $SYMLINK_ARRAY_PATH
-  i="0"
   for ((i=1; i < ${#SYMLINK_LIST_PATHS2[*]}+1; i++));
   do
     echo "\"${SYMLINK_LIST_PATHS2[$i]}\" " >> $SYMLINK_ARRAY_PATH
@@ -161,13 +159,24 @@ cd() {
 
     # test original paths for prefix
 
+    case "$SHELL" in
+      *bash*)
+        fucking_shell_offset="0"
+        ;;
+      *zsh*)
+        fucking_shell_offset="1"
+        ;;
+    esac
+
     # echo ""
     j="1"
-    for ((i=1; i < ${#SYMLINK_LIST_PATHS1[*]}+1; i++));
+    
+    for ((i=$fucking_shell_offset; i < ${#SYMLINK_LIST_PATHS1[*]}+$fucking_shell_offset; i++));
     do
 
       if [[ $new_path == *${SYMLINK_LIST_PATHS2[$i]}* ]]
       then
+
         # echo "found prefix: ${SYMLINK_LIST_PATHS1[$i]} -> ${SYMLINK_LIST_PATHS2[$i]} for $new_path"
         # echo substracted: ${new_path#*${SYMLINK_LIST_PATHS2[$i]}}
         repath[$j]="${SYMLINK_LIST_PATHS1[$i]}${new_path#*${SYMLINK_LIST_PATHS2[$i]}}"
