@@ -1,0 +1,7 @@
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", ENV{ID_PATH}=="pci-0000:00:14.0-usb-0:3.2:1.0",SYMLINK+="pixhawk",OWNER="mrs",MODE="0666"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="rplidar",OWNER="mrs",MODE="0666"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", ENV{ID_PATH}=="pci-0000:00:14.0-usb-0:3.2:1.1", SYMLINK+="thermal_top",OWNER="mrs",MODE="0666"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", ENV{ID_PATH}=="pci-0000:00:14.0-usb-0:3.2:1.2", SYMLINK+="thermal_middle",OWNER="mrs",MODE="0666"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", ENV{ID_PATH}=="pci-0000:00:14.0-usb-0:3.2:1.3", SYMLINK+="thermal_bottom",OWNER="mrs",MODE="0666"
+
+SUBSYSTEM=="tty", ATTRS{idVendor}=="fe10", ATTRS{idProduct}=="f702", SYMLINK+="datapodavac",OWNER="mrs",MODE="0666"

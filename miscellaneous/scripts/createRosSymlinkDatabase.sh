@@ -7,9 +7,8 @@ if [ ! -x "$(command -v ag)" ]; then
   return 1
 fi
 
-file_path="/tmp/symlink_list.txt"
-
-rm "$file_path" > /dev/null 2>&1
+SYMLINK_ARRAY_PATH="/tmp/symlink_array.sh"
+symlink_list_tmp_file="/tmp/symlink_list_$RANDOM.txt"
 
 IFS=' ' read -r -a WORKSPACES <<< "$ROS_WORKSPACE" # `
 
@@ -39,7 +38,7 @@ do
 
   # "original" = where the link is pointing to
   original=$(readlink "$dir")
-  
+
   # if the "original" path is not empty
   if [[ ! -z "$original" ]];
   then
@@ -66,11 +65,56 @@ do
     fi
 
     # put it into our output file
-    echo "$dir, $original" >> "$file_path"
+    echo "$dir, $original" >> "$symlink_list_tmp_file"
   fi
 done
 
 # delete duplicite lines in the file
-mv "$file_path" "$file_path".old
-cat "$file_path".old | uniq > "$file_path"
-rm "$file_path".old
+cat "$symlink_list_tmp_file" | uniq > "$symlink_list_tmp_file.temp"
+mv "$symlink_list_tmp_file.temp" "$symlink_list_tmp_file"
+
+#######################################################################
+# stage 2
+
+# parse the csv file and extract file paths
+i="1"
+
+SYMLINK_LIST_PATHS1=()
+SYMLINK_LIST_PATHS2=()
+
+while IFS=, read -r path1 path2; do
+
+  if [[ "$path1" == *ctop_planner* ]] || [[ "$path2" == *ctop_planner* ]]
+  then
+    continue
+  fi
+
+  SYMLINK_LIST_PATHS1[$i]=`eval echo "$path1"`
+  SYMLINK_LIST_PATHS2[$i]=`eval echo "$path2"`
+
+  # echo "${SYMLINK_LIST_PATHS1[$i]} -> ${SYMLINK_LIST_PATHS2[$i]}"
+
+  i=$(expr $i + 1)
+done < "$symlink_list_tmp_file"
+
+rm $symlink_list_tmp_file
+
+array_list_tmp_file="/tmp/symlink_array_$RANDOM.sh"
+touch $array_list_tmp_file
+
+echo "SYMLINK_LIST_PATHS1=(" > $array_list_tmp_file
+for ((i=1; i < ${#SYMLINK_LIST_PATHS1[*]}+1; i++));
+do
+  echo "\"${SYMLINK_LIST_PATHS1[$i]}\" " >> $array_list_tmp_file
+done
+echo ")
+" >> $array_list_tmp_file
+
+echo "SYMLINK_LIST_PATHS2=(" >> $array_list_tmp_file
+for ((i=1; i < ${#SYMLINK_LIST_PATHS2[*]}+1; i++));
+do
+  echo "\"${SYMLINK_LIST_PATHS2[$i]}\" " >> $array_list_tmp_file
+done
+echo ")" >> $array_list_tmp_file
+
+mv "$array_list_tmp_file" "$SYMLINK_ARRAY_PATH"

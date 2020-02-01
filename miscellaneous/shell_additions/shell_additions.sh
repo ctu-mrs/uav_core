@@ -80,7 +80,6 @@ alias sb="sourceShellDotfile"
 
 # #{ cd()
 
-SYMLINK_LIST_PATH="/tmp/symlink_list.txt"
 SYMLINK_ARRAY_PATH="/tmp/symlink_array.sh"
 
 # generate the symlink list
@@ -88,65 +87,21 @@ SYMLINK_ARRAY_PATH="/tmp/symlink_array.sh"
 if [ -z $TMUX ]; then
 
   # and the symlinklist does not exist
-  if [ ! -e "$SYMLINK_LIST_PATH" ]; then
+  if [ ! -e "$SYMLINK_ARRAY_PATH" ]; then
 
     # create the symlink list
     $UAV_CORE_PATH/miscellaneous/scripts/detacher.sh $UAV_CORE_PATH/miscellaneous/scripts/createRosSymlinkDatabase.sh
   fi
 fi
 
-# when the symlink list is generated, post-process it to create a shell file
-# with the definition of the array
-if [ ! -e "$SYMLINK_ARRAY_PATH" ] && [ -e "$SYMLINK_LIST_PATH" ]; then
-
-  # parse the csv file and extract file paths
-  i="1"
-
-  SYMLINK_LIST_PATHS1=()
-  SYMLINK_LIST_PATHS2=()
-
-  while IFS=, read -r path1 path2; do
-
-    if [[ "$path1" == *ctop_planner* ]] || [[ "$path2" == *ctop_planner* ]]
-    then
-      continue
-    fi
-
-    SYMLINK_LIST_PATHS1[$i]=`eval echo "$path1"`
-    SYMLINK_LIST_PATHS2[$i]=`eval echo "$path2"`
-
-    # echo "${SYMLINK_LIST_PATHS1[$i]} -> ${SYMLINK_LIST_PATHS2[$i]}"
-
-    i=$(expr $i + 1)
-  done < "$SYMLINK_LIST_PATH"
-
-  echo "SYMLINK_LIST_PATHS1=(" > $SYMLINK_ARRAY_PATH
-  for ((i=1; i < ${#SYMLINK_LIST_PATHS1[*]}+1; i++));
-  do
-    echo "\"${SYMLINK_LIST_PATHS1[$i]}\" " >> $SYMLINK_ARRAY_PATH
-  done
-  echo ")
-  " >> $SYMLINK_ARRAY_PATH
-
-  echo "SYMLINK_LIST_PATHS2=(" >> $SYMLINK_ARRAY_PATH
-  for ((i=1; i < ${#SYMLINK_LIST_PATHS2[*]}+1; i++));
-  do
-    echo "\"${SYMLINK_LIST_PATHS2[$i]}\" " >> $SYMLINK_ARRAY_PATH
-  done
-  echo ")" >> $SYMLINK_ARRAY_PATH
-
-fi
-
 # if the array file exists, just source it
-if [ -e "$SYMLINK_ARRAY_PATH" ]; then
-
-  source $SYMLINK_ARRAY_PATH
-
-fi
+[ -f "$SYMLINK_ARRAY_PATH" ] && source $SYMLINK_ARRAY_PATH
 
 cd() {
 
-  if [ -z SYMLINK_LIST_PATHS1 ]; then
+  [ -z "$SYMLINK_LIST_PATHS1" ] && [ -f "$SYMLINK_ARRAY_PATH" ] && source $SYMLINK_ARRAY_PATH
+
+  if [ -z "$SYMLINK_LIST_PATHS1" ]; then
 
     builtin cd "$@"
     return
@@ -170,7 +125,7 @@ cd() {
 
     # echo ""
     j="1"
-    
+
     for ((i=$fucking_shell_offset; i < ${#SYMLINK_LIST_PATHS1[*]}+$fucking_shell_offset; i++));
     do
 
