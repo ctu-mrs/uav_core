@@ -87,7 +87,7 @@ SYMLINK_ARRAY_PATH="/tmp/symlink_array.sh"
 if [ -z $TMUX ]; then
 
   # and the symlinklist does not exist
-  if [ ! -e "$SYMLINK_ARRAY_PATH" ]; then
+  if [ ! -f "$SYMLINK_ARRAY_PATH" ]; then
 
     # create the symlink list
     $UAV_CORE_PATH/miscellaneous/scripts/detacher.sh $UAV_CORE_PATH/miscellaneous/scripts/createRosSymlinkDatabase.sh
