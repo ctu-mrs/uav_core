@@ -217,4 +217,3 @@ sources_locked:
   link: ros_packages/mrs_uav_manager
   scripts:
   - git submodule update --init --recursive
-groups: []
