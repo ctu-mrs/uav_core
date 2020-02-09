@@ -36,6 +36,8 @@ input=(
 'uvdar_reprojection' 'if [ $TEST -ne "true" ]; then waitForRos; waitForControl; fi; roslaunch uvdar reprojector.launch frame_estimate:='"$UAV_NAME"'/fcu yaw_diff:=0.06 pitch_diff:=0.00 
 '
   # 'Tersus' 'waitForRos; roslaunch tersus_gps_driver test.launch'
+  # 'MrsStatus' 'waitForRos; roslaunch mrs_status status.launch
+# '
   # 'Control' 'waitForRos; roslaunch mrs_general core.launch
 # '
   # 'Nimbro' 'waitForRos; roslaunch mrs_general nimbro.launch
@@ -61,7 +63,7 @@ input=(
   'KILL_ALL' 'dmesg; tmux kill-session -t '
 )
 
-init_window="Control"
+init_window="MrsStatus"
 
 ###########################
 ### DO NOT MODIFY BELOW ###
