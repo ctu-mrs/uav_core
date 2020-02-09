@@ -213,7 +213,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
   sparse_paths:
   -
-  rev: f05983f120182677ba8ae3cdcd7fb8070ac814ad
+  rev: 21d8b4d92d84078afae81841282dd9f1e9e7e76b
   link: ros_packages/mrs_uav_manager
   scripts:
   - git submodule update --init --recursive
