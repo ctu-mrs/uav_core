@@ -168,7 +168,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
   sparse_paths:
   -
-  rev: e46b8a7096f651569b793723779dca95fbd47d34
+  rev: a63786e3f2dcd75302be73ee8115d2374485f8c6
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
@@ -195,7 +195,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/utils/mrs_status.git
   sparse_paths:
   -
-  rev: 187a191b27f5533bba2e281b2f5af5e6c6cbfcbe
+  rev: c930689293e90b0d73a700891fe1b2ffaec18f09
   link: ros_packages/mrs_status
   scripts:
   - git submodule update --init --recursive
@@ -217,3 +217,4 @@ sources_locked:
   link: ros_packages/mrs_uav_manager
   scripts:
   - git submodule update --init --recursive
+groups: []
