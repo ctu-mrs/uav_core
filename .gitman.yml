@@ -168,7 +168,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
   sparse_paths:
   -
-  rev: e46b8a7096f651569b793723779dca95fbd47d34
+  rev: a63786e3f2dcd75302be73ee8115d2374485f8c6
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
@@ -177,7 +177,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_odometry.git
   sparse_paths:
   -
-  rev: bee0d9d4209e7dfb5be922a4515c713f65497f59
+  rev: 9f8011125040535fda1559259b9206b4f3ef56b4
   link: ros_packages/mrs_odometry
   scripts:
   - git submodule update --init --recursive
