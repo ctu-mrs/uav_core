@@ -141,7 +141,7 @@ sources_locked:
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_general.git
   sparse_paths:
   -
-  rev: 3ba8b9e8aa81b8bb6e85fe6ba2e4a094a3fdf641
+  rev: 52a8b98ed1b7b15e3d613e1264b29e25cc2e0a8a
   link: ros_packages/mrs_general
   scripts:
   - git submodule update --init --recursive
