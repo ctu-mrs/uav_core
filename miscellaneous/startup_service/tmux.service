@@ -1,5 +1,5 @@
 [Unit]
-Description=Tmux for Darpa
+Description=Tmux Autostart
 After=network.target suspend.target hibernate.target hybrid-sleep.target
 
 [Service]

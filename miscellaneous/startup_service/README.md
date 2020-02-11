@@ -1,4 +1,4 @@
-1. Place it in /etc/systemd/system folder with say a name of tmux.service
+1. Place the tmux.service in /etc/systemd/system folder with say a name of tmux.service
 2. Make that your script executable with:
 `chmod u+x`
 3. Start it:
