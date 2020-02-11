@@ -403,6 +403,17 @@ waitForMpc() {
 
 # #}
 
+# #{ waitForMotors()
+
+waitForMotors() {
+  until timeout 1s rostopic echo /$UAV_NAME/control_manager/motors_on -n 1 --noarr > /dev/null 2>&1; do
+    echo "waiting for motors on"
+    sleep 1;
+  done
+}
+
+# #}
+
 # #{ waitForCompile()
 
 waitForCompile() {
