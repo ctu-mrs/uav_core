@@ -11,7 +11,7 @@ sources:
   - git submodule update --init --recursive
 - name: mavros
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/mavros.git
+  repo: git@nuc7:uav/mavros.git
   sparse_paths:
   -
   rev: header_fix
@@ -20,7 +20,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_controllers
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_controllers.git
+  repo: git@nuc7:uav/core/mrs_controllers.git
   sparse_paths:
   -
   rev: master
@@ -29,7 +29,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_general
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_general.git
+  repo: git@nuc7:uav/core/mrs_general.git
   sparse_paths:
   -
   rev: master
@@ -38,7 +38,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_lib
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_lib.git
+  repo: git@nuc7:uav/utils/mrs_lib.git
   sparse_paths:
   -
   rev: master
@@ -47,7 +47,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_mavros_interface
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_mavros_interface.git
+  repo: git@nuc7:uav/core/mrs_mavros_interface.git
   sparse_paths:
   -
   rev: master
@@ -56,7 +56,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_msgs
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
+  repo: git@nuc7:uav/core/mrs_msgs.git
   sparse_paths:
   -
   rev: master
@@ -65,7 +65,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_odometry
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_odometry.git
+  repo: git@nuc7:uav/core/mrs_odometry.git
   sparse_paths:
   -
   rev: master
@@ -74,7 +74,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_optic_flow
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_optic_flow.git
+  repo: git@nuc7:uav/core/mrs_optic_flow.git
   sparse_paths:
   -
   rev: master
@@ -83,7 +83,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_status
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_status.git
+  repo: git@nuc7:uav/utils/mrs_status.git
   sparse_paths:
   -
   rev: master
@@ -92,7 +92,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_trackers
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_trackers.git
+  repo: git@nuc7:uav/core/mrs_trackers.git
   sparse_paths:
   -
   rev: master
@@ -101,7 +101,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_uav_manager
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
+  repo: git@nuc7:uav/core/mrs_uav_manager.git
   sparse_paths:
   -
   rev: master
@@ -120,7 +120,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mavros
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/mavros.git
+  repo: git@nuc7:uav/mavros.git
   sparse_paths:
   -
   rev: 6fdf71bff442ea548806ee86e7c21f90dec70a03
@@ -129,7 +129,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_controllers
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_controllers.git
+  repo: git@nuc7:uav/core/mrs_controllers.git
   sparse_paths:
   -
   rev: 2d4b14e6589739884b00f3f966b092d7fd9e70db
@@ -138,7 +138,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_general
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_general.git
+  repo: git@nuc7:uav/core/mrs_general.git
   sparse_paths:
   -
   rev: 370792c49dfc07f55ff0c48e32804a94d8da3e83
@@ -147,7 +147,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_lib
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_lib.git
+  repo: git@nuc7:uav/utils/mrs_lib.git
   sparse_paths:
   -
   rev: c9eb7f2c059387d059bf2a212164657a403db3ba
@@ -156,7 +156,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_mavros_interface
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_mavros_interface.git
+  repo: git@nuc7:uav/core/mrs_mavros_interface.git
   sparse_paths:
   -
   rev: e35e8783965aca67c882d0385a2c008ff099e653
@@ -165,7 +165,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_msgs
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
+  repo: git@nuc7:uav/core/mrs_msgs.git
   sparse_paths:
   -
   rev: a63786e3f2dcd75302be73ee8115d2374485f8c6
@@ -174,7 +174,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_odometry
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_odometry.git
+  repo: git@nuc7:uav/core/mrs_odometry.git
   sparse_paths:
   -
   rev: 4985fa5c6860a60b15e9cb4de13951f7bdf7e93d
@@ -183,7 +183,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_optic_flow
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_optic_flow.git
+  repo: git@nuc7:uav/core/mrs_optic_flow.git
   sparse_paths:
   -
   rev: f5a349760fcc9babadd4d0f8a8fc8339cb444a03
@@ -192,7 +192,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_status
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_status.git
+  repo: git@nuc7:uav/utils/mrs_status.git
   sparse_paths:
   -
   rev: 50e9c100a1370ecfe15347cbbd7a71776bebc3dc
@@ -201,7 +201,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_trackers
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_trackers.git
+  repo: git@nuc7:uav/core/mrs_trackers.git
   sparse_paths:
   -
   rev: 27082aef592788c7d149e1261a8d78383f392702
@@ -210,7 +210,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_uav_manager
   type: git
-  repo: git@mrs.felk.cvut.cz:uav/core/mrs_uav_manager.git
+  repo: git@nuc7:uav/core/mrs_uav_manager.git
   sparse_paths:
   -
   rev: 56b213ea710c692d05cc09a2ee349446c73c8d88
