@@ -132,7 +132,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_controllers.git
   sparse_paths:
   -
-  rev: 2d4b14e6589739884b00f3f966b092d7fd9e70db
+  rev: 1b4611c9b7b3a929e789a59f895cc9eae79ba386
   link: ros_packages/mrs_controllers
   scripts:
   - git submodule update --init --recursive
@@ -141,7 +141,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_general.git
   sparse_paths:
   -
-  rev: 5e9354870fe7cb98f3398eb48ba72ae34ba61538
+  rev: 54abfd69ec7cba3e225f17cd1c561fed664c5aa0
   link: ros_packages/mrs_general
   scripts:
   - git submodule update --init --recursive
@@ -159,7 +159,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_mavros_interface.git
   sparse_paths:
   -
-  rev: e35e8783965aca67c882d0385a2c008ff099e653
+  rev: dc64261008f744f7e07dd00064b444ca83ee306c
   link: ros_packages/mrs_mavros_interface
   scripts:
   - git submodule update --init --recursive
@@ -177,7 +177,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_odometry.git
   sparse_paths:
   -
-  rev: 4985fa5c6860a60b15e9cb4de13951f7bdf7e93d
+  rev: 1a7aba94320892d897c8482b2867d630c1579518
   link: ros_packages/mrs_odometry
   scripts:
   - git submodule update --init --recursive
@@ -186,7 +186,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_optic_flow.git
   sparse_paths:
   -
-  rev: f5a349760fcc9babadd4d0f8a8fc8339cb444a03
+  rev: 17121d024849eef365df695809631c9910334cf3
   link: ros_packages/mrs_optic_flow
   scripts:
   - git submodule update --init --recursive
@@ -204,7 +204,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_trackers.git
   sparse_paths:
   -
-  rev: 27082aef592788c7d149e1261a8d78383f392702
+  rev: d5d3cc080dddcd2cc6a4e7c1bea9471796ec2032
   link: ros_packages/mrs_trackers
   scripts:
   - git submodule update --init --recursive
@@ -213,7 +213,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_uav_manager.git
   sparse_paths:
   -
-  rev: 56b213ea710c692d05cc09a2ee349446c73c8d88
+  rev: 1d44d038f2fe009ff7750d9e7705d63f9af6fa25
   link: ros_packages/mrs_uav_manager
   scripts:
   - git submodule update --init --recursive
