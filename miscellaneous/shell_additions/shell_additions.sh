@@ -403,11 +403,11 @@ waitForMpc() {
 
 # #}
 
-# #{ waitForMotors()
+# #{ waitForOffboard()
 
-waitForMotors() {
-  until timeout 1s rostopic echo /$UAV_NAME/control_manager/motors_on -n 1 --noarr > /dev/null 2>&1; do
-    echo "waiting for motors on"
+waitForOffboard() {
+  until timeout 1s rostopic echo /$UAV_NAME/control_manager/offboard_on -n 1 --noarr > /dev/null 2>&1; do
+    echo "waiting for offboard mode"
     sleep 1;
   done
 }
