@@ -159,7 +159,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_mavros_interface.git
   sparse_paths:
   -
-  rev: e35e8783965aca67c882d0385a2c008ff099e653
+  rev: dc64261008f744f7e07dd00064b444ca83ee306c
   link: ros_packages/mrs_mavros_interface
   scripts:
   - git submodule update --init --recursive
