@@ -62,6 +62,14 @@ init_window="MrsStatus"
 
 SESSION_NAME=mav
 
+FOUND=$( $TMUX_BIN ls | grep mav )
+
+if [ $? == "0" ]; then
+
+  echo "The session already exists"
+  exit
+fi
+
 # Absolute path to this script. /home/user/bin/foo.sh
 SCRIPT=$(readlink -f $0)
 # Absolute path this script is in. /home/user/bin
