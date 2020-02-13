@@ -186,7 +186,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_optic_flow.git
   sparse_paths:
   -
-  rev: 17121d024849eef365df695809631c9910334cf3
+  rev: 9aeb8946dbedf4c23866ef496d44050d92a4ea4c
   link: ros_packages/mrs_optic_flow
   scripts:
   - git submodule update --init --recursive
