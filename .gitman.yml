@@ -159,7 +159,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_mavros_interface.git
   sparse_paths:
   -
-  rev: dc64261008f744f7e07dd00064b444ca83ee306c
+  rev: f24001ff12920468e35ceec7d5902779557288b7
   link: ros_packages/mrs_mavros_interface
   scripts:
   - git submodule update --init --recursive
@@ -177,7 +177,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_odometry.git
   sparse_paths:
   -
-  rev: 956f6ffe61fd0d47726321c0fac6676a6d727fd0
+  rev: 2e789e0c363b8e0adc9d24c2733aa8d3d41620f1
   link: ros_packages/mrs_odometry
   scripts:
   - git submodule update --init --recursive
