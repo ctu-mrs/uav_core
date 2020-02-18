@@ -141,7 +141,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_general.git
   sparse_paths:
   -
-  rev: d240cd20a1adbbf8a21baeab063e9354facb5579
+  rev: f65b96bfa1009beb46b49effb6da59d6df451d5b
   link: ros_packages/mrs_general
   scripts:
   - git submodule update --init --recursive
@@ -177,7 +177,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_odometry.git
   sparse_paths:
   -
-  rev: 9077462dd74a3ef947951570fa7a1c45d139a9e6
+  rev: 8090650a89caf7431dde5a6bc1a0402f89bcf908
   link: ros_packages/mrs_odometry
   scripts:
   - git submodule update --init --recursive
@@ -186,7 +186,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_optic_flow.git
   sparse_paths:
   -
-  rev: b2b459fa83f3b85a664f61fad980705b58465339
+  rev: 55c807e5cc003149bd7db709b0c7c9858f44d85c
   link: ros_packages/mrs_optic_flow
   scripts:
   - git submodule update --init --recursive
