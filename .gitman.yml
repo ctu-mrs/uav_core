@@ -132,7 +132,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_controllers.git
   sparse_paths:
   -
-  rev: 48fa772c5eca54ee1545aa255b8a714f434dc793
+  rev: 4096c2d17e48ddf2b1f7c823bd21926235ca4ca9
   link: ros_packages/mrs_controllers
   scripts:
   - git submodule update --init --recursive
@@ -141,7 +141,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_general.git
   sparse_paths:
   -
-  rev: f65b96bfa1009beb46b49effb6da59d6df451d5b
+  rev: 7c5f3149451414e69e00036b6f1660a9149a65fd
   link: ros_packages/mrs_general
   scripts:
   - git submodule update --init --recursive
@@ -150,7 +150,7 @@ sources_locked:
   repo: git@nuc7:uav/utils/mrs_lib.git
   sparse_paths:
   -
-  rev: a5d1d77dde5133c01cba9d8f834a663a43813bf7
+  rev: 612a0e1bdb8b17c8f782914ee22af236bb469a69
   link: ros_packages/mrs_lib
   scripts:
   - git submodule update --init --recursive
@@ -159,7 +159,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_mavros_interface.git
   sparse_paths:
   -
-  rev: f24001ff12920468e35ceec7d5902779557288b7
+  rev: 53ea36f51005bae3359f977dc1351605a4ae7149
   link: ros_packages/mrs_mavros_interface
   scripts:
   - git submodule update --init --recursive
@@ -168,7 +168,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_msgs.git
   sparse_paths:
   -
-  rev: f85010d750a93e25f1977c67ee8b7f9c15b90d66
+  rev: dddc23a3be6c1f8991d54a31124814ed464f93b5
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
@@ -177,7 +177,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_odometry.git
   sparse_paths:
   -
-  rev: 8090650a89caf7431dde5a6bc1a0402f89bcf908
+  rev: 8bccf98fe606986648baf4ca4efa4bc490636101
   link: ros_packages/mrs_odometry
   scripts:
   - git submodule update --init --recursive
@@ -186,7 +186,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_optic_flow.git
   sparse_paths:
   -
-  rev: 55c807e5cc003149bd7db709b0c7c9858f44d85c
+  rev: 3c5925e83fc6cdbca2c414a9d9e18f2b020cb94d
   link: ros_packages/mrs_optic_flow
   scripts:
   - git submodule update --init --recursive
@@ -195,7 +195,7 @@ sources_locked:
   repo: git@nuc7:uav/utils/mrs_status.git
   sparse_paths:
   -
-  rev: 50e9c100a1370ecfe15347cbbd7a71776bebc3dc
+  rev: a8c5695bf223e3f118563acf3b13358319f8ffee
   link: ros_packages/mrs_status
   scripts:
   - git submodule update --init --recursive
@@ -204,7 +204,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_trackers.git
   sparse_paths:
   -
-  rev: 25572553fea0df05d9326510a16f1a571dd18a0e
+  rev: c27752bd859ad1a98b9a4bb4678c074149be9892
   link: ros_packages/mrs_trackers
   scripts:
   - git submodule update --init --recursive
@@ -213,7 +213,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_uav_manager.git
   sparse_paths:
   -
-  rev: 3776c6a1963a22eadb6003dc273cb9404e15713a
+  rev: 93222e9cb1812f04b022aa3a48e5d8facb30333a
   link: ros_packages/mrs_uav_manager
   scripts:
   - git submodule update --init --recursive
