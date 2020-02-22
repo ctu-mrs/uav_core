@@ -141,7 +141,7 @@ sources_locked:
   repo: git@nuc7:uav/core/mrs_general.git
   sparse_paths:
   -
-  rev: c9482f12712cb5ecc5cc9ceee28843526b2e45b3
+  rev: 3276463c51a3f93d1c5e8b030aefb41885b80bbd
   link: ros_packages/mrs_general
   scripts:
   - git submodule update --init --recursive
@@ -150,7 +150,7 @@ sources_locked:
   repo: git@nuc7:uav/utils/mrs_lib.git
   sparse_paths:
   -
-  rev: 612a0e1bdb8b17c8f782914ee22af236bb469a69
+  rev: 51671c35552c3ac562d31485156ea638854075e6
   link: ros_packages/mrs_lib
   scripts:
   - git submodule update --init --recursive
