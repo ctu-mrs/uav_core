@@ -1,7 +1,0 @@
-takeoff:
-
-  after_takeoff:
-    tracker: "MpcTracker"
-    controller: "MpcController"
-
-  takeoff_height: 1.2
