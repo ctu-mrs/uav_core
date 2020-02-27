@@ -13,48 +13,48 @@ fi
 
 source $HOME/.bashrc
 
+# change this to your liking
 PROJECT_NAME=just_flying
 
+# do not change this
 MAIN_DIR=~/"bag_files"
 
-# following commands will be executed first, in each window
-pre_input="export ATHAME_ENABLED=0; mkdir -p $MAIN_DIR/$PROJECT_NAME"
+# following commands will be executed first in each window
+pre_input="mkdir -p $MAIN_DIR/$PROJECT_NAME"
 
 # define commands
 # 'name' 'command'
+# DO NOT PUT SPACES IN THE NAMES
 input=(
-  'Rosbag' 'waitForRos; rosrun mrs_general record.sh
+  'Rosbag' 'waitForOffboard; rosrun mrs_general record.sh
 '
   'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
 '
   'OptFlow' 'waitForRos; roslaunch mrs_optic_flow optic_flow.launch
 '
-  'MrsStatus' 'waitForRos; roslaunch mrs_status status.launch
+  'Status' 'waitForRos; roslaunch mrs_status status.launch
 '
   'Control' 'waitForRos; roslaunch mrs_general core.launch
 '
-  'MotorsOn' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
-  'Takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-  'ChangeEstimator' 'waitForOdometry; rosservice call /'"$UAV_NAME"'/odometry/change_estimator_type_string T265'
-  'GoTo_FCU' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
-  'GoToRelative' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
-  'Land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
-  'LandHome' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
-  'E_hover' 'rosservice call /'"$UAV_NAME"'/control_manager/ehover'
-  'Show_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
+  'motors' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
+  'takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
+  'gofcu' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
+  'gorel' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
+  'land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
+  'land_home' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
+  'slow_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
-  'Show_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
+  'odom_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
 '
-  'Mav_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
+  'mavros_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
 '
-  'KernelLog' 'tail -f /var/log/kern.log -n 100
+  'kernel_log' 'tail -f /var/log/kern.log -n 100
 '
   'roscore' 'roscore
 '
-  'KILL_ALL' 'dmesg; tmux kill-session -t '
 )
 
-init_window="MrsStatus"
+init_window="Status"
 
 ###########################
 ### DO NOT MODIFY BELOW ###
