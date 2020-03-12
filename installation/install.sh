@@ -340,8 +340,11 @@ while true; do
     # clone the repo
     git clone git@mrs.felk.cvut.cz:uav/simulation.git
 
-    cd simulation/installation
+    cd simulation
     git pull
+    gitman install --force
+
+    cd installation
     ./install.sh
 
     break
