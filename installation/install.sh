@@ -338,13 +338,9 @@ while true; do
 
     cd ~/git
     # clone the repo
-    git clone git@mrs.felk.cvut.cz:uav/simulation.git
+    git clone --recursive git@mrs.felk.cvut.cz:uav/simulation.git
 
-    cd simulation
-    git pull
-    gitman install --force
-
-    cd installation
+    cd simulation/installation
     ./install.sh
 
     break
