@@ -5,6 +5,7 @@ clear all
 function output = PixhawkOutput(input)
 
   % params from component_snippets.xacro
+
   zero_position_armed = 0.15;
   input_scaling = 1;
   input_offset = 0;
@@ -45,7 +46,8 @@ g = 9.81;
 % how much propellers does your UAV have?
 n_propellers = 8;
 
-% the motor constant for simulated motor model
+% the motor constant for the simulated motor model
+% = max thrust in [N] per motor
 motor_constant = 40.0;
 
 % define a list of different UAV masses for computing the thrust points
@@ -75,14 +77,14 @@ for i=1:length(mass)
   A(i, 1) = sqrt((mass(i)*g));
 end
 
-% compute the linear coeficients
 X = A\mrs_thrust;
 
 ka = X(1)
 kb = X(2)
 
 % Use the ka and kb constants to deduce what hover thrust mass-equivalent will be created
-% using the mrs_thrust.
+% using the mrs_thrust. Those should be equal to the "mass" vector defined previously.
+% If not, something is wrong in this script.
 for i=1:length(mrs_thrust)
 
   mass_thrust_equivalent(i, 1) = (((mrs_thrust(i) - kb) / ka)^(2.0)) / g;
