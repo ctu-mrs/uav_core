@@ -36,16 +36,6 @@ $MY_PATH/scripts/install_mrs_certificate.sh
 $MY_PATH/scripts/install_git_lfs.sh
 
 #############################################
-# Disable automatic update over apt
-#############################################
-
-sudo systemctl disable apt-daily.service
-sudo systemctl disable apt-daily.timer
-
-sudo systemctl disable apt-daily-upgrade.timer
-sudo systemctl disable apt-daily-upgrade.service
-
-#############################################
 # Install ROS?
 #############################################
 
