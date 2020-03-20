@@ -2,21 +2,20 @@
 
 % masses of UAV
 mass = [
-4.3;
-4.9;
+2.441;
+3.008;
+3.565
 ];
 
 % thrusts needed to hover
-thrust = [
-0.67;
-0.82;
+thrust_carbon = [
+0.5188;
+0.6062;
+0.6750
 ];
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% fix kf constant at something
-kf = 1;
 
 % the gravitational acceleration
 g = 9.81;
@@ -25,16 +24,15 @@ g = 9.81;
 A = ones(length(mass), 2);
 
 for i=1:length(mass)
-  A(i, 1) = sqrt((mass(i)*g)/kf);
+  A(i, 1) = sqrt((mass(i)*g));
 end
 
 % print A
 A
 
 % compute the linear coeficients
-X = A\thrust;
+X = A\thrust_carbon;
 
 % plot the constants
-kf
 ka = X(1)
 kb = X(2)
