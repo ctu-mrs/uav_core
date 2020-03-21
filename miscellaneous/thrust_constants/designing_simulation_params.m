@@ -68,6 +68,9 @@ for i=1:length(mass)
   % achieve the desired hover thrust?
   mrs_thrust(i, 1) = PixhawkOutputInv(pixhawk_output(i));
 
+  % feed it back throught the pipeline to get the thrist
+  out_thrust_N(i, 1) = n_propellers * MotorModel(PixhawkOutput(mrs_thrust(i, 1)), motor_constant);
+
 end
 
 % calculate the ka and kb thrust constants based on the masses and the mrs_thrust
