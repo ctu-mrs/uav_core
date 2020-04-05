@@ -90,6 +90,15 @@ sources:
   link: ros_packages/mrs_status
   scripts:
   - git submodule update --init --recursive
+- name: mrs_testing
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_testing.git
+  sparse_paths:
+  -
+  rev: master
+  link: ros_packages/mrs_testing
+  scripts:
+  - git submodule update --init --recursive
 - name: mrs_trackers
   type: git
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_trackers.git
@@ -197,6 +206,15 @@ sources_locked:
   -
   rev: 247e2171e5dc01f579515d6761e8fbe92bd26152
   link: ros_packages/mrs_status
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_testing
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/utils/mrs_testing.git
+  sparse_paths:
+  -
+  rev: 98d0fd8ab84c3793549ca454eb969bad34b7f223
+  link: ros_packages/mrs_testing
   scripts:
   - git submodule update --init --recursive
 - name: mrs_trackers
