@@ -45,6 +45,15 @@ sources:
   link: ros_packages/mrs_lib
   scripts:
   - git submodule update --init --recursive
+- name: mrs_mavros_interface
+  type: git
+  repo: git@mrs.felk.cvut.cz:uav/core/mrs_mavros_interface.git
+  sparse_paths:
+  -
+  rev: master
+  link: ros_packages/mrs_mavros_interface
+  scripts:
+  - git submodule update --init --recursive
 - name: mrs_msgs
   type: git
   repo: git@mrs.felk.cvut.cz:uav/core/mrs_msgs.git
