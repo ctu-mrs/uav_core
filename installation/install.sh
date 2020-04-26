@@ -6,6 +6,7 @@ sudo usermod -a -G dialout $USER
 # this should be installed when running the script from README...
 # but if you run install.sh directly...
 sudo apt-get -y install git expect
+[ "$?" != "0" ] && echo "Something went while installing packages. Send this log to Tomas. Press enter to continue." && read
 
 unattended=0
 subinstall_params=""
