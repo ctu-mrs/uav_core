@@ -231,6 +231,23 @@ while true; do
 done
 
 #############################################
+# adding ROS_WORKSPACE variable to .bashrc
+#############################################
+
+# add variable for path to the git repository
+num=`cat ~/.bashrc | grep "ROS_WORKSPACES" | wc -l`
+if [ "$num" -lt "1" ]; then
+
+  echo "Adding ROS_WORKSPACES variable to .bashrc"
+  # set bashrc
+  echo "
+# list (space-separated) of your ROS workspaces
+# used for CTAGS generation, code completion and linting in Vim
+export ROS_WORKSPACES=\"~/mrs_workspace ~/workspace\"" >> ~/.bashrc
+
+fi
+
+#############################################
 # adding GIT_PATH variable to .bashrc
 #############################################
 

@@ -3,9 +3,32 @@ UAV_CORE_PATH=$GIT_PATH/uav_core/
 # disable gitman caching
 export GITMAN_CACHE_DISABLE=1
 
-# #{ generating ctags
+# #{ CTAGS
 
-# use ctags to generate code tags
+# path possible ctags locations
+# -R dir1 -R dir2 ...
+
+# contains the list of user ROS workspaces
+# used now for ctags generation and later for YCM (throught .ycm_extra_conf.py)
+[ -z "$ROS_WORKSPACES" ] && export ROS_WORKSPACES="$ROS_WORKSPACE"
+
+# if not defined, define it
+[ -z "$CTAGS_SOURCE_DIR" ] && export CTAGS_SOURCE_DIR=""
+
+# append location of ROS workspaces
+for WS in $(echo $ROS_WORKSPACES); do
+  export CTAGS_SOURCE_DIR="${CTAGS_SOURCE_DIR} -R $WS"
+done
+
+# path to source from which to generate `one-time generated ctags file`
+# -R dir1 -R dir2 ...
+[ -z "$CTAGS_ONCE_SOURCE_DIR" ] && export CTAGS_ONCE_SOURCE_DIR=""
+
+# append the ros path
+export CTAGS_ONCE_SOURCE_DIR="${CTAGS_ONCE_SOURCE_DIR} -R /opt/ros/melodic/include"
+
+# the location of the `one-time generated ctags file`
+export CTAGS_FILE_ONCE="~/tags-once"
 
 # generate projects' tags
 if [ -z $TMUX ]; then
