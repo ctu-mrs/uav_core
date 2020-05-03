@@ -7,16 +7,16 @@ MY_PATH=`( cd "$MY_PATH" && pwd )`
 cd $MY_PATH
 
 input=(
-"mrs_controllers" "master"
-"mrs_general" "master"
+"mrs_uav_controllers" "master"
+"mrs_uav_general" "master"
 "mrs_lib" "master"
 "mrs_mavros_interface" "master"
 "mrs_msgs" "master"
-"mrs_odometry" "master"
+"mrs_uav_odometry" "master"
 "mrs_optic_flow" "master"
-"mrs_status" "master"
-"mrs_trackers" "master"
-"mrs_uav_manager" "master"
+"mrs_uav_status" "master"
+"mrs_uav_trackers" "master"
+"mrs_uav_managers" "master"
 )
 
 # create arrays of names and commands
