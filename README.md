@@ -120,20 +120,11 @@ export LOGGER_DEBUG="false" # sets the ros console output level to debug
 #####################################################################
 # Following code provides settings for Tomas's linux-setup repository
 
-# where should ctags look for sources to parse?
-# -R dir1 -R dir2 ...
-export CTAGS_SOURCE_DIR="-R ~/mrs_workspace -R ~/workspace"
-
-# where should ctags look for sources to parse?
-# CTAGS FROM THOSE FILE WILL BE CREATED ONLY ONCE
-# -R dir1 -R dir2 ...
-export CTAGS_ONCE_SOURCE_DIR="-R /opt/ros/melodic/include"
-
 # path to the git root
 export GIT_PATH=~/git
 
-# path to the ros workspace
-export ROS_WORKSPACE="~/mrs_workspace ~/workspace"
+# path to the all ros workspaces (for vim)
+export ROS_WORKSPACES="~/mrs_workspace ~/workspace"
 
 # want to run tmux automatically with new terminal?
 export RUN_TMUX=true
@@ -141,6 +132,6 @@ export RUN_TMUX=true
 # uav_core shell additions
 source ~/git/uav_core/miscellaneous/shell_additions/shell_additions.sh
 
-# sourcing tomas's tmux preparation
+# sourcing tomas's linux setup
 source ~/git/linux-setup/appconfig/bash/dotbashrc
 ```
