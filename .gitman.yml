@@ -36,22 +36,22 @@ sources:
   link: ros_packages/mavros
   scripts:
   - git submodule update --init --recursive
-- name: mrs_controllers
+- name: mrs_uav_controllers
   type: git
   repo: git@github.com:ctu-mrs/mrs_uav_controllers.git
   sparse_paths:
   -
   rev: master
-  link: ros_packages/mrs_controllers
+  link: ros_packages/mrs_uav_controllers
   scripts:
   - git submodule update --init --recursive
-- name: mrs_general
+- name: mrs_uav_general
   type: git
   repo: git@github.com:ctu-mrs/mrs_uav_general.git
   sparse_paths:
   -
   rev: master
-  link: ros_packages/mrs_general
+  link: ros_packages/mrs_uav_general
   scripts:
   - git submodule update --init --recursive
 - name: mrs_lib
@@ -81,13 +81,13 @@ sources:
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
-- name: mrs_odometry
+- name: mrs_uav_odometry
   type: git
   repo: git@github.com:ctu-mrs/mrs_uav_odometry.git
   sparse_paths:
   -
   rev: master
-  link: ros_packages/mrs_odometry
+  link: ros_packages/mrs_uav_odometry
   scripts:
   - git submodule update --init --recursive
 - name: mrs_optic_flow
@@ -99,39 +99,39 @@ sources:
   link: ros_packages/mrs_optic_flow
   scripts:
   - git submodule update --init --recursive
-- name: mrs_status
+- name: mrs_uav_status
   type: git
   repo: git@github.com:ctu-mrs/mrs_uav_status.git
   sparse_paths:
   -
-  rev: c++
-  link: ros_packages/mrs_status
+  rev: master
+  link: ros_packages/mrs_uav_status
   scripts:
   - git submodule update --init --recursive
-- name: mrs_testing
+- name: mrs_uav_testing
   type: git
   repo: git@github.com:ctu-mrs/mrs_uav_testing.git
   sparse_paths:
   -
   rev: master
-  link: ros_packages/mrs_testing
+  link: ros_packages/mrs_uav_testing
   scripts:
   - git submodule update --init --recursive
-- name: mrs_trackers
+- name: mrs_uav_trackers
   type: git
   repo: git@github.com:ctu-mrs/mrs_uav_trackers.git
   sparse_paths:
   -
   rev: master
-  link: ros_packages/mrs_trackers
+  link: ros_packages/mrs_uav_trackers
   scripts:
   - git submodule update --init --recursive
-- name: mrs_uav_manager
+- name: mrs_uav_managers
   type: git
   repo: git@github.com:ctu-mrs/mrs_uav_managers.git
   sparse_paths:
   -
   rev: master
-  link: ros_packages/mrs_uav_manager
+  link: ros_packages/mrs_uav_managers
   scripts:
   - git submodule update --init --recursive
