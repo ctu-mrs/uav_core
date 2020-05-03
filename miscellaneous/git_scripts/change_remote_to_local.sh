@@ -3,7 +3,7 @@ import os, sys, copy
 
 #configs
 
-GLOBAL_REPO_LOCATION = "git@mrs.felk.cvut.cz"
+GLOBAL_REPO_LOCATION = "git@github.com"
 LOCAL_REPO_LOCATION = "git@nuc7"
 CREATE_NEW_REMOTE_FOLDERS = False
 PUSH_TO_NEW_SERVER = False
