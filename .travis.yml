@@ -1,0 +1,30 @@
+# Build all valid Ubuntu/ROS combinations available on Travis VMs.
+language: generic
+sudo: required
+dist: bionic
+compiler:
+  - gcc
+
+before_install:
+  - sudo apt-get update -qq
+  - ./installation/scripts/install_dependencies.sh      
+  - git clean -fd
+  - git reset --hard
+  - git submodule deinit -f .
+  - git submodule sync
+  - git submodule update --init --recursive
+  - gitman install --force
+
+install:
+  - mkdir -p ~/catkin_ws/src  
+  - cd ~/catkin_ws/src 
+  - ln -s $CI_SOURCE_PATH .
+  - source /opt/ros/melodic/setup.bash
+  - rosdep update
+  - catkin init
+  - catkin config --profile debug --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native -fno-diagnostics-color' -DCMAKE_C_FLAGS='-march=native -fno-diagnostics-color'
+  - catkin profile set debug
+
+before_script:
+script:
+  - catkin build 
