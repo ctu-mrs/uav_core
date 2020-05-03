@@ -1,0 +1,16 @@
+language: generic
+matrix:
+  include:
+    - dist: bionic
+      language: python
+      python: "3.8"
+      os: linux
+      env: PYTHON=/usr/bin/python3.6 CATKIN_VERSION=indigo-devel
+before_install:
+  - pip install gitman
+before_script:
+  - gitman install --force
+script:
+  - echo pes
+notifications:
+  email: false
