@@ -1,6 +1,6 @@
 # The core modules for UAV
 
-### Status
+### Status Ros Melodic
 [![Build Status](https://travis-ci.com/ctu-mrs/uav_core.svg?branch=master)](https://travis-ci.com/ctu-mrs/uav_core)
 
 ## System requirements
