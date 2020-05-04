@@ -1,5 +1,14 @@
 location: .gitman
 sources:
+- name: mrs_bumper
+  type: git
+  repo: git@github.com:ctu-mrs/mrs_bumper.git
+  sparse_paths:
+  -
+  rev: master
+  link: ros_packages/mrs_bumper
+  scripts:
+  - git submodule update --init --recursive
 - name: tmux
   type: git
   repo: http://github.com/tmux/tmux.git
