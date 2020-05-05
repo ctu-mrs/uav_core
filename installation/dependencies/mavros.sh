@@ -1,15 +1,64 @@
 #!/bin/bash
 
+# get the path to this script
+MY_PATH=`dirname "$0"`
+MY_PATH=`( cd "$MY_PATH" && pwd )`
+
 set -e
 
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'echo "\"${last_command}\" command failed with exit code $?"' ERR
 
-echo "Installing ROS"
+options=$(getopt -l "install,remove,dryrun" -o "" -a -- "$@")
 
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-sudo apt -y update
-sudo apt -y install ros-melodic-desktop-full
+eval set -- "$options"
+
+while true
+do
+  case $1 in
+    --download)
+      DOWNLOAD=true
+      shift
+      ;;
+    --compile)
+      COMPILE=true
+      shift
+      ;;
+    --dryrun)
+      echo "$0: dryrun"
+      DRYRUN=--dryrun
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+  esac
+done
+
+[ -z "$DOWNLOAD" ] && [ -z "$COMPILE" ] && echo "$0: Choose --download or --compile" && exit 1
+[ -n "$DOWNLOAD" ] && [ -n "$COMPILE" ] && echo "$0: Options --download and --compile are mutually exclusive" && exit 1
+
+if [ -n "$DOWNLOAD" ];
+then
+
+  echo "$0: Removing custom-compiled Mavlink"
+  $MY_PATH/mavlink.sh --remove $DRYRUN
+
+  echo "$0: Downloading Mavros"
+  [ -z "$DRYRUN" ] && sudo apt -y install ros-melodic-mavros ros-melodic-mavlink ros-melodic-libmavconn
+
+fi
+
+if [ -n "$COMPILE" ];
+then
+
+  echo "$0: Removing pre-installed Mavros and Mavlink"
+  [ -z "$DRYRUN" ] && sudo apt -y remove ros-melodic-mavros* ros-melodic-mavlink* ros-melodic-libmavconn
+
+  echo "$0: Running custom Mavlink install script"
+  $MY_PATH/mavlink.sh --install $DRYRUN
+
+fi
 
 exit 0

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# get the path to this script
+MY_PATH=`dirname "$0"`
+MY_PATH=`( cd "$MY_PATH" && pwd )`
+
 set -e
 
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
@@ -44,10 +48,6 @@ then
   [ -z "$DRYRUN" ] && sudo pip3 install --user future
   [ -z "$DRYRUN" ] && sudo -H pip3 install --user future
   [ -z "$DRYRUN" ] && sudo apt -y install python-future python3-future
-
-  # get the path to this script
-  MY_PATH=`dirname "$0"`
-  MY_PATH=`( cd "$MY_PATH" && pwd )`
 
   echo "$0: Checking out the desired release"
   [ -z "$DRYRUN" ] && cd "$MY_PATH/../../lib/mavlink-gbp-release/"
