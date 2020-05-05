@@ -10,7 +10,7 @@ echo "$0: installing general dependencies"
 sudo apt-get -y install cmake build-essential autotools-dev automake autoconf
 
 # utilities
-sudo apt -y install wget zip
+sudo apt -y install wget zip silversearcher-ag
 
 # ros-related
 sudo apt-get -y install \
