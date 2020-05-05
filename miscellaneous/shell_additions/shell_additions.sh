@@ -1,4 +1,8 @@
-UAV_CORE_PATH=$GIT_PATH/uav_core/
+# get the path to this script
+MY_PATH=`dirname "$0"`
+MY_PATH=`( cd "$MY_PATH" && pwd )`
+
+UAV_CORE_PATH=$MY_PATH/../../
 
 # disable gitman caching
 export GITMAN_CACHE_DISABLE=1
