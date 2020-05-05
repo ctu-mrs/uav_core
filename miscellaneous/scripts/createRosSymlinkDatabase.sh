@@ -10,6 +10,8 @@ fi
 SYMLINK_ARRAY_PATH="/tmp/symlink_array.sh"
 symlink_list_tmp_file="/tmp/symlink_list_$RANDOM.txt"
 
+[ -z "$ROS_WORKSPACES" ] && [ -n "$ROS_WORKSPACE" ] && ROS_WORKSPACES="${ROS_WORKSPACE}"
+
 IFS=' ' read -r -a WORKSPACES <<< "$ROS_WORKSPACES" # `
 
 dirs=""
