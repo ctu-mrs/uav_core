@@ -1,6 +1,9 @@
 language: generic
 os:
 - linux
+branches:
+  only:
+  - master
 sudo: required
 dist: bionic
 compiler:
