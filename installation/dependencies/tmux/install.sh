@@ -16,7 +16,7 @@ echo "$0: installing tmux build dependencies"
 sudo apt -y install libevent-dev bison
 
 echo "$0: building tmux"
-cd $MY_PATH/../../utils/tmux
+cd $MY_PATH/../../../utils/tmux
 sh autogen.sh
 ./configure && make -j4
 sudo make install-binPROGRAMS
