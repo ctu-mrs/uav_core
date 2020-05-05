@@ -5,18 +5,6 @@ set -e
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'echo "\"${last_command}\" command failed with exit code $?"' ERR
 
-unattended=0
-subinstall_params=""
-for param in "$@"
-do
-  echo $param
-  if [ $param="--unattended" ]; then
-    echo "installing in unattended mode"
-    unattended=1
-    subinstall_params="--unattended"
-  fi
-done
-
 # get the path to this script
 MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
@@ -25,27 +13,27 @@ cd $MY_PATH
 
 ## | ----------------------- install ROS ---------------------- |
 
-bash $MY_PATH/dependencies/ros.sh $subinstall_params
+bash $MY_PATH/dependencies/ros.sh
 
 ## | -------------- install general dependencies -------------- |
 
-bash $MY_PATH/dependencies/gitman.sh $subinstall_params
+bash $MY_PATH/dependencies/general.sh
 
 ## | --------------------- install gitman --------------------- |
 
-bash $MY_PATH/dependencies/gitman.sh $subinstall_params
+bash $MY_PATH/dependencies/gitman.sh
 
 ## | ---------------------- install tmux ---------------------- |
 
-bash $MY_PATH/tmux/install.sh $subinstall_params
+bash $MY_PATH/dependencies/tmux/install.sh
 
 ## | ------------------- install tmuxinator ------------------- |
 
-bash $MY_PATH/dependencies/tmuxinator.sh $subinstall_params
+bash $MY_PATH/dependencies/tmuxinator.sh
 
 ## | ----------------- install debugging tools ---------------- |
 
-bash $MY_PATH/gdb/install.sh $subinstall_params
+bash $MY_PATH/dependencies/gdb/install.sh
 
 ## | ------------------- install submodules ------------------- |
 
@@ -53,7 +41,7 @@ gitman install --force
 
 ## | --------------------- install mavros --------------------- |
 
-bash $MY_PATH/dependencies/mavros.sh --download $subinstall_params
+bash $MY_PATH/dependencies/mavros.sh --download
 
 ## | ------- add sourcing of shell additions to .bashrc ------- |
 
