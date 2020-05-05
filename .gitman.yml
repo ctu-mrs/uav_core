@@ -145,6 +145,15 @@ sources:
   scripts:
   - git submodule update --init --recursive
 sources_locked:
+- name: mavros
+  type: git
+  repo: git@github.com:ctu-mrs/mavros.git
+  sparse_paths:
+  -
+  rev: b1a037198c0c1975259d5b1c4b26a0c7c5889900
+  link: ros_packages/mavros
+  scripts:
+  - git submodule update --init --recursive
 - name: tmuxinator
   type: git
   repo: http://github.com/tmuxinator/tmuxinator.git

@@ -30,12 +30,14 @@ sudo apt-get -y install \
   ros-melodic-image-view\
   ros-melodic-image-transport\
   ros-melodic-image-transport-plugins\
+  ros-melodic-image-geometry\
   ros-melodic-compressed-image-transport\
   ros-melodic-theora-image-transport\
   ros-melodic-rosbash\
   ros-melodic-rqt*\
   ros-melodic-tf2-sensor-msgs\
   ros-melodic-tf2-geometry-msgs\
+  ros-melodic-tf2-eigen\
   ros-melodic-octomap-msgs\
   ros-melodic-flexbe-behavior-engine\
   ros-melodic-joy\
@@ -43,12 +45,12 @@ sudo apt-get -y install \
   ros-melodic-rosdoc-lite\
   ros-melodic-teraranger\
   ros-melodic-geographic-msgs\
-  ros-melodic-tf2-eigen\
   ros-melodic-rviz-visual-tools\
   ros-melodic-catch-ros\
   ros-melodic-octomap\
   ros-melodic-sophus\
   ros-melodic-cmake-modules\
+  ros-melodic-plotjuggler\
 
 # python stuff
 sudo apt-get -y install python-prettytable python-argparse git-core python-empy python-serial python-bloom python-catkin-tools python-pip python3-pip python-future python3-future python-crcmod
@@ -72,7 +74,6 @@ sudo apt -y install genromfs\
   expect-dev\
   moreutils\
   xvfb\
-  ros-melodic-plotjuggler\
   libeigen3-dev\
   libsuitesparse-dev\
   protobuf-compiler\
