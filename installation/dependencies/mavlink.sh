@@ -28,9 +28,13 @@ do
   shift
 done
 
+[ -z "$INSTALL"] && [ -z "$INSTALL" ] && echo "Choose --install or --remove" && exit 1
+[ -n "$INSTALL"] && [ -n "$INSTALL" ] && echo "Options --install and --remove are mutually exclusive" && exit 1
+
 if [ -n "$INSTALL" ];
 then
 
+  echo "Installing future"
   [ -z "$DRYRUN" ] && sudo pip install --user future
   [ -z "$DRYRUN" ] && sudo -H pip install --user future
   [ -z "$DRYRUN" ] && sudo pip3 install --user future
@@ -41,9 +45,7 @@ then
   MY_PATH=`dirname "$0"`
   MY_PATH=`( cd "$MY_PATH" && pwd )`
 
-  # install mavlink headers
-
-  # pull the correct version of mavlink
+  echo "Checking out the desired release"
   [ -z "$DRYRUN" ] && cd "$MY_PATH/../../lib/mavlink-gbp-release/"
   [ -z "$DRYRUN" ] && # git checkout a131e4bd665d2dc7f822797faf13d783fcd4bb8a # release/melodic/mavlink/2019.5.20-1
   [ -z "$DRYRUN" ] && bloom-generate rosdebian --os-name ubuntu --ros-distro melodic
