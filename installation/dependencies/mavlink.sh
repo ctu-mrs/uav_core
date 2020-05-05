@@ -5,7 +5,7 @@ set -e
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'echo "\"${last_command}\" command failed with exit code $?"' ERR
 
-options=$(getopt -l "install,remove:,dryrun" -o "" -a -- "$@")
+options=$(getopt -l "install,remove,dryrun" -o "" -a -- "$@")
 
 eval set -- "$options"
 
@@ -24,12 +24,16 @@ do
       DRYRUN=true
       shift
       ;;
+    --)
+      shift
+      break
+      ;;
   esac
   shift
 done
 
-[ -z "$INSTALL"] && [ -z "$INSTALL" ] && echo "Choose --install or --remove" && exit 1
-[ -n "$INSTALL"] && [ -n "$INSTALL" ] && echo "Options --install and --remove are mutually exclusive" && exit 1
+[ -z "$INSTALL"] && [ -z "$INSTALL" ] && echo "$0: Choose --install or --remove" && exit 1
+[ -n "$INSTALL"] && [ -n "$INSTALL" ] && echo "$0: Options --install and --remove are mutually exclusive" && exit 1
 
 if [ -n "$INSTALL" ];
 then
