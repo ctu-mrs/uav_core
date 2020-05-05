@@ -17,9 +17,9 @@ if [ "$num" -lt "1" ]; then
   fi
 
   echo "export $2=\"$3\" $COMMENTARY" >> $RCFILE
-  echo "$3"
+  # echo "$3"
 else
   var_name=`eval echo $2`
   var_value=`eval echo -e "\\$${var_name}"`
-  echo "$var_value"
+  # echo "$var_value"
 fi
