@@ -27,7 +27,7 @@ if [ -e "$FILE" ]; then
   echo "$0: .tmux.conf exists, not copying"
 else
   echo "$0: copying .tmux.conf"
-  cp $MY_PATH/dottmux.conf $FILE
+  ln -sf $MY_PATH/dottmux.conf $FILE
 fi
 
 exit 0
