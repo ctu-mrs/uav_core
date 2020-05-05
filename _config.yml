@@ -1,1 +1,9 @@
 theme: jekyll-theme-hacker
+exclude:
+  - installation
+  - ros_packages
+  - .ci
+  - miscellaneous
+  - tmux_scripts
+  - utils
+  - change_remote_to_local.sh
