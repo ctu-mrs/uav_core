@@ -51,13 +51,12 @@ if [ "$num" -lt "1" ]; then
   echo "Adding source to .bashrc"
   # set bashrc
   echo "
-# source uav_core shell additions
+# MRS uav_core shell configuration
 source $TEMP/shell_additions.sh" >> ~/.bashrc
 
 fi
 
-## | ------ add uav_core environment variables to .bashrc ----- |
-
+# add configuration variables
 bash $MY_PATH/../miscellaneous/scripts/setup_rc_variables.sh
 
 exit 0
