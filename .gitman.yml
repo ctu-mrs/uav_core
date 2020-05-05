@@ -1,23 +1,5 @@
 location: .gitman
 sources:
-- name: mavlink-gbp-release
-  type: git
-  repo: https://github.com/mavlink/mavlink-gbp-release
-  sparse_paths:
-  -
-  rev: a131e4bd665d2dc7f822797faf13d783fcd4bb8a
-  link: lib/mavlink-gbp-release
-  scripts:
-  - git submodule update --init --recursive
-- name: mavros
-  type: git
-  repo: git@github.com:ctu-mrs/mavros.git
-  sparse_paths:
-  -
-  rev: header_fix
-  link: ros_packages/mavros
-  scripts:
-  - git submodule update --init --recursive
 - name: mrs_bumper
   type: git
   repo: git@github.com:ctu-mrs/mrs_bumper.git
@@ -145,15 +127,6 @@ sources:
   scripts:
   - git submodule update --init --recursive
 sources_locked:
-- name: mavros
-  type: git
-  repo: git@github.com:ctu-mrs/mavros.git
-  sparse_paths:
-  -
-  rev: b1a037198c0c1975259d5b1c4b26a0c7c5889900
-  link: ros_packages/mavros
-  scripts:
-  - git submodule update --init --recursive
 - name: tmuxinator
   type: git
   repo: http://github.com/tmuxinator/tmuxinator.git
