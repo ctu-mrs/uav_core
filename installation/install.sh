@@ -41,7 +41,7 @@ bash $MY_PATH/tmux/install.sh $subinstall_params
 
 ## | ------------------- install tmuxinator ------------------- |
 
-bash $MY_PATH/tmuxinator/install.sh $subinstall_params
+bash $MY_PATH/dependencies/tmuxinator/install.sh $subinstall_params
 
 ## | ----------------- install debugging tools ---------------- |
 

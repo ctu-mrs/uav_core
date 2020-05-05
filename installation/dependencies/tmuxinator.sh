@@ -10,13 +10,12 @@ MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
 
 cd $MY_PATH/../../utils/tmuxinator
-git pull
 
 echo "$0: installing tmuxinator"
 
 sudo apt -y install ruby gem
 
 gem build tmuxinator.gemspec 
-sudo gem install tmuxinator
+sudo gem install tmuxinator -v 1.1.5
 
 exit 0
