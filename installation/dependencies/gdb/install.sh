@@ -3,7 +3,7 @@
 set -e
 
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
-trap 'echo "\"${last_command}\" command failed with exit code $?"' ERR
+trap 'echo "$0: \"${last_command}\" command failed with exit code $?"' ERR
 
 # get the path to this script
 MY_PATH=`dirname "$0"`
@@ -21,5 +21,3 @@ ln -sf $MY_PATH/gdb_modules/eigen ~/.gdb
 
 # copy the script for debugging roslaunched programs
 sudo ln -sf $MY_PATH/debug_roslaunch /usr/bin/debug_roslaunch
-
-exit 0

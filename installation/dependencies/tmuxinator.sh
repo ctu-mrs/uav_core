@@ -3,7 +3,7 @@
 set -e
 
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
-trap 'echo "\"${last_command}\" command failed with exit code $?"' ERR
+trap 'echo "$0: \"${last_command}\" command failed with exit code $?"' ERR
 
 # get the path to this script
 MY_PATH=`dirname "$0"`
@@ -17,5 +17,3 @@ sudo apt -y install ruby gem
 
 gem build tmuxinator.gemspec 
 sudo gem install tmuxinator -v 1.1.5
-
-exit 0

@@ -60,5 +60,3 @@ fi
 
 # add configuration variables
 bash $MY_PATH/../miscellaneous/scripts/setup_rc_variables.sh
-
-exit 0
