@@ -9,7 +9,7 @@ trap 'echo "\"${last_command}\" command failed with exit code $?"' ERR
 MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
 
-cd $MY_PATH/../../submodules/tmuxinator
+cd $MY_PATH/../../utils/tmuxinator
 git pull
 
 echo "$0: installing tmuxinator"
