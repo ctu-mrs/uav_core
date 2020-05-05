@@ -1,6 +1,14 @@
 # get the path to this script
-MY_PATH=`dirname "$0"`
-MY_PATH=`( cd "$MY_PATH" && pwd )`
+
+PNAME=$( ps -p "$$" -o comm= )
+SNAME=$( echo "$SHELL" | grep -Eo '[^/]+/?$' )
+
+if [ "$SNAME" = "bash" ]; then
+  MY_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+else
+  MY_PATH=`dirname "$0"`
+  MY_PATH=`( cd "$MY_PATH" && pwd )`
+fi
 
 UAV_CORE_PATH=$MY_PATH/../../
 
