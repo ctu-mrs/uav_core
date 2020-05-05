@@ -23,6 +23,8 @@ bash $MY_PATH/dependencies/general.sh
 
 bash $MY_PATH/dependencies/gitman.sh
 
+gitman install
+
 ## | ---------------------- install tmux ---------------------- |
 
 bash $MY_PATH/dependencies/tmux/install.sh
@@ -34,10 +36,6 @@ bash $MY_PATH/dependencies/tmuxinator.sh
 ## | ----------------- install debugging tools ---------------- |
 
 bash $MY_PATH/dependencies/gdb/install.sh
-
-## | ------------------- install submodules ------------------- |
-
-gitman install --force
 
 ## | --------------------- install mavros --------------------- |
 
