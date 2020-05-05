@@ -51,7 +51,7 @@ sudo apt-get -y install \
   ros-melodic-cmake-modules\
 
 # python stuff
-sudo apt-get -y python-prettytable python-argparse git-core python-empy python-serial python-bloom python-catkin-tools python-pip python3-pip python-future python3-future python-crcmod
+sudo apt-get -y install python-prettytable python-argparse git-core python-empy python-serial python-bloom python-catkin-tools python-pip python3-pip python-future python3-future python-crcmod
 
 # other
 sudo apt -y install genromfs\
