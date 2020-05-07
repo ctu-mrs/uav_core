@@ -302,6 +302,32 @@ alias gcmp="git checkout master; git pull"
 alias flog="~/.scripts/git-forest.sh --all --date=relative --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --style=15"
 alias glog="git log --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 
+git2https() {
+
+  old_remote=$(git remote get-url origin)
+  echo Old remote: $old_remote
+
+  new_remote=$(echo $old_remote | sed -r 's|.*git@(.+):(.+)|https://\1/\2|' | head -n 1)
+  echo New remote: $new_remote
+
+  if [ -n "$new_remote" ]; then
+    git remote set-url origin "$new_remote"
+  fi
+}
+
+git2ssh() {
+
+  old_remote=$(git remote get-url origin)
+  echo Old remote: $old_remote
+
+  new_remote=$(echo $old_remote | sed -r 's|https://([^/]+)/(.+)|git@\1:\2|' | head -n 1)
+  echo New remote: $new_remote
+
+  if [ -n "$new_remote" ]; then
+    git remote set-url origin "$new_remote"
+  fi
+}
+
 ## --------------------------------------------------------------
 ## |                         ROS aliases                        |
 ## --------------------------------------------------------------
