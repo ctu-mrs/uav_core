@@ -2,7 +2,7 @@ location: .gitman
 sources:
 - name: mrs_bumper
   type: git
-  repo: git@github.com:ctu-mrs/mrs_bumper.git
+  repo: https://github.com/ctu-mrs/mrs_bumper.git
   sparse_paths:
   -
   rev: master
@@ -11,7 +11,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_lib
   type: git
-  repo: git@github.com:ctu-mrs/mrs_lib.git
+  repo: https://github.com/ctu-mrs/mrs_lib.git
   sparse_paths:
   -
   rev: master
@@ -20,7 +20,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_mavros_interface
   type: git
-  repo: git@github.com:ctu-mrs/mrs_mavros_interface.git
+  repo: https://github.com/ctu-mrs/mrs_mavros_interface.git
   sparse_paths:
   -
   rev: master
@@ -29,7 +29,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_msgs
   type: git
-  repo: git@github.com:ctu-mrs/mrs_msgs.git
+  repo: https://github.com/ctu-mrs/mrs_msgs.git
   sparse_paths:
   -
   rev: master
@@ -38,7 +38,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_optic_flow
   type: git
-  repo: git@github.com:ctu-mrs/mrs_optic_flow.git
+  repo: https://github.com/ctu-mrs/mrs_optic_flow.git
   sparse_paths:
   -
   rev: master
@@ -47,7 +47,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_uav_controllers
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_controllers.git
+  repo: https://github.com/ctu-mrs/mrs_uav_controllers.git
   sparse_paths:
   -
   rev: master
@@ -56,7 +56,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_uav_general
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_general.git
+  repo: https://github.com/ctu-mrs/mrs_uav_general.git
   sparse_paths:
   -
   rev: master
@@ -65,7 +65,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_uav_managers
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_managers.git
+  repo: https://github.com/ctu-mrs/mrs_uav_managers.git
   sparse_paths:
   -
   rev: master
@@ -74,7 +74,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_uav_odometry
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_odometry.git
+  repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
   sparse_paths:
   -
   rev: master
@@ -83,7 +83,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_uav_status
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_status.git
+  repo: https://github.com/ctu-mrs/mrs_uav_status.git
   sparse_paths:
   -
   rev: master
@@ -92,7 +92,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_uav_testing
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_testing.git
+  repo: https://github.com/ctu-mrs/mrs_uav_testing.git
   sparse_paths:
   -
   rev: master
@@ -101,7 +101,7 @@ sources:
   - git submodule update --init --recursive
 - name: mrs_uav_trackers
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_trackers.git
+  repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
   sparse_paths:
   -
   rev: master
@@ -110,7 +110,7 @@ sources:
   - git submodule update --init --recursive
 - name: tmux
   type: git
-  repo: http://github.com/tmux/tmux.git
+  repo: https://github.com/tmux/tmux.git
   sparse_paths:
   -
   rev: 3.0a
@@ -119,7 +119,7 @@ sources:
   - git submodule update --init --recursive
 - name: tmuxinator
   type: git
-  repo: http://github.com/tmuxinator/tmuxinator.git
+  repo: https://github.com/tmuxinator/tmuxinator.git
   sparse_paths:
   -
   rev: v2.0.0
@@ -129,7 +129,7 @@ sources:
 sources_locked:
 - name: mrs_bumper
   type: git
-  repo: git@github.com:ctu-mrs/mrs_bumper.git
+  repo: https://github.com/ctu-mrs/mrs_bumper.git
   sparse_paths:
   -
   rev: d693523dfe419f93688b2964f280d3bb9f34cb5a
@@ -138,7 +138,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_lib
   type: git
-  repo: git@github.com:ctu-mrs/mrs_lib.git
+  repo: https://github.com/ctu-mrs/mrs_lib.git
   sparse_paths:
   -
   rev: f6721bbd9fea11e2990dccc6f3922cbd03968721
@@ -147,7 +147,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_mavros_interface
   type: git
-  repo: git@github.com:ctu-mrs/mrs_mavros_interface.git
+  repo: https://github.com/ctu-mrs/mrs_mavros_interface.git
   sparse_paths:
   -
   rev: 6ef8ad73f5b324e0f2296572479bf2d9200ab758
@@ -156,7 +156,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_msgs
   type: git
-  repo: git@github.com:ctu-mrs/mrs_msgs.git
+  repo: https://github.com/ctu-mrs/mrs_msgs.git
   sparse_paths:
   -
   rev: c60584ecc35a62b4ec7856f4ef576f86bda3bd1a
@@ -165,7 +165,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_optic_flow
   type: git
-  repo: git@github.com:ctu-mrs/mrs_optic_flow.git
+  repo: https://github.com/ctu-mrs/mrs_optic_flow.git
   sparse_paths:
   -
   rev: dc0ff0ef5d3f912a5cce7a94655bdb5d1d611c85
@@ -174,7 +174,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_uav_controllers
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_controllers.git
+  repo: https://github.com/ctu-mrs/mrs_uav_controllers.git
   sparse_paths:
   -
   rev: d7e40783a6cea8b8d30b9e6930bb232ef13ade20
@@ -183,7 +183,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_uav_general
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_general.git
+  repo: https://github.com/ctu-mrs/mrs_uav_general.git
   sparse_paths:
   -
   rev: 280b35457afd4a41093842f2e9645abd67aa7f61
@@ -192,7 +192,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_uav_managers
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_managers.git
+  repo: https://github.com/ctu-mrs/mrs_uav_managers.git
   sparse_paths:
   -
   rev: 6ff7c2aaf7f12c96d311099c58bc6ece5f103923
@@ -201,7 +201,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_uav_odometry
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_odometry.git
+  repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
   sparse_paths:
   -
   rev: 4e880e6aae693f09d529c33fcdef8c8d9dfe3765
@@ -210,7 +210,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_uav_status
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_status.git
+  repo: https://github.com/ctu-mrs/mrs_uav_status.git
   sparse_paths:
   -
   rev: 505f9bcf170b1282e5f1357614f2adc3bf31903e
@@ -219,7 +219,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_uav_testing
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_testing.git
+  repo: https://github.com/ctu-mrs/mrs_uav_testing.git
   sparse_paths:
   -
   rev: 16f5ad20f04fc081b5461fcb73c22b2b44df4b62
@@ -228,7 +228,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mrs_uav_trackers
   type: git
-  repo: git@github.com:ctu-mrs/mrs_uav_trackers.git
+  repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
   sparse_paths:
   -
   rev: 0c94d2cf901b09a5016e499048149d1e03d46b67
@@ -237,7 +237,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: tmux
   type: git
-  repo: http://github.com/tmux/tmux.git
+  repo: https://github.com/tmux/tmux.git
   sparse_paths:
   -
   rev: 25ae02869544b84b639b25b0aa69baa6ea2d3a6a
@@ -246,7 +246,7 @@ sources_locked:
   - git submodule update --init --recursive
 - name: tmuxinator
   type: git
-  repo: http://github.com/tmuxinator/tmuxinator.git
+  repo: https://github.com/tmuxinator/tmuxinator.git
   sparse_paths:
   -
   rev: 7208ab2ed7c8cfbcbe92c4b0db2bc01550d40fd4
