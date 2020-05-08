@@ -59,6 +59,4 @@ source $TEMP/shell_additions.sh" >> ~/.bashrc
 fi
 
 # add configuration variables
-bash $MY_PATH/../miscellaneous/scripts/setup_rc_variables.sh
-
-source ~/.bashrc
+$MY_PATH/../miscellaneous/scripts/setup_rc_variables.sh

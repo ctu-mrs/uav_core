@@ -1,5 +1,10 @@
 #!/bin/bash
 
+set -e
+
+trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
+trap 'echo "$0: \"${last_command}\" command failed with exit code $?"' ERR
+
 if [ -z $1 ]; then
   RCFILE="$HOME/.bashrc"
 else

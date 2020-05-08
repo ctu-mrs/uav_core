@@ -1,5 +1,10 @@
 #!/bin/bash
 
+set -e
+
+trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
+trap 'echo "$0: \"${last_command}\" command failed with exit code $?"' ERR
+
 MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
 
@@ -37,7 +42,10 @@ for ((i=0; i < ((${#vars[*]})); i++));
 do
   ./get_set_rc_variable.sh "$HOME/.bashrc" "${vars[$i]}" "${values[$i]}" "${comments[$i]}"
 
-  if [ -e $HOME/.zshrc ]; then
+  if [ -e "$HOME/.zshrc" ]; then
     ./get_set_rc_variable.sh "$HOME/.zshrc" "${vars[$i]}" "${values[$i]}" "${comments[$i]}"
   fi
+
 done
+
+echo RC variables updated
