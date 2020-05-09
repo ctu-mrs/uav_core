@@ -7,6 +7,7 @@ MY_PATH=`( cd "$MY_PATH" && pwd )`
 cd $MY_PATH
 
 input=(
+"mrs_bumper" "master"
 "mrs_uav_controllers" "master"
 "mrs_uav_general" "master"
 "mrs_lib" "master"
