@@ -204,7 +204,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
   sparse_paths:
   -
-  rev: d3dcfdf3e3a29f8d0fb69cc96ed3cd2b5e210739
+  rev: 2623e6a4e64b99ec2ffae1022ee37126474efc81
   link: ros_packages/mrs_uav_odometry
   scripts:
   - git submodule update --init --recursive
