@@ -17,9 +17,9 @@ input=(
   'lima' 'uav70' '10.201.1.170'
   'mike' 'uav71' '10.201.1.171'
   'papa' 'uav45' '10.201.1.145'
+  'oscar' 'uav46' '10.201.1.146'
   'quebec' 'uav47' '10.201.1.147'
   'romeo' 'uav49' '10.201.1.149'
-  'sierra' 'uav46' '10.201.1.146'
 )
 
 # get path to script
