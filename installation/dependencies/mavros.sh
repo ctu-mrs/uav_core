@@ -46,7 +46,7 @@ then
   $MY_PATH/mavlink.sh --remove $DRYRUN
 
   echo "$0: Downloading Mavros"
-  [ -z "$DRYRUN" ] && sudo apt -y install ros-melodic-mavros ros-melodic-mavlink ros-melodic-libmavconn
+  [ -z "$DRYRUN" ] && sudo apt -y install ros-melodic-mavros ros-melodic-mavlink ros-melodic-libmavconn ros-melodic-mavros-extras
 
 fi
 
@@ -54,7 +54,7 @@ if [ -n "$COMPILE" ];
 then
 
   echo "$0: Removing pre-installed Mavros and Mavlink"
-  [ -z "$DRYRUN" ] && sudo apt -y remove ros-melodic-mavros* ros-melodic-mavlink* ros-melodic-libmavconn
+  [ -z "$DRYRUN" ] && sudo apt -y remove ros-melodic-mavros* ros-melodic-mavlink* ros-melodic-libmavconn ros-melodic-mavros-extras
 
   echo "$0: Running custom Mavlink install script"
   $MY_PATH/mavlink.sh --install $DRYRUN
