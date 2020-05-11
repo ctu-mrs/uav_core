@@ -41,7 +41,7 @@ The `install.sh` script will add the following to your .bashrc:
 source /opt/ros/melodic/setup.bash
 
 # source uav_core shell additions
-source /home/klaxalk/git/uav_core/miscellaneous/shell_additions/shell_additions.sh
+source $HOME/git/uav_core/miscellaneous/shell_additions/shell_additions.sh
 export UAV_NAME="uav1" 
 export NATO_NAME="" # lower-case name of the UAV frame {alpha, bravo, charlie, ...}
 export UAV_MASS="3.0" # [kg], used only with real UAV
