@@ -26,15 +26,15 @@ pre_input="mkdir -p $MAIN_DIR/$PROJECT_NAME"
 # 'name' 'command'
 # DO NOT PUT SPACES IN THE NAMES
 input=(
-  'Rosbag' 'waitForOffboard; rosrun mrs_general record.sh
+  'Rosbag' 'waitForOffboard; rosrun mrs_uav_general record.sh
 '
-  'Sensors' 'waitForRos; roslaunch mrs_general sensors.launch
+  'Sensors' 'waitForRos; roslaunch mrs_uav_general sensors.launch
 '
   'OptFlow' 'waitForRos; roslaunch mrs_optic_flow optic_flow.launch
 '
-  'Status' 'waitForRos; roslaunch mrs_status status.launch
+  'Status' 'waitForRos; roslaunch mrs_uav_status status.launch
 '
-  'Control' 'waitForRos; roslaunch mrs_general core.launch
+  'Control' 'waitForRos; roslaunch mrs_uav_general core.launch
 '
   'motors' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
   'takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
