@@ -132,7 +132,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_bumper.git
   sparse_paths:
   -
-  rev: 7c8c9a24f6d11e30c1c6f40dfcbe6890fdb56372
+  rev: 1ead0e10221f2115d180ddefe15b0884283d476a
   link: ros_packages/mrs_bumper
   scripts:
   - git submodule update --init --recursive
