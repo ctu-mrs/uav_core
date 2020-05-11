@@ -61,7 +61,7 @@ export LOGGER_DEBUG="false" # sets the ros console output level to debug
 ```
 
 Our shell additions
-```source /home/klaxalk/git/uav_core/miscellaneous/shell_additions/shell_additions.sh```
+```source $HOME/git/uav_core/miscellaneous/shell_additions/shell_additions.sh```
 provide some useful command line aliases (git, catkin, cd) and some neccessary shell functions (wait\* commands for simulation).
 
 All the environment variables define a particular configuration of a UAV (through launch files).
