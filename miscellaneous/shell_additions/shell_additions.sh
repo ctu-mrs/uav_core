@@ -194,6 +194,46 @@ cd "$CURRENT_PATH"
 # #}
 
 ## --------------------------------------------------------------
+## |                       MRS simulation                       |
+## --------------------------------------------------------------
+
+# smart way of creating alias for spawn_uav
+spawn_uav(){
+  rosrun mrs_simulation spawn
+}
+
+# #{ bash completion function definition
+function _spawn_uav_bash_complete()
+{
+  local arg opts
+  COMPREPLY=()
+  arg="${COMP_WORDS[COMP_CWORD]}"
+  opts=`rosrun mrs_simulation spawn --help | grep '  --' | awk '{print $1}'`
+  COMPREPLY=( $(compgen -W "${opts}" -- ${arg}) )
+}
+# #}
+
+# #{ zsh completion function definition
+function _spawn_uav_zsh_complete()
+{
+  local opts
+  reply=()
+  opts=`rosrun mrs_simulation spawn --help | grep '  --' | awk '{print $1}'`
+  reply=(${=opts})
+}
+# #}
+
+# selection of specific function for different shells
+case "$SHELL" in
+  *bash*)
+    complete -F "_spawn_uav_bash_complete" "spawn_uav"
+    ;;
+  *zsh*)
+    compctl -K "_spawn_uav_zsh_complete" "spawn_uav"
+    ;;
+esac
+
+## --------------------------------------------------------------
 ## |                             Git                            |
 ## --------------------------------------------------------------
 
