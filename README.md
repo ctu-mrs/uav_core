@@ -71,7 +71,7 @@ In a simulation, they are mostly *overloaded* in each tmuxinator session.
 
 ## The `cd` alias
 
-One of the features of our [shell_additions.sh](https://mrs.felk.cvut.cz/gitlab/github/uav_core/blob/master/miscellaneous/shell_additions/shell_additions.sh) that might be intrusive is our `cd` alias.
+One of the features of our [shell_additions.sh](https://github.com/ctu-mrs/uav_core/blob/master/miscellaneous/shell_additions/shell_additions.sh) that might be intrusive is our `cd` alias.
 Our `cd` is capable of automatically traversing from locations that have been symlinked somewhere, to the linked location.
 This is especially useful if you (like us) clone git repositories under a specific location, e.g., `~/git/my_repository` and then link them to catkin workspaces, e.g., `~/project2_workspace/src/my_repository`.
 When you call
