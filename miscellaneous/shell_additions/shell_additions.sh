@@ -198,8 +198,8 @@ cd "$CURRENT_PATH"
 ## --------------------------------------------------------------
 
 # smart way of creating alias for spawn_uav
-spawn_uav(){
-  rosrun mrs_simulation spawn
+spawn_uav() {
+  rosrun mrs_simulation spawn $@
 }
 
 # #{ bash completion function definition
