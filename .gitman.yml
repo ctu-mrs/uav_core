@@ -159,7 +159,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_msgs.git
   sparse_paths:
   -
-  rev: b9ba4938de543e0a96550db8ad4de490d7fc1d02
+  rev: e7f7026e9a68d4de6fb8895aab5303e52cf029d1
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive

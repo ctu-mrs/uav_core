@@ -71,7 +71,7 @@ In a simulation, they are mostly *overloaded* in each tmuxinator session.
 
 ## The `cd` alias
 
-One of the features of our `shell_additions.sh` that might be intrusive is our `cd` alias.
+One of the features of our [shell_additions.sh](https://github.com/ctu-mrs/uav_core/blob/master/miscellaneous/shell_additions/shell_additions.sh) that might be intrusive is our `cd` alias.
 Our `cd` is capable of automatically traversing from locations that have been symlinked somewhere, to the linked location.
 This is especially useful if you (like us) clone git repositories under a specific location, e.g., `~/git/my_repository` and then link them to catkin workspaces, e.g., `~/project2_workspace/src/my_repository`.
 When you call
@@ -89,4 +89,4 @@ Only the workspaces in the environment variable
 export ROS_WORKSPACES="~/mrs_workspace ~/modules_workspace ~/workspace ~/project2_workspace"
 ```
 are considered.
-The `ROS_WORKSPACES` variable is added during the installation of [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system) since that is where we set up the workspaces for you).
+The `ROS_WORKSPACES` variable is added during the installation of [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system) since that is where we set up the workspaces for you.
