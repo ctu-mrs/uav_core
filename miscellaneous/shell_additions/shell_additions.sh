@@ -224,11 +224,11 @@ function _spawn_uav_zsh_complete()
 # #}
 
 # selection of specific function for different shells
-case "$SHELL" in
-  *bash*)
+case "$PNAME" in
+  bash)
     complete -F "_spawn_uav_bash_complete" "spawn_uav"
     ;;
-  *zsh*)
+  zsh)
     compctl -K "_spawn_uav_zsh_complete" "spawn_uav"
     ;;
 esac
