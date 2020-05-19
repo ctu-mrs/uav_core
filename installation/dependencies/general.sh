@@ -90,3 +90,4 @@ sudo apt -y install genromfs\
   libzstd-dev\
   libqcustomplot-dev\
   xutils-dev\
+  libqt4-dev\
