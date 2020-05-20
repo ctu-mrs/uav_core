@@ -213,7 +213,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_managers.git
   sparse_paths:
   -
-  rev: 9582f6c25bd1cd44ec5cdece3c579abcb719a24e
+  rev: 01c0bf5607a6e9d5b003b7f4bcb9a576b60c46b5
   link: ros_packages/mrs_uav_managers
   scripts:
   - git submodule update --init --recursive
