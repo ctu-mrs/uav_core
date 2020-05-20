@@ -267,7 +267,8 @@ sources_locked:
   repo: https://github.com/tmuxinator/tmuxinator.git
   sparse_paths:
   -
-  rev: 7208ab2ed7c8cfbcbe92c4b0db2bc01550d40fd4
+  rev: ed0bbb73e738a57fe89b2779bc16f76b5109e5c8
   link: utils/tmuxinator
   scripts:
   - git submodule update --init --recursive
+groups: []
