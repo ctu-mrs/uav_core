@@ -1,0 +1,9 @@
+host mrs.felk.cvut.cz
+     hostname mrs.felk.cvut.cz
+     user git
+     identityfile ~/.ssh/id_rsa_drone_login
+
+host github.com
+     hostname github.com
+     user git
+     identityfile ~/.ssh/id_rsa
