@@ -177,7 +177,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_optic_flow.git
   sparse_paths:
   -
-  rev: d0058b5f516701317afd9f289ad087d6a0dfa206
+  rev: c6b490c4297847684144a9e9291823b5da1f02f7
   link: ros_packages/mrs_optic_flow
   scripts:
   - git submodule update --init --recursive
