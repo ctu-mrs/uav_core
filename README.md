@@ -66,8 +66,7 @@ Our shell additions
 provide some useful command line aliases (git, catkin, cd) and some neccessary shell functions (wait\* commands for simulation).
 
 All the environment variables define a particular configuration of a UAV (through launch files).
-The variables apply mostly to real hardware.
-They allow us to make the **core** universal without the need of hardcoding configurations for a particular UAV, but only for a UAV type.
+The variables apply mostly to real hardware. They allow us to make the **core** universal without the need of hardcoding configurations for a particular UAV, but only for a UAV type.
 In a simulation, they are mostly *overloaded* in each tmuxinator session.
 
 ## The `cd` alias
