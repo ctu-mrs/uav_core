@@ -8,16 +8,18 @@ cd $MY_PATH
 
 input=(
 "mrs_bumper" "master"
-"mrs_uav_controllers" "master"
-"mrs_uav_general" "master"
 "mrs_lib" "master"
 "mrs_mavros_interface" "master"
 "mrs_msgs" "master"
-"mrs_uav_odometry" "master"
 "mrs_optic_flow" "master"
-"mrs_uav_status" "master"
-"mrs_uav_trackers" "master"
+"mrs_rviz_plugins" "master"
+"mrs_uav_controllers" "master"
+"mrs_uav_general" "master"
 "mrs_uav_managers" "master"
+"mrs_uav_odometry" "master"
+"mrs_uav_status" "master"
+"mrs_uav_testing" "master"
+"mrs_uav_trackers" "master"
 )
 
 # create arrays of names and commands
@@ -36,6 +38,14 @@ do
   cd ${repos[$i]}
 
   git checkout ${branches[$i]}
+
+  old_remote=$(git remote get-url origin)
+  new_remote=$(echo $old_remote | sed -r 's|https://([^/]+)/(.+)|git@\1:\2|' | head -n 1)
+
+  if [ -n "$new_remote" ]; then
+    git remote set-url origin "$new_remote"
+  fi
+
   git push
 
   cd ..

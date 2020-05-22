@@ -12,9 +12,11 @@ The simulation scripts are located in the *simulation* repository.
   * the pre-defined sequence of pairs {window_name, command} that is send into each new tmux window
 * init_window="Status"
   * the name of the windos (window_name) that is going to be focused after the start
-* if you start the session via systemclt service, comment this bottom part:
+* if you start the session via systemclt service, comment the following bottom part:
 
 ```bash
+...
+
 $TMUX_BIN -2 attach-session -t $SESSION_NAME
 
 clear
