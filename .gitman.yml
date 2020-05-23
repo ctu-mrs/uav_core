@@ -141,7 +141,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_bumper.git
   sparse_paths:
   -
-  rev: 3adb7d424fafe63a95f14aabba804183f26f27e2
+  rev: d3b99c8f206d1ec191267ba49dd82a4da31a7ead
   link: ros_packages/mrs_bumper
   scripts:
   - git submodule update --init --recursive
@@ -150,7 +150,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_lib.git
   sparse_paths:
   -
-  rev: 42b7df3521cb7488dc5a5cac98762ecd15a7d7a5
+  rev: 0abbf20ad7734de97d259b6d964ffc210ae1a720
   link: ros_packages/mrs_lib
   scripts:
   - git submodule update --init --recursive
@@ -159,7 +159,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_mavros_interface.git
   sparse_paths:
   -
-  rev: fa53bc1a769e1862d0ac21112cedba3b8e077e6b
+  rev: 2845d6c7e44ff9be594effdd48192e7ac4bb457f
   link: ros_packages/mrs_mavros_interface
   scripts:
   - git submodule update --init --recursive
@@ -168,7 +168,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_msgs.git
   sparse_paths:
   -
-  rev: 0b1092f127315f69bda5abede2294ee360260860
+  rev: 13f2d9fda2959e36c9ad9918a1a3b642da90f100
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
@@ -177,7 +177,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_optic_flow.git
   sparse_paths:
   -
-  rev: e5037478d6fd1d3e8e61ddfc624810e82e2d01e6
+  rev: 65babd83c7b21baf5114f467f19e0538d5e14577
   link: ros_packages/mrs_optic_flow
   scripts:
   - git submodule update --init --recursive
@@ -186,7 +186,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
   sparse_paths:
   -
-  rev: 24d64dc98790faa428fa59e2ba0ae73f8ed7238e
+  rev: 154bd1b01caf08d62b2b45403eaf13b9a63504c6
   link: ros_packages/mrs_rviz_plugins
   scripts:
   - git submodule update --init --recursive
@@ -195,7 +195,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_controllers.git
   sparse_paths:
   -
-  rev: b1e4b2267221368488b34b330f6083b778cf65a8
+  rev: 70ba9dba38adfac7df5f3bbf85a0bcd4119214b1
   link: ros_packages/mrs_uav_controllers
   scripts:
   - git submodule update --init --recursive
@@ -204,7 +204,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_general.git
   sparse_paths:
   -
-  rev: 1100d85b4f1aac27115b8a7ebecbf89334ec3bd9
+  rev: 2e69716af1a3baaf0859bf65213b6a89b9d6124a
   link: ros_packages/mrs_uav_general
   scripts:
   - git submodule update --init --recursive
@@ -213,7 +213,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_managers.git
   sparse_paths:
   -
-  rev: 1ab98c72b84bff99330bf8f0c7593eaf5b310fb1
+  rev: 03e38bb8888f4cd05c8c2bcae98028362f87a98a
   link: ros_packages/mrs_uav_managers
   scripts:
   - git submodule update --init --recursive
@@ -222,7 +222,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
   sparse_paths:
   -
-  rev: b55a373becc869891513f6e483edc5f827663f19
+  rev: 85b6db6f9261a8d546bdd89eedb1d19caacd6025
   link: ros_packages/mrs_uav_odometry
   scripts:
   - git submodule update --init --recursive
@@ -231,7 +231,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_status.git
   sparse_paths:
   -
-  rev: a5b2012d769b3009b716d999e5542e40f7dfc7c4
+  rev: edd160f3a51c134163e44e8a3ec8945dee8d68a7
   link: ros_packages/mrs_uav_status
   scripts:
   - git submodule update --init --recursive
@@ -240,7 +240,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_testing.git
   sparse_paths:
   -
-  rev: a08b9a17bed4a6082ccfc40059ff304707d8eb76
+  rev: 1482020d830e4eb88a1848a64c6976915f21960c
   link: ros_packages/mrs_uav_testing
   scripts:
   - git submodule update --init --recursive
@@ -249,7 +249,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
   sparse_paths:
   -
-  rev: f8e6da94f7c0e1bf0b7ab2f821113d36053d3593
+  rev: 19ced56e5ada996a0169b757592594ddb0179e1d
   link: ros_packages/mrs_uav_trackers
   scripts:
   - git submodule update --init --recursive
@@ -271,4 +271,3 @@ sources_locked:
   link: utils/tmuxinator
   scripts:
   - git submodule update --init --recursive
-groups: []
