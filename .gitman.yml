@@ -240,7 +240,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_testing.git
   sparse_paths:
   -
-  rev: f2e3acb4cb4a49a8e676989dd5622b1fffdf65b3
+  rev: da9036c8d626e3b44b3763effd9b691ed4d0f686
   link: ros_packages/mrs_uav_testing
   scripts:
   - git submodule update --init --recursive
