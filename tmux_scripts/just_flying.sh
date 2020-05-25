@@ -28,20 +28,16 @@ pre_input="mkdir -p $MAIN_DIR/$PROJECT_NAME"
 input=(
   'Rosbag' 'waitForOffboard; rosrun mrs_uav_general record.sh
 '
+  'Nimbro' 'waitForRos; roslaunch mrs_uav_general nimbro.launch
+'
   'Sensors' 'waitForRos; roslaunch mrs_uav_general sensors.launch
 '
   'Status' 'waitForRos; roslaunch mrs_uav_status status.launch
 '
   'Control' 'waitForRos; roslaunch mrs_uav_general core.launch
 '
-  'Nimbro' 'waitForRos; roslaunch mrs_uav_general nimbro.launch
+  'AutoStart' 'waitForRos; roslaunch mrs_uav_general automatic_start.launch
 '
-  'motors' 'rosservice call /'"$UAV_NAME"'/control_manager/motors 1'
-  'takeoff' 'rosservice call /'"$UAV_NAME"'/uav_manager/takeoff'
-  'gofcu' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_fcu "goal: [0.0, 0.0, 0.0, 0.0]"'
-  'gorel' 'rosservice call /'"$UAV_NAME"'/control_manager/goto_relative "goal: [0.0, 0.0, 0.0, 0.0]"'
-  'land' 'rosservice call /'"$UAV_NAME"'/uav_manager/land'
-  'land_home' 'rosservice call /'"$UAV_NAME"'/uav_manager/land_home'
   'slow_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
 '
   'odom_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics

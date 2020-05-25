@@ -417,18 +417,30 @@ sshkey() {
     HEADLESS=""
   fi
 
-  for ((i=0; i < ${#HOSTS[*]}; i++));
+  case "$SHELL" in
+    *bash*)
+      fucking_shell_offset="0"
+      ;;
+    *zsh*)
+      fucking_shell_offset="1"
+      ;;
+  esac
+
+  for ((i=$fucking_shell_offset; i < ${#HOSTS[*]}+$fucking_shell_offset; i++));
   do
 
-    HOST=${HOSTS[i]}
+    HOST="${HOSTS[$i]}"
 
     echo "Updating .ssh/config for $HOST with $SSH_KEY_NAME"
 
-    # comment out the current key
-    $VIM_BIN $HEADLESS -nEs -c "%g/host $HOST/norm /^\s\+identityfileI# " -c "wqa" -- $HOME/.ssh/config
+    # comment out all keys in for the host
+    $VIM_BIN $HEADLESS -nEs -c "delmarks!" -c "%g/^host $HOST/norm {ma}mb" -c "'a,'b g/^\s\+identityfile/norm I# " -c "delmarks!" -c "wqa" -- $HOME/.ssh/config
 
-    # uncomment my own key
-    $VIM_BIN $HEADLESS -nEs -c "%g/host $HOST/norm /^\s\+#\s\+identityfile.\+$SSH_KEY_NAME^dW" -c "wqa" -- $HOME/.ssh/config
+    # remove my own key
+    $VIM_BIN $HEADLESS -nEs -c "delmarks!" -c "%g/^host $HOST/norm {ma}mb" -c "'a,'b g/^\s\+#\s\+identityfile.\+$SSH_KEY_NAME\s*/norm dd" -c "delmarks!" -c "wqa" -- $HOME/.ssh/config
+
+    # add my own key
+    $VIM_BIN $HEADLESS -nEs -c "delmarks!" -c "%g/^host $HOST/norm }kyypccidentityfile ~/.ssh/$SSH_KEY_NAME" -c "wqa" -- $HOME/.ssh/config
 
   done
 
@@ -442,8 +454,6 @@ sshkey() {
   eval `ssh-agent`
   ssh-add ~/.ssh/$SSH_KEY_NAME
 }
-
-alias sshkey="sshkey"
 
 # #}
 
