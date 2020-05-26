@@ -1,5 +1,4 @@
 topic_check:
 
   topics: [
-    "optic_flow/velocity",
   ]
