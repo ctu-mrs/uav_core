@@ -38,6 +38,9 @@ input=(
 '
   'Status' 'waitForRos; roslaunch mrs_uav_status status.launch
 '
+  'ForestFlier' 'waitForRos; roslaunch forest_flier uav.launch
+'
+  'ForestFlierGo' 'rosservice call  /'"$UAV_NAME"'/forest_flier/goto'
   'AutoStart' 'waitForRos; roslaunch mrs_uav_general automatic_start.launch custom_config:=./custom_configs/automatic_start.yaml
 '
   'Control' 'waitForRos; roslaunch mrs_uav_general core.launch WORLD_FILE:=./world.yaml config_odometry:=./custom_configs/odometry.yaml config_control_manager:=./custom_configs/control_manager.yaml
