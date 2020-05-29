@@ -596,7 +596,7 @@ waitForMpc() {
 # #{ waitForOffboard()
 
 waitForOffboard() {
-  until timeout 1s rostopic echo /$UAV_NAME/control_manager/offboard_on -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 3s rostopic echo /$UAV_NAME/control_manager/offboard_on -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for offboard mode"
     sleep 1;
   done
