@@ -19,10 +19,10 @@ done
 
 sudo apt -y update
 
+sudo apt -y install ros-melodic-ros-base
+
 sudo rosdep init
 rosdep update
-
-sudo apt -y install ros-melodic-ros-base
 
 num=`cat ~/.bashrc | grep "/opt/ros/melodic/setup.bash" | wc -l`
 if [ "$num" -lt "1" ]; then
