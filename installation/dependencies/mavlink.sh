@@ -51,8 +51,6 @@ then
 
   echo "$0: Checking out the desired release"
   [ -z "$DRYRUN" ] && cd "$MY_PATH/../../lib/mavlink-gbp-release/"
-  [ -z "$DRYRUN" ] && rosdep init
-  [ -z "$DRYRUN" ] && rosdep update
   [ -z "$DRYRUN" ] && bloom-generate rosdebian --os-name ubuntu --ros-distro melodic
 
   echo "$0: Building mavlink"

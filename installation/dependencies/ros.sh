@@ -18,6 +18,10 @@ for server in ha.pool.sks-keyservers.net \
 done
 
 sudo apt -y update
+
+sudo rosdep init
+rosdep update
+
 sudo apt -y install ros-melodic-ros-base
 
 num=`cat ~/.bashrc | grep "/opt/ros/melodic/setup.bash" | wc -l`
