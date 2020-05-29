@@ -27,6 +27,7 @@ input=(
   'whiskey' 'uav44' '192.168.69.144'
   'xray' 'uav55' '192.168.69.155'
   'zulu' 'uav56' '192.168.69.156'
+  'eagle' 'uav91' '192.168.69.191'
 )
 
 # get path to script
