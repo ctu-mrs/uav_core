@@ -11,10 +11,10 @@ sources:
   - git submodule update --init --recursive
 - name: mavros
   type: git
-  repo: https://github.com/mavlink/mavros
+  repo: https://github.com/ctu-mrs/mavros
   sparse_paths:
   -
-  rev: 1.1.0
+  rev: added_dialect_file
   link: ros_packages/mavros
   scripts:
   - git submodule update --init --recursive
@@ -165,10 +165,10 @@ sources_locked:
   - git submodule update --init --recursive
 - name: mavros
   type: git
-  repo: https://github.com/mavlink/mavros
+  repo: https://github.com/ctu-mrs/mavros
   sparse_paths:
   -
-  rev: e0c733a0b3a84a3ac6420d5ef6b594a42196dd06
+  rev: 8deab345e2560245c021b772cf675a9be54cee04
   link: ros_packages/mavros
   scripts:
   - git submodule update --init --recursive
@@ -307,3 +307,4 @@ sources_locked:
   link: utils/tmuxinator
   scripts:
   - git submodule update --init --recursive
+groups: []
