@@ -51,7 +51,11 @@ then
 
   echo "$0: Checking out the desired release"
   [ -z "$DRYRUN" ] && cd "$MY_PATH/../../lib/mavlink-gbp-release/"
-  [ -z "$DRYRUN" ] && # git checkout a131e4bd665d2dc7f822797faf13d783fcd4bb8a # release/melodic/mavlink/2019.5.20-1
+
+  [ -z "$DRYRUN" ] && [ -e "/etc/ros/rosdep/sources.list.d/20-default.list" ] && sudo rm /etc/ros/rosdep/sources.list.d/20-default.list
+  [ -z "$DRYRUN" ] && sudo rosdep init
+  [ -z "$DRYRUN" ] && ( rosdep update || echo "$0: rosdep update failed" )
+
   [ -z "$DRYRUN" ] && bloom-generate rosdebian --os-name ubuntu --ros-distro melodic
 
   echo "$0: Building mavlink"

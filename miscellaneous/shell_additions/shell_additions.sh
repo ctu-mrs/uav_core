@@ -386,6 +386,78 @@ alias flog="~/.scripts/git-forest.sh --all --date=relative --abbrev-commit --pre
 alias glog="git log --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 
 ## --------------------------------------------------------------
+## |                       SSH key swapper                      |
+## --------------------------------------------------------------
+
+# #{ sshkey()
+
+sshkey() {
+
+  # this script swaps the ssh key lines in .ssh/config for a given user name
+  # and starts an ssh agent for that key
+
+  if [ "$#" -eq "0" ]; then
+    echo please supply a parameter: the ssh key file prefix
+    exit
+  fi
+
+  SSH_KEY_NAME="$1"
+
+  HOSTS=(
+    'github.com'
+    'mrs.felk.cvut.cz'
+  )
+
+  # get me vim, we will be using it alot to postprocess the generated json files
+  if [ -x "$(whereis nvim | awk '{print $2}')" ]; then
+    VIM_BIN="$(whereis nvim | awk '{print $2}')"
+    HEADLESS="--headless"
+  elif [ -x "$(whereis vim | awk '{print $2}')" ]; then
+    VIM_BIN="$(whereis vim | awk '{print $2}')"
+    HEADLESS=""
+  fi
+
+  case "$SHELL" in
+    *bash*)
+      fucking_shell_offset="0"
+      ;;
+    *zsh*)
+      fucking_shell_offset="1"
+      ;;
+  esac
+
+  for ((i=$fucking_shell_offset; i < ${#HOSTS[*]}+$fucking_shell_offset; i++));
+  do
+
+    HOST="${HOSTS[$i]}"
+
+    echo "Updating .ssh/config for $HOST with $SSH_KEY_NAME"
+
+    # comment out all keys in for the host
+    $VIM_BIN $HEADLESS -nEs -c "delmarks!" -c "%g/^host $HOST/norm {ma}mb" -c "'a,'b g/^\s\+identityfile/norm I# " -c "delmarks!" -c "wqa" -- $HOME/.ssh/config
+
+    # remove my own key
+    $VIM_BIN $HEADLESS -nEs -c "delmarks!" -c "%g/^host $HOST/norm {ma}mb" -c "'a,'b g/^\s\+#\s\+identityfile.\+$SSH_KEY_NAME\s*/norm dd" -c "delmarks!" -c "wqa" -- $HOME/.ssh/config
+
+    # add my own key
+    $VIM_BIN $HEADLESS -nEs -c "delmarks!" -c "%g/^host $HOST/norm }kyypccidentityfile ~/.ssh/$SSH_KEY_NAME" -c "wqa" -- $HOME/.ssh/config
+
+  done
+
+  # copy the key from uav_core
+  cp ~/git/uav_core/miscellaneous/dotssh/$SSH_KEY_NAME ~/.ssh/
+  cp ~/git/uav_core/miscellaneous/dotssh/$SSH_KEY_NAME.pub ~/.ssh/
+
+  # set the corret chmod to the keys
+  chmod 0600 ~/.ssh/$SSH_KEY_NAME
+
+  eval `ssh-agent`
+  ssh-add ~/.ssh/$SSH_KEY_NAME
+}
+
+# #}
+
+## --------------------------------------------------------------
 ## |                         ROS aliases                        |
 ## --------------------------------------------------------------
 
@@ -524,7 +596,7 @@ waitForMpc() {
 # #{ waitForOffboard()
 
 waitForOffboard() {
-  until timeout 1s rostopic echo /$UAV_NAME/control_manager/offboard_on -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 3s rostopic echo /$UAV_NAME/control_manager/offboard_on -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for offboard mode"
     sleep 1;
   done

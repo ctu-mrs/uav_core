@@ -41,7 +41,7 @@ bash $MY_PATH/dependencies/gdb/install.sh
 
 ## | --------------------- install mavros --------------------- |
 
-bash $MY_PATH/dependencies/mavros.sh --download
+bash $MY_PATH/dependencies/mavros.sh --compile
 
 ## | ------- add sourcing of shell additions to .bashrc ------- |
 

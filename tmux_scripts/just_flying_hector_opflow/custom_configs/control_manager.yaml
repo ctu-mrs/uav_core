@@ -2,14 +2,14 @@ obstacle_bumper:
 
   enabled: true
 
-  horizontal_distance: 1.3 # [m]
+  horizontal_distance: 1.4 # [m]
   vertical_distance: 1.0 # [m]
 
   # true: the drone will move away from obstacles that appear within the radius
   repulsion:
 
-    horizontal_distance: 1.2 # [m]
-    horizontal_offset: 0.1 # [m] by how much to repulse from the horizontal_distance limit
+    horizontal_distance: 1.3 # [m]
+    horizontal_offset: 0.2 # [m] by how much to repulse from the horizontal_distance limit
 
     vertical_distance: 0.9 # [m]
     vertical_offset: 0.1 # [m]
