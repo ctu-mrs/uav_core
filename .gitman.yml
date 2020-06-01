@@ -267,7 +267,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_status.git
   sparse_paths:
   -
-  rev: 1f8e491e9973ebfb82b12c469a03f5237ce3fae2
+  rev: 2cf931f8c841f4f6aa4473491052c659672ce337
   link: ros_packages/mrs_uav_status
   scripts:
   - git submodule update --init --recursive
