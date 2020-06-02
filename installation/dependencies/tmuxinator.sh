@@ -15,5 +15,5 @@ echo "$0: installing tmuxinator"
 
 sudo apt -y install ruby gem
 
-gem build tmuxinator.gemspec 
+gem build tmuxinator.gemspec
 sudo gem install tmuxinator -v 1.1.5

@@ -2,7 +2,7 @@
 # author: Robert Penicka
 set -e
 
-echo "Starting install preparation" 
+echo "Starting install preparation"
 openssl aes-256-cbc -K $encrypted_d9693e727195_key -iv $encrypted_d9693e727195_iv -in ./.ci/deploy_key_github.enc -out ./.ci/deploy_key_github -d
 eval "$(ssh-agent -s)"
 chmod 600 ./.ci/deploy_key_github
