@@ -614,3 +614,31 @@ waitForCompile() {
 }
 
 # #}
+
+# #{ appendBag()
+
+appendBag() {
+
+  if [ "$#" -ne 1 ]; then
+    echo ERROR: please supply one argument: the text that should be appended to the name of the folder with the latest rosbag file and logs
+  else
+
+    bag_adress=`readlink ~/bag_files/latest`
+
+    if test -d "$bag_adress"; then
+
+      appended_adress=$bag_adress$1
+      mv $bag_adress $appended_adress
+      ln -sf $appended_adress ~/bag_files/latest
+			second_symlink_adress=$(sed 's|\(.*\)/.*|\1|' <<< $appended_adress)
+      ln -sf $appended_adress $second_symlink_adress/latest
+
+      echo Rosbag name appended: $appended_adress
+
+    else
+      echo ERROR: symlink ~/bag_files/latest does not point to a file! - $bag_adress
+    fi
+  fi
+}
+
+# #}
