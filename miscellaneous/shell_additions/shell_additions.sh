@@ -440,7 +440,7 @@ sshkey() {
     $VIM_BIN $HEADLESS -nEs -c "delmarks!" -c "%g/^host $HOST/norm {ma}mb" -c "'a,'b g/^\s\+#\s\+identityfile.\+$SSH_KEY_NAME\s*/norm dd" -c "delmarks!" -c "wqa" -- $HOME/.ssh/config
 
     # add my own key
-    $VIM_BIN $HEADLESS -nEs -c "delmarks!" -c "%g/^host $HOST/norm }kyypccidentityfile ~/.ssh/$SSH_KEY_NAME" -c "wqa" -- $HOME/.ssh/config
+    $VIM_BIN $HEADLESS -nEs -c "delmarks!" -c "%g/^host $HOST/norm }kyypccidentityfile ~/.ssh/$SSH_KEY_NAME" -c "wqa" -- $HOME/.ssh/config # `
 
   done
 
@@ -513,6 +513,28 @@ catkin() {
 
 # #}
 alias cb="catkin build"
+
+# catkin built [this/package] | less
+# #{ cbl()
+
+cbl () {
+
+  if [ $# -eq 0 ]; then
+
+    package="--this"
+
+  else
+
+    package="$1"
+    workspace_path=$( python $UAV_CORE_PATH/miscellaneous/scripts/get_ros_workspace_path.py -p "$package" )
+    cd "$workspace_path"
+
+  fi
+
+  command catkin build "$package" --force-color 2>&1 | less -r
+}
+
+# #}
 
 ## --------------------------------------------------------------
 ## |                       waitFor* macros                      |
