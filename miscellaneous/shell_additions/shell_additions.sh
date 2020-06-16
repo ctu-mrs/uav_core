@@ -440,7 +440,7 @@ sshkey() {
     $VIM_BIN $HEADLESS -nEs -c "delmarks!" -c "%g/^host $HOST/norm {ma}mb" -c "'a,'b g/^\s\+#\s\+identityfile.\+$SSH_KEY_NAME\s*/norm dd" -c "delmarks!" -c "wqa" -- $HOME/.ssh/config
 
     # add my own key
-    $VIM_BIN $HEADLESS -nEs -c "delmarks!" -c "%g/^host $HOST/norm }kyypccidentityfile ~/.ssh/$SSH_KEY_NAME" -c "wqa" -- $HOME/.ssh/config
+    $VIM_BIN $HEADLESS -nEs -c "delmarks!" -c "%g/^host $HOST/norm }kyypccidentityfile ~/.ssh/$SSH_KEY_NAME" -c "wqa" -- $HOME/.ssh/config # `
 
   done
 
@@ -473,7 +473,7 @@ catkin() {
       ROOT_DIR=`git rev-parse --show-toplevel` 2> /dev/null
 
       command catkin "$@"
-      command catkin config --profile debug --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
+      command catkin config --profile debug --cmake-args -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
       command catkin config --profile release --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
       command catkin config --profile reldeb --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
 
@@ -513,6 +513,28 @@ catkin() {
 
 # #}
 alias cb="catkin build"
+
+# catkin built [this/package] | less
+# #{ cbl()
+
+cbl () {
+
+  if [ $# -eq 0 ]; then
+
+    package="--this"
+
+  else
+
+    package="$1"
+    workspace_path=$( python $UAV_CORE_PATH/miscellaneous/scripts/get_ros_workspace_path.py -p "$package" )
+    cd "$workspace_path"
+
+  fi
+
+  command catkin build "$package" --force-color 2>&1 | less -r
+}
+
+# #}
 
 ## --------------------------------------------------------------
 ## |                       waitFor* macros                      |
@@ -611,6 +633,34 @@ waitForCompile() {
     echo "waiting for compilation to complete"
     sleep 1;
   done
+}
+
+# #}
+
+# #{ appendBag()
+
+appendBag() {
+
+  if [ "$#" -ne 1 ]; then
+    echo ERROR: please supply one argument: the text that should be appended to the name of the folder with the latest rosbag file and logs
+  else
+
+    bag_adress=`readlink ~/bag_files/latest`
+
+    if test -d "$bag_adress"; then
+
+      appended_adress=$bag_adress$1
+      mv $bag_adress $appended_adress
+      ln -sf $appended_adress ~/bag_files/latest
+			second_symlink_adress=$(sed 's|\(.*\)/.*|\1|' <<< $appended_adress)
+      ln -sf $appended_adress $second_symlink_adress/latest
+
+      echo Rosbag name appended: $appended_adress
+
+    else
+      echo ERROR: symlink ~/bag_files/latest does not point to a file! - $bag_adress
+    fi
+  fi
 }
 
 # #}

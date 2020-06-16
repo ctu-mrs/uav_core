@@ -27,5 +27,5 @@ if [ "$num" -lt "1" ]; then
   # set bashrc
   echo "
 source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-  
+
 fi

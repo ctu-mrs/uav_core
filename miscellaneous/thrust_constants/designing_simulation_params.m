@@ -6,7 +6,7 @@ function output = PixhawkOutput(input)
 
   % params from component_snippets.xacro
 
-  zero_position_armed = 0.15;
+  zero_position_armed = 0.37;
   input_scaling = 1;
   input_offset = 0;
 
@@ -17,7 +17,7 @@ end
 function input = PixhawkOutputInv(output)
 
   % params from component_snippets.xacro
-  zero_position_armed = 0.15;
+  zero_position_armed = 0.37;
   input_scaling = 1;
   input_offset = 0;
 
@@ -44,17 +44,17 @@ end
 g = 9.81;
 
 % how much propellers does your UAV have?
-n_propellers = 4;
+n_propellers = 8;
 
 % the motor constant for the simulated motor model
 % = max thrust in [N] per motor
-motor_constant = 8.5;
+motor_constant = 2.9*g;
 
 % define a list of different UAV masses for computing the thrust points
 mass = [
-  1.5;
-  2.0;
-  2.5;
+  11.6;
+  14.75;
+  17.4;
 ];
 
 % calculate the thrust outputs of the MRS pipeline for the defined masses
@@ -68,10 +68,12 @@ for i=1:length(mass)
   % achieve the desired hover thrust?
   mrs_thrust(i, 1) = PixhawkOutputInv(pixhawk_output(i));
 
-  % feed it back throught the pipeline to get the thrist
+  % feed it back throught the pipeline to get the thrust
   out_thrust_N(i, 1) = n_propellers * MotorModel(PixhawkOutput(mrs_thrust(i, 1)), motor_constant);
 
 end
+
+mrs_thrust
 
 % calculate the ka and kb thrust constants based on the masses and the mrs_thrust
 A = ones(length(mass), 2);

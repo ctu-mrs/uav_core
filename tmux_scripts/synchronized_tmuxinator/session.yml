@@ -1,0 +1,12 @@
+name: experiment
+root: ./
+startup_window: takeoff
+# tmux_options: -f tmux.conf
+windows:
+  - gazebo:
+      layout: tiled
+      synchronize: after
+      panes:
+        - ssh papa
+        - ssh romeo
+        - ssh sierra
