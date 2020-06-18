@@ -204,7 +204,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_msgs.git
   sparse_paths:
   -
-  rev: d9ce466f9bb87ce63f9ab778e5c4c4001c1a1d26
+  rev: a7b0964a7bb8e221a5861f977d5aa9e936f187af
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
@@ -307,4 +307,3 @@ sources_locked:
   link: utils/tmuxinator
   scripts:
   - git submodule update --init --recursive
-groups: []
