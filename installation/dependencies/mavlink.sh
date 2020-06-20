@@ -5,6 +5,10 @@ set -e
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'echo "$0: \"${last_command}\" command failed with exit code $?"' ERR
 
+distro=`lsb_release -r | awk '{ print $2 }'`
+[ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
+[ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
+
 # get the path to this script
 MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
@@ -43,11 +47,20 @@ if [ -n "$INSTALL" ];
 then
 
   echo "$0: Installing future"
-  [ -z "$DRYRUN" ] && sudo pip install --user future
-  [ -z "$DRYRUN" ] && sudo -H pip install --user future
+
+  if [ "$distro" = "18.04" ]; then
+    [ -z "$DRYRUN" ] && sudo pip install --user future
+    [ -z "$DRYRUN" ] && sudo -H pip install --user future
+  fi
+
   [ -z "$DRYRUN" ] && sudo pip3 install --user future
   [ -z "$DRYRUN" ] && sudo -H pip3 install --user future
-  [ -z "$DRYRUN" ] && sudo apt -y install python-future python3-future
+
+  if [ "$distro" = "18.04" ]; then
+    [ -z "$DRYRUN" ] && sudo apt -y install python-future python3-future
+  elif [ "$distro" = "20.04" ]; then
+    [ -z "$DRYRUN" ] && sudo apt -y install python3-future
+  fi
 
   echo "$0: Checking out the desired release"
   [ -z "$DRYRUN" ] && cd "$MY_PATH/../../lib/mavlink-gbp-release/"
@@ -56,7 +69,12 @@ then
   [ -z "$DRYRUN" ] && sudo rosdep init
   [ -z "$DRYRUN" ] && ( rosdep update || echo "$0: rosdep update failed" )
 
-  [ -z "$DRYRUN" ] && bloom-generate rosdebian --os-name ubuntu --ros-distro melodic
+  if [ "$distro" = "20.04" ]; then
+    export ROS_PYTHON_VERSION=3
+    git checkout 0dc40a07d97e665c563600081840c45b60bae1cf
+  fi
+
+  [ -z "$DRYRUN" ] && bloom-generate rosdebian --os-name ubuntu --ros-distro $ROS_DISTRO
 
   echo "$0: Building mavlink"
   [ -z "$DRYRUN" ] && [ ! -e build ] && mkdir build
