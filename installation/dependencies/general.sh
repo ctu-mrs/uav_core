@@ -26,6 +26,7 @@ sudo apt-get -y install \
   ros-$ROS_DISTRO-rosconsole-bridge\
   ros-$ROS_DISTRO-gazebo-*\
   ros-$ROS_DISTRO-eigen-conversions\
+  ros-$ROS_DISTRO-tf-conversions\
   ros-$ROS_DISTRO-roslint\
   ros-$ROS_DISTRO-xacro\
   ros-$ROS_DISTRO-camera-info-manager\
