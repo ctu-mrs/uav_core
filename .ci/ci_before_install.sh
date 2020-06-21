@@ -12,6 +12,7 @@ eval "$(ssh-agent -s)"
 chmod 600 ./.ci/deploy_key_github
 ssh-add ./.ci/deploy_key_github
 sudo apt-get update -qq
+sudo apt -y upgrade --fix-missing
 sudo apt-get install dpkg git python-setuptools python3-setuptools python3-pip
 
 echo "running the main install.sh"
