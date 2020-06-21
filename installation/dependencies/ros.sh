@@ -22,7 +22,7 @@ done
 sudo apt -y update
 
 [ "$distro" = "18.04" ] && sudo apt -y install ros-melodic-ros-base
-[ "$distro" = "20.04" ] && sudo apt -y install ros-noetic-desktop-full
+[ "$distro" = "20.04" ] && sudo apt -y install ros-noetic-ros-base
 
 num=`cat ~/.bashrc | grep "/opt/ros/melodic/setup.bash" | wc -l`
 if [ "$num" -lt "1" ]; then

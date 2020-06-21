@@ -88,6 +88,7 @@ then
   echo "$0: Cleaning after Mavlink compilation"
   [ -z "$DRYRUN" ] && cd "$MY_PATH/../../lib/mavlink-gbp-release/"
   [ -z "$DRYRUN" ] && git clean -fd
+  [ -z "$DRYRUN" ] && [ "$distro" = "20.04" ] && gitman install mavlink-gbp-release
 
 fi
 
