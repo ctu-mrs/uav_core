@@ -16,10 +16,10 @@ echo "$0: installing tmux build dependencies"
 sudo apt -y install libevent-dev bison
 
 echo "$0: building tmux"
+
+# compile and install custom tmux
 cd $MY_PATH/../../../utils/tmux
-sh autogen.sh
-./configure && make -j4
-sudo make install-binPROGRAMS
+( ./autogen.sh && ./configure && make && sudo make install-binPROGRAMS ) || ( echo "Tmux compilation failed, installing normal tmux" && sudo apt -y install tmux)
 git clean -fd
 
 FILE=$HOME/.tmux.conf
