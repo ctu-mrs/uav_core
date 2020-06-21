@@ -5,7 +5,7 @@
 | UAV core build status | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/uav_core?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/uav_core) | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/uav_core?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/uav_core) |
 |-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 
-| ROS Package                                                             | 18.04 Bionic                                                                                                                                                              | 20.04 Bionic                                                                                                                                                            |
+| ROS Package                                                             | 18.04 Bionic                                                                                                                                                              | 20.04 Focal                                                                                                                                                             |
 |-------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [mrs_bumper](https://github.com/ctu-mrs/mrs_bumper)                     | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_bumper?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_bumper)                     | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_bumper?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_bumper)                     |
 | [mrs_lib](https://github.com/ctu-mrs/mrs_lib)                           | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_lib?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_lib)                           | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_lib?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_lib)                           |
@@ -23,7 +23,7 @@
 
 ## System requirements
 
-Required OS is Ubuntu 18.04 LTS 64-bit or its flavors that can install ROS Melodic.
+Required OS is Ubuntu 18.04 / 20.04 LTS 64-bit or their flavors that can install ROS Melodic / Noetic.
 The suggested variant of OS installation is dual boot instead of virtualization that can be slow and can not handle well the simulation GUI.
 We use [Gitman](https://github.com/jacebrowning/gitman) to manage the repository **submodules**.
 The repository are supposed to be compiled by [catkin tools](https://catkin-tools.readthedocs.io).
