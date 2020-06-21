@@ -60,6 +60,11 @@ sudo apt-get -y install \
   ros-melodic-sophus\
   ros-melodic-plotjuggler\
 
+elif [ "$distro" = "20.04" ]; then
+
+sudo apt-get -y install \
+  ros-noetic-catkin \
+
 fi
 
 # python stuff
