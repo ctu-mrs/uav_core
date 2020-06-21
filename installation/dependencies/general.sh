@@ -73,6 +73,8 @@ fi
 if [ "$distro" = "18.04" ]; then
 
 sudo apt-get -y install \
+  python-setuptools\
+  python3-setuptools\
   python-prettytable\
   python-argparse\
   git-core\
@@ -89,6 +91,7 @@ sudo apt-get -y install \
 elif [ "$distro" = "20.04" ]; then
 
 sudo apt-get -y install \
+  python3-setuptools\
   python3-prettytable\
   python3-empy\
   python3-serial\
