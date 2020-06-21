@@ -34,8 +34,6 @@ while true; do
   if [[ $response =~ ^(y|Y)=$ ]]
   then
 
-    toilet Installing tmux
-
     # remove pre-installed tmux
     sudo apt -y remove tmux
 
