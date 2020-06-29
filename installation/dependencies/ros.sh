@@ -2,8 +2,14 @@
 
 set -e
 
+distro=`lsb_release -r | awk '{ print $2 }'`
+[ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
+[ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
+
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'echo "$0: \"${last_command}\" command failed with exit code $?"' ERR
+
+distro=`lsb_release -r | awk '{ print $2 }'`
 
 echo "$0: Installing ROS"
 
@@ -19,13 +25,14 @@ done
 
 sudo apt -y update
 
-sudo apt -y install ros-melodic-ros-base
+[ "$distro" = "18.04" ] && sudo apt -y install ros-melodic-ros-base
+[ "$distro" = "20.04" ] && sudo apt -y install ros-noetic-ros-base
 
-num=`cat ~/.bashrc | grep "/opt/ros/melodic/setup.bash" | wc -l`
+num=`cat ~/.bashrc | grep "/opt/ros/$ROS_DISTRO/setup.bash" | wc -l`
 if [ "$num" -lt "1" ]; then
 
   # set bashrc
   echo "
-source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
 
 fi
