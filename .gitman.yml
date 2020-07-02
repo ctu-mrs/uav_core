@@ -204,7 +204,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_msgs.git
   sparse_paths:
   -
-  rev: 95d88d7675ad0b8323068f0cef4216c8d45f6b53
+  rev: 023c90c2388085bd0c702f49098b6859df0762c6
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
@@ -231,7 +231,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_controllers.git
   sparse_paths:
   -
-  rev: 1990e4dc540b8133e4b98faba61f2d520aea7dcf
+  rev: 2df8ff60157966472e5ba0916d7cb6c36f7b9a9f
   link: ros_packages/mrs_uav_controllers
   scripts:
   - git submodule update --init --recursive
@@ -240,7 +240,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_general.git
   sparse_paths:
   -
-  rev: e112eb859194f3dd0b72689e6e7e7e303e88814c
+  rev: 488bffba3ba96dfee7b83ab4417c7b1b68f45746
   link: ros_packages/mrs_uav_general
   scripts:
   - git submodule update --init --recursive
@@ -249,7 +249,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_managers.git
   sparse_paths:
   -
-  rev: ba9b1201fa0e606cb14c5b0da8c8f67aa2217ce2
+  rev: e4dcae5ebbb3f2c1e4305409213ad1ad19679f76
   link: ros_packages/mrs_uav_managers
   scripts:
   - git submodule update --init --recursive
@@ -258,7 +258,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
   sparse_paths:
   -
-  rev: 3cd48d4e3cbe1653b6f94badd0a8190cd574c4b3
+  rev: b93d30b3cc3f73d32c7c718de99b90c25bc6ac24
   link: ros_packages/mrs_uav_odometry
   scripts:
   - git submodule update --init --recursive
@@ -267,7 +267,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_status.git
   sparse_paths:
   -
-  rev: 3cf4ac706f5ac72b8a224ba4d329e9334d58972b
+  rev: b845559ff330408e1f990f28c05ba093271f9727
   link: ros_packages/mrs_uav_status
   scripts:
   - git submodule update --init --recursive
@@ -276,7 +276,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_testing.git
   sparse_paths:
   -
-  rev: 80e10872eb68e7afdf064d7197379d64a3096cdb
+  rev: fd10c0c53c83605a22d3a58bf26c2bcadc7cc91c
   link: ros_packages/mrs_uav_testing
   scripts:
   - git submodule update --init --recursive
@@ -285,7 +285,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
   sparse_paths:
   -
-  rev: 3e658495ad3cdf5eb2c590ae4da7bce54e521360
+  rev: 9c7278727213afa17ff9afb2a782be991a59c0db
   link: ros_packages/mrs_uav_trackers
   scripts:
   - git submodule update --init --recursive
@@ -307,4 +307,3 @@ sources_locked:
   link: utils/tmuxinator
   scripts:
   - git submodule update --init --recursive
-groups: []
