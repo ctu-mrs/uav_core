@@ -267,7 +267,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_status.git
   sparse_paths:
   -
-  rev: a0b210b9140c9746b9c112f5771d1a69ec0975ca
+  rev: 98ae1675e56120401b758c994bf521bfae1cfd23
   link: ros_packages/mrs_uav_status
   scripts:
   - git submodule update --init --recursive
@@ -307,3 +307,4 @@ sources_locked:
   link: utils/tmuxinator
   scripts:
   - git submodule update --init --recursive
+groups: []
