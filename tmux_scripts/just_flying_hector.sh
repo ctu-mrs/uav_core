@@ -30,7 +30,7 @@ input=(
 '
   'Sensors' 'waitForRos; roslaunch mrs_uav_general sensors.launch
 '
-  'Hector' 'waitForRos; roslaunch hector_mapping uav.launch
+  'Hector' 'waitForRos; roslaunch mrs_uav_general hector_slam.launch
 '
   'Status' 'waitForRos; roslaunch mrs_uav_status status.launch
 '
