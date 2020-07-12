@@ -258,7 +258,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
   sparse_paths:
   -
-  rev: a06cd8b8cc59bf195080b94e1b05fb7e8e70e1ef
+  rev: b8961fb175049faf55681f98ed881ec150abfb09
   link: ros_packages/mrs_uav_odometry
   scripts:
   - git submodule update --init --recursive
@@ -276,7 +276,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_testing.git
   sparse_paths:
   -
-  rev: c306634591bf8986fa47733d4f6a16f9d1b66be2
+  rev: 76d0a7c178aec3064dc48f571011320130a54655
   link: ros_packages/mrs_uav_testing
   scripts:
   - git submodule update --init --recursive
@@ -285,7 +285,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
   sparse_paths:
   -
-  rev: ac3bcbee7c26b9262f0daec5083b0d2dbd48c965
+  rev: d19a8aa457fac3e7f8590bee7eb353e8eef6d9c4
   link: ros_packages/mrs_uav_trackers
   scripts:
   - git submodule update --init --recursive
