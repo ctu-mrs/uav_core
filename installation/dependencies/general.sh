@@ -143,6 +143,7 @@ sudo apt -y install \
   libzstd-dev\
   libqcustomplot-dev\
   xutils-dev\
+  net-tools\
 
 if [ "$distro" = "18.04" ]; then
 
