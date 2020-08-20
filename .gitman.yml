@@ -222,7 +222,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
   sparse_paths:
   -
-  rev: 69244e0debaa7aa1c0f75bfcffe394715cafdf18
+  rev: 58c20a439517fdbf3dd924b00d7c3fe7634c9a0c
   link: ros_packages/mrs_rviz_plugins
   scripts:
   - git submodule update --init --recursive
