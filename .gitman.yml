@@ -204,7 +204,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_msgs.git
   sparse_paths:
   -
-  rev: 2664a96b6bdb032fc2d9a4c64b4f28b6593eb135
+  rev: 2fbf3eee90d9064fbfe0eaae77e858f49b0985d4
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
@@ -249,7 +249,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_managers.git
   sparse_paths:
   -
-  rev: 7e37aea97459f59265cb39e31db98a2fbd22555b
+  rev: 533922c355c25407aadb6b36e0297e809ff43d32
   link: ros_packages/mrs_uav_managers
   scripts:
   - git submodule update --init --recursive
@@ -285,7 +285,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
   sparse_paths:
   -
-  rev: fd813a238a39a81e5d29945b7d3e749aa6a6ca68
+  rev: d96d5a13916f3fb89508f54027737e4b593c7f26
   link: ros_packages/mrs_uav_trackers
   scripts:
   - git submodule update --init --recursive
