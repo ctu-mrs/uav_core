@@ -36,15 +36,6 @@ sources:
   link: ros_packages/mrs_lib
   scripts:
   - git submodule update --init --recursive
-- name: mrs_mavros_interface
-  type: git
-  repo: https://github.com/ctu-mrs/mrs_mavros_interface.git
-  sparse_paths:
-  -
-  rev: master
-  link: ros_packages/mrs_mavros_interface
-  scripts:
-  - git submodule update --init --recursive
 - name: mrs_msgs
   type: git
   repo: https://github.com/ctu-mrs/mrs_msgs.git
@@ -52,15 +43,6 @@ sources:
   -
   rev: master
   link: ros_packages/mrs_msgs
-  scripts:
-  - git submodule update --init --recursive
-- name: mrs_optic_flow
-  type: git
-  repo: https://github.com/ctu-mrs/mrs_optic_flow.git
-  sparse_paths:
-  -
-  rev: master
-  link: ros_packages/mrs_optic_flow
   scripts:
   - git submodule update --init --recursive
 - name: mrs_rviz_plugins
@@ -190,15 +172,6 @@ sources_locked:
   link: ros_packages/mrs_lib
   scripts:
   - git submodule update --init --recursive
-- name: mrs_mavros_interface
-  type: git
-  repo: https://github.com/ctu-mrs/mrs_mavros_interface.git
-  sparse_paths:
-  -
-  rev: 7ed98c665c42337da51e44a0994d09aea7434459
-  link: ros_packages/mrs_mavros_interface
-  scripts:
-  - git submodule update --init --recursive
 - name: mrs_msgs
   type: git
   repo: https://github.com/ctu-mrs/mrs_msgs.git
@@ -206,15 +179,6 @@ sources_locked:
   -
   rev: 2fbf3eee90d9064fbfe0eaae77e858f49b0985d4
   link: ros_packages/mrs_msgs
-  scripts:
-  - git submodule update --init --recursive
-- name: mrs_optic_flow
-  type: git
-  repo: https://github.com/ctu-mrs/mrs_optic_flow.git
-  sparse_paths:
-  -
-  rev: a3299f103df01a9fade4b4364346683cba937717
-  link: ros_packages/mrs_optic_flow
   scripts:
   - git submodule update --init --recursive
 - name: mrs_rviz_plugins
@@ -249,7 +213,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_managers.git
   sparse_paths:
   -
-  rev: 533922c355c25407aadb6b36e0297e809ff43d32
+  rev: c6d19b27e9218332c53c2df616b0bfe6354209bf
   link: ros_packages/mrs_uav_managers
   scripts:
   - git submodule update --init --recursive
