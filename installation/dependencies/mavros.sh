@@ -64,6 +64,6 @@ then
   [ -z "$DRYRUN" ] && $MY_PATH/mavlink.sh --install $DRYRUN
 
   echo "$0: Installing geographic lib"
-  [ -z "$DRYRUN" ] && ( sudo $MY_PATH/../../ros_packages/mavros/mavros/scripts/install_geographiclib_datasets.sh || sudo $MY_PATH/../../ros_packages/mavros/mavros/scripts/install_geographiclib_datasets.sh || sudo $MY_PATH/../../ros_packages/mavros/mavros/scripts/install_geographiclib_datasets.sh )
+  [ -z "$DRYRUN" ] && ( sudo $MY_PATH/../../ros_packages/mavros/mavros/scripts/install_geographiclib_datasets.sh || sudo $MY_PATH/../../ros_packages/mavros/mavros/scripts/install_geographiclib_datasets.sh || sudo $MY_PATH/../../ros_packages/mavros/mavros/scripts/install_geographiclib_datasets.sh || echo "$0: \e[1;31mGeographic lib installation failed even after several attempts. This often happends due to poor network connectivity.\e[0m\n")
 
 fi
