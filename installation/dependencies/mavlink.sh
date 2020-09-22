@@ -79,11 +79,11 @@ then
   echo "$0: Building mavlink"
   [ -z "$DRYRUN" ] && [ ! -e build ] && mkdir build
   [ -z "$DRYRUN" ] && cd build
-  [ -z "$DRYRUN" ] && cmake ../
-  [ -z "$DRYRUN" ] && make
+  [ -z "$DRYRUN" ] && cmake ../ > /dev/null
+  [ -z "$DRYRUN" ] && make > /dev/null
 
   echo "$0: Installing mavlink"
-  [ -z "$DRYRUN" ] && sudo make install
+  [ -z "$DRYRUN" ] && sudo make install > /dev/null
 
   echo "$0: Cleaning after Mavlink compilation"
   [ -z "$DRYRUN" ] && cd "$MY_PATH/../../lib/mavlink-gbp-release/"
