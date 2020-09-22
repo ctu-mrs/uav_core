@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt -y install curl
+sudo apt-get -y install curl
 
 # location of the nas share is - https://nasmrs.felk.cvut.cz/index.php/apps/files/?dir=/shared/for_sharing/dotssh_drone&fileid=506475
 

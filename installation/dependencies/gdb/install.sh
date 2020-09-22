@@ -10,7 +10,7 @@ MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
 
 # install gdb and python3-pil for gdb-imshow
-sudo apt -y install gdb python3-pil
+sudo apt-get -y install gdb python3-pil
 
 # link the configuration and mods
 mkdir -p ~/.gdb

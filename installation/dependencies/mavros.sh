@@ -50,7 +50,7 @@ then
   $MY_PATH/mavlink.sh --remove $DRYRUN
 
   echo "$0: Downloading Mavros"
-  [ -z "$DRYRUN" ] && ( sudo apt -y install ros-$ROS_DISTRO-mavros ros-$ROS_DISTRO-mavlink ros-$ROS_DISTRO-libmavconn ros-$ROS_DISTRO-mavros-extras || echo "Failed to remove pre-installed Mavros" )
+  [ -z "$DRYRUN" ] && ( sudo apt-get -y install ros-$ROS_DISTRO-mavros ros-$ROS_DISTRO-mavlink ros-$ROS_DISTRO-libmavconn ros-$ROS_DISTRO-mavros-extras || echo "Failed to remove pre-installed Mavros" )
 
 fi
 
@@ -58,7 +58,7 @@ if [ -n "$COMPILE" ];
 then
 
   echo "$0: Removing pre-installed Mavros and Mavlink"
-  [ -z "$DRYRUN" ] && ( sudo apt -y remove ros-$ROS_DISTRO-mavros* ros-$ROS_DISTRO-mavlink* ros-$ROS_DISTRO-libmavconn ros-$ROS_DISTRO-mavros-extras || echo "Failed to remove pre-installed Mavros" )
+  [ -z "$DRYRUN" ] && ( sudo apt-get -y remove ros-$ROS_DISTRO-mavros* ros-$ROS_DISTRO-mavlink* ros-$ROS_DISTRO-libmavconn ros-$ROS_DISTRO-mavros-extras || echo "Failed to remove pre-installed Mavros" )
 
   echo "$0: Running custom Mavlink install script"
   [ -z "$DRYRUN" ] && $MY_PATH/mavlink.sh --install $DRYRUN

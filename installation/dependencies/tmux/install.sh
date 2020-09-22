@@ -10,16 +10,16 @@ MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
 
 echo "$0: uninstalling pre-installed tmux"
-sudo apt -y remove tmux
+sudo apt-get -y remove tmux
 
 echo "$0: installing tmux build dependencies"
-sudo apt -y install libevent-dev bison
+sudo apt-get -y install libevent-dev bison
 
 echo "$0: building tmux"
 
 # compile and install custom tmux
 cd $MY_PATH/../../../utils/tmux
-( ./autogen.sh && ./configure && make && sudo make install-binPROGRAMS ) || ( echo "Tmux compilation failed, installing normal tmux" && sudo apt -y install tmux)
+( ./autogen.sh && ./configure && make && sudo make install-binPROGRAMS ) || ( echo "Tmux compilation failed, installing normal tmux" && sudo apt-get -y install tmux)
 git clean -fd
 
 FILE=$HOME/.tmux.conf

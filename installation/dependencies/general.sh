@@ -14,7 +14,7 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 sudo apt-get -y install cmake build-essential autotools-dev automake autoconf
 
 # utilities
-sudo apt -y install wget zip silversearcher-ag
+sudo apt-get -y install wget zip silversearcher-ag
 
 # the "gce-compute-image-packages" package often freezes the installation at some point
 # the installation freezes when it tries to manage some systemd services
@@ -113,7 +113,7 @@ fi
 
 # other
 
-sudo apt -y install \
+sudo apt-get -y install \
   genromfs\
   ant\
   protobuf-compiler\
@@ -152,12 +152,12 @@ sudo apt -y install \
 
 if [ "$distro" = "18.04" ]; then
 
-sudo apt -y install \
+sudo apt-get -y install \
   libqt4-dev\
 
 elif [ "$distro" = "20.04" ]; then
 
-sudo apt -y install \
+sudo apt-get -y install \
   # libqt5-dev\ # TODO find the alternative
 
 fi
