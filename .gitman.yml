@@ -54,15 +54,6 @@ sources:
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
-- name: mrs_optic_flow
-  type: git
-  repo: https://github.com/ctu-mrs/mrs_optic_flow.git
-  sparse_paths:
-  -
-  rev: master
-  link: ros_packages/mrs_optic_flow
-  scripts:
-  - git submodule update --init --recursive
 - name: mrs_rviz_plugins
   type: git
   repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
@@ -206,15 +197,6 @@ sources_locked:
   -
   rev: dfc9a7c7ed83532b2f0b18ffb8ae9b8da634cffc
   link: ros_packages/mrs_msgs
-  scripts:
-  - git submodule update --init --recursive
-- name: mrs_optic_flow
-  type: git
-  repo: https://github.com/ctu-mrs/mrs_optic_flow.git
-  sparse_paths:
-  -
-  rev: f7607d800006c716bde1eff5597de85a84428fac
-  link: ros_packages/mrs_optic_flow
   scripts:
   - git submodule update --init --recursive
 - name: mrs_rviz_plugins
