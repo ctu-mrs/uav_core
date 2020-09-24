@@ -92,6 +92,7 @@ sudo apt-get -y install \
   python-future\
   python3-future\
   python-crcmod\
+  python-lxml\
 
 elif [ "$distro" = "20.04" ]; then
 
@@ -106,6 +107,7 @@ sudo apt-get -y install \
   python3-pip\
   python3-future\
   python3-crcmod\
+  python3-lxml\
 
   # python3-argparse\ # TODO find the alternative
 
