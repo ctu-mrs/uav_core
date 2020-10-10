@@ -57,9 +57,9 @@ then
   [ -z "$DRYRUN" ] && sudo -H pip3 install --user future
 
   if [ "$distro" = "18.04" ]; then
-    [ -z "$DRYRUN" ] && sudo apt -y install python-future python3-future
+    [ -z "$DRYRUN" ] && sudo apt-get -y install python-future python3-future
   elif [ "$distro" = "20.04" ]; then
-    [ -z "$DRYRUN" ] && sudo apt -y install python3-future
+    [ -z "$DRYRUN" ] && sudo apt-get -y install python3-future
   fi
 
   echo "$0: Checking out the desired release"
@@ -79,11 +79,11 @@ then
   echo "$0: Building mavlink"
   [ -z "$DRYRUN" ] && [ ! -e build ] && mkdir build
   [ -z "$DRYRUN" ] && cd build
-  [ -z "$DRYRUN" ] && cmake ../
-  [ -z "$DRYRUN" ] && make
+  [ -z "$DRYRUN" ] && cmake ../ > /dev/null
+  [ -z "$DRYRUN" ] && make > /dev/null
 
   echo "$0: Installing mavlink"
-  [ -z "$DRYRUN" ] && sudo make install
+  [ -z "$DRYRUN" ] && sudo make install > /dev/null
 
   echo "$0: Cleaning after Mavlink compilation"
   [ -z "$DRYRUN" ] && cd "$MY_PATH/../../lib/mavlink-gbp-release/"
