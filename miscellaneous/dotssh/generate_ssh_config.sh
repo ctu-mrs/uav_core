@@ -3,6 +3,7 @@
 key_name="~/.ssh/id_rsa_drone_login"
 
 input=(
+  'vio' 'uav35' '192.168.69.135'
   'alfa' 'uav60' '192.168.69.160'
   'bravo' 'uav61' '192.168.69.161'
   'charlie' 'uav62' '192.168.69.162'
