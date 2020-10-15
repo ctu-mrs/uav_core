@@ -49,12 +49,12 @@ then
   echo "$0: Installing future"
 
   if [ "$distro" = "18.04" ]; then
-    [ -z "$DRYRUN" ] && sudo pip install --user future
-    [ -z "$DRYRUN" ] && sudo -H pip install --user future
+    [ -z "$DRYRUN" ] && sudo pip install --user future xml-python
+    [ -z "$DRYRUN" ] && sudo -H pip install --user future xml-python
   fi
 
-  [ -z "$DRYRUN" ] && sudo pip3 install --user future
-  [ -z "$DRYRUN" ] && sudo -H pip3 install --user future
+  [ -z "$DRYRUN" ] && sudo pip3 install --user future xml-python
+  [ -z "$DRYRUN" ] && sudo -H pip3 install --user future xml-python
 
   if [ "$distro" = "18.04" ]; then
     [ -z "$DRYRUN" ] && sudo apt-get -y install python-future python-lxml python3-future python3-lxml
