@@ -11,7 +11,6 @@ input=(
 "mrs_lib" "master"
 "mrs_mavros_interface" "master"
 "mrs_msgs" "master"
-"mrs_optic_flow" "master"
 "mrs_rviz_plugins" "master"
 "mrs_uav_controllers" "master"
 "mrs_uav_general" "master"

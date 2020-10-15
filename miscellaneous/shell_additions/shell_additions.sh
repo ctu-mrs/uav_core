@@ -164,14 +164,14 @@ cd() {
     for ((i=$fucking_shell_offset; i < ${#SYMLINK_LIST_PATHS1[*]}+$fucking_shell_offset; i++));
     do
 
-      dog=$( echo ${SYMLINK_LIST_PATHS2[$i]} | sed "s/\/$//" )
+      temp=${SYMLINK_LIST_PATHS2[$i]}
 
-      if [[ $new_path == *$dog* ]]
+      if [[ $new_path == *$temp* ]]
       then
 
-        # echo "found prefix: ${SYMLINK_LIST_PATHS1[$i]} -> $dog for $new_path"
-        # echo substracted: ${new_path#*$dog}
-        repath[$j]="${SYMLINK_LIST_PATHS1[$i]}${new_path#*$dog}"
+        # echo "found prefix: ${SYMLINK_LIST_PATHS1[$i]} -> $temp for $new_path"
+        # echo substracted: ${new_path#*$temp}
+        repath[$j]="${SYMLINK_LIST_PATHS1[$i]}${new_path#*$temp}"
         # echo new_path: ${repath[$j]}
         new_path=${repath[$j]}
         j=$(expr $j + 1)
