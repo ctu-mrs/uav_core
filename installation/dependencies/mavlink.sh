@@ -57,9 +57,9 @@ then
   [ -z "$DRYRUN" ] && sudo -H pip3 install --user future
 
   if [ "$distro" = "18.04" ]; then
-    [ -z "$DRYRUN" ] && sudo apt-get -y install python-future python3-future
+    [ -z "$DRYRUN" ] && sudo apt-get -y install python-future python-lxml python3-future python3-lxml
   elif [ "$distro" = "20.04" ]; then
-    [ -z "$DRYRUN" ] && sudo apt-get -y install python3-future
+    [ -z "$DRYRUN" ] && sudo apt-get -y install python3-future python3-lxml
   fi
 
   echo "$0: Checking out the desired release"
