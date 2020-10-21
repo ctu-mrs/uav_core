@@ -5,16 +5,16 @@ sources:
   repo: https://github.com/mavlink/mavlink-gbp-release
   sparse_paths:
   -
-  rev: 19c4fc6006d88636a5b8b5f2e608bfcdf80e6620
+  rev: f71130f78bc3729e9a380fb60b575621ea0d24eb
   link: lib/mavlink-gbp-release
   scripts:
   - git submodule update --init --recursive
 - name: mavros
   type: git
-  repo: https://github.com/ctu-mrs/mavros
+  repo: https://github.com/mavlink/mavros.git
   sparse_paths:
   -
-  rev: added_dialect_file
+  rev: c442f3e014601bf5f75144e44060d7652519b08d
   link: ros_packages/mavros
   scripts:
   - git submodule update --init --recursive
@@ -150,16 +150,16 @@ sources_locked:
   repo: https://github.com/mavlink/mavlink-gbp-release
   sparse_paths:
   -
-  rev: 19c4fc6006d88636a5b8b5f2e608bfcdf80e6620
+  rev: f71130f78bc3729e9a380fb60b575621ea0d24eb
   link: lib/mavlink-gbp-release
   scripts:
   - git submodule update --init --recursive
 - name: mavros
   type: git
-  repo: https://github.com/ctu-mrs/mavros
+  repo: https://github.com/mavlink/mavros.git
   sparse_paths:
   -
-  rev: 8deab345e2560245c021b772cf675a9be54cee04
+  rev: c442f3e014601bf5f75144e44060d7652519b08d
   link: ros_packages/mavros
   scripts:
   - git submodule update --init --recursive
@@ -231,7 +231,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_managers.git
   sparse_paths:
   -
-  rev: cc5cc296f9906c7d21fd3c9061e23828f3bea155
+  rev: e7ffb7263be621ce5bd836a5f3dae8bc5d465604
   link: ros_packages/mrs_uav_managers
   scripts:
   - git submodule update --init --recursive
