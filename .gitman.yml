@@ -177,7 +177,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_lib.git
   sparse_paths:
   -
-  rev: 6edc88cb961881b95fbd3fab68dbd7a5f1b671e0
+  rev: 7d31b7a703db46213c45db2b12a58e5fe8c10d03
   link: ros_packages/mrs_lib
   scripts:
   - git submodule update --init --recursive
