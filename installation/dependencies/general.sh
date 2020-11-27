@@ -54,6 +54,8 @@ sudo apt-get -y install \
   ros-$ROS_DISTRO-catch-ros\
   ros-$ROS_DISTRO-octomap\
   ros-$ROS_DISTRO-cmake-modules\
+  ros-$ROS_DISTRO-nlopt\
+  ros-$ROS_DISTRO-mav-msgs\
 
 if [ "$distro" = "18.04" ]; then
 
