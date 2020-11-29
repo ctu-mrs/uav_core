@@ -5,7 +5,7 @@
 | UAV core build status | [![Build Status](https://github.com/ctu-mrs/uav_core/workflows/CI/badge.svg)](https://github.com/ctu-mrs/uav_core/actions) |
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------|
 
-| ROS Package                                                                               | Status                                                                                                                                                               |
+| ROS Package                                                                               | 18.04 && 20.04                                                                                                                                                               |
 |-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [mrs_bumper](https://github.com/ctu-mrs/mrs_bumper)                                       | [![Build Status](https://github.com/ctu-mrs/mrs_bumper/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_bumper/actions)                                       |
 | [mrs_lib](https://github.com/ctu-mrs/mrs_lib)                                             | [![Build Status](https://github.com/ctu-mrs/mrs_lib/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_lib/actions)                                             |
