@@ -126,6 +126,33 @@ sources:
   link: ros_packages/mrs_uav_trackers
   scripts:
   - git submodule update --init --recursive
+- name: mrs_uav_trajectory_generation
+  type: git
+  repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
+  sparse_paths:
+  -
+  rev: master
+  link: ros_packages/mrs_uav_trajectory_generation
+  scripts:
+  - git submodule update --init --recursive
+- name: nlopt_ros
+  type: git
+  repo: https://github.com/ctu-mrs/nlopt_ros
+  sparse_paths:
+  -
+  rev: master
+  link: ros_packages/thirdparty/nlopt_ros
+  scripts:
+  - git submodule update --init --recursive
+- name: nodelet_core
+  type: git
+  repo: https://github.com/ctu-mrs/nodelet_core
+  sparse_paths:
+  -
+  rev: callback_fix
+  link: ros_packages/thirdparty/nodelet_core
+  scripts:
+  - git submodule update --init --recursive
 - name: tmux
   type: git
   repo: https://github.com/tmux/tmux.git
@@ -168,7 +195,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_bumper.git
   sparse_paths:
   -
-  rev: 76855fbe39e045988a6b40c0b886fc8f87803372
+  rev: 03da914d14a383704cc29892f1fc3b4d6dd44818
   link: ros_packages/mrs_bumper
   scripts:
   - git submodule update --init --recursive
@@ -177,7 +204,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_lib.git
   sparse_paths:
   -
-  rev: fc57ca83bebdd72abb98177445cc26bd8610527f
+  rev: c023037730cd4b7594902da6aea05ed2c2032722
   link: ros_packages/mrs_lib
   scripts:
   - git submodule update --init --recursive
@@ -186,7 +213,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_mavros_interface.git
   sparse_paths:
   -
-  rev: 82bf08c43acaa5225dd180c2063367f1dd81c070
+  rev: 038491c9b73db747b61c83ccdc86cb3e480929cc
   link: ros_packages/mrs_mavros_interface
   scripts:
   - git submodule update --init --recursive
@@ -195,7 +222,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_msgs.git
   sparse_paths:
   -
-  rev: 624db96ff1da492cba34c1498539b96b8de3e004
+  rev: b41e278461f40b6d068e20792539db2f81fa5614
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
@@ -204,7 +231,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
   sparse_paths:
   -
-  rev: 88aa9d02401ed925d32f68b7def9501950ceb02f
+  rev: 2ce902f778c6de9ef81a28242fe1ea4079062493
   link: ros_packages/mrs_rviz_plugins
   scripts:
   - git submodule update --init --recursive
@@ -213,7 +240,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_controllers.git
   sparse_paths:
   -
-  rev: 952592c876b530206db2816b372bb78463eca762
+  rev: c61737afbe1b500b3e1745439b7da2053c368879
   link: ros_packages/mrs_uav_controllers
   scripts:
   - git submodule update --init --recursive
@@ -222,7 +249,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_general.git
   sparse_paths:
   -
-  rev: 371c1bd6554cf19659af8c63e35c42b0b4bf0a61
+  rev: c181020957ca98bf9543149e1b383b5dc8da0ddf
   link: ros_packages/mrs_uav_general
   scripts:
   - git submodule update --init --recursive
@@ -231,7 +258,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_managers.git
   sparse_paths:
   -
-  rev: 7e24d1271665b89a8dfdfb71f0a79569700fc9ef
+  rev: 19f47c05f831b4fee51255e12340b64edbbedfbf
   link: ros_packages/mrs_uav_managers
   scripts:
   - git submodule update --init --recursive
@@ -240,7 +267,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
   sparse_paths:
   -
-  rev: ba7565a67eb10469a2c70f251edee1bf5bd61bd2
+  rev: 6ac2ae133b29ec7e408c17cc7cae2aa42a881d64
   link: ros_packages/mrs_uav_odometry
   scripts:
   - git submodule update --init --recursive
@@ -249,7 +276,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_status.git
   sparse_paths:
   -
-  rev: e82814cf64a7515b85c89b4647329dd6d73162c5
+  rev: 91c58eb229b23e71a6d1d68149c0249b5a9772e7
   link: ros_packages/mrs_uav_status
   scripts:
   - git submodule update --init --recursive
@@ -258,7 +285,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_testing.git
   sparse_paths:
   -
-  rev: a0585230cf8a20a12fea535d5d2ef1c98a4f162e
+  rev: 9a3d16ed16fa90e2c4bb65abfa2af4be8af190a1
   link: ros_packages/mrs_uav_testing
   scripts:
   - git submodule update --init --recursive
@@ -267,8 +294,35 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
   sparse_paths:
   -
-  rev: 8529a3ac69d3556e4d6291ab16e65cc8f59f85e0
+  rev: adff5a65df79cab8f2a4d463304e39dc6be821d8
   link: ros_packages/mrs_uav_trackers
+  scripts:
+  - git submodule update --init --recursive
+- name: mrs_uav_trajectory_generation
+  type: git
+  repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
+  sparse_paths:
+  -
+  rev: 0390838a22084858d76668d166dc50e42b0551af
+  link: ros_packages/mrs_uav_trajectory_generation
+  scripts:
+  - git submodule update --init --recursive
+- name: nlopt_ros
+  type: git
+  repo: https://github.com/ctu-mrs/nlopt_ros
+  sparse_paths:
+  -
+  rev: 5e351e81e8ee0c39d3096f38a0aa990304298631
+  link: ros_packages/thirdparty/nlopt_ros
+  scripts:
+  - git submodule update --init --recursive
+- name: nodelet_core
+  type: git
+  repo: https://github.com/ctu-mrs/nodelet_core
+  sparse_paths:
+  -
+  rev: b4344e75e9afa93010ffc20c3918ecfbab1848e4
+  link: ros_packages/thirdparty/nodelet_core
   scripts:
   - git submodule update --init --recursive
 - name: tmux

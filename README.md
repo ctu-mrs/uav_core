@@ -2,23 +2,24 @@
 
 ![](.fig/thumbnail.jpg)
 
-| UAV core build status | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/uav_core?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/uav_core) | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/uav_core?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/uav_core) |
-|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| UAV core build status | [![Build Status](https://github.com/ctu-mrs/uav_core/workflows/CI/badge.svg)](https://github.com/ctu-mrs/uav_core/actions) |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------------|
 
-| ROS Package                                                             | 18.04 Bionic                                                                                                                                                              | 20.04 Focal                                                                                                                                                             |
-|-------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [mrs_bumper](https://github.com/ctu-mrs/mrs_bumper)                     | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_bumper?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_bumper)                     | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_bumper?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_bumper)                     |
-| [mrs_lib](https://github.com/ctu-mrs/mrs_lib)                           | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_lib?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_lib)                           | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_lib?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_lib)                           |
-| [mrs_mavros_interface](https://github.com/ctu-mrs/mrs_mavros_interface) | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_mavros_interface?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_mavros_interface) | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_mavros_interface?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_mavros_interface) |
-| [mrs_msgs](https://github.com/ctu-mrs/mrs_msgs)                         | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_msgs?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_msgs)                         | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_msgs?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_msgs)                         |
-| [mrs_rviz_plugins](https://github.com/ctu-mrs/mrs_rviz_plugins)         | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_rviz_plugins?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_rviz_plugins)         | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_rviz_plugins?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_rviz_plugins)         |
-| [mrs_uav_controllers](https://github.com/ctu-mrs/mrs_uav_controllers)   | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_controllers?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_uav_controllers)   | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_controllers?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_uav_controllers)   |
-| [mrs_uav_general](https://github.com/ctu-mrs/mrs_uav_general)           | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_general?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_uav_general)           | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_general?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_uav_general)           |
-| [mrs_uav_managers](https://github.com/ctu-mrs/mrs_uav_managers)         | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_managers?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_uav_managers)         | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_managers?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_uav_managers)         |
-| [mrs_uav_odometry](https://github.com/ctu-mrs/mrs_uav_odometry)         | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_odometry?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_uav_odometry)         | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_odometry?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_uav_odometry)         |
-| [mrs_uav_status](https://github.com/ctu-mrs/mrs_uav_status)             | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_status?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_uav_status)             | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_status?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_uav_status)             |
-| [mrs_uav_testing](https://github.com/ctu-mrs/mrs_uav_testing)           | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_testing?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_uav_testing)           | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_testing?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_uav_testing)           |
-| [mrs_uav_trackers](https://github.com/ctu-mrs/mrs_uav_trackers)         | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_trackers?env=BADGE=bionic&label=Melodic)](https://travis-ci.com/ctu-mrs/mrs_uav_trackers)         | [![Build Status](http://badges.herokuapp.com/travis.com/ctu-mrs/mrs_uav_trackers?env=BADGE=focal&label=Noetic)](https://travis-ci.com/ctu-mrs/mrs_uav_trackers)         |
+| ROS Package                                                                               | 18.04 && 20.04                                                                                                                                                               |
+|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [mrs_bumper](https://github.com/ctu-mrs/mrs_bumper)                                       | [![Build Status](https://github.com/ctu-mrs/mrs_bumper/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_bumper/actions)                                       |
+| [mrs_lib](https://github.com/ctu-mrs/mrs_lib)                                             | [![Build Status](https://github.com/ctu-mrs/mrs_lib/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_lib/actions)                                             |
+| [mrs_mavros_interface](https://github.com/ctu-mrs/mrs_mavros_interface)                   | [![Build Status](https://github.com/ctu-mrs/mrs_mavros_interface/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_mavros_interface/actions)                   |
+| [mrs_msgs](https://github.com/ctu-mrs/mrs_msgs)                                           | [![Build Status](https://github.com/ctu-mrs/mrs_msgs/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_msgs/actions)                                           |
+| [mrs_rviz_plugins](https://github.com/ctu-mrs/mrs_rviz_plugins)                           | [![Build Status](https://github.com/ctu-mrs/mrs_rviz_plugins/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_rviz_plugins/actions)                           |
+| [mrs_uav_controllers](https://github.com/ctu-mrs/mrs_uav_controllers)                     | [![Build Status](https://github.com/ctu-mrs/mrs_uav_controllers/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_uav_controllers/actions)                     |
+| [mrs_uav_general](https://github.com/ctu-mrs/mrs_uav_general)                             | [![Build Status](https://github.com/ctu-mrs/mrs_uav_general/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_uav_general/actions)                             |
+| [mrs_uav_managers](https://github.com/ctu-mrs/mrs_uav_managers)                           | [![Build Status](https://github.com/ctu-mrs/mrs_uav_managers/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_uav_managers/actions)                           |
+| [mrs_uav_odometry](https://github.com/ctu-mrs/mrs_uav_odometry)                           | [![Build Status](https://github.com/ctu-mrs/mrs_uav_odometry/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_uav_odometry/actions)                           |
+| [mrs_uav_status](https://github.com/ctu-mrs/mrs_uav_status)                               | [![Build Status](https://github.com/ctu-mrs/mrs_uav_status/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_uav_status/actions)                               |
+| [mrs_uav_testing](https://github.com/ctu-mrs/mrs_uav_testing)                             | [![Build Status](https://github.com/ctu-mrs/mrs_uav_testing/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_uav_testing/actions)                             |
+| [mrs_uav_trackers](https://github.com/ctu-mrs/mrs_uav_trackers)                           | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trackers/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trackers/actions)                           |
+| [mrs_uav_trajectory_generation](https://github.com/ctu-mrs/mrs_uav_trajectory_generation) | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/workflows/CI/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/actions) |
 
 ## System requirements
 
@@ -45,7 +46,7 @@ source /opt/ros/melodic/setup.bash
 
 # source uav_core shell additions
 source $HOME/git/uav_core/miscellaneous/shell_additions/shell_additions.sh
-export UAV_NAME="uav1" 
+export UAV_NAME="uav1"
 export NATO_NAME="" # lower-case name of the UAV frame {alpha, bravo, charlie, ...}
 export UAV_MASS="3.0" # [kg], used only with real UAV
 export RUN_TYPE="simulation" # {simulation, uav}
@@ -82,7 +83,7 @@ cd ~/git/my_repository
 ```
 our alias will put you in
 ```bash
-user@machine:~/project2_workspace/src/my_repository$ 
+user@machine:~/project2_workspace/src/my_repository$
 ```
 
 A symlink map (stored in `/tmp/symlink_array.sh`) for all your workspaces is built automatically after boot (after the first start of the terminal) by a detached tmux session using the *silversearcher-ag* utility.
