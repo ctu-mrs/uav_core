@@ -48,6 +48,8 @@ sudo apt-get -y install \
   ros-$ROS_DISTRO-tf2-geometry-msgs\
   ros-$ROS_DISTRO-tf2-eigen\
   ros-$ROS_DISTRO-octomap-msgs\
+  ros-$ROS_DISTRO-pcl-ros\
+  ros-$ROS_DISTRO-pcl-conversions\
   ros-$ROS_DISTRO-rosdoc-lite\
   ros-$ROS_DISTRO-geographic-msgs\
   ros-$ROS_DISTRO-rviz-visual-tools\
