@@ -48,12 +48,15 @@ sudo apt-get -y install \
   ros-$ROS_DISTRO-tf2-geometry-msgs\
   ros-$ROS_DISTRO-tf2-eigen\
   ros-$ROS_DISTRO-octomap-msgs\
+  ros-$ROS_DISTRO-pcl-ros\
+  ros-$ROS_DISTRO-pcl-conversions\
   ros-$ROS_DISTRO-rosdoc-lite\
   ros-$ROS_DISTRO-geographic-msgs\
   ros-$ROS_DISTRO-rviz-visual-tools\
   ros-$ROS_DISTRO-catch-ros\
   ros-$ROS_DISTRO-octomap\
   ros-$ROS_DISTRO-cmake-modules\
+  ros-$ROS_DISTRO-nlopt\
 
 if [ "$distro" = "18.04" ]; then
 
@@ -92,6 +95,7 @@ sudo apt-get -y install \
   python-future\
   python3-future\
   python-crcmod\
+  python-lxml\
 
 elif [ "$distro" = "20.04" ]; then
 
@@ -106,6 +110,7 @@ sudo apt-get -y install \
   python3-pip\
   python3-future\
   python3-crcmod\
+  python3-lxml\
 
   # python3-argparse\ # TODO find the alternative
 
