@@ -5,8 +5,7 @@ clear all
 function output = PixhawkOutput(input)
 
   % params from component_snippets.xacro
-
-  zero_position_armed = 0.37;
+  zero_position_armed = 0.15;
   input_scaling = 1;
   input_offset = 0;
 
@@ -17,7 +16,7 @@ end
 function input = PixhawkOutputInv(output)
 
   % params from component_snippets.xacro
-  zero_position_armed = 0.37;
+  zero_position_armed = 0.15;
   input_scaling = 1;
   input_offset = 0;
 
@@ -44,17 +43,17 @@ end
 g = 9.81;
 
 % how much propellers does your UAV have?
-n_propellers = 8;
+n_propellers = 4;
 
 % the motor constant for the simulated motor model
 % = max thrust in [N] per motor
-motor_constant = 2.9*g;
+motor_constant = 1.293*g;
 
 % define a list of different UAV masses for computing the thrust points
 mass = [
-  11.6;
-  14.75;
-  17.4;
+  2.0;
+  3.0;
+  4.0;
 ];
 
 % calculate the thrust outputs of the MRS pipeline for the defined masses
