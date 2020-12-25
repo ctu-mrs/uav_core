@@ -9,10 +9,12 @@ mass = [
 
 % thrusts needed to hover
 thrust = [
-0.3;
-0.41;
-0.5;
+0.29536;
+0.40465;
+0.49380;
 ];
+
+n_motors = 8;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,7 +26,7 @@ g = 9.81;
 A = ones(length(mass), 2);
 
 for i=1:length(mass)
-  A(i, 1) = sqrt((mass(i)*g));
+  A(i, 1) = sqrt((mass(i)*g)/n_motors);
 end
 
 % print A

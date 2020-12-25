@@ -43,17 +43,17 @@ end
 g = 9.81;
 
 % how much propellers does your UAV have?
-n_propellers = 4;
+n_propellers = 8;
 
 % the motor constant for the simulated motor model
 % = max thrust in [N] per motor
-motor_constant = 1.293*g;
+motor_constant = 40;
 
 % define a list of different UAV masses for computing the thrust points
 mass = [
-  2.0;
-  3.0;
-  4.0;
+ 6.47;
+ 10.035;
+ 13.52;
 ];
 
 % calculate the thrust outputs of the MRS pipeline for the defined masses
@@ -78,7 +78,7 @@ mrs_thrust
 A = ones(length(mass), 2);
 
 for i=1:length(mass)
-  A(i, 1) = sqrt((mass(i)*g));
+  A(i, 1) = sqrt(((mass(i)*g)/n_propellers));
 end
 
 X = A\mrs_thrust;
@@ -91,7 +91,7 @@ kb = X(2)
 % If not, something is wrong in this script.
 for i=1:length(mrs_thrust)
 
-  mass_thrust_equivalent(i, 1) = (((mrs_thrust(i) - kb) / ka)^(2.0)) / g;
+  mass_thrust_equivalent(i, 1) = (n_propellers * (((mrs_thrust(i) - kb) / ka)^(2.0))) / g;
 
 end
 
