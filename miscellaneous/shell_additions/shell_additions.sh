@@ -19,53 +19,6 @@ UAV_CORE_PATH=$MY_PATH/../../
 # disable gitman caching
 export GITMAN_CACHE_DISABLE=1
 
-# #{ CTAGS
-
-# path possible ctags locations
-# -R dir1 -R dir2 ...
-
-# contains the list of user ROS workspaces
-# used now for ctags generation and later for YCM (throught .ycm_extra_conf.py)
-[ -z "$ROS_WORKSPACES" ] && export ROS_WORKSPACES="$ROS_WORKSPACE"
-
-# if not defined, define it
-[ -z "$CTAGS_SOURCE_DIR" ] && export CTAGS_SOURCE_DIR=""
-
-# append location of ROS workspaces
-for WS in $(echo $ROS_WORKSPACES); do
-  export CTAGS_SOURCE_DIR="${CTAGS_SOURCE_DIR} -R $WS"
-done
-
-# path to source from which to generate `one-time generated ctags file`
-# -R dir1 -R dir2 ...
-[ -z "$CTAGS_ONCE_SOURCE_DIR" ] && export CTAGS_ONCE_SOURCE_DIR=""
-
-# append the ros path
-export CTAGS_ONCE_SOURCE_DIR="${CTAGS_ONCE_SOURCE_DIR} -R /opt/ros/$ROS_DISTRO/include"
-
-# the location of the `one-time generated ctags file`
-export CTAGS_FILE_ONCE="~/tags-once"
-
-# generate projects' tags
-if [ -z $TMUX ]; then
-
-  if [ ! -e ~/tags ]; then
-    ctagscmd="ctags --fields=+l -f ~/tags $CTAGS_SOURCE_DIR"
-    $UAV_CORE_PATH/miscellaneous/scripts/detacher.sh "$ctagscmd"
-  fi
-
-  if [ ! -e ~/tags-once ]; then
-    # generate `once generated tags`, e.g. ROS's tags
-    if [ ! -e $(eval echo "$CTAGS_FILE_ONCE") ]; then
-      ctagscmd="ctags --fields=+l -f $CTAGS_FILE_ONCE $CTAGS_ONCE_SOURCE_DIR"
-      $UAV_CORE_PATH/miscellaneous/scripts/detacher.sh "$ctagscmd"
-    fi
-  fi
-
-fi
-
-# #}
-
 # #{ killp()
 
 # allows killing process with all its children
