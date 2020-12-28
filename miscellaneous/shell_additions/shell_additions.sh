@@ -10,6 +10,10 @@ else
   MY_PATH=`( cd "$MY_PATH" && pwd )`
 fi
 
+distro=`lsb_release -r | awk '{ print $2 }'`
+[ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
+[ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
+
 UAV_CORE_PATH=$MY_PATH/../../
 
 # disable gitman caching
@@ -37,7 +41,7 @@ done
 [ -z "$CTAGS_ONCE_SOURCE_DIR" ] && export CTAGS_ONCE_SOURCE_DIR=""
 
 # append the ros path
-export CTAGS_ONCE_SOURCE_DIR="${CTAGS_ONCE_SOURCE_DIR} -R /opt/ros/melodic/include"
+export CTAGS_ONCE_SOURCE_DIR="${CTAGS_ONCE_SOURCE_DIR} -R /opt/ros/$ROS_DISTRO/include"
 
 # the location of the `one-time generated ctags file`
 export CTAGS_FILE_ONCE="~/tags-once"
