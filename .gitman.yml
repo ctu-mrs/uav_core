@@ -294,7 +294,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
   sparse_paths:
   -
-  rev: 4d63a7937dbb7205cbdfbc6fffa29e77ddc7d63d
+  rev: b642951cf405ca87e8a8eadb4e2550c527a2c2e9
   link: ros_packages/mrs_uav_trajectory_generation
   scripts:
   - git submodule update --init --recursive
@@ -334,3 +334,4 @@ sources_locked:
   link: utils/tmuxinator
   scripts:
   - git submodule update --init --recursive
+groups: []
