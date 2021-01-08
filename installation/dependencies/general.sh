@@ -57,6 +57,7 @@ sudo apt-get -y install \
   ros-$ROS_DISTRO-octomap\
   ros-$ROS_DISTRO-cmake-modules\
   ros-$ROS_DISTRO-nlopt\
+  ros-$ROS_DISTRO-plotjuggler-ros\
 
 if [ "$distro" = "18.04" ]; then
 
@@ -67,7 +68,6 @@ sudo apt-get -y install \
   ros-melodic-hector-gazebo-plugins\
   ros-melodic-teraranger\
   ros-melodic-sophus\
-  ros-melodic-plotjuggler\
 
 elif [ "$distro" = "20.04" ]; then
 
