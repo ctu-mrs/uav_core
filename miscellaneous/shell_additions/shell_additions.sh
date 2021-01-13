@@ -469,7 +469,85 @@ catkin() {
   }
 
 # #}
-alias cb="catkin build"
+
+# #{ colcon()
+
+colcon() {
+
+  CURRENT_PATH=`pwd`
+
+  case $* in
+
+    init*)
+
+      if [ ! -e "build/COLCON_IGNORE" ]; then # we are NOT at the workspace root
+        command colcon build # this creates a new workspace
+      fi
+
+      ;;
+
+    build*|b*)
+
+      if [ -e "build/COLCON_IGNORE" ]; then # we are at the workspace root
+        command colcon "$@" # this creates a new workspace
+      else
+        while [ ! -e "build/COLCON_IGNORE" ]; do
+          cd ..
+
+          if [[ `pwd` == "/" ]]; then
+            echo "Cannot build, not in a workspace!"
+            break
+          elif [ -e "build/COLCON_IGNORE" ]; then
+            command colcon "$@"
+            break
+          fi
+        done
+
+        cd "$CURRENT_PATH"
+      fi
+
+      ;;
+
+    *)
+      command colcon $@
+      ;;
+
+  esac
+}
+
+# #}
+
+# #{ cb()
+
+cb() {
+
+  # catkin?
+  PACKAGES=$(catkin list)
+  [ ! -z "$PACKAGES" ] && USE_CATKIN=1 || USE_CATKIN=0
+
+  # colcon?
+  CURRENT_PATH=`pwd`
+  while [ ! -e "build/COLCON_IGNORE" ]; do
+    cd ..
+
+    if [[ `pwd` == "/" ]]; then
+      break
+    fi
+  done
+  [[ `pwd` == "/" ]] && USE_COLCON=0
+  [ -e "build/COLCON_IGNORE" ] && USE_COLCON=1
+  cd "$CURRENT_PATH"
+
+  [[ $USE_CATKIN == "1" ]] && [[ $USE_COLCON == "0" ]] && catkin build
+  [[ $USE_CATKIN == "0" ]] && [[ $USE_COLCON == "1" ]] && colcon build
+  [[ $USE_CATKIN == "1" ]] && [[ $USE_COLCON == "1" ]] && colcon build
+  [[ $USE_CATKIN == "0" ]] && [[ $USE_COLCON == "0" ]] && echo "Cannot compile, not in a workspace"
+
+  unset USE_CATKIN
+  unset USE_COLCON
+}
+
+# #}
 
 # catkin built [this/package] | less
 # #{ cbl()
