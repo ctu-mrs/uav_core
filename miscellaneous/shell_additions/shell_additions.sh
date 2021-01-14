@@ -508,6 +508,34 @@ colcon() {
 
       ;;
 
+    clean*)
+
+      if [ -e "build/COLCON_IGNORE" ]; then # we are at the workspace root
+        rm -r build install log
+        mkdir build
+        cd build
+        touch COLCON_IGNORE
+      else
+        while [ ! -e "build/COLCON_IGNORE" ]; do
+          cd ..
+
+          if [[ `pwd` == "/" ]]; then
+            echo "Cannot clean, not in a workspace!"
+            break
+          elif [ -e "build/COLCON_IGNORE" ]; then
+            rm -r build install log
+            mkdir build
+            cd build
+            touch COLCON_IGNORE
+            break
+          fi
+        done
+
+        cd "$CURRENT_PATH"
+      fi
+
+      ;;
+
     *)
       command colcon $@
       ;;
