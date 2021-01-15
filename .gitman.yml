@@ -204,7 +204,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_lib.git
   sparse_paths:
   -
-  rev: 5ee5671a442de421d861cdde0758d1025b23269f
+  rev: e438721fb2cb490f3e53e0e15116e11af6e8bd82
   link: ros_packages/mrs_lib
   scripts:
   - git submodule update --init --recursive
@@ -231,7 +231,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
   sparse_paths:
   -
-  rev: a07474f9926ce76e4a52368898ab2881fb155dec
+  rev: 69fd21a25e7c439cd6e13c55416247714ffd0d1c
   link: ros_packages/mrs_rviz_plugins
   scripts:
   - git submodule update --init --recursive
@@ -303,7 +303,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
   sparse_paths:
   -
-  rev: 4cfb5ced9cbe291192d1f62cdf966aa4fced26e5
+  rev: b642951cf405ca87e8a8eadb4e2550c527a2c2e9
   link: ros_packages/mrs_uav_trajectory_generation
   scripts:
   - git submodule update --init --recursive
@@ -343,4 +343,3 @@ sources_locked:
   link: utils/tmuxinator
   scripts:
   - git submodule update --init --recursive
-groups: []

@@ -43,17 +43,17 @@ end
 g = 9.81;
 
 % how much propellers does your UAV have?
-n_propellers = 8;
+n_propellers = 4;
 
 % the motor constant for the simulated motor model
 % = max thrust in [N] per motor
-motor_constant = 40;
+motor_constant = 8.91;
 
 % define a list of different UAV masses for computing the thrust points
 mass = [
- 6.47;
- 10.035;
- 13.52;
+ 1.4;
+ 1.8;
+ 2.2;
 ];
 
 % calculate the thrust outputs of the MRS pipeline for the defined masses
