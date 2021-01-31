@@ -8,7 +8,8 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 echo "Starting install"
 
 sudo apt-get -y update -qq
-sudo apt-mark hold openssh-server msodbcsql17 mssql-tools
+sudo apt-mark hold openssh-server # the installation might get stuck while upgrading this
+sudo apt-mark hold msodbcsql17 mssql-tools # microsoft wants to manually accept EULA while upgrading this
 
 # 20.04 problem fix
 sudo apt-get -y install grub-efi
