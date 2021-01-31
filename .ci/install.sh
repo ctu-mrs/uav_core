@@ -5,12 +5,10 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 [ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
 [ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
 
-export ACCEPT_EULA=Y
-
 echo "Starting install"
 
 sudo apt-get -y update -qq
-sudo apt-mark hold openssh-server
+sudo apt-mark hold openssh-server msodbcsql17 mssql-tools
 
 # 20.04 problem fix
 sudo apt-get -y install grub-efi
