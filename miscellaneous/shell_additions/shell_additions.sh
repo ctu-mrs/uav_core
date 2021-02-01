@@ -626,6 +626,18 @@ waitForSimulation() {
 
 # #}
 
+# #{ waitForSimulation()
+
+waitForSpawn() {
+  until timeout 3s rostopic echo /mrs_drone_spawner/spawned -n 1 --noarr > /dev/null 2>&1; do
+    echo "waiting for spawn"
+    sleep 1;
+  done
+  sleep 1;
+}
+
+# #}
+
 # #{ waitForOdometry()
 
 waitForOdometry() {
