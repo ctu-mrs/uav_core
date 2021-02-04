@@ -31,6 +31,7 @@ input=(
   'xavier' 'uav99' '192.168.69.199'
   'xavnx1' 'uav95' '192.168.69.195'
   'eagle' 'uav91' '192.168.69.191'
+  'franta' 'uav10' '192.168.69.110'
 )
 
 # get path to script
