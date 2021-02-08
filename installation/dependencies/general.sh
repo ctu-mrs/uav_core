@@ -58,13 +58,13 @@ sudo apt-get -y install \
   ros-$ROS_DISTRO-cmake-modules\
   ros-$ROS_DISTRO-nlopt\
   ros-$ROS_DISTRO-plotjuggler-ros\
+  ros-$ROS_DISTRO-joy\
 
 if [ "$distro" = "18.04" ]; then
 
 sudo apt-get -y install \
   ros-melodic-multimaster-*\
   ros-melodic-flexbe-behavior-engine\
-  ros-melodic-joy\
   ros-melodic-hector-gazebo-plugins\
   ros-melodic-teraranger\
   ros-melodic-sophus\
