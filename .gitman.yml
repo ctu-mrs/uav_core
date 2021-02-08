@@ -195,7 +195,7 @@ sources_locked:
     repo: https://github.com/ctu-mrs/mrs_bumper.git
     sparse_paths:
       -
-    rev: 1eaaea018ec5d0b97bd5c9aab773d2f1f19dbf0a
+    rev: 0c86bb84dcf769087b8cc91e02ba1d20569b81e4
     link: ros_packages/mrs_bumper
     scripts:
       - git submodule update --init --recursive
@@ -285,7 +285,7 @@ sources_locked:
     repo: https://github.com/ctu-mrs/mrs_uav_testing.git
     sparse_paths:
       -
-    rev: 9de4557cc6a09d237c836d280e465e2f4b05056b
+    rev: b967f36e34ce549779457b1a7b8e272444010b72
     link: ros_packages/mrs_uav_testing
     scripts:
       - git submodule update --init --recursive
