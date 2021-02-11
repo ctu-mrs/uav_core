@@ -68,7 +68,7 @@ sources:
     repo: https://github.com/ctu-mrs/mrs_uav_controllers.git
     sparse_paths:
       -
-    rev: flip_tracker
+    rev: master
     link: ros_packages/mrs_uav_controllers
     scripts:
       - git submodule update --init --recursive
@@ -86,7 +86,7 @@ sources:
     repo: https://github.com/ctu-mrs/mrs_uav_managers.git
     sparse_paths:
       -
-    rev: flip_tracker
+    rev: master
     link: ros_packages/mrs_uav_managers
     scripts:
       - git submodule update --init --recursive
@@ -95,7 +95,7 @@ sources:
     repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
     sparse_paths:
       -
-    rev: flip_tracker
+    rev: master
     link: ros_packages/mrs_uav_odometry
     scripts:
       - git submodule update --init --recursive
@@ -113,7 +113,7 @@ sources:
     repo: https://github.com/ctu-mrs/mrs_uav_testing.git
     sparse_paths:
       -
-    rev: flip_tracker
+    rev: master
     link: ros_packages/mrs_uav_testing
     scripts:
       - git submodule update --init --recursive
@@ -122,7 +122,7 @@ sources:
     repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
     sparse_paths:
       -
-    rev: flip_tracker
+    rev: master
     link: ros_packages/mrs_uav_trackers
     scripts:
       - git submodule update --init --recursive
