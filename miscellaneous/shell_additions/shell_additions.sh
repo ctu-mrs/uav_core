@@ -531,8 +531,8 @@ colcon() {
           fi
         done
 
-        cd "$CURRENT_PATH"
       fi
+      cd "$CURRENT_PATH" # return to the original folder where the command was called
 
       ;;
 
