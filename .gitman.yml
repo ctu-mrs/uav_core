@@ -186,7 +186,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_bumper.git
   sparse_paths:
   -
-  rev: 03da914d14a383704cc29892f1fc3b4d6dd44818
+  rev: 0c86bb84dcf769087b8cc91e02ba1d20569b81e4
   link: ros_packages/mrs_bumper
   scripts:
   - git submodule update --init --recursive
@@ -213,7 +213,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_msgs.git
   sparse_paths:
   -
-  rev: b41e278461f40b6d068e20792539db2f81fa5614
+  rev: 46e7c9a3041f82331c1a3735c31b604f715e1a87
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
@@ -222,7 +222,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
   sparse_paths:
   -
-  rev: 2ce902f778c6de9ef81a28242fe1ea4079062493
+  rev: 0231b5f44779b44de3e8e5d6333e012a786d305d
   link: ros_packages/mrs_rviz_plugins
   scripts:
   - git submodule update --init --recursive
