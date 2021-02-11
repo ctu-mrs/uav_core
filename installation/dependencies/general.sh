@@ -16,10 +16,12 @@ sudo apt-get -y install cmake build-essential autotools-dev automake autoconf
 # utilities
 sudo apt-get -y install wget zip silversearcher-ag
 
+if [ "$distro" = "20.04" ]; then
 # the "gce-compute-image-packages" package often freezes the installation at some point
 # the installation freezes when it tries to manage some systemd services
 # this attempts to install the package and stop the problematic service during the process
 ((sleep 90 && (sudo systemctl stop google-instance-setup.service && echo "gce service stoped" || echo "gce service not stoped")) & (sudo timeout 120s apt-get -y install gce-compute-image-packages)) || echo "\e[1;31mInstallation of gce-compute-image-packages failed\e[0m"
+fi
 
 # ros-related
 sudo apt-get -y install \
@@ -58,13 +60,13 @@ sudo apt-get -y install \
   ros-$ROS_DISTRO-cmake-modules\
   ros-$ROS_DISTRO-nlopt\
   ros-$ROS_DISTRO-plotjuggler-ros\
+  ros-$ROS_DISTRO-joy\
 
 if [ "$distro" = "18.04" ]; then
 
 sudo apt-get -y install \
   ros-melodic-multimaster-*\
   ros-melodic-flexbe-behavior-engine\
-  ros-melodic-joy\
   ros-melodic-hector-gazebo-plugins\
   ros-melodic-teraranger\
   ros-melodic-sophus\
