@@ -5,7 +5,7 @@ sources:
   repo: https://github.com/mavlink/mavlink-gbp-release
   sparse_paths:
   -
-  rev: 19c4fc6006d88636a5b8b5f2e608bfcdf80e6620
+  rev: 0dc40a07d97e665c563600081840c45b60bae1cf
   link: lib/mavlink-gbp-release
   scripts:
   - git submodule update --init --recursive
@@ -177,7 +177,7 @@ sources_locked:
   repo: https://github.com/mavlink/mavlink-gbp-release
   sparse_paths:
   -
-  rev: 19c4fc6006d88636a5b8b5f2e608bfcdf80e6620
+  rev: 0dc40a07d97e665c563600081840c45b60bae1cf
   link: lib/mavlink-gbp-release
   scripts:
   - git submodule update --init --recursive
