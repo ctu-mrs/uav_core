@@ -495,7 +495,7 @@ colcon() {
           cd ..
 
           if [[ `pwd` == "/" ]]; then
-            echo "Cannot build, not in a workspace!"
+            echo "Cannot compile, probably not in a workspace (if you want to create a new workspace, call \"colcon init\" in its root first)".
             break
           elif [ -e "build/COLCON_IGNORE" ]; then
             command colcon "$@"
