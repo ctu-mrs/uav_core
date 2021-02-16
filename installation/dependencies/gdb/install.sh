@@ -17,6 +17,7 @@ mkdir -p ~/.gdb
 
 ln -sf $MY_PATH/gdb_modules/gdb-imshow ~/.gdb
 ln -sf $MY_PATH/gdb_modules/eigen ~/.gdb
+ln -sf $MY_PATH/gdb_modules/gdb-dashboard ~/.gdb
 [ ! -e "~/.gdbinit" ] && cp -f $MY_PATH/dotgdbinit ~/.gdbinit
 
 # copy the scripts for debugging roslaunched programs
