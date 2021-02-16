@@ -73,8 +73,6 @@ then
     export ROS_PYTHON_VERSION=3
   fi
 
-  git checkout 0dc40a07d97e665c563600081840c45b60bae1cf
-
   [ -z "$DRYRUN" ] && bloom-generate rosdebian --os-name ubuntu --ros-distro $ROS_DISTRO
 
   echo "$0: Building mavlink"

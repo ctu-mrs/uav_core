@@ -7,7 +7,7 @@ trap 'echo "$0: \"${last_command}\" command failed with exit code $?"' ERR
 
 echo "$0: Building ros1_bridge"
 
-ROS_BRIDGE_WS_PATH=~/ros2_bridge_workpsace
+ROS_BRIDGE_WS_PATH=~/ros2_bridge_workspace
 
 # create ros2_workspace
 [ ! -e $ROS_BRIDGE_WS_PATH/src ] && mkdir -p $ROS_BRIDGE_WS_PATH/src
