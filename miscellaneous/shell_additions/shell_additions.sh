@@ -500,7 +500,7 @@ colcon() {
 
       # if the flow got here, we found the build/COLCON_IGNORE file!
       # this is the folder we're looking for - call the actual colcon command here
-      command colcon "$@"
+      command colcon "$@" --symlink-install
       ret=$? # remember the return value of the colcon command
       cd "$CURRENT_PATH" # return to the path where this command was originaly called
       return $ret # return the original return value of the colcon command
