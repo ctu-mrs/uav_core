@@ -195,7 +195,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_bumper.git
   sparse_paths:
   -
-  rev: 502ae8f62005be7119fac743e1d8eed4b884f86b
+  rev: f58f40be20df3cb9639f8ca075e01610610fd74f
   link: ros_packages/mrs_bumper
   scripts:
   - git submodule update --init --recursive
@@ -204,7 +204,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_lib.git
   sparse_paths:
   -
-  rev: 8190292bf3500952d0108e191bb5fa21b8161cab
+  rev: 2c84af4fae04c34bbdc4d03527b7668ec2b68070
   link: ros_packages/mrs_lib
   scripts:
   - git submodule update --init --recursive
@@ -213,7 +213,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_mavros_interface.git
   sparse_paths:
   -
-  rev: 22a00cb5f6e850716769a414a8e008570abb570b
+  rev: 789dbf82105c3df0e95de5144f2ce4876f676aa7
   link: ros_packages/mrs_mavros_interface
   scripts:
   - git submodule update --init --recursive
@@ -222,7 +222,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_msgs.git
   sparse_paths:
   -
-  rev: 40ed078dce25e2fc9fb8cf1b7d09cd1c45132e3d
+  rev: 5b4e61d8c2e1275a89a07373d72fb00836748b22
   link: ros_packages/mrs_msgs
   scripts:
   - git submodule update --init --recursive
@@ -231,7 +231,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
   sparse_paths:
   -
-  rev: 82f20066762e83b968b79dfc1f91ef4f6d457195
+  rev: 7fb45beac8021c29fe3fe4725e8771c7b9c2c6f3
   link: ros_packages/mrs_rviz_plugins
   scripts:
   - git submodule update --init --recursive
@@ -240,7 +240,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_controllers.git
   sparse_paths:
   -
-  rev: 99b665709f91ce52d3d2ba07965ea4261827b587
+  rev: e556990a2731ac87ebf84ad34594c4074bed9d78
   link: ros_packages/mrs_uav_controllers
   scripts:
   - git submodule update --init --recursive
@@ -249,7 +249,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_general.git
   sparse_paths:
   -
-  rev: 64d687f87b3a08a583d117e9a3c3052e9f10863d
+  rev: fde4ffe93360ffb5d83f061715b89bd8c3e2470b
   link: ros_packages/mrs_uav_general
   scripts:
   - git submodule update --init --recursive
@@ -258,7 +258,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_managers.git
   sparse_paths:
   -
-  rev: dbf964453022b4637e0fb452df008daef5fa9a55
+  rev: 897c0a008ae6505f77b3310be9ece4722c2af065
   link: ros_packages/mrs_uav_managers
   scripts:
   - git submodule update --init --recursive
@@ -267,7 +267,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
   sparse_paths:
   -
-  rev: 37f3980996f2b92876c3186cb859a15dba9092b7
+  rev: 6523a5f3056f37a02a1cec19c97b2c3f5b486e88
   link: ros_packages/mrs_uav_odometry
   scripts:
   - git submodule update --init --recursive
@@ -276,7 +276,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_status.git
   sparse_paths:
   -
-  rev: 47d3c652fab4c068d8f0914e23c3510feaae0f99
+  rev: 1c8cbe67c1cde8663c2cba006d4c7f0c336189f7
   link: ros_packages/mrs_uav_status
   scripts:
   - git submodule update --init --recursive
@@ -285,7 +285,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_testing.git
   sparse_paths:
   -
-  rev: 9c1cc84f3d07f4f0530a65cfe71227f50669a481
+  rev: f85c68b84427de019820b72f5453ba0e7a2bcdd4
   link: ros_packages/mrs_uav_testing
   scripts:
   - git submodule update --init --recursive
@@ -294,7 +294,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
   sparse_paths:
   -
-  rev: 6d2107d7878865b775bf123918ddd6d922b44a41
+  rev: 6e6c5e5c9fd7eb1090360f120d95bda7cd34f16d
   link: ros_packages/mrs_uav_trackers
   scripts:
   - git submodule update --init --recursive
@@ -303,7 +303,7 @@ sources_locked:
   repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
   sparse_paths:
   -
-  rev: 954f8a95da7c998bfbbb1b2c9bba4e0e9191cbc2
+  rev: 3dc37561438c6026bbab436f055208e45bd5fc11
   link: ros_packages/mrs_uav_trajectory_generation
   scripts:
   - git submodule update --init --recursive
@@ -343,4 +343,3 @@ sources_locked:
   link: utils/tmuxinator
   scripts:
   - git submodule update --init --recursive
-groups: []
