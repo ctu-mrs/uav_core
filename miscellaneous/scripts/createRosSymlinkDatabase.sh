@@ -67,7 +67,7 @@ do
     fi
 
     # put it into our output file
-    echo "$dir, $original" >> "$symlink_list_tmp_file"
+    echo "$dir,$original" >> "$symlink_list_tmp_file"
   fi
 done
 
@@ -92,7 +92,9 @@ while IFS=, read -r path1 path2; do
   fi
 
   SYMLINK_LIST_PATHS1[$i]=`eval echo "$path1"`
-  SYMLINK_LIST_PATHS2[$i]=`eval echo "$path2"`
+
+  path2_sanitized=`realpath "$path2"`
+  SYMLINK_LIST_PATHS2[$i]=`eval echo "$path2_sanitized"`
 
   # echo "${SYMLINK_LIST_PATHS1[$i]} -> ${SYMLINK_LIST_PATHS2[$i]}"
 
