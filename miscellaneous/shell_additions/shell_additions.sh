@@ -10,57 +10,14 @@ else
   MY_PATH=`( cd "$MY_PATH" && pwd )`
 fi
 
+distro=`lsb_release -r | awk '{ print $2 }'`
+[ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
+[ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
+
 UAV_CORE_PATH=$MY_PATH/../../
 
 # disable gitman caching
 export GITMAN_CACHE_DISABLE=1
-
-# #{ CTAGS
-
-# path possible ctags locations
-# -R dir1 -R dir2 ...
-
-# contains the list of user ROS workspaces
-# used now for ctags generation and later for YCM (throught .ycm_extra_conf.py)
-[ -z "$ROS_WORKSPACES" ] && export ROS_WORKSPACES="$ROS_WORKSPACE"
-
-# if not defined, define it
-[ -z "$CTAGS_SOURCE_DIR" ] && export CTAGS_SOURCE_DIR=""
-
-# append location of ROS workspaces
-for WS in $(echo $ROS_WORKSPACES); do
-  export CTAGS_SOURCE_DIR="${CTAGS_SOURCE_DIR} -R $WS"
-done
-
-# path to source from which to generate `one-time generated ctags file`
-# -R dir1 -R dir2 ...
-[ -z "$CTAGS_ONCE_SOURCE_DIR" ] && export CTAGS_ONCE_SOURCE_DIR=""
-
-# append the ros path
-export CTAGS_ONCE_SOURCE_DIR="${CTAGS_ONCE_SOURCE_DIR} -R /opt/ros/melodic/include"
-
-# the location of the `one-time generated ctags file`
-export CTAGS_FILE_ONCE="~/tags-once"
-
-# generate projects' tags
-if [ -z $TMUX ]; then
-
-  if [ ! -e ~/tags ]; then
-    ctagscmd="ctags --fields=+l -f ~/tags $CTAGS_SOURCE_DIR"
-    $UAV_CORE_PATH/miscellaneous/scripts/detacher.sh "$ctagscmd"
-  fi
-
-  if [ ! -e ~/tags-once ]; then
-    # generate `once generated tags`, e.g. ROS's tags
-    if [ ! -e $(eval echo "$CTAGS_FILE_ONCE") ]; then
-      ctagscmd="ctags --fields=+l -f $CTAGS_FILE_ONCE $CTAGS_ONCE_SOURCE_DIR"
-      $UAV_CORE_PATH/miscellaneous/scripts/detacher.sh "$ctagscmd"
-    fi
-  fi
-
-fi
-
-# #}
 
 # #{ killp()
 
@@ -512,7 +469,114 @@ catkin() {
   }
 
 # #}
-alias cb="catkin build"
+
+# #{ colcon()
+
+colcon() {
+
+  CURRENT_PATH=`pwd`
+
+  case $* in
+
+    init*)
+
+      if [ ! -e "build/COLCON_IGNORE" ]; then # we are NOT at the workspace root
+        command colcon build # this creates a new workspace
+      fi
+
+      ;;
+
+    build*|b*)
+
+      # go up the folder tree until we find the build/COLCON_IGNORE file or until we reach the root
+      while [ ! -e "build/COLCON_IGNORE" ]; do
+        cd ..
+        if [[ `pwd` == "/" ]]; then
+          # we reached the root and didn't find the build/COLCON_IGNORE file - that's a fail!
+          echo "Cannot compile, probably not in a workspace (if you want to create a new workspace, call \"colcon init\" in its root first)".
+          return 1
+        fi
+      done
+
+      # if the flow got here, we found the build/COLCON_IGNORE file!
+      # this is the folder we're looking for - call the actual colcon command here
+      command colcon "$@" --symlink-install
+      ret=$? # remember the return value of the colcon command
+      cd "$CURRENT_PATH" # return to the path where this command was originaly called
+      return $ret # return the original return value of the colcon command
+
+      ;;
+
+    clean*)
+
+      if [ -e "build/COLCON_IGNORE" ]; then # we are at the workspace root
+        rm -r build install log
+        mkdir build
+        cd build
+        touch COLCON_IGNORE
+      else
+        while [ ! -e "build/COLCON_IGNORE" ]; do
+          cd ..
+
+          if [[ `pwd` == "/" ]]; then
+            echo "Cannot clean, not in a workspace!"
+            break
+          elif [ -e "build/COLCON_IGNORE" ]; then
+            rm -r build install log
+            mkdir build
+            cd build
+            touch COLCON_IGNORE
+            break
+          fi
+        done
+      fi
+
+      cd "$CURRENT_PATH" # return to the original folder where the command was called
+
+      ;;
+
+    *)
+      command colcon $@
+      ;;
+
+  esac
+}
+
+# #}
+
+# #{ cb()
+
+cb() {
+
+  # catkin?
+  PACKAGES=$(catkin list)
+  [ ! -z "$PACKAGES" ] && USE_CATKIN=1 || USE_CATKIN=0
+
+  # colcon?
+  CURRENT_PATH=`pwd`
+  while [ ! -e "build/COLCON_IGNORE" ]; do
+    cd ..
+
+    if [[ `pwd` == "/" ]]; then
+      break
+    fi
+  done
+  [[ `pwd` == "/" ]] && USE_COLCON=0
+  [ -e "build/COLCON_IGNORE" ] && USE_COLCON=1
+  cd "$CURRENT_PATH"
+
+  ret=1
+  [[ $USE_CATKIN == "1" ]] && [[ $USE_COLCON == "0" ]] && ( catkin build; ret=$? )
+  [[ $USE_CATKIN == "0" ]] && [[ $USE_COLCON == "1" ]] && ( colcon build; ret=$? )
+  [[ $USE_CATKIN == "1" ]] && [[ $USE_COLCON == "1" ]] && ( colcon build; ret=$? )
+  [[ $USE_CATKIN == "0" ]] && [[ $USE_COLCON == "0" ]] && echo "Cannot compile, not in a workspace"
+
+  unset USE_CATKIN
+  unset USE_COLCON
+  return $ret
+}
+
+# #}
 
 # catkin built [this/package] | less
 # #{ cbl()
@@ -556,6 +620,18 @@ waitForRos() {
 waitForSimulation() {
   until timeout 3s rostopic echo /gazebo/model_states -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for simulation"
+    sleep 1;
+  done
+  sleep 1;
+}
+
+# #}
+
+# #{ waitForSimulation()
+
+waitForSpawn() {
+  until timeout 3s rostopic echo /mrs_drone_spawner/spawned -n 1 --noarr > /dev/null 2>&1; do
+    echo "waiting for spawn"
     sleep 1;
   done
   sleep 1;

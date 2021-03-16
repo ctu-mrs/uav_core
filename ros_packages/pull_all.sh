@@ -19,6 +19,7 @@ input=(
 "mrs_uav_status" "master"
 "mrs_uav_testing" "master"
 "mrs_uav_trackers" "master"
+"mrs_uav_trajectory_generation" "master"
 )
 
 # create arrays of names and commands

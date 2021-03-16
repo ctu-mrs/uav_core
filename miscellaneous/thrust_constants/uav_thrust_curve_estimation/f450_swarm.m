@@ -2,17 +2,19 @@
 
 % masses of UAV
 mass = [
-2.17;
-2.73;
-3.19
+2.28;
+2.38;
+2.56
 ];
 
 % thrusts needed to hover
 thrust = [
-0.415;
-0.49;
-0.57
+0.585;
+0.659;
+0.70
 ];
+
+n_motors = 4;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,7 +26,7 @@ g = 9.81;
 A = ones(length(mass), 2);
 
 for i=1:length(mass)
-  A(i, 1) = sqrt((mass(i)*g));
+  A(i, 1) = sqrt((mass(i)*g)/n_motors);
 end
 
 % print A

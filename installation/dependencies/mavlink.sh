@@ -71,7 +71,6 @@ then
 
   if [ "$distro" = "20.04" ]; then
     export ROS_PYTHON_VERSION=3
-    git checkout 0dc40a07d97e665c563600081840c45b60bae1cf
   fi
 
   [ -z "$DRYRUN" ] && bloom-generate rosdebian --os-name ubuntu --ros-distro $ROS_DISTRO

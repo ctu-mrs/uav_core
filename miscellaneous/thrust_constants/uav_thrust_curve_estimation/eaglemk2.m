@@ -2,17 +2,19 @@
 
 % masses of UAV
 mass = [
-2.441;
-3.008;
-3.565
+11.6;
+14.75;
+17.4;
 ];
 
 % thrusts needed to hover
-thrust_carbon = [
-0.5188;
-0.6062;
-0.6750
+thrust = [
+0.34;
+0.42;
+0.50;
 ];
+
+n_motors = 8;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,14 +26,14 @@ g = 9.81;
 A = ones(length(mass), 2);
 
 for i=1:length(mass)
-  A(i, 1) = sqrt((mass(i)*g));
+  A(i, 1) = sqrt((mass(i)*g)/n_motors);
 end
 
 % print A
 A
 
 % compute the linear coeficients
-X = A\thrust_carbon;
+X = A\thrust;
 
 % plot the constants
 ka = X(1)

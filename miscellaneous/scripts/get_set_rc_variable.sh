@@ -14,7 +14,7 @@ fi
 num=`cat $RCFILE | grep "^export $2" | wc -l`
 
 if [ "$num" -lt "1" ]; then
-  
+
   if [ -z "$4" ]; then
     COMMENTARY=""
   else
