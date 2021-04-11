@@ -43,6 +43,8 @@ input=(
   'judy' 'uav10' '192.168.69.110'
   'unique' 'uav21' '192.168.69.121'
   'vanna' 'uav22' '192.168.69.122'
+  'klaxalk' 'klaxalk-local' '192.168.69.11'
+  'dan' 'dan-local' '192.168.69.42'
 )
 
 # get path to script
