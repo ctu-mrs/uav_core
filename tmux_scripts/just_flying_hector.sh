@@ -96,6 +96,7 @@ then
   ITERATOR=$(($ITERATOR+1))
 else
   echo "iterator.txt does not exist, creating it"
+  mkdir -p "$MAIN_DIR/$PROJECT_NAME"
   touch "$ITERATOR_FILE"
   ITERATOR="1"
 fi
@@ -110,8 +111,8 @@ mkdir -p "$SUBLOG_DIR"
 mkdir -p "$TMUX_DIR"
 
 # link the "latest" folder to the recently created one
-rm "$LOG_DIR/latest"
-rm "$MAIN_DIR/latest"
+rm "$LOG_DIR/latest" > /dev/null 2>&1
+rm "$MAIN_DIR/latest" > /dev/null 2>&1
 ln -sf "$SUBLOG_DIR" "$LOG_DIR/latest"
 ln -sf "$SUBLOG_DIR" "$MAIN_DIR/latest"
 
