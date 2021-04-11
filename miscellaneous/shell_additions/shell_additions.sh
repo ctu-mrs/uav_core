@@ -441,11 +441,13 @@ catkin() {
 
       hostname=$( cat /etc/hostname )
 
-      if [[ $hostname == uav* ]]; then
-        memlimit="--mem-limit 50%"
-      else
-        memlimit=""
-      fi
+      # we do not need this anymore,
+      # UAVs should have SWAP set up so they can build
+      # if [[ $hostname == uav* ]]; then
+      #   memlimit="--mem-limit 50%"
+      # else
+      #   memlimit=""
+      # fi
 
       PACKAGES=$(catkin list)
       if [ -z "$PACKAGES" ]; then
