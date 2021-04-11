@@ -31,8 +31,6 @@ input=(
   'xavier' 'uav99' '192.168.69.199'
   'xavnx1' 'uav95' '192.168.69.195'
   'eagle' 'uav91' '192.168.69.191'
-  'franta' 'uav10' '192.168.69.110'
-  # UAE
   'alice' 'uav1' '192.168.69.101'
   'bob' 'uav2' '192.168.69.102'
   'carol' 'uav3' '192.168.69.103'
@@ -72,6 +70,9 @@ my_hostname=$( cat /etc/hostname )
 
 for ((i=0; i < ${#hostname[*]}; i++)); do
 
+  echo ""
+  echo "Proceesing ${hostname[i]}"
+
   num=`cat ~/.ssh/config | grep "host ${hostname[i]}" | wc -l`
   if [ "$num" -lt "1" ]; then
 
@@ -91,16 +92,19 @@ for ((i=0; i < ${#hostname[*]}; i++)); do
 	identityfile $key_name
 " >> ~/.ssh/config
 
+  # move the current entry to the bottom of the file
   $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/${ip[i]}.*/norm dapGp" -c "wqa" -- "$HOME/.ssh/config"
 
-  num=`cat /etc/hosts | grep ".* ${hostname[i]}" | wc -l`
+  num=`cat /etc/hosts | grep ".* ${hostname[i]}$" | wc -l`
   if [ "$num" -lt "1" ]; then
 
     echo Creating new entry in /etc/hosts for ${hostname[i]} ${ip[i]}
 
   else
 
-    sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/.*${hostname[i]}/norm dd" -c "wqa" -- "/etc/hosts"
+    # delete the old entry
+    echo "deleting old entry in /etc/hosts"
+    sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/.*${hostname[i]}$/norm dd" -c "wqa" -- "/etc/hosts"
 
   fi
 
