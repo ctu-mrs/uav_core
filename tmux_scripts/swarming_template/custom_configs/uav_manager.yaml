@@ -10,6 +10,14 @@ takeoff:
 
   takeoff_height: 2.5
 
+# periodically checks if min height was exceeded
+# if so, retakes control and descends below it
+min_height_checking:
+
+  enabled: true
+  min_height: 1.5 # [m]
+  safety_height_offset: 1.0 # how much higher to ascend above the min height
+
 landing:
 
   # if the UAV height is available and
