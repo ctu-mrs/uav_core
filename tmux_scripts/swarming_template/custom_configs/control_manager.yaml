@@ -1,0 +1,22 @@
+safety:
+
+  escalating_failsafe:
+
+    # how often does it allow to escalate
+    timeout: 2.0 # [s]
+
+    ehover: true
+    eland: true
+    failsafe: true
+    disarm: true
+
+rc_joystick:
+
+  carrot_distance: 2.00 # [m]
+
+Se3Controller:
+  address: "mrs_uav_controllers/Se3Controller"
+  namespace: "se3_controller"
+  eland_threshold: 2.0 # [m], position error triggering eland
+  failsafe_threshold: 3.0 # [m], position error triggering failsafe land
+  odometry_innovation_threshold: 2.0 # [m], position odometry innovation threshold

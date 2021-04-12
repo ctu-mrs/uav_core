@@ -1,0 +1,19 @@
+takeoff:
+
+  during_takeoff:
+    controller: "Se3Controller"
+    tracker: "LandoffTracker"
+
+  after_takeoff:
+    controller: "Se3Controller"
+    tracker: "MpcTracker"
+
+  takeoff_height: 2.5
+
+landing:
+
+  # if the UAV height is available and
+  # if the UAV higher than this:
+  # it will first descend to this height
+  # and then land slowly and safely
+  descend_height: 2.5 # [m]

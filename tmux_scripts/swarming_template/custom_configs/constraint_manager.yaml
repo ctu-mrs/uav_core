@@ -1,0 +1,87 @@
+constraints: [
+  "slow",
+  "medium",
+]
+
+constraint_management:
+
+  # list of allowed gains per odometry mode
+  allowed_constraints:
+    RTK: ["slow", "medium"]
+    GPS: ["slow", "medium"]
+
+  # those gains will be used automatically when a localization mode switches
+  # and the current gains are not in the allowed list (next paragraphs)
+  fallback_constraints:
+    RTK: "slow"
+    GPS: "slow"
+
+slow:
+
+  horizontal:
+    speed: 2.0
+    acceleration: 1.0
+    jerk: 20.0
+    snap: 20.0
+
+  vertical:
+
+    ascending:
+      speed: 1.0
+      acceleration: 1.0
+      jerk: 2.0
+      snap: 2.0
+
+    descending:
+      speed: 1.0
+      acceleration: 1.0
+      jerk: 2.0
+      snap: 2.0
+
+  heading:
+    speed: 0.5
+    acceleration: 0.5
+    jerk: 10.0
+    snap: 10.0
+
+  angular_speed:
+    roll: 10.0
+    pitch: 10.0
+    yaw: 1.0
+
+  tilt: deg(60)
+
+medium:
+
+  horizontal:
+    speed: 4.0
+    acceleration: 2.0
+    jerk: 20.0
+    snap: 20.0
+
+  vertical:
+
+    ascending:
+      speed: 2.0
+      acceleration: 1.0
+      jerk: 3.0
+      snap: 5.0
+
+    descending:
+      speed: 2.0
+      acceleration: 1.0
+      jerk: 3.0
+      snap: 5.0
+
+  heading:
+    speed: 1.0
+    acceleration: 1.0
+    jerk: 10.0
+    snap: 10.0
+
+  angular_speed:
+    roll: 60.0
+    pitch: 60.0
+    yaw: 10.0
+
+  tilt: deg(60)

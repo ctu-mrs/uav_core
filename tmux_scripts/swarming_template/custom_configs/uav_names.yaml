@@ -1,0 +1,27 @@
+# 1. This list is used by NimbroNetwork for mutual communication of the UAVs
+#    The names of the robots have to match hostnames described in /etc/hosts.
+#    Update the /etc/hosts by running:
+#
+#     uav_core/miscellaneous/dotssh/generate_ssh_config.sh
+#
+# 2. This list is used by MpcTracker for mutual collision avoidance of the UAVs.
+#    The names should match the true "UAV_NAMES" (the topic prefixes).
+#
+# 3. This list is a GENERAL LIST containing all possible UAVs we have.
+#    However, this is suboptimal but at least it provides some form of functionality.
+#    THUS everyone should have a custom config at its tmux script, containing just
+#    the UAVs that are going to be flying in the same area. You can add the custom config
+#    by adding:
+#
+#     config_uav_names:=~/custom_configs/uav_names.yaml
+#
+#    to the core.launch and nimbro.launch.
+
+network:
+
+  robot_names: [
+
+    klaxalk, dan,
+    uav1, uav2, uav3, uav4, uav5, uav6, uav7, uav8, uav9, uav10,
+
+  ]

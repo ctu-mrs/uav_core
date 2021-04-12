@@ -1,0 +1,13 @@
+safety_timeout: 10.0 # [s]
+
+topic_check:
+
+  enabled: true
+  timeout: 5.0 # [s], a window for the last accepted message
+
+  # if "/" is provided at the beginning of topic_name, the topic name is considered as written,
+  # if there is no "/" at the beginning, UAV_NAME is automatically added in from of the topic name (/uav1/topic_name)
+  topics: [
+    "odometry/uav_state",
+    "control_manager/diagnostics",
+  ]

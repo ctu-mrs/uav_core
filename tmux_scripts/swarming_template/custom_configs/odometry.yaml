@@ -1,0 +1,17 @@
+# Altitude state estimator:
+# HEIGHT - rangefinder
+# BARO - baro
+altitude_estimator: "HEIGHT"
+
+altitude:
+
+  # Process covariance
+  Q: [100.0, 0, 0,
+      0, 100000.0, 0,
+      0, 0, 100000.0]
+
+  # Covariances of measurements
+  R:
+    height_range: [1000.0]
+    height_baro: [100.0]
+    vel_baro: [100.0]

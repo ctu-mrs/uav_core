@@ -1,0 +1,39 @@
+topics: # topics published out of this machine to receivers specified above
+ - name: "control_manager/mpc_tracker/predicted_trajectory"
+   compress: false # enable bz2 compression
+   rate: 2.0
+ - name: "control_manager/mpc_tracker/diagnostics"
+   compress: false # enable bz2 compression
+   rate: 1.0
+ - name: "control_manager/diagnostics"
+   compress: false # enable bz2 compression
+   rate: 1.0
+ - name: "odometry/slow_odom"
+   compress: false # enable bz2 compression
+   rate: 1.0
+ - name: "uav_manager/diagnostics"
+   compress: false # enable bz2 compression
+   rate: 1.0
+ - name: "control_manager/diagnostics"
+   compress: false # enable bz2 compression
+   rate: 1.0
+
+services:
+  - name: "/*/control_manager/goto_trajectory_start"
+    type: std_srvs/Trigger
+  - name: "/*/control_manager/start_trajectory_tracking"
+    type: std_srvs/Trigger
+  - name: "/*/control_manager/trajectory_reference"
+    type: mrs_msgs/TrajectoryReferenceSrv
+  - name: "/*/uav_manager/land_home"
+    type: std_srvs/Trigger
+  - name: "/*/control_manager/switch_controller"
+    type: mrs_msgs/String
+  - name: "/*/control_manager/switch_tracker"
+    type: mrs_msgs/String
+  - name: "/*/constraint_manager/set_constraints"
+    type: mrs_msgs/String
+  - name: "/*/control_manager/enable_callbacks"
+    type: std_srvs/SetBool
+  - name: "/*/odometry/change_alt_estimator_type_string"
+    type: mrs_msgs/String
