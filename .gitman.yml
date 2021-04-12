@@ -366,7 +366,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
     name: mrs_uav_trajectory_generation
-    rev: dc21b797a8b068399ee24cef894a32bb1ac1ca5c
+    rev: e2225dfe0ed106b422b5a579464e398443ca39ec
     type: git
     sparse_paths:
       -
