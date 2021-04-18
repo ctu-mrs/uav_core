@@ -337,6 +337,29 @@ git() {
 
 # #}
 
+# #{ gdb
+
+gdba() {
+
+  NODE_NAME=$1
+
+  PID=""
+
+  while true; do
+
+    PID=$( ps aux | grep -e "$NODE_NAME" | vims -e "grep" "dd" | vims -s "^dWElD" )
+
+    if [[ ! -z $PID ]]; then
+      break
+    fi
+
+  done
+
+  gdb attach $PID -ex c
+}
+
+# #}
+
 alias gs="git status"
 alias gcmp="git checkout master; git pull"
 alias flog="~/.scripts/git-forest.sh --all --date=relative --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --style=15"
