@@ -1,0 +1,4 @@
+vertical_tracker:
+
+  takeoff_speed: 1.0
+  takeoff_acceleration: 1.0
