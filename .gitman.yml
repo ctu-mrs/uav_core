@@ -300,7 +300,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_general.git
     name: mrs_uav_general
-    rev: c49386dc1f9657d010da2d3cb7ea87fc49b04ab4
+    rev: c8e3071a14f2388a0722d6d39383fe8c91b5d98d
     type: git
     sparse_paths:
       -
@@ -322,7 +322,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
     name: mrs_uav_odometry
-    rev: c3295ba7e66bdd5e23e8208f8feac2a838bb23f5
+    rev: 7a426514ae410610be6ad5988b3738f918f06ea4
     type: git
     sparse_paths:
       -
@@ -344,7 +344,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_testing.git
     name: mrs_uav_testing
-    rev: 74f7804609e29563d763bf239a5f8e1d5988035a
+    rev: c4d3fcdea5c2e0489f5bde28f4763ac89630ea6e
     type: git
     sparse_paths:
       -
@@ -366,7 +366,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
     name: mrs_uav_trajectory_generation
-    rev: e2225dfe0ed106b422b5a579464e398443ca39ec
+    rev: c55d711fb47427c7d65109aad2af820a0c89f5f7
     type: git
     sparse_paths:
       -
