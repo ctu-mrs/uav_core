@@ -347,11 +347,15 @@ gdba() {
 
   while true; do
 
-    PID=$( ps aux | grep -e "$NODE_NAME" | vims -e "grep" "dd" | vims -s "^dWElD" )
+    PID=$(ps aux | grep -e "$NODE_NAME" | vims -e "grep" "dd" | vims -s "^dWElD" | head -n 1)
 
-    if [[ ! -z $PID ]]; then
+    if [[ $PID != " " ]]; then
       break
     fi
+
+    echo "waiting for '$NODE_NAME' to start"
+
+    sleep 1
 
   done
 
