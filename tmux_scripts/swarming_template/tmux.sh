@@ -28,6 +28,8 @@ pre_input="mkdir -p $MAIN_DIR/$PROJECT_NAME; export WORLD_FILE=./world.yaml"
 input=(
   'Rosbag' 'waitForOffboard; ./record.sh
 '
+  'NodeChecker' 'waitForRos; roslaunch mrs_uav_general node_crash_checker.launch
+'
   'Nimbro' 'waitForRos; roslaunch mrs_uav_general nimbro.launch custom_config:=./custom_configs/nimbro.yaml custom_config_uav_names:=./custom_configs/uav_names.yaml
 '
   'Sensors' 'waitForRos; roslaunch mrs_uav_general sensors.launch
