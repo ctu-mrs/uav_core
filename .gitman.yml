@@ -234,7 +234,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_bumper.git
     name: mrs_bumper
-    rev: 315a57a1fa76b3f485347c9631b995278163de8c
+    rev: 8ec757a340f779a19030287d0e040fe2a60580da
     type: git
     sparse_paths:
       -
@@ -311,7 +311,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_managers.git
     name: mrs_uav_managers
-    rev: 6bf543e7be72c55f000ee48a0ccaa8e294882fbb
+    rev: fbb6c3895c34fab326b2952fd625052f9ce462ae
     type: git
     sparse_paths:
       -
