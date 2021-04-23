@@ -647,7 +647,7 @@ waitForRos() {
 # #{ waitForSimulation()
 
 waitForSimulation() {
-  until timeout 3s rostopic echo /gazebo/model_states -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /gazebo/model_states -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for simulation"
     sleep 1;
   done
@@ -659,7 +659,7 @@ waitForSimulation() {
 # #{ waitForSimulation()
 
 waitForSpawn() {
-  until timeout 3s rostopic echo /mrs_drone_spawner/spawned -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /mrs_drone_spawner/spawned -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for spawn"
     sleep 1;
   done
@@ -671,7 +671,7 @@ waitForSpawn() {
 # #{ waitForOdometry()
 
 waitForOdometry() {
-  until timeout 3s rostopic echo /$UAV_NAME/mavros/local_position/odom -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/mavros/local_position/odom -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for odometry"
     sleep 1;
   done
@@ -682,7 +682,7 @@ waitForOdometry() {
 # #{ waitForControlManager()
 
 waitForControlManager() {
-  until timeout 3s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for control manager"
     sleep 1;
   done
@@ -693,11 +693,11 @@ waitForControlManager() {
 # #{ waitForControl()
 
 waitForControl() {
-  until timeout 3s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for control"
     sleep 1;
   done
-  until timeout 3s rostopic echo /$UAV_NAME/odometry/odom_main -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/odometry/odom_main -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for odom_main"
     sleep 1;
   done
@@ -708,11 +708,11 @@ waitForControl() {
 # #{ waitForMpc()
 
 waitForMpc() {
-  until timeout 3s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for control"
     sleep 1;
   done
-  until timeout 3s rostopic echo /$UAV_NAME/odometry/odom_main -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/odometry/odom_main -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for odom_main"
     sleep 1;
   done
@@ -723,7 +723,7 @@ waitForMpc() {
 # #{ waitForOffboard()
 
 waitForOffboard() {
-  until timeout 3s rostopic echo /$UAV_NAME/control_manager/offboard_on -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/control_manager/offboard_on -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for offboard mode"
     sleep 1;
   done
@@ -734,7 +734,7 @@ waitForOffboard() {
 # #{ waitForCompile()
 
 waitForCompile() {
-  while timeout 3s  ps aux | grep "catkin build" | grep -v grep > /dev/null 2>&1; do
+  while timeout 6s  ps aux | grep "catkin build" | grep -v grep > /dev/null 2>&1; do
     echo "waiting for compilation to complete"
     sleep 1;
   done
