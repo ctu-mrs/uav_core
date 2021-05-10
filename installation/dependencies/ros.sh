@@ -33,6 +33,7 @@ sudo apt-get -y update
 
 # FIXING ROS installation!!!! don't remove!!!
 sudo apt-get upgrade -y libignition-common3*
+[ "$distro" = "18.04" ] && sudo apt-get upgrade -y libgazebo9-dev
 
 [ "$distro" = "18.04" ] && sudo apt-get -y install ros-melodic-ros-base
 [ "$distro" = "20.04" ] && sudo apt-get -y install ros-noetic-ros-base
