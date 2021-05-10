@@ -31,7 +31,7 @@ done
 
 sudo apt-get -y update
 
-sudo apt-get -y install libgazebo9-dev
+sudo apt-get -y install libignition-transport4-dev
 
 [ "$distro" = "18.04" ] && sudo apt-get -y install ros-melodic-ros-base
 [ "$distro" = "20.04" ] && sudo apt-get -y install ros-noetic-ros-base
