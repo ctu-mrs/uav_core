@@ -31,6 +31,7 @@ done
 
 sudo apt-get -y update
 
+# FIXING ROS installation!!!! don't remove!!!
 sudo apt-get upgrade -y libignition-common3*
 
 [ "$distro" = "18.04" ] && sudo apt-get -y install ros-melodic-ros-base
