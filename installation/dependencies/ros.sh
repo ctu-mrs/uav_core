@@ -31,8 +31,7 @@ done
 
 sudo apt-get -y update
 
-sudo apt-get -y upgrade libgazebo9-dev
-sudo apt-get -y install libzmq3-dev
+sudo apt-get upgrade -y libignition-common3*
 
 [ "$distro" = "18.04" ] && sudo apt-get -y install ros-melodic-ros-base
 [ "$distro" = "20.04" ] && sudo apt-get -y install ros-noetic-ros-base
