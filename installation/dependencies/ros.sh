@@ -13,12 +13,6 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 
 echo "$0: Installing ROS"
 
-# add repository for ignition library
-sudo apt-get -y install wget lsb-release gnupg
-sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
-wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
-sudo apt-get -y update
-
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 
 for server in ha.pool.sks-keyservers.net \
@@ -30,11 +24,6 @@ for server in ha.pool.sks-keyservers.net \
 done
 
 sudo apt-get -y update
-
-# FIXING ROS installation!!!! don't remove!!!
-sudo apt-get -y install --fix-broken
-# sudo apt-get upgrade -y libignition-common3*
-# [ "$distro" = "18.04" ] && sudo apt-get upgrade -y libgazebo9-dev
 
 [ "$distro" = "18.04" ] && sudo apt-get -y install ros-melodic-ros-base
 [ "$distro" = "20.04" ] && sudo apt-get -y install ros-noetic-ros-base
