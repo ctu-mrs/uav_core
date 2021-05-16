@@ -234,7 +234,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_bumper.git
     name: mrs_bumper
-    rev: 8ec757a340f779a19030287d0e040fe2a60580da
+    rev: 6aaf450b5170f11c35536c48404340a287446821
     type: git
     sparse_paths:
       -
@@ -245,7 +245,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_lib.git
     name: mrs_lib
-    rev: 2ecbc9b0de7334f4e52465304760b8d570a18f59
+    rev: b9054bbeb344a6c16a685b8d5c6c42a091ddef7b
     type: git
     sparse_paths:
       -
@@ -256,7 +256,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_mavros_interface.git
     name: mrs_mavros_interface
-    rev: 1bd2320ca7c9daf0cce46cdc959408a685d73ea5
+    rev: cc07e5bb9e9a873ce8908fb03a0a34a39473d70d
     type: git
     sparse_paths:
       -
@@ -267,7 +267,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
-    rev: a39f5ce14f470f6397c2285d5842bb58754c8ba7
+    rev: 970d090fecbcdf0fe9e30694da4326e80c3d1438
     type: git
     sparse_paths:
       -
@@ -278,7 +278,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
     name: mrs_rviz_plugins
-    rev: 8e8a74049217a4a89c54cc431585008977492e6a
+    rev: bf7ea90ce58b98526cd359d8f70659451dbbcff6
     type: git
     sparse_paths:
       -
@@ -289,7 +289,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_controllers.git
     name: mrs_uav_controllers
-    rev: b33e6dce1ab30f90592975cd4e17a2103f7b20c4
+    rev: f4393f331679a1e80617b6e1d8cdced00ab1574a
     type: git
     sparse_paths:
       -
@@ -300,7 +300,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_general.git
     name: mrs_uav_general
-    rev: cc1e993cf2dc53e9cdf12b894f49231dd10cb625
+    rev: fe4d1994b5945fae9a343c8a68695a8a4a026022
     type: git
     sparse_paths:
       -
@@ -311,7 +311,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_managers.git
     name: mrs_uav_managers
-    rev: 138f8b3008ddb2e02c2033fcc9ef0feda566d243
+    rev: 3f12d0b6bbafc7675d870f2ed708bb56fb7a5ed0
     type: git
     sparse_paths:
       -
@@ -322,7 +322,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
     name: mrs_uav_odometry
-    rev: 7a426514ae410610be6ad5988b3738f918f06ea4
+    rev: 30fd74ce3cc4276590d122a93177f078c618c353
     type: git
     sparse_paths:
       -
@@ -333,7 +333,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_status.git
     name: mrs_uav_status
-    rev: 64498536a9b9a26d8891743a2bc0e817b99b08e4
+    rev: 377e2b1834e235c89237aabb75c7115a5567c7fb
     type: git
     sparse_paths:
       -
@@ -344,7 +344,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_testing.git
     name: mrs_uav_testing
-    rev: 44c0779021d04c4f1aebdd95d4ec797b608c18a4
+    rev: 2cd800bc122b99d207bd7239705f0dbf72187e4a
     type: git
     sparse_paths:
       -
@@ -355,7 +355,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
     name: mrs_uav_trackers
-    rev: a0940afbc050ee1bbbf0f3dc0b80c50bd9217c72
+    rev: 407502034fc19bfd46bf334cdab2e20488c3ca07
     type: git
     sparse_paths:
       -
@@ -366,7 +366,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
     name: mrs_uav_trajectory_generation
-    rev: de0ce29ff67e8903cd2e4fd42859db67e522a317
+    rev: 6702fcfd9451da85199e572ea40574fb1c53e26b
     type: git
     sparse_paths:
       -
