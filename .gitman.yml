@@ -245,7 +245,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_lib.git
     name: mrs_lib
-    rev: e0c29508098aff8db53c61f92689622ae140039b
+    rev: 92f811efee7fe2ea7f44decbf382b1426acd39ba
     type: git
     sparse_paths:
       -
@@ -267,7 +267,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
-    rev: 83540cfef905618e0dc418fc3242d3f45159e29c
+    rev: bd2b456abd7d3c9be33e4eb0ceb31bf60dae3955
     type: git
     sparse_paths:
       -
@@ -300,7 +300,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_general.git
     name: mrs_uav_general
-    rev: 75cc5abab063d5eddb4dca89d0026d5fd62aa9c1
+    rev: 1a3709c768784aade0e4a0901b102da0845410fc
     type: git
     sparse_paths:
       -
@@ -322,7 +322,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
     name: mrs_uav_odometry
-    rev: 5e3cde2c3a8ea4ae295ea4703d7aedf97991ecf7
+    rev: 40eb8f99e6e42f48f0d2d698e7c9a4c02faddb4a
     type: git
     sparse_paths:
       -
