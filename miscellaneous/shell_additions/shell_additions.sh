@@ -363,6 +363,7 @@ sshkey() {
   HOSTS=(
     'github.com'
     'mrs.felk.cvut.cz'
+    'gitlab.fel.cvut.cz'
   )
 
   # get me vim, we will be using it alot to postprocess the generated json files
