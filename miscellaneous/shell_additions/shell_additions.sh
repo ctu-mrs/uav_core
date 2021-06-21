@@ -390,6 +390,7 @@ sshkey() {
   HOSTS=(
     'github.com'
     'mrs.felk.cvut.cz'
+    'gitlab.fel.cvut.cz'
   )
 
   # get me vim, we will be using it alot to postprocess the generated json files
@@ -434,6 +435,17 @@ sshkey() {
 
   # set the corret chmod to the keys
   chmod 0600 ~/.ssh/$SSH_KEY_NAME
+
+  # set git user name
+  local git_user_name=$(grep -hr "$SSH_KEY_NAME" $UAV_CORE_PATH/miscellaneous/dotssh/git_usernames | cut -d ' ' -f2-)
+
+  if [ -z "$git_user_name" ]; then  
+    git_user_name=$SSH_KEY_NAME
+  fi
+
+  echo "Setting git user.name to $git_user_name"
+
+  git config --global user.name $git_user_name
 
   eval `ssh-agent`
   ssh-add ~/.ssh/$SSH_KEY_NAME
