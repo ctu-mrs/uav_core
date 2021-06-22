@@ -443,9 +443,9 @@ sshkey() {
     git_user_name=$SSH_KEY_NAME
   fi
 
-  echo "Setting git user.name to $git_user_name"
-
-  git config --global --replace-all user.name $git_user_name
+  git config --global --replace-all user.name "$git_user_name"
+  
+  echo "git user.name set to $(git config --global user.name)"
 
   eval `ssh-agent`
   ssh-add ~/.ssh/$SSH_KEY_NAME
