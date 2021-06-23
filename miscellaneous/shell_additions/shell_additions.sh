@@ -382,7 +382,7 @@ sshkey() {
 
   if [ "$#" -eq "0" ]; then
     echo please supply a parameter: the ssh key file prefix
-    exit
+    return
   fi
 
   SSH_KEY_NAME="$1"
