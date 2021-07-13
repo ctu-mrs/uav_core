@@ -382,7 +382,7 @@ sshkey() {
 
   if [ "$#" -eq "0" ]; then
     echo please supply a parameter: the ssh key file prefix
-    exit
+    return
   fi
 
   SSH_KEY_NAME="$1"
@@ -390,6 +390,7 @@ sshkey() {
   HOSTS=(
     'github.com'
     'mrs.felk.cvut.cz'
+    'gitlab.fel.cvut.cz'
   )
 
   # get me vim, we will be using it alot to postprocess the generated json files
@@ -434,6 +435,17 @@ sshkey() {
 
   # set the corret chmod to the keys
   chmod 0600 ~/.ssh/$SSH_KEY_NAME
+
+  # set git user name
+  local git_user_name=$(grep -hr "$SSH_KEY_NAME" $UAV_CORE_PATH/miscellaneous/dotssh/git_usernames | cut -d ' ' -f2-)
+
+  if [ -z "$git_user_name" ]; then  
+    git_user_name=$SSH_KEY_NAME
+  fi
+
+  git config --global --replace-all user.name "$git_user_name"
+  
+  echo "git user.name set to $(git config --global user.name)"
 
   eval `ssh-agent`
   ssh-add ~/.ssh/$SSH_KEY_NAME
@@ -647,7 +659,7 @@ waitForRos() {
 # #{ waitForSimulation()
 
 waitForSimulation() {
-  until timeout 3s rostopic echo /gazebo/model_states -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /gazebo/model_states -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for simulation"
     sleep 1;
   done
@@ -659,7 +671,7 @@ waitForSimulation() {
 # #{ waitForSimulation()
 
 waitForSpawn() {
-  until timeout 3s rostopic echo /mrs_drone_spawner/spawned -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /mrs_drone_spawner/spawned -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for spawn"
     sleep 1;
   done
@@ -671,7 +683,7 @@ waitForSpawn() {
 # #{ waitForOdometry()
 
 waitForOdometry() {
-  until timeout 3s rostopic echo /$UAV_NAME/mavros/local_position/odom -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/mavros/local_position/odom -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for odometry"
     sleep 1;
   done
@@ -682,7 +694,7 @@ waitForOdometry() {
 # #{ waitForControlManager()
 
 waitForControlManager() {
-  until timeout 3s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for control manager"
     sleep 1;
   done
@@ -693,11 +705,11 @@ waitForControlManager() {
 # #{ waitForControl()
 
 waitForControl() {
-  until timeout 3s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for control"
     sleep 1;
   done
-  until timeout 3s rostopic echo /$UAV_NAME/odometry/odom_main -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/odometry/odom_main -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for odom_main"
     sleep 1;
   done
@@ -708,11 +720,11 @@ waitForControl() {
 # #{ waitForMpc()
 
 waitForMpc() {
-  until timeout 3s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for control"
     sleep 1;
   done
-  until timeout 3s rostopic echo /$UAV_NAME/odometry/odom_main -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/odometry/odom_main -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for odom_main"
     sleep 1;
   done
@@ -723,7 +735,7 @@ waitForMpc() {
 # #{ waitForOffboard()
 
 waitForOffboard() {
-  until timeout 3s rostopic echo /$UAV_NAME/control_manager/offboard_on -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/control_manager/offboard_on -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for offboard mode"
     sleep 1;
   done
@@ -734,7 +746,7 @@ waitForOffboard() {
 # #{ waitForCompile()
 
 waitForCompile() {
-  while timeout 3s  ps aux | grep "catkin build" | grep -v grep > /dev/null 2>&1; do
+  while timeout 6s  ps aux | grep "catkin build" | grep -v grep > /dev/null 2>&1; do
     echo "waiting for compilation to complete"
     sleep 1;
   done

@@ -8,7 +8,6 @@ safety:
     ehover: true
     eland: true
     failsafe: true
-    disarm: true
 
 rc_joystick:
 

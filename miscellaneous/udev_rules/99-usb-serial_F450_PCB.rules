@@ -1,0 +1,20 @@
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", SYMLINK+="pixhawk", OWNER="mrs", MODE="0666"
+
+# RULES for F450 Distribution Board
+# Pixhawk
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="pixhawk",OWNER="mrs",MODE="0666"
+# MRS Module 1
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="MRS_MODULE1",OWNER="mrs",MODE="0666"
+# MRS Module 2
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", ENV{ID_USB_INTERFACE_NUM}=="02", SYMLINK+="MRS_MODULE2",OWNER="mrs",MODE="0666"
+# MRS Module 3
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", ENV{ID_USB_INTERFACE_NUM}=="03", SYMLINK+="MRS_MODULE3",OWNER="mrs",MODE="0666"
+
+
+
+
+
+
+
+
+
