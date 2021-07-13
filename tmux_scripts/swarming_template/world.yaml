@@ -2,11 +2,25 @@
 ## DEFINITION OF THE ARENA
 #
 
+# definition of the points
+# A = 49.449998, 18.233608
+# B = 49.449802, 18.233672
+# C = 49.449668, 18.233598
+# D = 49.449428, 18.233674
+# E = 49.449132, 18.233273
+# F = 49.499246, 18.233074
+# G = 49.449350, 18.233186
+# H = 49.449435, 18.232611
+# I = 49.449609, 18.232708
+# J = 49.449821, 18.232943
+# K = 49.449955, 18.233322
+# ORIGIN = 49.449616, 18.233141
+
 utm_origin_units: 1 # 0 - UTM, 1 - Latitude Longitude
-utm_origin_x: 0
-utm_origin_y: 0
-utm_origin_lat: 24.132261
-utm_origin_lon: 55.332986
+utm_origin_x: 0.0
+utm_origin_y: 0.0
+utm_origin_lat: 49.449616
+utm_origin_lon: 18.233141
 
 init_gps_origin_local: false # origin of gps_origin will be in the position of UAV at odometry launch
 init_gps_offset_x: 0.0 # initial position of UAV relative to gps_origin when init_gps_origin_local is enabled
@@ -18,42 +32,45 @@ safety_area:
 
   frame_name: "latlon_origin"
 
+  # convex polygon CCW
+  # big area
+  safety_area: [
+
+# default, large without the football field
+49.449998, 18.233608, #  A 
+49.449802, 18.233672, #  B 
+49.449668, 18.233598, #  C 
+49.449428, 18.233674, #  D 
+49.449132, 18.233273, #  E 
+49.449246, 18.233074, #  F, football
+# 49.449350, 18.233186, #  G 
+49.449435, 18.232611, #  H , football
+# 49.449609, 18.232708, #  I 
+49.449821, 18.232943, #  J 
+49.449955, 18.233322, # K
+
+]
+
   polygon_obstacles:
     # loaded as a vector of matrices
     # each matrix has polygon vertices in columns
     # [[M1], [M2]]
-    enabled: false
-    data: [1, 10, 10, 1,    5, 8, 5,
-           1, 1, 10, 10,    5, 5, 8,]
+    enabled: true
+    data: [49.449227, 49.449211, 49.449338, 49.449357,
+           18.232965, 18.233002, 18.233148, 18.233110,]
     rows: 2 # each matrix has two rows
-    cols: [4, 3] # nums of cols of each matrix
+    cols: [4] # nums of cols of each matrix
 
   point_obstacles:
     # loaded as a vector of matrices
     # x, y, radius
-    enabled: false
+    enabled: true
     # [x1, y1, radisu1, height1,
     #  x2, y2, radius2, height2]
-    data: [-5.0, -5.0, 2, 2,
-           -10.0, -10.0, 4, 2]
+    data: [49.449294, 18.233058, 3, 2.5,
+           49.449470, 18.232655, 3, 2.5]
     rows: 1 # each matrix has a single row
     cols: [4, 4] # nums of cols of each matrix
 
-  # convex polygon CCW
-  # the basic surrounded with the "fence"
-  safety_area: [
-    # 24.132528, 55.332632,
-    # 24.132544, 55.332745,
-    24.132539, 55.332787,
-    24.132567, 55.332861,
-    24.132346, 55.333350,
-    24.132265, 55.333379,
-    24.131982, 55.333048,
-    24.131948, 55.332769,
-    24.132264, 55.332671,
-    24.132412, 55.332563,
-    # 24.132438, 55.332592,
-  ]
-
-  max_height: 10.0
-  min_height: 1.5
+  max_height: 20.0
+  min_height: 1.0
