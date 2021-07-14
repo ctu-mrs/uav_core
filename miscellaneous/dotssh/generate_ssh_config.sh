@@ -45,6 +45,7 @@ input=(
   'green' 'uav21' '192.168.69.121'
   'blue' 'uav22' '192.168.69.122'
   'yellow' 'uav23' '192.168.69.123'
+  'dofec' 'uav80' '192.168.69.180'
   'klaxalk' 'klaxalk-local' '192.168.69.11'
   'dan' 'dan-local' '192.168.69.42'
 )

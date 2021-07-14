@@ -27,7 +27,7 @@ thrust_pwm = [
 1602
 ];
 
-n_motors = 4;
+n_motors = 8;
 
 % thrusts needed to hover
 thrust = (thrust_pwm - pwm_min) ./ (pwm_max - pwm_min);
