@@ -57,6 +57,8 @@ input=(
   'dofec' 'uav80' '192.168.69.180'
   'klaxalk' 'klaxalk-local' '192.168.69.11'
   'dan' 'dan-local' '192.168.69.42'
+  'evzen' 'uav52' '192.168.69.152'
+  'rododendron' 'uav54' '192.168.69.154'
 )
 
 # get path to script
