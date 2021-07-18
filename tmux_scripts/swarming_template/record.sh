@@ -33,7 +33,7 @@ echo "<launch>" > "$filename"
 echo "<arg name=\"UAV_NAME\" default=\"\$(env UAV_NAME)\" />" >> "$filename"
 echo "<group ns=\"\$(arg UAV_NAME)\">" >> "$filename"
 
-echo -n "<node pkg=\"rosbag\" type=\"record\" name=\"rosbag_record\" args=\"-o $path -a" >> "$filename"
+echo -n "<node pkg=\"mrs_uav_general\" type=\"mrs_record\" name=\"mrs_rosbag_record\" output=\"screen\" args=\"-o $path -a" >> "$filename"
 
 # if there is anything to exclude
 if [ "${#exclude[*]}" -gt 0 ]; then
