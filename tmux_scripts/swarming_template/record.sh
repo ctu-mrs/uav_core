@@ -51,9 +51,13 @@ if [ "${#exclude[*]}" -gt 0 ]; then
 
 fi
 
-echo "\" />" >> "$filename"
+echo "\">" >> "$filename"
+
+echo "<remap from=\"~status_msg_out\" to=\"mrs_uav_status/display_string\" />" >> "$filename"
+echo "<remap from=\"~data_rate_out\" to=\"~data_rate_MB_per_s\" />" >> "$filename"
 
 # file's footer
+echo "</node>" >> "$filename"
 echo "</group>" >> "$filename"
 echo "</launch>" >> "$filename"
 
