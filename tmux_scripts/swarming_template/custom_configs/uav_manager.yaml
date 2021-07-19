@@ -16,7 +16,7 @@ min_height_checking:
 
   enabled: true
   min_height: 1.5 # [m]
-  safety_height_offset: 1.0 # how much higher to ascend above the min height
+  safety_height_offset: 0.25 # how much higher to ascend above the min height
 
 landing:
 

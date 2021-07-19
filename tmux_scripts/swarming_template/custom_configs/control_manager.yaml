@@ -11,7 +11,7 @@ safety:
 
 rc_joystick:
 
-  carrot_distance: 2.00 # [m]
+  carrot_distance: 1.00 # [m]
 
 Se3Controller:
   address: "mrs_uav_controllers/Se3Controller"
