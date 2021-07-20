@@ -1,0 +1,1 @@
+../dotssh/generate_ssh_config.sh
