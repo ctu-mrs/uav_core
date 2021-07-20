@@ -71,6 +71,8 @@ setw -g clock-mode-colour colour135
 
 # The statusbar {
 set -g status-position bottom
+<<<<<<< HEAD
+=======
 
 # EPIGEN_DEL_BLOCK_COLORSCHEME_LIGHT ACTIVE {
 # set -g status-bg colour234
@@ -81,6 +83,7 @@ set -g status-position bottom
 set -g status-bg white
 set -g status-fg black
 # EPIGEN_ADD_BLOCK_COLORSCHEME_LIGHT }
+>>>>>>> 937119263efc729fa30a014c20fe5c932c2c0f92
 
 # EPIGEN_DEL_BLOCK_COLORSCHEME_LIGHT {
 set -g status-bg colour234
