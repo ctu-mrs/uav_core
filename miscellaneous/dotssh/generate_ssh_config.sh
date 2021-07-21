@@ -85,8 +85,7 @@ done
 hostname=( "${hostname[@]}" "${nato[@]}" )
 ip=( "${ip[@]}" "${ip[@]}" )
 
-# my_hostname=$( cat /etc/hostname )
-my_hostname=uav15
+my_hostname=$( cat /etc/hostname )
 
 for ((i=0; i < ${#hostname[*]}; i++)); do
 
