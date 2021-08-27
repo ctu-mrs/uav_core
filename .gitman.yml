@@ -52,7 +52,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
-    rev: master
+    rev: subt_virtual
     type: git
     sparse_paths:
       -
@@ -142,7 +142,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
     name: mrs_uav_trajectory_generation
-    rev: master
+    rev: subt_virtual
     type: git
     sparse_paths:
       -
@@ -243,7 +243,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
-    rev: 39c50bb2baa16a4f7a40f39c7445c9abc756664b
+    rev: f7ba647af2117484432372f207d5dc30f9ae26c9
     type: git
     sparse_paths:
       -
@@ -333,7 +333,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
     name: mrs_uav_trajectory_generation
-    rev: 6475ef6e16091a9e76babd38dec0c35e99af6e02
+    rev: ec5002f8d12a33cefaadbd330b30320db91da946
     type: git
     sparse_paths:
       -
