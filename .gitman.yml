@@ -6,6 +6,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -16,6 +17,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -26,6 +28,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -36,6 +39,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -46,6 +50,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -56,6 +61,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -66,6 +72,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -76,6 +83,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -86,6 +94,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -96,6 +105,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -106,6 +116,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -116,6 +127,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -126,6 +138,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -136,6 +149,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -146,6 +160,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -156,6 +171,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -166,6 +182,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -176,6 +193,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -186,6 +204,7 @@ sources:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -197,6 +216,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -207,6 +227,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -217,6 +238,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -227,6 +249,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -237,6 +260,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -247,6 +271,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -257,6 +282,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -267,16 +293,18 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_general.git
     name: mrs_uav_general
-    rev: b6a5f307b33ab5bc7ad40655eaeae09717130ddb
+    rev: 4bc21a878ca5d2728014648fd020215edca52ebd
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -287,6 +315,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -297,6 +326,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -307,6 +337,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -317,6 +348,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -327,6 +359,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -337,6 +370,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -347,6 +381,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -357,6 +392,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -367,6 +403,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
@@ -377,6 +414,7 @@ sources_locked:
     type: git
     sparse_paths:
       -
+    link:
     links:
       -
     scripts:
