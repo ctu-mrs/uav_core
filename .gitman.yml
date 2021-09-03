@@ -6,7 +6,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -17,7 +16,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -28,7 +26,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -39,7 +36,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -50,7 +46,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -61,7 +56,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -72,7 +66,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -83,7 +76,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -94,7 +86,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -105,7 +96,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -116,7 +106,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -127,7 +116,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -138,7 +126,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -149,7 +136,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -160,7 +146,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -171,7 +156,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -182,7 +166,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -193,7 +176,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -204,7 +186,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -216,7 +197,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -227,7 +207,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -238,7 +217,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -249,7 +227,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -260,7 +237,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -271,7 +247,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -282,7 +257,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -293,7 +267,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -304,7 +277,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -315,7 +287,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -326,18 +297,16 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_status.git
     name: mrs_uav_status
-    rev: af71a0c73b7f43618b81b4b31a2a08bbd81adf1d
+    rev: 57980f8f1985d3049176c0983ddb0a3aeb2a6e6e
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -348,7 +317,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -359,18 +327,16 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
     name: mrs_uav_trajectory_generation
-    rev: ec5002f8d12a33cefaadbd330b30320db91da946
+    rev: 6eeee2bd02e0e01a340e8d140f8b51f269c194bb
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -381,7 +347,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -392,7 +357,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -403,7 +367,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -414,7 +377,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
