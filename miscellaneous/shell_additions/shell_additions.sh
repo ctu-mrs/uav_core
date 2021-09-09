@@ -607,9 +607,9 @@ cb() {
   cd "$CURRENT_PATH"
 
   ret=1
-  [[ $USE_CATKIN == "1" ]] && [[ $USE_COLCON == "0" ]] && ( catkin build; ret=$? )
-  [[ $USE_CATKIN == "0" ]] && [[ $USE_COLCON == "1" ]] && ( colcon build; ret=$? )
-  [[ $USE_CATKIN == "1" ]] && [[ $USE_COLCON == "1" ]] && ( colcon build; ret=$? )
+  [[ $USE_CATKIN == "1" ]] && [[ $USE_COLCON == "0" ]] && ( catkin build "$@"; ret=$? )
+  [[ $USE_CATKIN == "0" ]] && [[ $USE_COLCON == "1" ]] && ( colcon build "$@"; ret=$? )
+  [[ $USE_CATKIN == "1" ]] && [[ $USE_COLCON == "1" ]] && ( colcon build "$@"; ret=$? )
   [[ $USE_CATKIN == "0" ]] && [[ $USE_COLCON == "0" ]] && echo "Cannot compile, not in a workspace"
 
   unset USE_CATKIN
