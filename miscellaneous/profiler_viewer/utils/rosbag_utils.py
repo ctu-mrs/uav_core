@@ -11,7 +11,7 @@ import tf
 from cv_bridge import CvBridge, CvBridgeError
 from sensor_msgs.msg import Image
 from mrs_msgs.msg import ProfilerUpdate
-from itertools import izip, repeat
+# from itertools import zip, repeat
 
 
 def getStampTimeSec(timeStamp):
@@ -1097,9 +1097,9 @@ def loadObjectDetection(bag, uav_name, start_time, end_time):
     print("readed topics:", readedTopicsNums)
     return cross_positions
 
-def loadProfilerTopics(bag, uav_name, start_time, end_time):
+def loadProfilerTopics(bag, uav_name, topic_name, start_time, end_time):
 
-    profiler_topic = "/" + uav_name + "/profiler"
+    profiler_topic = "/" + uav_name + "/" + topic_name
     topics_to_read = [profiler_topic]
     print(topics_to_read)
 
@@ -1202,8 +1202,8 @@ def saveImages(bag, uav_name, image_topic, save_dir, time_image_name=False, betw
 
                     # cv2.imdecode(np_arr, cv2.CV_LOAD_IMAGE_COLOR)
                     # cv_image = bridge.imgmsg_to_cv2(msg, "bgr8")
-                except CvBridgeError, e:
-                    print e
+                except e:
+                    print(e)
                 # timestr = "%.3f" % msg.header.stamp.to_sec()
                 if(image_index % 1000 == 0):
                     print("saved ", image_index, "images")
@@ -1214,7 +1214,7 @@ def saveImages(bag, uav_name, image_topic, save_dir, time_image_name=False, betw
                 cv2.imwrite(image_name, cv_image)
                 image_index = image_index + 1
 
-def get_info(bag, compressed_topic, topic=None, start_time=rospy.Time(0), stop_time=rospy.Time(sys.maxint)):
+def get_info(bag, compressed_topic, topic=None, start_time=rospy.Time(0), stop_time=rospy.Time(sys.maxsize)):
     size = (0, 0)
     times = []
     bridge = CvBridge()
@@ -1246,12 +1246,12 @@ def calc_n_frames(times, precision=10):
     intervals = np.diff(times)
     return np.int64(np.round(precision * intervals / min(intervals)))
 
-def write_frames(bag, writer, total, compressed_topic, topic=None, nframes=repeat(1), start_time=rospy.Time(0), stop_time=rospy.Time(sys.maxint), viz=False, encoding='bgr8'):
+def write_frames(bag, writer, total, compressed_topic, topic=None, nframes=1, start_time=rospy.Time(0), stop_time=rospy.Time(sys.maxsize), viz=False, encoding='bgr8'):
     bridge = CvBridge()
     count = 1
     iterator = bag.read_messages(topics=topic, start_time=start_time, end_time=stop_time)
     for (topic, msg, time), reps in izip(iterator, nframes):
-        print '\rWriting frame %s of %s at time %s' % (count, total, time),
+        print('\rWriting frame %s of %s at time %s' % (count, total, time))
         if compressed_topic:
             img = np.asarray(bridge.compressed_imgmsg_to_cv2(msg, "bgr8"))
         else:
