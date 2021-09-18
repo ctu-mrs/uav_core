@@ -222,7 +222,7 @@ sources_locked:
     repo: https://github.com/ctu-mrs/mrs_msgs.git
     sparse_paths:
       -
-    rev: 2c62caa4beb3da34c84d44c91d8a4dca8731c698
+    rev: f064b650c565dd049b2622e8b48ccfa6cc52de0a
     link:
     scripts:
       - git submodule update --init --recursive
@@ -276,7 +276,7 @@ sources_locked:
     repo: https://github.com/ctu-mrs/mrs_uav_status.git
     sparse_paths:
       -
-    rev: 0e86cf6051b96f33d2b4e24219ccc0510894da9c
+    rev: 5b3ebb6a9a77a79934a343ed92f72f263786f80c
     link:
     scripts:
       - git submodule update --init --recursive
