@@ -2,4 +2,3 @@
 2) fill UAV_NAME (uav1, uav2...) in /etc/hosts
 3) change IP Adress for eth0 and wlan0 in /etc/netplan/01.netcfgsomething
 4) edit ~/.bashrc, find variable UAV_NAME and set it, the find NATO_NAME and set it according to ~/git/uav_core/miscelaneous/dotssh/generatesshconfig.sh
-5) change /etc/hostname and /etc/hosts, insert the new uav name
