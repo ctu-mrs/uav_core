@@ -1,4 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/python3
+
 import rosbag
 import os
 import sys
@@ -20,7 +21,7 @@ visualization_step = 0.8
 
 # #{ loadProfilerDataFromRosbag(bag_filename, uav_name, required_time_start = 0, required_time_end = 0):
 
-def loadProfilerDataFromRosbag(bag_filename, uav_name, required_time_start = 0, required_time_end = 0):
+def loadProfilerDataFromRosbag(bag_filename, uav_name, topic_name, use_cache, required_time_start = 0, required_time_end = 0):
 
     # #{ process_data(list_of_msgs, start_time, end_time):
 
@@ -51,7 +52,7 @@ def loadProfilerDataFromRosbag(bag_filename, uav_name, required_time_start = 0, 
     cache_loaded = False
     cache_filename = '/tmp/cache_profiler.pkl'
 
-    if os.path.isfile(cache_filename):
+    if use_cache and os.path.isfile(cache_filename):
         try:
             with open(cache_filename, 'rb') as cache_file:
                 cached = pickle.load(cache_file)
@@ -83,7 +84,7 @@ def loadProfilerDataFromRosbag(bag_filename, uav_name, required_time_start = 0, 
         time_start = bag.get_start_time()
         time_end = bag.get_end_time()
 
-        profiler_data = rosbag_utils.loadProfilerTopics(bag, uav_name, time_start, time_end)
+        profiler_data = rosbag_utils.loadProfilerTopics(bag, uav_name, topic_name, time_start, time_end)
 
         print("bag file closed")
 
@@ -342,11 +343,27 @@ def plot_sheduled_data(profiler_data, required_time_start, required_time_end):
 
 if __name__ == "__main__":
 
-    bag_file = "/home/klaxalk/22_2019_06_21_12_22_14/_2019-06-21-12-22-26.bag"
-    uav_name = "uav5"
-    start_time = 1561112697-1.5
-    stop_time = 1561112697+1.5
+    # bag_file = "/media/klaxalk/SSD_MRS_6/datasets_profiler/63_2021_09_12_16_16_50_PROFILER_NAVIGATION/_2021-09-12-16-17-23.bag"
+    # uav_name = "uav21"
+    # start_time = 1631477843 + 1
+    # stop_time = 1631477843 + 50
+    # topic_name = "darpa_planner/profiler"
+    # cache = False
 
-    [data, start_time, end_time] = loadProfilerDataFromRosbag(bag_file, uav_name, start_time, stop_time)
+    # bag_file = "/media/klaxalk/SSD_MRS_6/datasets_profiler/64_2021_09_12_16_20_01_PROFILER_CONTROLLER/_2021-09-12-16-20-28.bag"
+    # uav_name = "uav21"
+    # start_time = 1631478029 + 30
+    # stop_time = 1631478029 + 33
+    # topic_name = "mission_controller/profiler"
+    # cache = False
+
+    bag_file = "/media/klaxalk/SSD_MRS_6/datasets_profiler/65_2021_09_12_16_23_54_PROFILER_DETECTION/_2021-09-12-16-25-03.bag"
+    uav_name = "uav21"
+    start_time = 1631478304 + 1
+    stop_time = 1631478304 + 60
+    topic_name = "mission_controller/profiler"
+    cache = False
+
+    [data, start_time, end_time] = loadProfilerDataFromRosbag(bag_file, uav_name, topic_name, cache, start_time, stop_time)
     plot_all_data_separately(data, start_time, end_time)
     # plot_sheduled_data(data, start_time, end_time)

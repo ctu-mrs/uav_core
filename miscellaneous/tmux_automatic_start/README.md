@@ -1,13 +1,9 @@
 1. Place the tmux.service in /etc/systemd/system folder with say a name of tmux.service
 2. Make that your script executable with:
 `chmod u+x`
-3. Start it:
-`sudo systemctl start tmux`
-4. Enable it to run at boot:
+3. Enable it to run at boot:
 `sudo systemctl enable tmux`
-5. Stop it:
-`sudo systemctl stop tmux`
-6. The tmux script should start with
+4. The tmux script should start with
 
 ```bash
 #!/bin/bash
@@ -22,9 +18,7 @@
 if [ "$(id -u)" == "0" ]; then
   exec sudo -u mrs "$0" "$@"
 fi
-
-source /home/mrs/.bashrc
-
 ```
 
-7. The script should not be attaching to the session (at the end)
+1. The script should not be attaching to the session (at the end), so COMMENT the line: 
+    $TMUX_BIN -2 attach-session -t $SESSION_NAME
