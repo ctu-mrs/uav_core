@@ -14,7 +14,7 @@ fi
 source $HOME/.bashrc
 
 # change this to your liking
-PROJECT_NAME=just_flying
+PROJECT_NAME=rename_this
 
 # do not change this
 MAIN_DIR=~/"bag_files"

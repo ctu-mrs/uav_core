@@ -9,10 +9,6 @@ safety:
     eland: true
     failsafe: true
 
-rc_joystick:
-
-  carrot_distance: 1.00 # [m]
-
 Se3Controller:
   address: "mrs_uav_controllers/Se3Controller"
   namespace: "se3_controller"
