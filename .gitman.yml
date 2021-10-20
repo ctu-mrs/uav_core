@@ -29,7 +29,8 @@ sources:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/mrs_bumper
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_lib.git
@@ -238,7 +239,8 @@ sources_locked:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/mrs_bumper
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_lib.git
