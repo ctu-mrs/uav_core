@@ -92,7 +92,7 @@ my_hostname=$( cat /etc/hostname )
 for ((i=0; i < ${#hostname[*]}; i++)); do
 
   echo ""
-  echo "Proceesing ${hostname[i]}"
+  echo "Processing ${hostname[i]}"
 
   num=`cat ~/.ssh/config | grep "host ${hostname[i]}" | wc -l`
   if [ "$num" -lt "1" ]; then
