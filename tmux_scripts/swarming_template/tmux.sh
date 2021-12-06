@@ -66,7 +66,7 @@ init_window="Status"
 
 # automatically attach to the new session?
 # {true, false}, default true
-attach="false"
+attach="true"
 
 ###########################
 ### DO NOT MODIFY BELOW ###
