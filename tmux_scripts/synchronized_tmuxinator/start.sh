@@ -6,11 +6,5 @@ SCRIPT=$(readlink -f $0)
 SCRIPTPATH=`dirname $SCRIPT`
 cd "$SCRIPTPATH"
 
-# remove the old link
-rm .tmuxinator.yml
-
-# link the session file to .tmuxinator.yml
-ln session.yml .tmuxinator.yml
-
 # start tmuxinator
-tmuxinator
+tmuxinator start -p ./session.yml
