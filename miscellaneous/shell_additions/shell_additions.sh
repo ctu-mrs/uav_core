@@ -793,3 +793,58 @@ rosRemnantCleanup() {
 }
 
 # #}
+
+# #{ countdown()
+
+countdown() {
+request_string="Please provide the duration in seconds."
+
+if [ $# -eq 0 ]
+then
+  echo "No countdown time provided." >&2
+  echo $request_string >&2
+  return 1
+fi
+
+re='^[0-9]+$'
+if ! [[ $1 =~ $re ]] ; then
+  echo "Error: argument is not a number." >&2
+  echo $request_string >&2
+  return 1
+fi
+
+for i in $(seq $1 -1 0)
+do
+ echo $i \.\.\.
+ sleep 1;
+done
+
+return 0
+}
+
+# #}
+
+# #{ countdownRos()
+
+countdownRos() {
+request_string="Please provide the duration in seconds."
+
+if [ $# -eq 0 ]
+then
+  echo "No countdown time provided." >&2
+  echo $request_string >&2
+  return 1
+fi
+
+re='^[0-9]+$'
+if ! [[ $1 =~ $re ]] ; then
+  echo "Error: argument is not a number." >&2
+  echo $request_string >&2
+  return 1
+fi
+
+echo -e "import rospy\nrospy.init_node('conuntdown')\nfor x in range($1):\n   print('{}...'.format($1-x))\n   rospy.sleep(1.)" | python3
+return 0
+}
+
+# #}
