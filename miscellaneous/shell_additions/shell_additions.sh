@@ -781,3 +781,15 @@ appendBag() {
 }
 
 # #}
+
+# #{ rosRemnantCleanup()
+
+rosRemnantCleanup() {
+
+  for keyword in {nodelet,ros,gz,gazebo}
+  do
+    sudo pkill -f $keyword
+  done
+}
+
+# #}
