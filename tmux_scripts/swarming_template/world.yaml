@@ -18,6 +18,9 @@
 # ORIGIN = 49.449616, 18.233141
 
 utm_origin_units: 1 # 0 - UTM, 1 - Latitude Longitude
+# !!! BEWARE !!!: the lat&lon and UTM coordinates below might be wrong
+# !!! do NOT just switch utm_origin_units from 0<->1, the other form
+# !!! might not be updated or even set correctly in the first place.
 utm_origin_x: 0.0
 utm_origin_y: 0.0
 utm_origin_lat: 49.449616

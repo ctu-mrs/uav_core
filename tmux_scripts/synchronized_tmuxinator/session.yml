@@ -1,7 +1,7 @@
 name: experiment
 root: ./
 startup_window: gazebo
-tmux_options: -f tmux.conf
+tmux_options: -f ./tmux.conf
 windows:
   - gazebo:
       layout: tiled

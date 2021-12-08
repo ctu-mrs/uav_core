@@ -13,18 +13,27 @@ fi
 
 source $HOME/.bashrc
 
-# change this to your liking
-PROJECT_NAME=rename_this
-
-# do not change this
+# location for storing the bag files
+# * do not change unless you know what you are doing
 MAIN_DIR=~/"bag_files"
 
+# the project name
+# * is used to define folder name in ~/$MAIN_DIR
+PROJECT_NAME=rename_this
+
+# the name of the TMUX session
+# * can be used for attaching as 'tmux a -t <session name>'
+SESSION_NAME=mav
+
 # following commands will be executed first in each window
+# * do NOT put ; at the end
 pre_input="mkdir -p $MAIN_DIR/$PROJECT_NAME; export WORLD_FILE=./world.yaml"
 
 # define commands
 # 'name' 'command'
-# DO NOT PUT SPACES IN THE NAMES
+# * DO NOT PUT SPACES IN THE NAMES
+# * "new line" after the command    => the command will be called after start
+# * NO "new line" after the command => the command will wait for user's <enter>
 input=(
   'Rosbag' 'waitForOffboard; ./record.sh
 '
@@ -52,13 +61,16 @@ input=(
 '
 )
 
+# the name of the window to focus after start
 init_window="Status"
+
+# automatically attach to the new session?
+# {true, false}, default true
+attach="true"
 
 ###########################
 ### DO NOT MODIFY BELOW ###
 ###########################
-
-SESSION_NAME=mav
 
 # prefere the user-compiled tmux
 if [ -f /usr/local/bin/tmux ]; then
@@ -156,6 +168,10 @@ done
 
 $TMUX_BIN select-window -t $SESSION_NAME:$init_index
 
-$TMUX_BIN -2 attach-session -t $SESSION_NAME
-
-clear
+if [[ "$attach" == "true" ]]; then
+  $TMUX_BIN -2 attach-session -t $SESSION_NAME
+else
+  echo "The session was started"
+  echo "You can later attach by calling:"
+  echo "  tmux a -t $SESSION_NAME"
+fi
