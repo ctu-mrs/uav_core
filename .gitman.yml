@@ -245,7 +245,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_bumper.git
     name: mrs_bumper
-    rev: e127fce61bea356ff5381af1ae7af4975c5f08c6
+    rev: e13ccd5ef89ec3500b6de098bd3b192bda42ec5a
     type: git
     sparse_paths:
       -
@@ -256,7 +256,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_lib.git
     name: mrs_lib
-    rev: bc72c5a1b0ac555c31c1234dd4674b0084598771
+    rev: e586b9b0a79dc37c4e4fde20fe2a5af5154b4dbe
     type: git
     sparse_paths:
       -

@@ -439,12 +439,12 @@ sshkey() {
   # set git user name
   local git_user_name=$(grep -hr "$SSH_KEY_NAME" $UAV_CORE_PATH/miscellaneous/dotssh/git_usernames | cut -d ' ' -f2-)
 
-  if [ -z "$git_user_name" ]; then  
+  if [ -z "$git_user_name" ]; then
     git_user_name=$SSH_KEY_NAME
   fi
 
   git config --global --replace-all user.name "$git_user_name"
-  
+
   echo "git user.name set to $(git config --global user.name)"
 
   eval `ssh-agent`
@@ -469,9 +469,9 @@ catkin() {
       ROOT_DIR=`git rev-parse --show-toplevel` 2> /dev/null
 
       command catkin "$@"
-      command catkin config --profile debug --cmake-args -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
-      command catkin config --profile release --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
-      command catkin config --profile reldeb --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -march=native' -DCMAKE_C_FLAGS='-march=native'
+      command catkin config --profile debug --cmake-args -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17'
+      command catkin config --profile release --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17'
+      command catkin config --profile reldeb --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17'
 
       command catkin profile set reldeb
       ;;
@@ -769,7 +769,7 @@ appendBag() {
       appended_adress=$bag_adress$1
       mv $bag_adress $appended_adress
       ln -sf $appended_adress ~/bag_files/latest
-			second_symlink_adress=$(sed 's|\(.*\)/.*|\1|' <<< $appended_adress)
+      second_symlink_adress=$(sed 's|\(.*\)/.*|\1|' <<< $appended_adress)
       ln -sf $appended_adress $second_symlink_adress/latest
 
       echo Rosbag name appended: $appended_adress
