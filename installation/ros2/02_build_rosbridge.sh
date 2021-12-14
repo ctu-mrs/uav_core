@@ -17,7 +17,7 @@ clone_ros1_bridge() {
   [ ! -e ros1_bridge ] && git clone https://github.com/ros2/ros1_bridge
   cd ros1_bridge
   git fetch
-  git checkout foxy
+  git checkout galactic
 }
 
 clone_mrs_msgs() {
@@ -30,7 +30,7 @@ clone_mrs_msgs() {
 
 build_mrs_msgs() {
   cd $ROS_BRIDGE_WS_PATH
-  source /opt/ros/foxy/setup.bash
+  source /opt/ros/galactic/setup.bash
   colcon build --symlink-install --packages-skip ros1_bridge
 }
 
