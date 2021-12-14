@@ -469,7 +469,7 @@ catkin() {
       ROOT_DIR=`git rev-parse --show-toplevel` 2> /dev/null
 
       command catkin "$@"
-      command catkin config --profile debug --cmake-args -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17'
+      command catkin config --profile debug --cmake-args -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -Og' -DCMAKE_C_FLAGS='-Og'
       command catkin config --profile release --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17'
       command catkin config --profile reldeb --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17'
 
@@ -790,6 +790,61 @@ rosRemnantCleanup() {
   do
     sudo pkill -f $keyword
   done
+}
+
+# #}
+
+# #{ countdown()
+
+countdown() {
+request_string="Please provide the duration in seconds."
+
+if [ $# -eq 0 ]
+then
+  echo "No countdown time provided." >&2
+  echo $request_string >&2
+  return 1
+fi
+
+re='^[0-9]+$'
+if ! [[ $1 =~ $re ]] ; then
+  echo "Error: argument is not a number." >&2
+  echo $request_string >&2
+  return 1
+fi
+
+for i in $(seq $1 -1 0)
+do
+ echo $i \.\.\.
+ sleep 1;
+done
+
+return 0
+}
+
+# #}
+
+# #{ countdownRos()
+
+countdownRos() {
+request_string="Please provide the duration in seconds."
+
+if [ $# -eq 0 ]
+then
+  echo "No countdown time provided." >&2
+  echo $request_string >&2
+  return 1
+fi
+
+re='^[0-9]+$'
+if ! [[ $1 =~ $re ]] ; then
+  echo "Error: argument is not a number." >&2
+  echo $request_string >&2
+  return 1
+fi
+
+echo -e "import rospy\nrospy.init_node('conuntdown')\nfor x in range($1):\n   print('{}...'.format($1-x))\n   rospy.sleep(1.)" | python3
+return 0
 }
 
 # #}
