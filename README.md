@@ -20,6 +20,18 @@
 | [mrs_uav_testing](https://github.com/ctu-mrs/mrs_uav_testing)                             | [![Build Status](https://github.com/ctu-mrs/mrs_uav_testing/workflows/Melodic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_testing/actions)                             | [![Build Status](https://github.com/ctu-mrs/mrs_uav_testing/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_testing/actions)                             |
 | [mrs_uav_trackers](https://github.com/ctu-mrs/mrs_uav_trackers)                           | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trackers/workflows/Melodic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trackers/actions)                           | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trackers/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trackers/actions)                           |
 | [mrs_uav_trajectory_generation](https://github.com/ctu-mrs/mrs_uav_trajectory_generation) | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/workflows/Melodic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/actions) | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/actions) |
+| **Third-party**                                                                           |                                                                                                                                                                           |                                                                                                                                                                          |
+| [nlopt_ros](https://github.com/ctu-mrs/nlopt_ros)                                         |                                                                                                                                                                           |                                                                                                                                                                          |
+| [nodelet_core](https://github.com/ctu-mrs/nodelet_core)                                   |                                                                                                                                                                           |                                                                                                                                                                          |
+| [tf2](https://github.com/ctu-mrs/tf2)                                                     | **not compatible**                                                                                                                                                        |                                                                                                                                                                          |
+
+**Beware!** the custom **tf2** package is not compatible with ROS Melodic.
+We compile a patched version of tf2 due to an excessive warning that is being printed on Noetic.
+It is not neccsary to compile it from source on Melodic, therefore, all Melodic users, please, delete it or blacklist the package by issuing the following command:
+```bash
+catkin config --blacklist "geometry2 test_tf2 tf2 tf2_bullet tf2_eigen tf2_geometry_msgs tf2_kdl tf2_msgs tf2_py tf2_ros tf2_sensor_msgs tf2_tools"
+```
+The packages should be blacklisted automatically when using the installer in [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system).
 
 ## System requirements
 
