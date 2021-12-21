@@ -46,7 +46,7 @@ The preferred way is to install the whole [MRS UAV system](https://github.com/ct
 However, if you prefer to install only the *uav_core*, you can do the following:
 
 1. Clone the repository,
-2. place it into your *catkin workspace*,
+2. place it into your *catkin workspace* ([guide](https://ctu-mrs.github.io/docs/software/catkin/managing_workspaces/managing_workspaces.html)),
 3. call ```installation/install.sh``` to install the dependencies,
 4. build your workspace.
 
@@ -54,7 +54,7 @@ However, if you prefer to install only the *uav_core*, you can do the following:
 
 The `install.sh` script will add the following to your .bashrc:
 ```bash
-source /opt/ros/melodic/setup.bash
+source /opt/ros/noetic/setup.bash
 
 # source uav_core shell additions
 source $HOME/git/uav_core/miscellaneous/shell_additions/shell_additions.sh
