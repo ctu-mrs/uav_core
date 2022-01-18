@@ -289,7 +289,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
     name: mrs_rviz_plugins
-    rev: da4026051af7b54575f682d64da1b3d10cf7fd0a
+    rev: 8a270c20d96a091fec4b01fab4b6e33e45a4c6d0
     type: git
     sparse_paths:
       -
@@ -437,7 +437,8 @@ sources_locked:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/thirdparty/tf2
     scripts:
       - git submodule update --init --recursive
 default_group: ''
