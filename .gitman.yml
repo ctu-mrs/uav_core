@@ -187,17 +187,6 @@ sources:
         target: ros_packages/thirdparty/nlopt_ros
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/ctu-mrs/nodelet_core
-    name: nodelet_core
-    rev: callback_fix
-    type: git
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/thirdparty/nodelet_core
-    scripts:
-      - git submodule update --init --recursive
   - repo: https://github.com/tmux/tmux.git
     name: tmux
     rev: 3.0a
@@ -355,7 +344,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_testing.git
     name: mrs_uav_testing
-    rev: c003ca5f292d7e3f6262da97a2a9dd2e74cfe875
+    rev: a5409b412aaf7bab922a752f1f99912dc2a3857a
     type: git
     sparse_paths:
       -
@@ -395,17 +384,6 @@ sources_locked:
     links:
       - source: ''
         target: ros_packages/thirdparty/nlopt_ros
-    scripts:
-      - git submodule update --init --recursive
-  - repo: https://github.com/ctu-mrs/nodelet_core
-    name: nodelet_core
-    rev: b4344e75e9afa93010ffc20c3918ecfbab1848e4
-    type: git
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/thirdparty/nodelet_core
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/tmux/tmux.git
