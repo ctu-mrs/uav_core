@@ -223,7 +223,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mavros
     name: mavros
-    rev: 8deab345e2560245c021b772cf675a9be54cee04
+    rev: cb76a4011b6eea029ece3d5dcb16ba38493409de
     type: git
     sparse_paths:
       -
@@ -267,7 +267,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
-    rev: df9bb6ab9e0a839609a427bc047fa319a841d28e
+    rev: cb16b351dd493ed44df2b515d8052cee15460d74
     type: git
     sparse_paths:
       -
@@ -300,7 +300,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_general.git
     name: mrs_uav_general
-    rev: b50538754ccd339a4a8904163163e6c8fc3ea1ac
+    rev: 8615565fc3d2345ee349ab3a133dce78882feb69
     type: git
     sparse_paths:
       -
