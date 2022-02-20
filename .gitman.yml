@@ -410,7 +410,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/tf2
     name: tf2
-    rev: 5863aee68ffcf385e2b70a203de47beb6a66b7f6
+    rev: 89f90c21fc13868ee02e853663a226130471ea8c
     type: git
     sparse_paths:
       -
