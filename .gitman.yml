@@ -245,7 +245,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_lib.git
     name: mrs_lib
-    rev: 04df3ce440e2a1a4691889636e048fef9897ad3e
+    rev: 9ae0dbe5ff86646a7053bbbea3f8b7249d09890f
     type: git
     sparse_paths:
       -
