@@ -253,49 +253,122 @@ swap_check () {
 
 # #}
 
-echo -e "\n----------- Hostname check start -----------"
-hostname_check
-if [[ $? -eq 0 ]]
-then
-  echo -e "----------- ${GREEN}Hostname check passed${NC} -----------"
-else
-  echo -e "----------- ${RED}Hostname check failed${NC} -----------"
-fi
+# #{ workspace_check()
+# $1 - workspace which should be checked
+# $2 - if you provide 2 workspaces, the script will check that the first workspace is extending the second one
 
-echo -e "\n----------- Netplan check start -----------"
-netplan_check
-if [[ $? -eq 0 ]]
-then
-  echo -e "----------- ${GREEN}Netplan check passed${NC} -----------"
-else
-  echo -e "----------- ${RED}Netplan check failed${NC} -----------"
-fi
+workspace_check () {
+  ret_val=0
+  curr_dir=$PWD
+  workspace=$1
 
+  echo -e "looking for $workspace ... \c"
+  if [[ -d "$HOME/$workspace" ]]
+  then
+    echo -e "${GREEN}found${NC}"
+    cd "$HOME/$workspace"
 
-echo -e "\n----------- Hosts check start -----------"
-hosts_check
-if [[ $? -eq 0 ]]
-then
-  echo -e "----------- ${GREEN}Hosts check passed${NC} -----------"
-else
-  echo -e "----------- ${RED}Hosts check failed${NC} -----------"
-fi
+    echo -e "checking $workspace ... \c"
+    workspace_valid=$(catkin locate | grep ERROR)
 
-echo -e "\n----------- Dev check start -----------"
-dev_check
-if [[ $? -eq 0 ]]
-then
-  echo -e "----------- ${GREEN}Dev check passed${NC} -----------"
-else
-  echo -e "----------- ${RED}Dev check failed${NC} -----------"
-fi
+    if [ -z "${workspace_valid}" ]
+    then
+      echo -e "${GREEN}valid${NC}"
+    else
+      echo -e "${RED}$workspace is not a valid ROS workspace${NC}"
+      echo -e "${YELLOW}run the mrs_uav_system install script!${NC}"
+      ret_val=1
+    fi
 
-echo -e "\n----------- Swap check start -----------"
-swap_check
-if [[ $? -eq 0 ]]
-then
-  echo -e "----------- ${GREEN}Swap check passed${NC} -----------"
-else
-  echo -e "----------- ${RED}Swap check failed${NC} -----------"
-fi
+  else
+    echo -e "${RED}missing${NC}"
+    echo -e "${YELLOW}run the mrs_uav_system install script!${NC}"
+    ret_val=1
+  fi
+# check workspace extension
+  if [[ $# -eq 2 ]]; then
+    should_extend=$2
+    echo -e "checking $workspace is extending $should_extend ... \c"
+    is_extending=$(catkin config | grep Extending | grep $2)
+    if [ -z "${is_extending}" ]
+    then
+      echo -e "${RED}$workspace is not extending $should_extend${NC}"
+      echo -e "${YELLOW}set up the workspaces correctly!${NC}"
+      ret_val=1
+    else
+      echo -e "${GREEN}valid${NC}"
+    fi
+  fi
 
+# check for the march=native flag
+    echo -e "checking $workspace is not using -march=native ... \c"
+    march_native=$(catkin config | grep "Additional CMake Args" | grep "march=native")
+    if [ -z "${march_native}" ]
+    then
+      echo -e "${GREEN}not using${NC}"
+    else
+      echo -e "${RED}found${NC}"
+      echo -e "${YELLOW}$workspace has the -march=native flag enabled${NC}"
+      echo -e "${YELLOW}This flag is no longer used in the MRS system, remove it${NC}"
+      ret_val=1
+    fi
+
+  return $ret_val
+}
+
+  # #}
+
+  echo -e "\n----------- Hostname check start -----------"
+  hostname_check
+  if [[ $? -eq 0 ]]
+  then
+    echo -e "----------- ${GREEN}Hostname check passed${NC} -----------"
+  else
+    echo -e "----------- ${RED}Hostname check failed${NC} -----------"
+  fi
+
+  echo -e "\n----------- Netplan check start -----------"
+  netplan_check
+  if [[ $? -eq 0 ]]
+  then
+    echo -e "----------- ${GREEN}Netplan check passed${NC} -----------"
+  else
+    echo -e "----------- ${RED}Netplan check failed${NC} -----------"
+  fi
+
+  echo -e "\n----------- Hosts check start -----------"
+  hosts_check
+  if [[ $? -eq 0 ]]
+  then
+    echo -e "----------- ${GREEN}Hosts check passed${NC} -----------"
+  else
+    echo -e "----------- ${RED}Hosts check failed${NC} -----------"
+  fi
+
+  echo -e "\n----------- Dev check start -----------"
+  dev_check
+  if [[ $? -eq 0 ]]
+  then
+    echo -e "----------- ${GREEN}Dev check passed${NC} -----------"
+  else
+    echo -e "----------- ${RED}Dev check failed${NC} -----------"
+  fi
+
+  echo -e "\n----------- Swap check start -----------"
+  swap_check
+  if [[ $? -eq 0 ]]
+  then
+    echo -e "----------- ${GREEN}Swap check passed${NC} -----------"
+  else
+    echo -e "----------- ${RED}Swap check failed${NC} -----------"
+  fi
+
+  echo -e "\n----------- Workspace check start -----------"
+  workspace_check mrs_workspace
+  workspace_check modules_workspace mrs_workspace
+  if [[ $? -eq 0 ]]
+  then
+    echo -e "----------- ${GREEN}Workspace check passed${NC} -----------"
+  else
+    echo -e "----------- ${RED}Workspace check failed${NC} -----------"
+  fi
