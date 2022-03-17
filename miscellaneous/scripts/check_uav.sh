@@ -233,7 +233,7 @@ swap_check () {
   ram=$(grep MemTotal /proc/meminfo)
   ram="${ram//[!0-9]/}"  #strip all non-numeric chars from hostname, should leave us just with the number of the uav. E.G. -> uav31 -> 31
 
-  total_mem=$(echo "scale=2; (($ram + $swap) / 1000000)" | bc -l)
+  total_mem=$(echo "scale=2; (($ram + $swap) / 1048576)" | bc -l)
   req_mem=$(echo "scale=2; $num_threads * 2.5" | bc -l)
 
   echo -e "Total swap + RAM size: $total_mem GB"
