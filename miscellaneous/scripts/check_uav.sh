@@ -253,6 +253,25 @@ swap_check () {
 
 # #}
 
+# #{ broadcast_check()
+broadcast_check () {
+  ret_val=0
+  echo -e "Checking broadcast ip ... \c"
+
+  if [ "$BROADCAST_IP" = "192.168.69.255" ]
+  then
+    echo -e "${GREEN}correct${NC}"
+  else
+    echo -e "${RED}incorrect ${BROADCAST_IP} ${NC}"
+    echo -e "${YELLOW}Set up BROADCAST_IP="192.168.69.255" variable in .bashrc!${NC}"
+    ret_val=1
+  fi
+
+  return $ret_val
+}
+
+# #}
+
 # #{ workspace_check()
 # $1 - workspace which should be checked
 # $2 - if you provide 2 workspaces, the script will check that the first workspace is extending the second one
@@ -285,7 +304,7 @@ workspace_check () {
     echo -e "${YELLOW}run the mrs_uav_system install script!${NC}"
     ret_val=1
   fi
-# check workspace extension
+  # check workspace extension
   if [[ $# -eq 2 ]]; then
     should_extend=$2
     echo -e "checking $workspace is extending $should_extend ... \c"
@@ -301,22 +320,55 @@ workspace_check () {
   fi
 
 # check for the march=native flag
-    echo -e "checking $workspace is not using -march=native ... \c"
-    march_native=$(catkin config | grep "Additional CMake Args" | grep "march=native")
-    if [ -z "${march_native}" ]
-    then
-      echo -e "${GREEN}not using${NC}"
-    else
-      echo -e "${RED}found${NC}"
-      echo -e "${YELLOW}$workspace has the -march=native flag enabled${NC}"
-      echo -e "${YELLOW}This flag is no longer used in the MRS system, remove it${NC}"
-      ret_val=1
-    fi
+echo -e "checking $workspace is not using -march=native ... \c"
+march_native=$(catkin config | grep "Additional CMake Args" | grep "march=native")
+if [ -z "${march_native}" ]
+then
+  echo -e "${GREEN}not using${NC}"
+else
+  echo -e "${RED}found${NC}"
+  echo -e "${YELLOW}$workspace has the -march=native flag enabled${NC}"
+  echo -e "${YELLOW}This flag is no longer used in the MRS system, remove it${NC}"
+  ret_val=1
+fi
+
+return $ret_val
+}
+
+  # #}
+
+# #{ ubuntu20_check()
+# $1 - workspace which should be checked
+# $2 - if you provide 2 workspaces, the script will check that the first workspace is extending the second one
+
+ubuntu20_check () {
+  ret_val=0
+
+  echo -e "Checking ubuntu release ... \c"
+  is_20_04=$(lsb_release -id  | grep 20.04)
+
+  if [ -z "${is_20_04}" ]
+  then
+    echo -e "${RED}fail${NC}"
+    echo -e "${YELLOW}You should be running Ubuntu 20.04, you are running:\n$(lsb_release -id)${NC}"
+    ret_val=1
+  else
+    echo -e "${GREEN}pass${NC}"
+  fi
 
   return $ret_val
 }
 
   # #}
+
+  echo -e "\n----------- Ubuntu version check start -----------"
+  ubuntu20_check
+  if [[ $? -eq 0 ]]
+  then
+    echo -e "----------- ${GREEN}Ubuntu version check passed${NC} -----------"
+  else
+    echo -e "----------- ${RED}Ubuntu version check failed${NC} -----------"
+  fi
 
   echo -e "\n----------- Hostname check start -----------"
   hostname_check
@@ -334,6 +386,15 @@ workspace_check () {
     echo -e "----------- ${GREEN}Netplan check passed${NC} -----------"
   else
     echo -e "----------- ${RED}Netplan check failed${NC} -----------"
+  fi
+
+  echo -e "\n----------- Broadcst check start -----------"
+  broadcast_check
+  if [[ $? -eq 0 ]]
+  then
+    echo -e "----------- ${GREEN}Broadcst check passed${NC} -----------"
+  else
+    echo -e "----------- ${RED}Broadcst check failed${NC} -----------"
   fi
 
   echo -e "\n----------- Hosts check start -----------"
