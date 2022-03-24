@@ -388,13 +388,13 @@ ubuntu20_check () {
     echo -e "----------- ${RED}Netplan check failed${NC} -----------"
   fi
 
-  echo -e "\n----------- Broadcst check start -----------"
+  echo -e "\n----------- Broadcast check start -----------"
   broadcast_check
   if [[ $? -eq 0 ]]
   then
-    echo -e "----------- ${GREEN}Broadcst check passed${NC} -----------"
+    echo -e "----------- ${GREEN}Broadcast check passed${NC} -----------"
   else
-    echo -e "----------- ${RED}Broadcst check failed${NC} -----------"
+    echo -e "----------- ${RED}Broadcast check failed${NC} -----------"
   fi
 
   echo -e "\n----------- Hosts check start -----------"
