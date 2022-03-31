@@ -527,7 +527,7 @@ colcon() {
 
       ;;
 
-    build*|b*)
+    build*)
 
       # go up the folder tree until we find the build/COLCON_IGNORE file or until we reach the root
       while [ ! -e "build/COLCON_IGNORE" ]; do
@@ -542,6 +542,27 @@ colcon() {
       # if the flow got here, we found the build/COLCON_IGNORE file!
       # this is the folder we're looking for - call the actual colcon command here
       command colcon "$@" --symlink-install
+      ret=$? # remember the return value of the colcon command
+      cd "$CURRENT_PATH" # return to the path where this command was originaly called
+      return $ret # return the original return value of the colcon command
+
+      ;;
+
+    test*)
+
+      # go up the folder tree until we find the build/COLCON_IGNORE file or until we reach the root
+      while [ ! -e "build/COLCON_IGNORE" ]; do
+        cd ..
+        if [[ `pwd` == "/" ]]; then
+          # we reached the root and didn't find the build/COLCON_IGNORE file - that's a fail!
+          echo "Cannot run tests, probably not in a workspace (if you want to create a new workspace, call \"colcon init\" in its root first)".
+          return 1
+        fi
+      done
+
+      # if the flow got here, we found the build/COLCON_IGNORE file!
+      # this is the folder we're looking for - call the actual colcon command here
+      command colcon "$@"
       ret=$? # remember the return value of the colcon command
       cd "$CURRENT_PATH" # return to the path where this command was originaly called
       return $ret # return the original return value of the colcon command
