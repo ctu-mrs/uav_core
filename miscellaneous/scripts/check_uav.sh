@@ -36,7 +36,9 @@ netplan_check () {
   netplan=$( netplan get )
   network_manager=$( systemctl --type=service | grep 'NetworkManager\|network-manager' )
   wlan0_address="$(netplan get wifis.wlan0.addresses | cut -c3-)"
+  wlan0_address=$(echo "$wlan0_address" | tr -d \")
   eth0_address="$(netplan get ethernets.eth0.addresses | cut -c3-)"
+  eth0_address=$(echo "$eth0_address" | tr -d \")
   uav_number="${hostname//[!0-9]/}"  #strip all non-numeric chars from hostname, should leave us just with the number of the uav. E.G. -> uav31 -> 31
   expected_wlan_ip="192.168.69.1$uav_number/24"
   expected_eth_ip="10.10.20.1$uav_number/24"
