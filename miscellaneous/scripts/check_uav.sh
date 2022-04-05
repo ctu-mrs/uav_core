@@ -34,11 +34,28 @@ netplan_check () {
   ret_val=0
 
   netplan=$( netplan get )
+  network_manager=$( systemctl --type=service | grep 'NetworkManager\|network-manager' )
   wlan0_address="$(netplan get wifis.wlan0.addresses | cut -c3-)"
   eth0_address="$(netplan get ethernets.eth0.addresses | cut -c3-)"
   uav_number="${hostname//[!0-9]/}"  #strip all non-numeric chars from hostname, should leave us just with the number of the uav. E.G. -> uav31 -> 31
   expected_wlan_ip="192.168.69.1$uav_number/24"
   expected_eth_ip="10.10.20.1$uav_number/24"
+
+  echo -e "Checking network manager:"
+
+# #{ network manager
+
+echo -e "Checking if network manager is running ... \c"
+if [ -z "${network_manager}" ]
+then
+  echo -e "${GREEN}not running${NC}"
+else
+  echo -e "${RED}running${NC}"
+  echo -e "${YELLOW}Run uav_core/miscellaneous/scripts/disable_network_manager.sh${NC}"
+  ret_val=1
+fi
+
+# #}
 
   echo -e "Checking netplan:"
 
