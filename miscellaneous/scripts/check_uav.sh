@@ -214,6 +214,7 @@ dev_check () {
   then
     echo -e "${RED}missing${NC}"
     echo -e "${YELLOW}add pixhawk to udev rules and make sure it is connected!${NC}"
+    echo -e "${YELLOW}NOTE: /dev/pixhawk will only be visible if the UAV is powered by a battery!${NC}"
     ret_val=1
   else
     echo -e "${GREEN}found${NC}"
