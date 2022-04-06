@@ -40,8 +40,18 @@ netplan_check () {
   eth0_address="$(netplan get ethernets.eth0.addresses | cut -c3-)"
   eth0_address=$(echo "$eth0_address" | tr -d \")
   uav_number="${hostname//[!0-9]/}"  #strip all non-numeric chars from hostname, should leave us just with the number of the uav. E.G. -> uav31 -> 31
-  expected_wlan_ip="192.168.69.1$uav_number/24"
-  expected_eth_ip="10.10.20.1$uav_number/24"
+
+  if [ "$uav_number" -lt 10 ]
+  then
+    echo "less than"
+    expected_wlan_ip="192.168.69.10$uav_number/24"
+    expected_eth_ip="10.10.20.10$uav_number/24"
+  else
+    echo "more than"
+    expected_wlan_ip="192.168.69.1$uav_number/24"
+    expected_eth_ip="10.10.20.1$uav_number/24"
+  fi
+
 
   echo -e "Checking network manager:"
 
@@ -59,7 +69,7 @@ fi
 
 # #}
 
-  echo -e "Checking netplan:"
+echo -e "Checking netplan:"
 
 # #{ wlan0
 
