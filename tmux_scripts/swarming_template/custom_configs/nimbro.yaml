@@ -22,23 +22,23 @@ topics: # topics published out of this machine to receivers specified above
    rate: 10.0
 
 services:
-  - name: "/*/trajectory_generation/path"
+  - name: "trajectory_generation/path"
     type: mrs_msgs/PathSrv
-  - name: "/*/control_manager/goto_trajectory_start"
+  - name: "control_manager/goto_trajectory_start"
     type: std_srvs/Trigger
-  - name: "/*/control_manager/start_trajectory_tracking"
+  - name: "control_manager/start_trajectory_tracking"
     type: std_srvs/Trigger
-  - name: "/*/control_manager/trajectory_reference"
+  - name: "control_manager/trajectory_reference"
     type: mrs_msgs/TrajectoryReferenceSrv
-  - name: "/*/uav_manager/land_home"
+  - name: "uav_manager/land_home"
     type: std_srvs/Trigger
-  - name: "/*/control_manager/switch_controller"
+  - name: "control_manager/switch_controller"
     type: mrs_msgs/String
-  - name: "/*/control_manager/switch_tracker"
+  - name: "control_manager/switch_tracker"
     type: mrs_msgs/String
-  - name: "/*/constraint_manager/set_constraints"
+  - name: "constraint_manager/set_constraints"
     type: mrs_msgs/String
-  - name: "/*/control_manager/enable_callbacks"
+  - name: "control_manager/enable_callbacks"
     type: std_srvs/SetBool
-  - name: "/*/odometry/change_alt_estimator_type_string"
+  - name: "odometry/change_alt_estimator_type_string"
     type: mrs_msgs/String
