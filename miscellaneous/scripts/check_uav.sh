@@ -4,6 +4,7 @@ RED='\e[31m'
 GREEN='\e[32m'
 YELLOW='\e[33m'
 NC='\e[39m' # No Color
+BOLD=$(tput bold)
 
 # #{ hostname_check()
 hostname_check () {
@@ -368,8 +369,6 @@ return $ret_val
   # #}
 
 # #{ ubuntu20_check()
-# $1 - workspace which should be checked
-# $2 - if you provide 2 workspaces, the script will check that the first workspace is extending the second one
 
 ubuntu20_check () {
   ret_val=0
@@ -391,6 +390,84 @@ ubuntu20_check () {
 
   # #}
 
+# #{ ros_master_check()
+
+ros_master_check () {
+  ret_val=0
+
+  echo -e "Checking ROS_MASTER_URI env variable ... \c"
+  uri=${ROS_MASTER_URI}
+
+  if [ "$uri" = "http://localhost:11311" ]
+  then
+    echo -e "${GREEN}correct${NC}"
+  else
+    echo -e "${RED}incorrect${NC}"
+    echo -e "${YELLOW}Your ROS_MASTER_URI should be http://localhost:11311, but it is: ${uri}${NC}\n"
+    ret_val=1
+  fi
+
+  uri_bashrc=$( cat ~/.bashrc | grep 'ROS_MASTER_URI' | grep -v '#' )
+
+  num_lines_with_uri=$(echo "$uri_bashrc" | wc -l)
+  if [ -z "${uri_bashrc}" ]
+  then
+    num_lines_with_uri=0
+  fi
+
+  echo -e "Checking ROS_MASTER_URI in .bashrc ... \c"
+
+  if [[ $num_lines_with_uri -eq 1 ]]
+  then
+    echo -e "${GREEN}found 1 entry${NC}, this is correct"
+    echo -e "Checking value of ROS_MASTER_URI in .bashrc ... \c"
+    uri_bashrc_grep=$( echo $uri_bashrc | grep 'export ROS_MASTER_URI=http://localhost:11311' )
+
+    if [ -z "${uri_bashrc_grep}" ]
+    then
+      echo -e "${RED}fail${NC}"
+      echo -e "${YELLOW}There should only be 1 entry in ~/.bashrc: export ROS_MASTER_URI=http://localhost:11311${NC}"
+      ret_val=1
+    else
+      echo -e "${GREEN}correct${NC}"
+    fi
+
+  else
+    echo -e "${RED}found $num_lines_with_uri ${NC}entries:"
+    echo -e "${YELLOW}$uri_bashrc${NC}"
+    echo -e "${YELLOW}There should only be 1 entry in ~/.bashrc: export ROS_MASTER_URI=http://localhost:11311${NC}"
+    ret_val=1
+  fi
+
+
+  echo -e "Checking ROS_IP env variable ... \c"
+  if [ -z "${ROS_IP}" ]
+  then
+    echo -e "${GREEN}correct${NC}"
+  else
+    echo -e "${RED}fail${NC}"
+    echo -e "${YELLOW}ROS_IP env variable should be empty!${NC}"
+    ret_val=1
+  fi
+
+  echo -e "Checking ROS_IP in .bashrc variable ... \c"
+
+  ip_bashrc=$( cat ~/.bashrc | grep 'ROS_IP' | grep -v '#' | wc -l )
+  if [[ $ip_bashrc -eq 0 ]]
+  then
+    echo -e "${GREEN}correct${NC}"
+  else
+    echo -e "${RED}fail${NC}"
+    echo -e "${YELLOW}ROS_IP should not be defined in .bashrc!${NC}"
+    ret_val=1
+  fi
+
+  return $ret_val
+}
+
+  # #}
+
+  fails=0
   echo -e "\n----------- Ubuntu version check start -----------"
   ubuntu20_check
   if [[ $? -eq 0 ]]
@@ -398,6 +475,7 @@ ubuntu20_check () {
     echo -e "----------- ${GREEN}Ubuntu version check passed${NC} -----------"
   else
     echo -e "----------- ${RED}Ubuntu version check failed${NC} -----------"
+    fails=$((fails+1))
   fi
 
   echo -e "\n----------- Hostname check start -----------"
@@ -407,6 +485,7 @@ ubuntu20_check () {
     echo -e "----------- ${GREEN}Hostname check passed${NC} -----------"
   else
     echo -e "----------- ${RED}Hostname check failed${NC} -----------"
+    fails=$((fails+1))
   fi
 
   echo -e "\n----------- Netplan check start -----------"
@@ -416,6 +495,7 @@ ubuntu20_check () {
     echo -e "----------- ${GREEN}Netplan check passed${NC} -----------"
   else
     echo -e "----------- ${RED}Netplan check failed${NC} -----------"
+    fails=$((fails+1))
   fi
 
   echo -e "\n----------- Broadcast check start -----------"
@@ -425,6 +505,7 @@ ubuntu20_check () {
     echo -e "----------- ${GREEN}Broadcast check passed${NC} -----------"
   else
     echo -e "----------- ${RED}Broadcast check failed${NC} -----------"
+    fails=$((fails+1))
   fi
 
   echo -e "\n----------- Hosts check start -----------"
@@ -434,6 +515,7 @@ ubuntu20_check () {
     echo -e "----------- ${GREEN}Hosts check passed${NC} -----------"
   else
     echo -e "----------- ${RED}Hosts check failed${NC} -----------"
+    fails=$((fails+1))
   fi
 
   echo -e "\n----------- Dev check start -----------"
@@ -443,6 +525,7 @@ ubuntu20_check () {
     echo -e "----------- ${GREEN}Dev check passed${NC} -----------"
   else
     echo -e "----------- ${RED}Dev check failed${NC} -----------"
+    fails=$((fails+1))
   fi
 
   echo -e "\n----------- Swap check start -----------"
@@ -452,6 +535,7 @@ ubuntu20_check () {
     echo -e "----------- ${GREEN}Swap check passed${NC} -----------"
   else
     echo -e "----------- ${RED}Swap check failed${NC} -----------"
+    fails=$((fails+1))
   fi
 
   echo -e "\n----------- Workspace check start -----------"
@@ -462,4 +546,24 @@ ubuntu20_check () {
     echo -e "----------- ${GREEN}Workspace check passed${NC} -----------"
   else
     echo -e "----------- ${RED}Workspace check failed${NC} -----------"
+    fails=$((fails+1))
+  fi
+
+  echo -e "\n----------- ROS_MASTER_URI check start -----------"
+
+  ros_master_check
+  if [[ $? -eq 0 ]]
+  then
+    echo -e "----------- ${GREEN}ROS_MASTER_URI check passed${NC} -----------"
+  else
+    echo -e "----------- ${RED}ROS_MASTER_URI check failed${NC} -----------"
+    fails=$((fails+1))
+  fi
+
+  if [[ $fails -eq 0 ]]
+  then
+    echo -e "----------- ${GREEN}All checks passed${NC} -----------"
+  else
+    echo -e "\033[1m\n----------- ${RED} ${fails} checks failed${NC} -----------\n\033[0m"
+    fails=$((fails+1))
   fi
