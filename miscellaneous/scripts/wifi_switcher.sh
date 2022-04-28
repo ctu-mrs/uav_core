@@ -5,7 +5,7 @@ device=$(lsusb | grep 6666:6666)
 is_connected=false
 was_connected=false
 
-if [ -f "/home/mrs/test_dir/mem" ]; then
+if [ -f "/tmp/mem_wifi" ]; then
   was_connected=true
 else
   was_connected=false
@@ -20,22 +20,19 @@ fi
 
 if [ "$is_connected" = true ] ; then
   if [ "$was_connected" = true ] ; then
-    echo "was connected" >> /home/mrs/test_dir/status.txt
+    echo "pes"
   else
-    > /home/mrs/test_dir/status.txt
-    echo "Switching wifi NOW!" >> ~/test_dir/status.txt
     indoor=$(cat /etc/netplan/01-netcfg.yaml | grep indoor)
     if [ -z "${indoor}" ]
     then
       sed -i 's/mrs_ctu/mrs_ctu_indoor/g' /etc/netplan/01-netcfg.yaml
+      netplan apply
     else
-      echo "in if" >> /home/mrs/test_dir/status.txt
       sed -i 's/mrs_ctu_indoor/mrs_ctu/g' /etc/netplan/01-netcfg.yaml
+      netplan apply
     fi
-    echo "switched" >> /home/mrs/test_dir/status.txt
-    touch /home/mrs/test_dir/mem
+    touch /tmp/mem_wifi
   fi
 else
-  echo "is not connected" >> /home/mrs/test_dir/status.txt
-  rm /home/mrs/test_dir/mem
+  rm /tmp/mem_wifi
 fi
