@@ -59,7 +59,6 @@ input=(
   'eagle'       'uav91' '192.168.69.191'
   'xavnx1'      'uav95' '192.168.69.195'
   'xavier'      'uav99' '192.168.69.199'
-  'red'         'uav20' '192.168.69.120'
 
   # our laptops, remove if needed
 
