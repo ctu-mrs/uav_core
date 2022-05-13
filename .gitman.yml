@@ -2,7 +2,7 @@ location: .gitman
 sources:
   - repo: https://github.com/mavlink/mavlink-gbp-release
     name: mavlink-gbp-release
-    rev: 0dc40a07d97e665c563600081840c45b60bae1cf
+    rev: release/noetic/mavlink/2021.4.5-1
     type: git
     params:
     sparse_paths:
@@ -231,7 +231,7 @@ sources:
 sources_locked:
   - repo: https://github.com/mavlink/mavlink-gbp-release
     name: mavlink-gbp-release
-    rev: 0dc40a07d97e665c563600081840c45b60bae1cf
+    rev: release/noetic/mavlink/2021.4.5-1
     type: git
     params:
     sparse_paths:
@@ -241,9 +241,9 @@ sources_locked:
         target: lib/mavlink-gbp-release
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/ctu-mrs/mavros
+  - repo: https://github.com/mavlink/mavros
     name: mavros
-    rev: 68cf7cef11d4636c59712b8afe2f3b9f74ad7865
+    rev: 1.13.0
     type: git
     params:
     sparse_paths:
