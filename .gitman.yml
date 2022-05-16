@@ -4,7 +4,6 @@ sources:
     name: mavlink-gbp-release
     rev: 0dc40a07d97e665c563600081840c45b60bae1cf
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -16,7 +15,6 @@ sources:
     name: mavros
     rev: added_dialect_file
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -28,7 +26,6 @@ sources:
     name: tf2
     rev: warning_fix
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -40,7 +37,6 @@ sources:
     name: mrs_bumper
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -52,7 +48,6 @@ sources:
     name: mrs_lib
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -64,7 +59,6 @@ sources:
     name: mrs_mavros_interface
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -76,7 +70,6 @@ sources:
     name: mrs_msgs
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -88,7 +81,6 @@ sources:
     name: mrs_rviz_plugins
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -100,7 +92,6 @@ sources:
     name: mrs_uav_controllers
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -112,7 +103,6 @@ sources:
     name: mrs_uav_general
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -124,7 +114,6 @@ sources:
     name: mrs_uav_managers
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -136,7 +125,6 @@ sources:
     name: mrs_uav_odometry
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -148,7 +136,6 @@ sources:
     name: mrs_uav_status
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -160,7 +147,6 @@ sources:
     name: mrs_uav_testing
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -172,7 +158,6 @@ sources:
     name: mrs_uav_trackers
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -184,7 +169,6 @@ sources:
     name: mrs_uav_trajectory_generation
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -196,7 +180,6 @@ sources:
     name: nlopt_ros
     rev: master
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -208,7 +191,6 @@ sources:
     name: tmux
     rev: 3.0a
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -220,7 +202,6 @@ sources:
     name: tmuxinator
     rev: v2.0.0
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -233,7 +214,6 @@ sources_locked:
     name: mavlink-gbp-release
     rev: 0dc40a07d97e665c563600081840c45b60bae1cf
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -245,7 +225,6 @@ sources_locked:
     name: mavros
     rev: 68cf7cef11d4636c59712b8afe2f3b9f74ad7865
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -257,7 +236,6 @@ sources_locked:
     name: mrs_bumper
     rev: 7a0022da4ba62653a0a93d6393f715f08a95c50a
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -269,7 +247,6 @@ sources_locked:
     name: mrs_lib
     rev: 99ce9dd2b5dc179a675bdbe876eb2ef9a2f33b87
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -281,7 +258,6 @@ sources_locked:
     name: mrs_mavros_interface
     rev: 2bb97e67c982b186684d08b4c8848a1be94eb33c
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -293,7 +269,6 @@ sources_locked:
     name: mrs_msgs
     rev: 3413045c6293167f5c90e9c4806397a7242172de
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -305,7 +280,6 @@ sources_locked:
     name: mrs_rviz_plugins
     rev: 7f7f757e687c6802b1e4e69e251e12c13b50b46c
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -317,7 +291,6 @@ sources_locked:
     name: mrs_uav_controllers
     rev: cef07bdb8e43a818e88d3b34342155dd060c1d67
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -329,7 +302,6 @@ sources_locked:
     name: mrs_uav_general
     rev: 67a66a0d713cc9303eaa9aa04a80d2710092603f
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -341,7 +313,6 @@ sources_locked:
     name: mrs_uav_managers
     rev: 2f025c68349f1620bf1793e47abec358b56905df
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -353,7 +324,6 @@ sources_locked:
     name: mrs_uav_odometry
     rev: ab1e36b8bf3a909228e2c8ee42d336efced80364
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -363,9 +333,8 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_status.git
     name: mrs_uav_status
-    rev: 70d2a15dca380f9c7915591a31eee203f257723b
+    rev: 17c5d4000d92809b64cc93293097714d22121a4d
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -377,7 +346,6 @@ sources_locked:
     name: mrs_uav_testing
     rev: 5238d8391f85401044930adb2599c331042dc011
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -389,7 +357,6 @@ sources_locked:
     name: mrs_uav_trackers
     rev: e04636d58b8cf0cad95d36f9e3e9c76d11ad9807
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -401,7 +368,6 @@ sources_locked:
     name: mrs_uav_trajectory_generation
     rev: b24699ce4a7c7c85e566a339b68e31d1ff0e30aa
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -413,7 +379,6 @@ sources_locked:
     name: nlopt_ros
     rev: 5e351e81e8ee0c39d3096f38a0aa990304298631
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -425,7 +390,6 @@ sources_locked:
     name: tmux
     rev: 25ae02869544b84b639b25b0aa69baa6ea2d3a6a
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -437,7 +401,6 @@ sources_locked:
     name: tmuxinator
     rev: 7208ab2ed7c8cfbcbe92c4b0db2bc01550d40fd4
     type: git
-    params:
     sparse_paths:
       -
     links:
@@ -449,7 +412,6 @@ sources_locked:
     name: tf2
     rev: 89f90c21fc13868ee02e853663a226130471ea8c
     type: git
-    params:
     sparse_paths:
       -
     links:
