@@ -669,26 +669,12 @@ cbl () {
 # #{ waitForRos()
 
 waitForRos() {
-  python <(
-cat << "END"
-import roslaunch.core
-import time
-
-m = roslaunch.core.Master() # get a handle to the default master
-
-is_running = m.is_running()
-
-if not is_running:
-
-  roslaunch.core.printlog("roscore/master is not yet running, will wait for it to start")
-
-  while not is_running:
-      time.sleep(0.1)
-      is_running = m.is_running()
-
-  roslaunch.core.printlog("master has started")
-END
-  )
+  echo "waiting for ROS"
+  until timeout 6s rosparam get /run_id > /dev/null 2>&1; do
+    echo "waiting for /run_id"
+    sleep 1;
+  done
+  sleep 1;
 }
 
 # #}
@@ -705,7 +691,7 @@ waitForSimulation() {
 
 # #}
 
-# #{ waitForSimulation()
+# #{ waitForSpawn()
 
 waitForSpawn() {
   until timeout 6s rostopic echo /mrs_drone_spawner/diagnostics -n 1 | grep -z 'spawn_called: True.*processes: 0' > /dev/null 2>&1; do
