@@ -25,7 +25,7 @@ input=(
   'SWAP_GARMINS' 'false' 'swap up/down garmins'
   'PIXGARM' 'false' 'true if Garmin lidar is connected throught Pixhawk'
   'SENSORS' '' '{garmin_down, garmin_up, rplidar, realsense_front, teraranger, bluefox_optflow, realsense_brick, bluefox_brick}'
-  'WORLD_NAME' 'simulation' 'e.g.: "simulation" <= mrs_general/config/world_simulation.yaml'
+  'WORLD_NAME' 'simulation' 'e.g.: "simulation" <= uav_core/ros_packages/mrs_uav_general/config/worlds/world_simulation.yaml'
   'MRS_STATUS' 'readme' '{readme, dynamics, balloon, avoidance, control_error, gripper}'
   'LOGGER_DEBUG' 'false' 'sets the ros console output level to debug'
 )
