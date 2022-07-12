@@ -160,4 +160,6 @@ elif [ "$distro" = "20.04" ]; then
 sudo apt-get -y install \
   # libqt5-dev\ # TODO find the alternative
 
+sudo apt-get -y install python-is-python3
+
 fi
