@@ -12,7 +12,7 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 [ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
 
 debian=`lsb_release -d | grep -i debian | wc -l`
-[[ "$debian" -eq "1" ]] && ROS_DISTRO="noetic" && distro="20.04"
+[[ "$debian" -eq "1" ]] && ROS_DISTRO="noetic" && distro="20.04" && DEBIAN=true
 
 sudo apt-get -y install cmake build-essential autotools-dev automake autoconf
 
@@ -158,11 +158,8 @@ if [ "$distro" = "18.04" ]; then
 sudo apt-get -y install \
   libqt4-dev\
 
-elif [ "$distro" = "20.04" ]; then
+elif [ "$distro" = "20.04" ] && [ ! $DEBIAN ]; then
 
-sudo apt-get -y install \
-  # libqt5-dev\ # TODO find the alternative
-
-sudo apt-get -y install python-is-python3
+  sudo apt-get -y install python-is-python3
 
 fi
