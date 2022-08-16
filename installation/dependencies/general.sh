@@ -155,11 +155,14 @@ sudo apt-get -y install \
 
 if [ "$distro" = "18.04" ]; then
 
-sudo apt-get -y install \
-  libqt4-dev\
+  sudo apt-get -y install libqt4-dev
 
 elif [ "$distro" = "20.04" ] && [ ! $DEBIAN ]; then
 
   sudo apt-get -y install python-is-python3
+
+elif [ "$distro" = "20.04" ] && [ $DEBIAN ]; then
+
+  sudo ln -sf /usr/bin/python3 /usr/bin/python
 
 fi
