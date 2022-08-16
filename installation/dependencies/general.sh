@@ -57,6 +57,7 @@ sudo apt-get -y install \
   ros-$ROS_DISTRO-nlopt\
   ros-$ROS_DISTRO-plotjuggler-ros\
   ros-$ROS_DISTRO-joy\
+  ros-$ROS_DISTRO-ddynamic-reconfigure\
 
 if [ "$distro" = "18.04" ]; then
 
