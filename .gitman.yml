@@ -2,7 +2,7 @@ location: .gitman
 sources:
   - repo: https://github.com/mavlink/mavlink-gbp-release
     name: mavlink-gbp-release
-    rev: release/noetic/mavlink/2021.6.6-1
+    rev: release/noetic/mavlink/2022.8.8-1
     type: git
     sparse_paths:
       -
@@ -14,7 +14,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/mavlink/mavros.git
     name: mavros
-    rev: 1.8.0
+    rev: 1.13.0
     type: git
     sparse_paths:
       -
