@@ -231,7 +231,7 @@ sources:
 sources_locked:
   - repo: https://github.com/mavlink/mavlink-gbp-release
     name: mavlink-gbp-release
-    rev: b23a58ffae121b22f46eec5a48c6ad240c2ae853
+    rev: 4fcf481e8ed49d52edab11a7086570787a5bab0f
     type: git
     sparse_paths:
       -
@@ -242,7 +242,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/mavlink/mavros.git
     name: mavros
-    rev: 8b9a32ac323e79cef826ee5f39aeb07a1162d240
+    rev: ed762be1ea6f53e4702f49bd4e22644f6347040f
     type: git
     sparse_paths:
       -
