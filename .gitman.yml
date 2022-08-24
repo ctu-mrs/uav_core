@@ -319,7 +319,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_general.git
     name: mrs_uav_general
-    rev: 626116834a77b017faa065a137ef82cf74d0da82
+    rev: 16a90f05e98ee5edbbde6e242037cb4e8a37094e
     type: git
     sparse_paths:
       -
