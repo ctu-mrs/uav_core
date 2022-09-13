@@ -291,7 +291,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
-    rev: b1e88b8a877c6cd34e208320b49d96e5e194891d
+    rev: 1ee432885a9428d7c00a7a0e131c57a8f2a25679
     type: git
     params:
     sparse_paths:
