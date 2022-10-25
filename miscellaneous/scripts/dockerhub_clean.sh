@@ -26,7 +26,7 @@ for ((i=0; i < ${#REPOSITORIES[*]}; i++)); do
   # get tags for repo
   echo
   echo "Looping Through ${REPOSITORY} repository in ${UNAME} account"
-  IMAGE_TAGS=$(curl -s -H "Authorization: JWT ${TOKEN}" https://hub.docker.com/v2/repositories/${ORGANIZATIONNAME}/${REPOSITORY}/tags/ | jq -r '.results|.[]|.name' | grep _w) 
+  IMAGE_TAGS=$(curl -s -H "Authorization: JWT ${TOKEN}" https://hub.docker.com/v2/repositories/${ORGANIZATIONNAME}/${REPOSITORY}/tags/ | jq -r '.results|.[]|.name' | grep _w)
 
   echo "$REPOSITORY IMAGE TAGS:
 $IMAGE_TAGS"
@@ -49,7 +49,8 @@ $IMAGE_TAGS"
     if [ $dtSec -lt $taSec ]; then
       echo "This image ${UNAME}/${REPOSITORY}:${j} is older than $DAYS days, deleting this image"
       ## Please uncomment below line to delete docker hub images of docker hub repositories
-      curl -s  -X DELETE  -H "Authorization: JWT ${TOKEN}" https://hub.docker.com/v2/repositories/${ORGANIZATIONNAME}/${REPOSITORY}/tags/${j}/
+      # echo curl -s -X DELETE -H "Authorization: JWT ${TOKEN}" https://hub.docker.com/v2/repositories/${ORGANIZATIONNAME}/${REPOSITORY}/tags/${j}/
+      curl -u $UNAME:$UPASS -X DELETE https://cloud.docker.com/v2/repositories/$ORGANIZATIONNAME/$REPOSITORY/tags/${j}/
     else
       echo "This image ${UNAME}/${REPOSITORY}:${j} is within $DAYS days time range, keep this image"
     fi
