@@ -49,8 +49,8 @@ $IMAGE_TAGS"
     if [ $dtSec -lt $taSec ]; then
       echo "This image ${UNAME}/${REPOSITORY}:${j} is older than $DAYS days, deleting this image"
       ## Please uncomment below line to delete docker hub images of docker hub repositories
-      # echo curl -s -X DELETE -H "Authorization: JWT ${TOKEN}" https://hub.docker.com/v2/repositories/${ORGANIZATIONNAME}/${REPOSITORY}/tags/${j}/
-      curl -u $UNAME:$UPASS -X DELETE https://cloud.docker.com/v2/repositories/$ORGANIZATIONNAME/$REPOSITORY/tags/${j}/
+      curl -s -X DELETE -H "Authorization: JWT ${TOKEN}" https://hub.docker.com/v2/repositories/${ORGANIZATIONNAME}/${REPOSITORY}/tags/${j}/
+      # curl -u $UNAME:$UPASS -X DELETE https://cloud.docker.com/v2/repositories/$ORGANIZATIONNAME/$REPOSITORY/tags/${j}/
     else
       echo "This image ${UNAME}/${REPOSITORY}:${j} is within $DAYS days time range, keep this image"
     fi
