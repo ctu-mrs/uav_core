@@ -368,6 +368,28 @@ return $ret_val
 
   # #}
 
+# #{ uav_configurator_check()
+
+uav_configurator_check () {
+  ret_val=0
+
+  echo -e "Checking uav_configurator is enabled ... \c"
+  configurator_enabled=$(systemctl is-enabled uav_configurator.service)
+
+ if [ "$configurator_enabled" = "enabled" ]
+  then
+    echo -e "${GREEN}pass${NC}"
+  else
+    echo -e "${RED}fail${NC}"
+    echo -e "${YELLOW}setup the uav_configurator by running the setup script in uav_core/miscellaneous/configurator_scripts${NC}"
+    ret_val=1
+  fi
+
+  return $ret_val
+}
+
+  # #}
+
 # #{ ubuntu20_check()
 
 ubuntu20_check () {
@@ -475,6 +497,16 @@ ros_master_check () {
     echo -e "----------- ${GREEN}Ubuntu version check passed${NC} -----------"
   else
     echo -e "----------- ${RED}Ubuntu version check failed${NC} -----------"
+    fails=$((fails+1))
+  fi
+
+  echo -e "\n----------- Configurator check start -----------"
+  uav_configurator_check
+  if [[ $? -eq 0 ]]
+  then
+    echo -e "----------- ${GREEN}Configurator check passed${NC} -----------"
+  else
+    echo -e "----------- ${RED}Configurator check failed${NC} -----------"
     fails=$((fails+1))
   fi
 

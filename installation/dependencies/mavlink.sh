@@ -9,6 +9,9 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 [ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
 [ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
 
+debian=`lsb_release -d | grep -i debian | wc -l`
+[[ "$debian" -eq "1" ]] && ROS_DISTRO="noetic" && distro="20.04" && DEBIAN=true
+
 # get the path to this script
 MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
@@ -73,7 +76,8 @@ then
     export ROS_PYTHON_VERSION=3
   fi
 
-  [ -z "$DRYRUN" ] && bloom-generate rosdebian --os-name ubuntu --ros-distro $ROS_DISTRO
+  [ $DEBIAN ] && OS_NAME="debian" || OS_NAME="ubuntu" 
+  [ -z "$DRYRUN" ] && bloom-generate rosdebian --os-name $OS_NAME --ros-distro $ROS_DISTRO
 
   echo "$0: Building mavlink"
   [ -z "$DRYRUN" ] && [ ! -e build ] && mkdir build

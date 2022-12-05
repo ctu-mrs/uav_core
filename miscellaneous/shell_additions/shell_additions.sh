@@ -669,10 +669,12 @@ cbl () {
 # #{ waitForRos()
 
 waitForRos() {
-  until rostopic list > /dev/null 2>&1; do
-    echo "waiting for ros"
+  echo "waiting for ROS"
+  until timeout 6s rosparam get /run_id > /dev/null 2>&1; do
+    echo "waiting for /run_id"
     sleep 1;
   done
+  sleep 1;
 }
 
 # #}
@@ -689,10 +691,10 @@ waitForSimulation() {
 
 # #}
 
-# #{ waitForSimulation()
+# #{ waitForSpawn()
 
 waitForSpawn() {
-  until timeout 6s rostopic echo /mrs_drone_spawner/spawned -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /mrs_drone_spawner/diagnostics -n 1 | grep -z 'spawn_called: True.*processes: 0' > /dev/null 2>&1; do
     echo "waiting for spawn"
     sleep 1;
   done

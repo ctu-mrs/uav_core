@@ -6,5 +6,7 @@ mavlink stream -d /dev/ttyS1 -s RC_CHANNELS -r 10
 mavlink stream -d /dev/ttyS1 -s LOCAL_POSITION_NED -r 100
 mavlink stream -d /dev/ttyS1 -s GLOBAL_POSITION_INT -r 100
 mavlink stream -d /dev/ttyS1 -s SYS_STATUS -r 10
+mavlink stream -d /dev/ttyS1 -s DISTANCE_SENSOR -r 100
 mavlink stream -d /dev/ttyS1 -s HEARTBEAT -r 100
+mavlink stream -d /dev/ttyS1 -s UTM_GLOBAL_POSITION -r 1
 usleep 100000
