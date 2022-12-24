@@ -60,18 +60,6 @@ sources:
         target: ros_packages/mrs_lib
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/ctu-mrs/mrs_mavros_interface.git
-    name: mrs_mavros_interface
-    rev: master
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/mrs_mavros_interface
-    scripts:
-      - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
     rev: master
@@ -267,7 +255,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_lib.git
     name: mrs_lib
-    rev: aa4da664558904793d8bd6d7d76321018b799c3c
+    rev: 302412087c8311db1515b8e03ace205fe6a74ca9
     type: git
     params:
     sparse_paths:
@@ -275,18 +263,6 @@ sources_locked:
     links:
       - source: ''
         target: ros_packages/mrs_lib
-    scripts:
-      - git submodule update --init --recursive
-  - repo: https://github.com/ctu-mrs/mrs_mavros_interface.git
-    name: mrs_mavros_interface
-    rev: 2bb97e67c982b186684d08b4c8848a1be94eb33c
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/mrs_mavros_interface
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
@@ -351,7 +327,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
     name: mrs_uav_odometry
-    rev: df47c9d4744c4c6bc9be761bdb567c531a33a6e2
+    rev: 2a1f10076902fcd5dabea3446a7eb3b14cd91660
     type: git
     params:
     sparse_paths:
