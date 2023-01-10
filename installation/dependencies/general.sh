@@ -14,6 +14,7 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 debian=`lsb_release -d | grep -i debian | wc -l`
 [[ "$debian" -eq "1" ]] && ROS_DISTRO="noetic" && distro="20.04" && DEBIAN=true
 
+sudo apt-get -y update
 sudo apt-get -y install cmake build-essential autotools-dev automake autoconf
 
 # utilities

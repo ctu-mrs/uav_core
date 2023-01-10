@@ -13,6 +13,7 @@ echo "$0: uninstalling pre-installed tmux"
 sudo apt-get -y remove tmux
 
 echo "$0: installing tmux build dependencies"
+sudo apt-get -y update
 sudo apt-get -y install libevent-dev bison
 
 echo "$0: building tmux"

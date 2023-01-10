@@ -53,6 +53,7 @@ then
   $MY_PATH/mavlink.sh --remove $DRYRUN
 
   echo "$0: Downloading Mavros"
+  [ -z "$DRYRUN" ] && ( sudo apt-get -y update )
   [ -z "$DRYRUN" ] && ( sudo apt-get -y install ros-$ROS_DISTRO-mavros ros-$ROS_DISTRO-mavlink ros-$ROS_DISTRO-libmavconn ros-$ROS_DISTRO-mavros-extras || echo "Failed to remove pre-installed Mavros" )
 
 fi

@@ -14,6 +14,7 @@ debian=`lsb_release -d | grep -i debian | wc -l`
 
 if [ "$distro" = "18.04" ]; then
 
+  sudo apt-get -y update
   sudo apt-get -y install python-pip python3-pip python-setuptools python3-setuptools
 
   sudo pip3 install gitman

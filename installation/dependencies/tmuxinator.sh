@@ -13,6 +13,7 @@ cd $MY_PATH/../../utils/tmuxinator
 
 echo "$0: installing tmuxinator"
 
+sudo apt-get -y update
 sudo apt-get -y install ruby gem
 
 gem build tmuxinator.gemspec
