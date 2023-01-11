@@ -24,14 +24,6 @@
 | [nlopt_ros](https://github.com/ctu-mrs/nlopt_ros)                                         |                                                                                                                                                                          |
 | [tf2](https://github.com/ctu-mrs/tf2)                                                     |                                                                                                                                                                          |
 
-**Beware!** the custom **tf2** package is not compatible with ROS Melodic.
-We compile a patched version of tf2 due to an excessive warning that is being printed on Noetic.
-It is not neccsary to compile it from source on Melodic, therefore, all Melodic users, please, delete it or blacklist the package by issuing the following command:
-```bash
-catkin config --blacklist "geometry2 test_tf2 tf2 tf2_bullet tf2_eigen tf2_geometry_msgs tf2_kdl tf2_msgs tf2_py tf2_ros tf2_sensor_msgs tf2_tools"
-```
-The packages should be blacklisted automatically when using the installer in [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system).
-
 ## System requirements
 
 Required OS is Ubuntu 20.04 LTS 64-bit or their flavors that can install ROS Noetic.
