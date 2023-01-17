@@ -351,7 +351,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
     name: mrs_uav_odometry
-    rev: 94449e1f4cb6016cfeee124c1cbd7d497e7fb0f7
+    rev: 4912e33757ee422e6c1d84e6b0d6ef15a30904f9
     type: git
     params:
     sparse_paths:
