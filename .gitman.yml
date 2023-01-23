@@ -255,7 +255,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_bumper.git
     name: mrs_bumper
-    rev: ce648c639467facee11666264fd2948d29f585b3
+    rev: c943805307bd656fe3bad45d55040b9d8dd088f3
     type: git
     params:
     sparse_paths:
@@ -267,7 +267,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_lib.git
     name: mrs_lib
-    rev: cfc7c24b43abf95c2331935e0f8c85d476b75f87
+    rev: ddb1697f21c72f0c7003bbbbdc8a24dffb2c02a9
     type: git
     params:
     sparse_paths:
@@ -279,7 +279,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_mavros_interface.git
     name: mrs_mavros_interface
-    rev: 00de511bf70e97220a5eddf2d6dc4cf8cb67de70
+    rev: 1d174d02719e6a6ead42625ad11147ab3b0ad244
     type: git
     params:
     sparse_paths:
@@ -291,7 +291,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
-    rev: d478b73785c8464dc8355c6fdca614539d971e57
+    rev: 09cfd9bc92efab125d448f47e2b9f3ffdc9c8d84
     type: git
     params:
     sparse_paths:
@@ -303,7 +303,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
     name: mrs_rviz_plugins
-    rev: 82b0ee9522d939563629bf2f2b9427a8f8f071d7
+    rev: 97c1b16a45d85a4475b652458ed3853062717d39
     type: git
     params:
     sparse_paths:
@@ -315,7 +315,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_controllers.git
     name: mrs_uav_controllers
-    rev: d616b0bfbfb3b80e5b6eca82e24873362786e6ed
+    rev: 4e4d9048267863fe774a45f2e83527007b2f2b98
     type: git
     params:
     sparse_paths:
@@ -327,7 +327,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_general.git
     name: mrs_uav_general
-    rev: 9fcada46645e49e774a42dc0ae3d86b8684147a4
+    rev: 462fe5b41bdb78a7c124d2c0a9166f1e5b0eaf32
     type: git
     params:
     sparse_paths:
@@ -339,7 +339,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_managers.git
     name: mrs_uav_managers
-    rev: c768f215fa4c69e11f18d937315e887789545801
+    rev: dcd53b091812bd800efb1e3fce506b2876371841
     type: git
     params:
     sparse_paths:
@@ -351,7 +351,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
     name: mrs_uav_odometry
-    rev: 4912e33757ee422e6c1d84e6b0d6ef15a30904f9
+    rev: 04dea2e858946e4292d5236081c26fb13b31babb
     type: git
     params:
     sparse_paths:
@@ -363,7 +363,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_status.git
     name: mrs_uav_status
-    rev: 5e8479e6cf9645094e6fe2cca6f0fc4ddcba44fd
+    rev: bb4295b1c3eb94b8b6191c4e0020fd295c3605a4
     type: git
     params:
     sparse_paths:
@@ -375,7 +375,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_testing.git
     name: mrs_uav_testing
-    rev: d673d80a2c7be3ee3b72e5f10802819829db659d
+    rev: 052b6a6372aa89232b26eae7e3169c02ad17df66
     type: git
     params:
     sparse_paths:
@@ -387,7 +387,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
     name: mrs_uav_trackers
-    rev: d48651468fe7cafe762a02b96ebcdce8acaeb41d
+    rev: e858da4d14630de71edf127e52aea9d94f4d359e
     type: git
     params:
     sparse_paths:
@@ -399,7 +399,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
     name: mrs_uav_trajectory_generation
-    rev: e5d36bf206e43f737b835b0caf9ac900b85117b4
+    rev: 177d7afc34e218524762436ef4fc2e4bd3e1902e
     type: git
     params:
     sparse_paths:
