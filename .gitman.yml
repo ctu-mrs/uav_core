@@ -217,30 +217,6 @@ sources:
     scripts:
       - git submodule update --init --recursive
 sources_locked:
-  - repo: https://github.com/mavlink/mavlink-gbp-release
-    name: mavlink-gbp-release
-    rev: 0dc40a07d97e665c563600081840c45b60bae1cf
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: lib/mavlink-gbp-release
-    scripts:
-      - git submodule update --init --recursive
-  - repo: https://github.com/mavlink/mavros.git
-    name: mavros
-    rev: ed762be1ea6f53e4702f49bd4e22644f6347040f
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/mavros
-    scripts:
-      - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_bumper.git
     name: mrs_bumper
     rev: c943805307bd656fe3bad45d55040b9d8dd088f3
