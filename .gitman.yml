@@ -243,7 +243,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
-    rev: e9f9d6c5b8d304bbf77301ef162c67a862d77987
+    rev: ea78d88b93dcfe95034d85d78d399bf54982af5f
     type: git
     params:
     sparse_paths:
@@ -255,7 +255,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
     name: mrs_rviz_plugins
-    rev: 8f8ae8f285671418ae94ddb91f2950988aa9f348
+    rev: 571bf999c9aa0f78c954171e3374149527202de8
     type: git
     params:
     sparse_paths:
@@ -291,7 +291,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_managers.git
     name: mrs_uav_managers
-    rev: 26f7099fd4ac2cf491101bb850b0567f95c24d1a
+    rev: 4b89cbbcb1e0ac3afa755f82e52511943884e608
     type: git
     params:
     sparse_paths:
@@ -303,7 +303,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_odometry.git
     name: mrs_uav_odometry
-    rev: cfadfcd39acb60c987741a471a8926cd68d10e14
+    rev: cce4cfec89c1acebf3575d2add2214e818cd295a
     type: git
     params:
     sparse_paths:
@@ -315,7 +315,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_status.git
     name: mrs_uav_status
-    rev: db81cf3f6f925ff259ac294c45dcf7a8a5718689
+    rev: 95c43ab868a310d3622cfb32746e891523174ef2
     type: git
     params:
     sparse_paths:
@@ -411,7 +411,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_multirotor_simulator
     name: mrs_multirotor_simulator
-    rev: eb9d2ddf52573b332231b8e391d0205805e26d80
+    rev: e9183c6740091ed2098e834781817baae2960336
     type: git
     params:
     sparse_paths:
@@ -423,7 +423,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: git@github.com:ctu-mrs/mrs_uav_hw_api.git
     name: mrs_uav_hw_api
-    rev: 83704a2c140196e00a165c44db363da9c18013c2
+    rev: 0e548110a4f41b9668daf1cb6d3fb8dbafa1d4d6
     type: git
     params:
     sparse_paths:
