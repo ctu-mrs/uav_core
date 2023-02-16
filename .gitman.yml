@@ -231,7 +231,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_lib.git
     name: mrs_lib
-    rev: fc7850a69624f5fafb32ca76abb775cd3bc9bab0
+    rev: 8372b589bc2ee0cfdf5c0099026729713305ab40
     type: git
     params:
     sparse_paths:
@@ -243,7 +243,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
-    rev: ea78d88b93dcfe95034d85d78d399bf54982af5f
+    rev: 1ff4848c8fa94ab89017de26f7f26a23e998fb85
     type: git
     params:
     sparse_paths:
@@ -267,7 +267,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_controllers.git
     name: mrs_uav_controllers
-    rev: 708b5fe438d4518fab9706a5f2ea533d0d4f02e1
+    rev: 5d003241208f331dbb90f8670207e70044d5f4e0
     type: git
     params:
     sparse_paths:
@@ -291,7 +291,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_managers.git
     name: mrs_uav_managers
-    rev: 4b89cbbcb1e0ac3afa755f82e52511943884e608
+    rev: 23cfc9862123e898dcd9cc63ffd3317e177e2a57
     type: git
     params:
     sparse_paths:
@@ -315,7 +315,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_status.git
     name: mrs_uav_status
-    rev: 95c43ab868a310d3622cfb32746e891523174ef2
+    rev: f4826b75e72ca72c44dcdd48355e8c17b2bd301c
     type: git
     params:
     sparse_paths:
@@ -339,7 +339,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
     name: mrs_uav_trackers
-    rev: ce3c36c1706774c677d639b34211120533fa1ddd
+    rev: e2c41de5e2138d72ecfe96484c0cc4a7f0781ee5
     type: git
     params:
     sparse_paths:
@@ -411,7 +411,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_multirotor_simulator
     name: mrs_multirotor_simulator
-    rev: e9183c6740091ed2098e834781817baae2960336
+    rev: 629b99e636ba88bb7e86358cddefb1053f2b7066
     type: git
     params:
     sparse_paths:
