@@ -411,7 +411,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_multirotor_simulator
     name: mrs_multirotor_simulator
-    rev: 742e0224faf0e92dc9d67f221f9259657a6d25fa
+    rev: e4019f78c8b92fad6e3bb4aa2408cdba147b3bf8
     type: git
     params:
     sparse_paths:
