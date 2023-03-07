@@ -291,7 +291,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_managers.git
     name: mrs_uav_managers
-    rev: 8de6a3da90066082c41291b4d6250d6e7eeae2f1
+    rev: 821fdd3e404a92540f557e4114957569550a0b21
     type: git
     params:
     sparse_paths:
@@ -411,7 +411,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_multirotor_simulator
     name: mrs_multirotor_simulator
-    rev: 857981def829410d6cdfeb3e4ca1531dc2d31a01
+    rev: 9a9df0797fd3472c7d67155e1a4327b99880dcf1
     type: git
     params:
     sparse_paths:
