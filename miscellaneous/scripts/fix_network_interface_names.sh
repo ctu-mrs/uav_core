@@ -4,4 +4,4 @@ sudo sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevna
 sudo update-grub
 
 echo " "
-echo "Reboot the system now"
+echo "Reboot the system to apply changes"
