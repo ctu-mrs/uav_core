@@ -1,8 +1,12 @@
 #!/bin/bash
-username="$USER"
-echo $username
+if [ "$UID" -eq 0 ]
+    then echo "Please do not run with sudo (but sudo password will be asked when running the script, I just need the name of the current user)"
+    exit
+fi
 
-[ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
+username="$USER"
+
+sudo echo "current user: $username"
 
 RED='\e[31m'
 GREEN='\e[32m'
@@ -35,10 +39,11 @@ menu () {
 
 echo -e "$YELLOW"
 echo -e "\n This script will setup your computer to be used on a real UAV. It will:"
-echo -e " - configure .bashrc variables,"
-echo -e " - setup your network configuration (switch to netplan, disable network manager and fix interface names),"
+echo -e " - configure .bashrc variables, and hostname"
+echo -e " - setup your network configuration (switch to netplan, disable network manager, fix interface names and remove other netplans),"
 echo -e " - setup the wifi switcher,"
-echo -e " - setup udev rules for serial devices."
+echo -e " - disable hibernation,"
+echo -e " - setup udev rules for serial devices (And remove old ones)."
 echo -e ""
 echo -e "$YELLOW"
 echo -e "----- .bashrc variables configuration -----"
@@ -218,4 +223,4 @@ done
 
 echo -e ""
 echo -e "Disabling network manager, applying netplan and rebooting computer ...."
-# nohup sudo ./disable_network_manager.sh; sudo netplan apply; sudo reboot now
+nohup sudo ./disable_network_manager.sh >/dev/null 2>&1; sudo netplan apply >/dev/null 2>&1; sudo reboot now >/dev/null 2>&1
