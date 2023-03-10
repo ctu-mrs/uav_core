@@ -1,4 +1,6 @@
 #!/bin/bash
+username="$USER"
+echo $username
 
 [ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
 
@@ -49,7 +51,7 @@ read -e -p "my UAV_NAME is:$BOLD " -i "uav1" uav_name
 echo -e "$NORMAL"
 echo -e "Setting UAV_NAME to $uav_name"
 
-sed -i "/export UAV_NAME/c\export UAV_NAME=\"$uav_name\"" ~/.bashrc
+sed -i "/export UAV_NAME/c\export UAV_NAME=\"$uav_name\"" /home/$username/.bashrc
 echo -e ""
 
 # setting UAV_TYPE ----------------------------------------------
@@ -59,7 +61,7 @@ read -e -p "my UAV_TYPE is:$BOLD " -i "x500" uav_type
 echo -e "$NORMAL"
 echo -e "Setting UAV_TYPE to $uav_type"
 
-sed -i "/export UAV_TYPE/c\export UAV_TYPE=\"$uav_type\"" ~/.bashrc
+sed -i "/export UAV_TYPE/c\export UAV_TYPE=\"$uav_type\"" /home/$username/.bashrc
 echo -e ""
 
 # setting UAV_MASS ----------------------------------------------
@@ -69,16 +71,16 @@ read -e -p "my UAV_MASS is:$BOLD " -i "3.0" uav_mass
 echo -e "$NORMAL"
 echo -e "Setting UAV_MASS to $uav_mass"
 
-sed -i "/export UAV_MASS/c\export UAV_MASS=\"$uav_mass\"" ~/.bashrc
+sed -i "/export UAV_MASS/c\export UAV_MASS=\"$uav_mass\"" /home/$username/.bashrc
 echo -e ""
 
 # setting RUN_TYPE ----------------------------------------------
 echo -e "Setting RUN_TYPE=\"uav\""
-sed -i "/export RUN_TYPE/c\export RUN_TYPE=\"uav\"" ~/.bashrc
+sed -i "/export RUN_TYPE/c\export RUN_TYPE=\"uav\"" /home/$username/.bashrc
 
 # setting PIXGARM ----------------------------------------------
 echo -e "Setting PIXGARM=\"true\""
-sed -i "/export PIXGARM/c\export PIXGARM=\"true\"" ~/.bashrc
+sed -i "/export PIXGARM/c\export PIXGARM=\"true\"" /home/$username/.bashrc
 echo -e ""
 
 echo -e "$YELLOW"
@@ -216,4 +218,4 @@ done
 
 echo -e ""
 echo -e "Disabling network manager, applying netplan and rebooting computer ...."
-nohup sudo ./disable_network_manager.sh; sudo netplan apply; sudo reboot now
+# nohup sudo ./disable_network_manager.sh; sudo netplan apply; sudo reboot now
