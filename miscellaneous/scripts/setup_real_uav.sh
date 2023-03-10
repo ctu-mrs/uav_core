@@ -1,13 +1,13 @@
 #!/bin/bash
 
+[ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
+
 RED='\e[31m'
 GREEN='\e[32m'
 YELLOW='\e[33m'
 NC='\e[39m' # No Color
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
-
-# #{ menu()
 
 menu () {
   ret_val=0
@@ -31,18 +31,16 @@ menu () {
   return $ret_val
 }
 
-#}
-
-# echo -e "$YELLOW"
-# echo -e "\n This script will setup your computer to be used on a real UAV. It will:"
-# echo -e " - configure .bashrc variables:"
-# echo -e " - setup your network configuration (switch to netplan, disable network manager and fix interface names):"
-# echo -e " - setup the wifi switcher:"
-# echo -e " - setup udev rules for serial devices:"
-# echo -e ""
-# echo -e "$YELLOW"
-# echo -e "----- .bashrc variables configuration -----"
-# echo -e "$NC"
+echo -e "$YELLOW"
+echo -e "\n This script will setup your computer to be used on a real UAV. It will:"
+echo -e " - configure .bashrc variables,"
+echo -e " - setup your network configuration (switch to netplan, disable network manager and fix interface names),"
+echo -e " - setup the wifi switcher,"
+echo -e " - setup udev rules for serial devices."
+echo -e ""
+echo -e "$YELLOW"
+echo -e "----- .bashrc variables configuration -----"
+echo -e "$NC"
 
 # setting UAV_NAME ----------------------------------------------
 echo -e "$GREEN"
@@ -54,80 +52,80 @@ echo -e "Setting UAV_NAME to $uav_name"
 sed -i "/export UAV_NAME/c\export UAV_NAME=\"$uav_name\"" ~/.bashrc
 echo -e ""
 
-# # setting UAV_TYPE ----------------------------------------------
-# echo -e "$GREEN"
-# echo -e "What is your UAV_TYPE? (e.g. x500, f450, t650, naki, brus ...)$NC"
-# read -e -p "my UAV_TYPE is:$BOLD " -i "x500" uav_type
-# echo -e "$NORMAL"
-# echo -e "Setting UAV_TYPE to $uav_type"
+# setting UAV_TYPE ----------------------------------------------
+echo -e "$GREEN"
+echo -e "What is your UAV_TYPE? (e.g. x500, f450, t650, naki, brus ...)$NC"
+read -e -p "my UAV_TYPE is:$BOLD " -i "x500" uav_type
+echo -e "$NORMAL"
+echo -e "Setting UAV_TYPE to $uav_type"
 
-# sed -i "/export UAV_TYPE/c\export UAV_TYPE=\"$uav_type\"" ~/.bashrc
-# echo -e ""
+sed -i "/export UAV_TYPE/c\export UAV_TYPE=\"$uav_type\"" ~/.bashrc
+echo -e ""
 
-# # setting UAV_MASS ----------------------------------------------
-# echo -e "$GREEN"
-# echo -e "What is your UAV_MASS? (e.g. 3.0 - in kilograms, mass of the UAV with battery)$NC"
-# read -e -p "my UAV_MASS is:$BOLD " -i "3.0" uav_mass
-# echo -e "$NORMAL"
-# echo -e "Setting UAV_MASS to $uav_mass"
+# setting UAV_MASS ----------------------------------------------
+echo -e "$GREEN"
+echo -e "What is your UAV_MASS? (e.g. 3.0 - in kilograms, mass of the UAV with battery)$NC"
+read -e -p "my UAV_MASS is:$BOLD " -i "3.0" uav_mass
+echo -e "$NORMAL"
+echo -e "Setting UAV_MASS to $uav_mass"
 
-# sed -i "/export UAV_MASS/c\export UAV_MASS=\"$uav_mass\"" ~/.bashrc
-# echo -e ""
+sed -i "/export UAV_MASS/c\export UAV_MASS=\"$uav_mass\"" ~/.bashrc
+echo -e ""
 
-# # setting RUN_TYPE ----------------------------------------------
-# echo -e "Setting RUN_TYPE=\"uav\""
-# sed -i "/export RUN_TYPE/c\export RUN_TYPE=\"uav\"" ~/.bashrc
+# setting RUN_TYPE ----------------------------------------------
+echo -e "Setting RUN_TYPE=\"uav\""
+sed -i "/export RUN_TYPE/c\export RUN_TYPE=\"uav\"" ~/.bashrc
 
-# # setting PIXGARM ----------------------------------------------
-# echo -e "Setting PIXGARM=\"true\""
-# sed -i "/export PIXGARM/c\export PIXGARM=\"true\"" ~/.bashrc
-# echo -e ""
+# setting PIXGARM ----------------------------------------------
+echo -e "Setting PIXGARM=\"true\""
+sed -i "/export PIXGARM/c\export PIXGARM=\"true\"" ~/.bashrc
+echo -e ""
 
-# echo -e "$YELLOW"
-# echo -e "----- udev rules configuration -----"
-# echo -e "$NC"
+echo -e "$YELLOW"
+echo -e "----- udev rules configuration -----"
+echo -e "$NC"
 
-# echo -e "$GREEN"
-# echo -e "Which udev rules should be applied?$NC"
+echo -e "$GREEN"
+echo -e "Which udev rules should be applied?$NC"
 
-# udev_rules_full_path=()
-# udev_rules=()
+udev_rules_full_path=()
+udev_rules=()
 
-# search_dir=../udev_rules
-# for entry in "$search_dir"/*.rules
-# do
-#   udev_rules_full_path+=($entry)
-#   udev_rules+=($(echo "$entry" | cut -c $((${#search_dir}+2))-))
-# done
+search_dir=../udev_rules
+for entry in "$search_dir"/*.rules
+do
+  udev_rules_full_path+=($entry)
+  udev_rules+=($(echo "$entry" | cut -c $((${#search_dir}+2))-))
+done
 
-# menu "${udev_rules[@]}"
-# selected=$(($?-1))
+menu "${udev_rules[@]}"
+selected=$(($?-1))
 
-# echo -e ""
-# echo -e "Removing old udev rules (if they exist)..."
-# for entry in "${udev_rules[@]}"
-# do
-#   echo "removing $entry"
-#   cmd="sudo rm /etc/udev/rules.d/$entry 2> /dev/null"
-#   eval "$cmd"
-# done
+echo -e ""
+echo -e "Removing old udev rules (if they exist)..."
+for entry in "${udev_rules[@]}"
+do
+  echo "removing $entry"
+  cmd="sudo rm /etc/udev/rules.d/$entry 2> /dev/null"
+  eval "$cmd"
+done
 
-# echo -e "$GREEN"
-# echo -e "Applying new udev_rulse:$NC ${udev_rules[$selected]}"
-# cmd="sudo cp ${udev_rules_full_path[$selected]} /etc/udev/rules.d/"
-# echo "executing: $cmd"
-# eval "$cmd"
+echo -e "$GREEN"
+echo -e "Applying new udev_rulse:$NC ${udev_rules[$selected]}"
+cmd="sudo cp ${udev_rules_full_path[$selected]} /etc/udev/rules.d/"
+echo "executing: $cmd"
+eval "$cmd"
 
-# # setting NETWORK ----------------------------------------------
+# setting NETWORK ----------------------------------------------
 
-# echo -e "$YELLOW"
-# echo -e "----- network configuration -----"
-# echo -e "$NC"
+echo -e "$YELLOW"
+echo -e "----- network configuration -----"
+echo -e "$NC"
 
-# echo -e "$GREEN"
-# echo -e "Fixing network interface names$NC"
-# ./fix_network_interface_names.sh
-# echo -e ""
+echo -e "$GREEN"
+echo -e "Fixing network interface names$NC"
+./fix_network_interface_names.sh
+echo -e ""
 
 echo -e "$GREEN"
 echo -e "Setting up netplan config$NC"
@@ -171,7 +169,7 @@ echo -e "Your UAV_NAME is: $BOLD""$uav_name"
 read -e -p "my WiFi IP address is:$BOLD " -i "$possible_uav_wifi_ip_address" wifi_ip_address
 echo -e "$NORMAL"
 echo -e "Setting WiFi IP address to $wifi_ip_address"
-sed -i "/addresses: \[192/c\      addresses: \[$wifi_ip_address\]" /tmp/01-netcfg.yaml
+sed -i "/addresses: \[192/c\      addresses: \[$wifi_ip_address\/24]" /tmp/01-netcfg.yaml
 
 # # setting WiFi Gateway ----------------------------------------------
 echo -e "$GREEN"
@@ -188,20 +186,34 @@ echo -e "Your UAV_NAME is: $BOLD""$uav_name"
 read -e -p "my Ethernet IP address is:$BOLD " -i "$possible_uav_eth_ip_address" eth_ip_address
 echo -e "$NORMAL"
 echo -e "Setting Ethernet IP address to $eth_ip_address"
-sed -i "/addresses: \[10/c\      addresses: \[$eth_ip_address\]" /tmp/01-netcfg.yaml
-# echo -e ""
+sed -i "/addresses: \[10/c\      addresses: \[$eth_ip_address\/24]" /tmp/01-netcfg.yaml
 
+echo -e ""
+echo -e "Copying netplan to /etc/netplan and removing any other netplans ..."
+sudo rm /etc/netplan/*
+sudo cp /tmp/01-netcfg.yaml /etc/netplan/
+echo -e ""
+echo -e "Setting up WiFi switcher ...."
+sudo ../configurator_scripts/setup_configurator_call_with_sudo.sh
 
+echo -e ""
+echo -e "Disabling hibernation ...."
+sudo  ./disable_hibernation.sh
 
-# for value in "${udev_rules[@]}"
-# do
-#      echo $value
-# done
+echo -e "$RED"
+echo -e " Network settings will now be applied, NetworkManager will be disabled and Netplan will be applied"
+echo -e "$BOLD If you are connected over SSH, you will most likely lose the connection.$NORMAL"
+echo -e "$RED If you set up the network configuration correctly, the PC will reboot and connect to your WiFi network with the new IP address$NC"
 
+while true; do
+  read -p " Do you wish to proceed (y/n)? " yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer y or n";;
+    esac
+done
 
-
-
-# options=("Option 1" "Option 2" "Option 3" "Option 4")
-# menu "${options[@]}"
-# echo -e "$?"
-
+echo -e ""
+echo -e "Disabling network manager, applying netplan and rebooting computer ...."
+nohup sudo ./disable_network_manager.sh; sudo netplan apply; sudo reboot now
