@@ -243,7 +243,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
-    rev: c57d501d0dcf695054e634c8c4695007f60f8ae0
+    rev: 0d291963ace5f9a6f19175d11140751c15bff150
     type: git
     params:
     sparse_paths:
@@ -291,7 +291,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_managers.git
     name: mrs_uav_managers
-    rev: 5032cfd136796b0956abf9b0b61b8e5e782a0359
+    rev: 08e5b597c73a841099f6e02ba9a9365c7cc510cd
     type: git
     params:
     sparse_paths:
@@ -303,7 +303,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_status.git
     name: mrs_uav_status
-    rev: 03f0d5d4478415a031f9db047a6dc12653543ce9
+    rev: 5e435552d9f87fa8074567202d2a74cc5517a999
     type: git
     params:
     sparse_paths:
@@ -327,7 +327,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
     name: mrs_uav_trackers
-    rev: 48cecf10958668c8fc167f1d3fc7c005f9b2e903
+    rev: 289aaf361c07b7ca77747c6829a774876f8cfc7b
     type: git
     params:
     sparse_paths:
@@ -423,7 +423,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_state_estimators.git
     name: mrs_uav_state_estimators
-    rev: 3fcab682992bc264b18975d4e6c93aace87f42bc
+    rev: 3e5d192262d8b0acac94d6e89930a4716e227ed8
     type: git
     params:
     sparse_paths:
