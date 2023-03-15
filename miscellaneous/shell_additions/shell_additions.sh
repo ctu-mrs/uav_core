@@ -703,22 +703,11 @@ waitForSpawn() {
 
 # #}
 
-# #{ waitForOdometry()
+# #{ waitForHw()
 
-waitForOdometry() {
-  until timeout 6s rostopic echo /$UAV_NAME/mavros/local_position/odom -n 1 --noarr > /dev/null 2>&1; do
-    echo "waiting for odometry"
-    sleep 1;
-  done
-}
-
-# #}
-
-# #{ waitForControlManager()
-
-waitForControlManager() {
-  until timeout 6s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
-    echo "waiting for control manager"
+waitForHw() {
+  until timeout 6s rostopic echo /$UAV_NAME/hw_api/capabilities -n 1 --noarr > /dev/null 2>&1; do
+    echo "waiting for hardware api"
     sleep 1;
   done
 }
@@ -732,22 +721,7 @@ waitForControl() {
     echo "waiting for control"
     sleep 1;
   done
-  until timeout 6s rostopic echo /$UAV_NAME/odometry/odom_main -n 1 --noarr > /dev/null 2>&1; do
-    echo "waiting for odom_main"
-    sleep 1;
-  done
-}
-
-# #}
-
-# #{ waitForMpc()
-
-waitForMpc() {
-  until timeout 6s rostopic echo /$UAV_NAME/control_manager/diagnostics -n 1 --noarr > /dev/null 2>&1; do
-    echo "waiting for control"
-    sleep 1;
-  done
-  until timeout 6s rostopic echo /$UAV_NAME/odometry/odom_main -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/estimation_manager/uav_state -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for odom_main"
     sleep 1;
   done
