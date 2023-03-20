@@ -706,7 +706,7 @@ waitForSpawn() {
 # #{ waitForHw()
 
 waitForHw() {
-  until timeout 6s rostopic echo /$UAV_NAME/hw_api/capabilities -n 1 --noarr > /dev/null 2>&1; do
+  until timeout 6s rostopic echo /$UAV_NAME/hw_api/connected -n 1 --noarr > /dev/null 2>&1; do
     echo "waiting for hardware api"
     sleep 1;
   done
