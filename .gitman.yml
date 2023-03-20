@@ -303,7 +303,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
     name: mrs_rviz_plugins
-    rev: cd24b9b1ea25a78530518752735db9ab49dd5ce7
+    rev: 2f132d277f2e146c0a496a69a7fe6d9764580dd2
     type: git
     params:
     sparse_paths:
