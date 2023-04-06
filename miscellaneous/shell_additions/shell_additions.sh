@@ -679,6 +679,19 @@ waitForRos() {
 
 # #}
 
+# #{ waitForTime()
+
+waitForTime() {
+  echo "waiting for ROS Time"
+  until timeout 6s rosparam get /use_sim_time > /dev/null 2>&1; do
+    echo "waiting for /use_sim_time"
+    sleep 1;
+  done
+  sleep 1;
+}
+
+# #}
+
 # #{ waitForGazebo()
 
 waitForGazebo() {
