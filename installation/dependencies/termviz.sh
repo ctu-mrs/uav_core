@@ -9,9 +9,8 @@ sudo apt-get -y install cargo
 
 export ROS_WORKSPACES_STORE=$ROS_WORKSPACES
 export ROS_WORKSPACES=""
-echo "A"
+echo "Re-sourcing ROS setup"
 source /opt/ros/*/setup.bash
-echo "B"
 cd $MY_PATH/../../utils/termviz
 cargo build --release
 export ROS_WORKSPACES=$ROS_WORKSPACES_STORE
