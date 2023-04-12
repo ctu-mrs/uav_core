@@ -327,7 +327,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
     name: mrs_uav_trackers
-    rev: f27c2df6b486cddbc2d204be0264348b650f30ad
+    rev: a811f3c218578dc625e22951077d347ed0f18139
     type: git
     params:
     sparse_paths:
