@@ -4,7 +4,13 @@ MY_PATH=`( cd "$MY_PATH" && pwd )`
 
 sudo apt-get -y install cargo
 
+
+export ROS_WORKSPACES_STORE=$ROS_WORKSPACES
+export ROS_WORKSPACES=""
+source /opt/ros/*/setup.bash
 cd $MY_PATH/../../utils/termviz
 cargo build --release
+export ROS_WORKSPACES=$ROS_WORKSPACES_STORE
+source /home/mrs/mrs_workspace/devel/setup.bash
 
-ln -s $MY_PATH/../../utils/termviz/target/release/termviz /usr/local/bin/
+sudo ln -s $MY_PATH/../../utils/termviz/target/release/termviz /usr/local/bin/
