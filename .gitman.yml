@@ -228,6 +228,18 @@ sources:
         target: utils/tmuxinator
     scripts:
       - git submodule update --init --recursive
+  - repo: https://github.com/carzum/termviz.git
+    name: termviz
+    rev: main
+    type: git
+    params:
+    sparse_paths:
+      -
+    links:
+      - source: ''
+        target: utils/termviz
+    scripts:
+      - git submodule update --init --recursive
 sources_locked:
   - repo: https://github.com/mavlink/mavlink-gbp-release
     name: mavlink-gbp-release
