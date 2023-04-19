@@ -20,7 +20,7 @@ source /opt/ros/${ROS_DISTRO}/setup.bash
 cd $MY_PATH/../../utils/termviz
 echo "Running cargo build on termviz"
 cargo build --release
-touch ./CATKIN_IGNORE
+# touch ./CATKIN_IGNORE
 export ROS_WORKSPACES=$ROS_WORKSPACES_STORE
 # source $HOME/mrs_workspace/devel/setup.bash
 
