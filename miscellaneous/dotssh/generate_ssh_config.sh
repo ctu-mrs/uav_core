@@ -133,15 +133,20 @@ for ((i=0; i < ${#hostname[*]}; i++)); do
   $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/${ip[i]}\s.*/norm dapGp" -c "wqa" -- "$HOME/.ssh/config"
 
   num=`cat /etc/hosts | grep ".* ${hostname[i]}$" | wc -l`
-  if [ "$num" -lt "1" ]; then
-
-    echo Creating new entry in /etc/hosts for ${hostname[i]} ${ip[i]}
-
-  else
+  if [ "$num" -ge "1" ]; then
 
     # delete the old entry
     echo "deleting old entry in /etc/hosts"
     sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/.*\s*${hostname[i]}$/norm dd" -c "wqa" -- "/etc/hosts"
+
+  fi
+
+  num=`cat /etc/hosts | grep "${ip[i]}\s" | wc -l`
+  if [ "$num" -ge "1" ]; then
+
+    # delete the old entry
+    echo "deleting old entry in /etc/hosts"
+    sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/${ip[i]}\s/norm dd" -c "wqa" -- "/etc/hosts"
 
   fi
 
