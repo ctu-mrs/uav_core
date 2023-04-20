@@ -79,9 +79,9 @@ input=(
 
   # our laptops, remove if needed
 
-  # 'klaxalk' 'klaxalk-local' '192.168.69.11'
-  'dan'     'dan-local'     '192.168.69.42'
-  'pavel'   'pavel'         '192.168.69.19'
+  'klaxalk-local' 'klaxalk' '192.168.69.11'
+  'dan-local'     'dan'     '192.168.69.42'
+  'pavel'         'pavel'   '192.168.69.19'
 )
 
 # get path to script
@@ -97,8 +97,11 @@ do
   ((i%3==2)) && ip[$i/3]="${input[$i]}"
 done
 
-hostname=( "${hostname[@]}" "${nato[@]}" )
-ip=( "${ip[@]}" "${ip[@]}" )
+# hostname=( "${hostname[@]}" "${nato[@]}" )
+# ip=( "${ip[@]}" "${ip[@]}" )
+
+hostname=( "${hostname[@]}" )
+ip=( "${ip[@]}" )
 
 my_hostname=$( cat /etc/hostname )
 
