@@ -339,7 +339,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_general.git
     name: mrs_uav_general
-    rev: 4e5e934408928848109083bfaf054ab955af6d50
+    rev: 157f27f35af3d6d6a6eef995dc594a515e6f5fbb
     type: git
     params:
     sparse_paths:
@@ -375,7 +375,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_status.git
     name: mrs_uav_status
-    rev: bb4295b1c3eb94b8b6191c4e0020fd295c3605a4
+    rev: 5be758f195729d99b358545d811afb6dd0eac144
     type: git
     params:
     sparse_paths:
@@ -467,6 +467,18 @@ sources_locked:
     links:
       - source: ''
         target: ros_packages/thirdparty/tf2
+    scripts:
+      - git submodule update --init --recursive
+  - repo: https://github.com/carzum/termviz.git
+    name: termviz
+    rev: 9488c8d9316a819285ee2b16da67babbea9a3e83
+    type: git
+    params:
+    sparse_paths:
+      -
+    links:
+      - source: ''
+        target: utils/termviz
     scripts:
       - git submodule update --init --recursive
 default_group: ''
