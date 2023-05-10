@@ -482,6 +482,7 @@ sources_locked:
         target: utils/termviz
     scripts:
       - git submodule update --init --recursive
+      - touch CATKIN_IGNORE
 default_group: ''
 groups:
   -
