@@ -24,4 +24,4 @@ touch ./CATKIN_IGNORE
 export ROS_WORKSPACES=$ROS_WORKSPACES_STORE
 # source $HOME/mrs_workspace/devel/setup.bash
 
-sudo ln -s $MY_PATH/../../utils/termviz/target/release/termviz /usr/local/bin/
+sudo ln -sf $MY_PATH/../../utils/termviz/target/release/termviz /usr/local/bin/
