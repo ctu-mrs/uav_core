@@ -304,7 +304,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
-    rev: 09cfd9bc92efab125d448f47e2b9f3ffdc9c8d84
+    rev: 18ab8393f06f8083c4ea74bb85a633e0b0bdac1f
     type: git
     params:
     sparse_paths:
@@ -340,7 +340,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_general.git
     name: mrs_uav_general
-    rev: d6c3dffc0568de2ee4399f0950d8963a67a6d1f9
+    rev: 157f27f35af3d6d6a6eef995dc594a515e6f5fbb
     type: git
     params:
     sparse_paths:
@@ -352,7 +352,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_managers.git
     name: mrs_uav_managers
-    rev: fd0984b9d87c17b591cf0fcd090cda5362c0695e
+    rev: d77da9bac2aa1d338f5d96dfe97f5b63d1ef03dd
     type: git
     params:
     sparse_paths:
@@ -376,7 +376,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_status.git
     name: mrs_uav_status
-    rev: bb4295b1c3eb94b8b6191c4e0020fd295c3605a4
+    rev: 5be758f195729d99b358545d811afb6dd0eac144
     type: git
     params:
     sparse_paths:
@@ -388,7 +388,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_testing.git
     name: mrs_uav_testing
-    rev: 31733c95519b1af08d9425667e3a9a174c7a30ba
+    rev: 2d54deb1f84be8f97ed2c1a907a64fab5563d743
     type: git
     params:
     sparse_paths:
@@ -400,7 +400,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
     name: mrs_uav_trackers
-    rev: e858da4d14630de71edf127e52aea9d94f4d359e
+    rev: c4bc27ec76b3a34fae4b01d11804920edd1d13a6
     type: git
     params:
     sparse_paths:
@@ -468,6 +468,18 @@ sources_locked:
     links:
       - source: ''
         target: ros_packages/thirdparty/tf2
+    scripts:
+      - git submodule update --init --recursive
+  - repo: https://github.com/carzum/termviz.git
+    name: termviz
+    rev: 9488c8d9316a819285ee2b16da67babbea9a3e83
+    type: git
+    params:
+    sparse_paths:
+      -
+    links:
+      - source: ''
+        target: utils/termviz
     scripts:
       - git submodule update --init --recursive
 default_group: ''
