@@ -240,6 +240,7 @@ sources:
         target: utils/termviz
     scripts:
       - git submodule update --init --recursive
+      - touch CATKIN_IGNORE
 sources_locked:
   - repo: https://github.com/mavlink/mavlink-gbp-release
     name: mavlink-gbp-release
@@ -339,7 +340,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_general.git
     name: mrs_uav_general
-    rev: 4e5e934408928848109083bfaf054ab955af6d50
+    rev: 157f27f35af3d6d6a6eef995dc594a515e6f5fbb
     type: git
     params:
     sparse_paths:
@@ -375,7 +376,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_status.git
     name: mrs_uav_status
-    rev: bb4295b1c3eb94b8b6191c4e0020fd295c3605a4
+    rev: 5be758f195729d99b358545d811afb6dd0eac144
     type: git
     params:
     sparse_paths:
@@ -387,7 +388,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_testing.git
     name: mrs_uav_testing
-    rev: 31733c95519b1af08d9425667e3a9a174c7a30ba
+    rev: 2d54deb1f84be8f97ed2c1a907a64fab5563d743
     type: git
     params:
     sparse_paths:
@@ -399,7 +400,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
     name: mrs_uav_trackers
-    rev: b82c2a23954596d937e3f8a63c85604622d724bf
+    rev: c4bc27ec76b3a34fae4b01d11804920edd1d13a6
     type: git
     params:
     sparse_paths:
@@ -469,6 +470,19 @@ sources_locked:
         target: ros_packages/thirdparty/tf2
     scripts:
       - git submodule update --init --recursive
+  - repo: https://github.com/carzum/termviz.git
+    name: termviz
+    rev: 9488c8d9316a819285ee2b16da67babbea9a3e83
+    type: git
+    params:
+    sparse_paths:
+      -
+    links:
+      - source: ''
+        target: utils/termviz
+    scripts:
+      - git submodule update --init --recursive
+      - touch CATKIN_IGNORE
 default_group: ''
 groups:
   -
