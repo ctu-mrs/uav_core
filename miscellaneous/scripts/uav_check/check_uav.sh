@@ -8,6 +8,7 @@ BOLD=$(tput bold)
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 DEBUG=0
+GOT_PIXHAWK=0
 
 # #{ debug_echo()
 
@@ -243,6 +244,7 @@ dev_check () {
     ret_val=1
   else
     echo -e "${GREEN}found${NC}"
+    GOT_PIXHAWK=1
   fi
 
   if ! [ -z "$(echo "$SENSORS" | grep rplidar)" ]
@@ -619,5 +621,12 @@ ros_master_check () {
 
 echo -e "----------- ${BOLD}NOW RUNNING PIXHAWK DIAGNOSTICS${NC} -----------"
 sleep 1
-bash $SCRIPT_DIR/helper_tmux.sh
+
+rm -f /tmp/pixhawk_config_tmp.txt
+if [[ $GOT_PIXHAWK -eq 0 ]]
+then
+  echo -e "\033[1m\n----------- ${RED}PIXHAWK IS MISSING, SKIPPING PIXHAWK CHECK${NC} -----------\n\033[0m"
+else
+  bash $SCRIPT_DIR/helper_tmux.sh
+fi
 cat /tmp/pixhawk_config_tmp.txt
