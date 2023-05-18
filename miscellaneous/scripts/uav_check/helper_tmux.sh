@@ -19,6 +19,7 @@ SESSION_NAME=pixhawk_test
 # following commands will be executed first in each window
 # * do NOT put ; at the end
 
+pre_input="export UAV_NAME="uav1""
 # define commands
 # 'name' 'command'
 # * DO NOT PUT SPACES IN THE NAMES
