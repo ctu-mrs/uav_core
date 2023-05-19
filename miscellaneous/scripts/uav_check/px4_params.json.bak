@@ -1,0 +1,17 @@
+{
+    "SENS_EN_LL40LS":{
+        "valid_values":[
+            "2"
+            ],
+        "error_message":"Set this parameter to I2C if you use a Garmin lidar as a rangefinder to measure height!"
+    },
+    "DSHOT_CONFIG":{
+        "valid_values":[
+            "150",
+            "300",
+            "600",
+            "1200"
+            ],
+        "error_message":"Setup DSHOT on the Pixhawk, DSHOT is critical for correct operations of the UAV!"
+    }
+}

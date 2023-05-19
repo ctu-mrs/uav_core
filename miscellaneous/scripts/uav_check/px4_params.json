@@ -13,5 +13,38 @@
             "1200"
             ],
         "error_message":"Setup DSHOT on the Pixhawk, DSHOT is critical for correct operations of the UAV!"
+    },
+	"SYS_USE_IO":{
+        "valid_values":[
+            "0"
+            ],
+        "error_message":"Set this parameter to IO PWM disabled, otherwise DSHOT will not work."
+    },
+	"SYS_HAS_MAG":{
+        "valid_values":[
+            "1"
+            ],
+        "error_message":"Magnetometer is disabled - set this paramter to Yes and calibrate magnetometer."
+    },
+	"CBRK_IO_SAFETY":{
+        "valid_values":[
+            "0"
+            ],
+        "error_message":"Set this parameter to 0, otherwise safety button will not work."
+    },
+	"RC_MAP_FAILSAFE":{
+        "valid_values":[
+            "0",
+            "2"
+            ],
+        "error_message":"If you use R81 receiver, set this parameter to 0. For Optima, set it to 2, otherwise RC loss failsafe will not work. Test the failsafe."
+    },
+	"RC_FAILS_THR":{
+        "valid_values":[
+            "0",
+            "950"
+            ],
+        "error_message":"If you use R81 receiver, set this parameter to 0. For Optima, set it to 950, otherwise RC loss failsafe will not work. Test the failsafe."
     }
 }
+
