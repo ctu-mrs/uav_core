@@ -292,7 +292,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_mavros_interface.git
     name: mrs_mavros_interface
-    rev: 1d174d02719e6a6ead42625ad11147ab3b0ad244
+    rev: c0d987400fed1911b8ad7db39cba449c863c00db
     type: git
     params:
     sparse_paths:
