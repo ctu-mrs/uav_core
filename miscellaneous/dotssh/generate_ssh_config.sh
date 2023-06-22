@@ -82,6 +82,8 @@ input=(
   'klaxalk-local' 'klaxalk' '192.168.69.11'
   'dan-local'     'dan'     '192.168.69.42'
   'pavel'         'pavel'   '192.168.69.19'
+  'parakh'         'parakh'   '192.168.69.81'
+  'filip'         'filip'   '192.168.69.44'
 )
 
 # get path to script
