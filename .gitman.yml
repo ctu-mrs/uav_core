@@ -315,7 +315,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_testing.git
     name: mrs_uav_testing
-    rev: 1f08ea89ba05cac10ce78ea2f64710640dc2cd6a
+    rev: 27224d568e3a1fcab3194ff7355b4f5a5e97b2f7
     type: git
     params:
     sparse_paths:
