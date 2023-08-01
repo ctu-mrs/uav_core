@@ -66,10 +66,9 @@ for i in data:
         if str(resp.value.integer) in data[i]['valid_values'] or str(resp.value.real) in data[i]['valid_values']:
             print_dual("Parameter " + i + GREEN + " PASS" + END)
         else:
-            print_dual("Parameter " + i + RED + " FAIL" + END)
-            print_dual(RED + BOLD + data[i]['error_message'] + END)
+            print_dual("Parameter " + i + RED + " FAIL " + END + BOLD + " " + data[i]['error_message'] + END)
     else:
-        print_dual(RED + BOLD + "Failed to check parameter " + i + END)
+        print_dual(RED + BOLD + "Failed to check parameter " + i + END + BOLD + " " + data[i]['error_message'] + END)
       
 
 print_dual("-----------------Check Finished-----------------------")
