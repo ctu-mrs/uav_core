@@ -45,6 +45,24 @@
             "950"
             ],
         "error_message":"If you use R81 receiver, set this parameter to 0. For Optima, set it to 950, otherwise RC loss failsafe will not work. Test the failsafe."
+    },
+	"CAL_MAG0_PRIO":{
+        "valid_values":[
+            "1"
+            ],
+        "error_message":"Internal magnetometer priority - set to 'Min' when using Pixhawk 6X/6C, or newer firmware (1.13.2-3). You can ignore this if you run Pixhawk 4 on 1.11.2"
+    },
+	"CAL_MAG1_PRIO":{
+        "valid_values":[
+            "100"
+            ],
+        "error_message":"External magnetometer priority - set to 'Max' when using Pixhawk 6X/6C, or newer firmware (1.13.2-3). You can ignore this if you run Pixhawk 4 on 1.11.2"
+    },
+	"SENS_MAG_MODE":{
+        "valid_values":[
+            "1"
+            ],
+        "error_message":"Set to 'Publish primary magnetometer' when using Pixhawk 6X/6C, or newer firmware (1.13.2-3). You can ignore this if you run Pixhawk 4 on 1.11.2"
     }
 }
 
