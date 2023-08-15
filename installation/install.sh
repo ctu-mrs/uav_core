@@ -43,6 +43,10 @@ bash $MY_PATH/dependencies/gdb/install.sh
 
 bash $MY_PATH/dependencies/mavros.sh --compile
 
+## | ------------------- install termviz ---------------------- |
+
+bash $MY_PATH/dependencies/termviz.sh
+
 ## | ------- add sourcing of shell additions to .bashrc ------- |
 
 num=`cat ~/.bashrc | grep "shell_additions.sh" | wc -l`

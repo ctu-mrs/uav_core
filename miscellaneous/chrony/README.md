@@ -13,7 +13,16 @@ BTW, the computers should (probably) be in the same timezone.
 
 ```bash
 sudo apt-get -y install chrony
-sudo cp chrony-client.conf /etc/chrony/chrony.conf 
+sudo cp chrony-client.conf /etc/chrony/chrony.conf
+sudo vim /etc/chrony/chrony.conf
+```
+Edit the lookup server by adding a new line to list of NTP servers.
+```
+server [SERVER IP ADDRESS - e.g. 192.168.69.5/SERVER HOSTNAME] offline iburst
+```
+Make sure to have the `SERVER HOSTNAME` in the `/etc/hosts` if you want to use the hostname.
+
+```bash
 sudo service chrony restart
 ```
 
@@ -22,6 +31,13 @@ sudo service chrony restart
 ```bash
 sudo apt-get -y install chrony
 sudo cp chrony-server.conf /etc/chrony/chrony.conf
+sudo vim /etc/chrony/chrony.conf
+```
+Edit the `allow` ip address in the configuration file that defines the server's accessibility by NTP clients as follows
+```
+allow [SERVER IP ADDRESS (replace the last digit with zero) - e.g. 192.168.69.0.]/24
+```
+```bash
 sudo service chrony restart
 ```
 

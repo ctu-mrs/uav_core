@@ -3,6 +3,7 @@
 key_name="~/.ssh/id_rsa_drone_login"
 
 input=(
+
   'alice'       'uav1'  '192.168.69.101'
   'bob'         'uav2'  '192.168.69.102'
   'carol'       'uav3'  '192.168.69.103'
@@ -27,9 +28,25 @@ input=(
   'vanna'       'uav22' '192.168.69.122'
   'walter'      'uav23' '192.168.69.123'
   'xena'        'uav24' '192.168.69.124'
-  'yoda'        'uav25' '192.168.69.125'
-  'vio'         'uav35' '192.168.69.135'
+  'uav25'       'uav25' '192.168.69.125'
+  'uav26'       'uav26' '192.168.69.126'
+  'uav27'       'uav27' '192.168.69.127'
+  'uav28'       'uav28' '192.168.69.128'
+  'uav29'       'uav29' '192.168.69.129'
+  'uav30'       'uav30' '192.168.69.130'
+  'uav31'       'uav31' '192.168.69.131'
+  'uav32'       'uav32' '192.168.69.132'
+  'uav33'       'uav33' '192.168.69.133'
+  'uav34'       'uav34' '192.168.69.134'
+  'uav35'       'uav35' '192.168.69.135'
+  'uav36'       'uav36' '192.168.69.136'
+  'uav37'       'uav37' '192.168.69.137'
+  'uav38'       'uav38' '192.168.69.138'
+  'uav39'       'uav39' '192.168.69.139'
+  'uav40'       'uav40' '192.168.69.140'
+  'uav41'       'uav41' '192.168.69.141'
   'uniform'     'uav42' '192.168.69.142'
+  'uniform'     'uav43' '192.168.69.143'
   'whiskey'     'uav44' '192.168.69.144'
   'papa'        'uav45' '192.168.69.145'
   'oscar'       'uav46' '192.168.69.146'
@@ -62,21 +79,18 @@ input=(
 
   # our laptops, remove if needed
 
-  'klaxalk' 'klaxalk-local' '192.168.69.11'
-  'dan'     'dan-local'     '192.168.69.42'
-  'pavel'   'pavel'         '192.168.69.19'
+  'klaxalk-local' 'klaxalk' '192.168.69.11'
+  'dan-local'     'dan'     '192.168.69.42'
+  'pavel'         'pavel'   '192.168.69.19'
+  'parakh'         'parakh'   '192.168.69.81'
+  'filip'         'filip'   '192.168.69.44'
 )
 
 # get path to script
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
-if [ -x "$(whereis nvim | awk '{print $2}')" ]; then
- VIM_BIN="$(whereis nvim | awk '{print $2}')"
- HEADLESS="--headless"
-elif [ -x "$(whereis vim | awk '{print $2}')" ]; then
- VIM_BIN="$(whereis vim | awk '{print $2}')"
- HEADLESS=""
-fi
+VIM_BIN="$(whereis vim | awk '{print $2}')"
+HEADLESS=""
 
 for ((i=0; i < ${#input[*]}; i++));
 do
@@ -85,8 +99,11 @@ do
   ((i%3==2)) && ip[$i/3]="${input[$i]}"
 done
 
-hostname=( "${hostname[@]}" "${nato[@]}" )
-ip=( "${ip[@]}" "${ip[@]}" )
+# hostname=( "${hostname[@]}" "${nato[@]}" )
+# ip=( "${ip[@]}" "${ip[@]}" )
+
+hostname=( "${hostname[@]}" )
+ip=( "${ip[@]}" )
 
 my_hostname=$( cat /etc/hostname )
 
@@ -118,21 +135,27 @@ for ((i=0; i < ${#hostname[*]}; i++)); do
   $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/${ip[i]}\s.*/norm dapGp" -c "wqa" -- "$HOME/.ssh/config"
 
   num=`cat /etc/hosts | grep ".* ${hostname[i]}$" | wc -l`
-  if [ "$num" -lt "1" ]; then
-
-    echo Creating new entry in /etc/hosts for ${hostname[i]} ${ip[i]}
-
-  else
+  if [ "$num" -ge "1" ]; then
 
     # delete the old entry
     echo "deleting old entry in /etc/hosts"
-    sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/.*\s${hostname[i]}$/norm dd" -c "wqa" -- "/etc/hosts"
+    sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/.*\s*${hostname[i]}$/norm dd" -c "wqa" -- "/etc/hosts"
+
+  fi
+
+  num=`cat /etc/hosts | grep "${ip[i]}\s" | wc -l`
+  if [ "$num" -ge "1" ]; then
+
+    # delete the old entry
+    echo "deleting old entry in /etc/hosts"
+    sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/${ip[i]}\s/norm dd" -c "wqa" -- "/etc/hosts"
 
   fi
 
   # only do it if its another uav
   # this is neccessary for NimbroNetwork
-  if [[ "$my_hostname" != "${hostname[i]}" ]]; then
+  # !!! update 2023-04-20, this is no longer needed, Tomas
+  # if [[ "$my_hostname" != "${hostname[i]}" ]]; then
 
     echo Updating entry in /etc/hosts for ${hostname[i]} ${ip[i]}
 
@@ -141,8 +164,22 @@ for ((i=0; i < ${#hostname[*]}; i++)); do
     sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/${ip[i]}\s/norm ddGp" -c "wqa" -- "/etc/hosts"
     sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "normal Go" -c "wqa" -- "/etc/hosts"
 
-  fi
+  # fi
 
 done
+
+echo ""
+echo "deleting old entry of this PC in /etc/hosts"
+sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/127.0.1.1\s*${my_hostname}$/norm dd" -c "wqa" -- "/etc/hosts"
+
+num=`cat ~/.ssh/config | grep "127.0.1.1 ${my_hostname}" | wc -l`
+if [ "$num" -lt "1" ]; then
+
+  echo ""
+  echo Missing the 127.0.1.1 entry, creating it
+
+  sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "norm ggo127.0.1.1 ${my_hostname}" -c "wqa" -- "/etc/hosts"
+
+fi
 
 sudo $VIM_BIN $HEADLESS -Ens -c "set ignorecase" -c "%g/^\\n$\\n$\\n/norm dd" -c "wqa" -- "/etc/hosts"
