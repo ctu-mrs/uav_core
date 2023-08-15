@@ -703,6 +703,17 @@ waitForSpawn() {
 
 # #}
 
+# #{ waitForTopic()
+
+waitForTopic() {
+  until timeout 6s rostopic echo "$1" -n 1 --noarr > /dev/null 2>&1; do
+    echo "waiting for $1"
+    sleep 1;
+  done
+}
+
+# #}
+
 # #{ waitForOdometry()
 
 waitForOdometry() {
