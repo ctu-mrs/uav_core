@@ -703,13 +703,31 @@ waitForSpawn() {
 
 # #}
 
+# #{ waitForTopic()
+
+waitForTopic() {
+  until timeout 6s rostopic echo "$1" -n 1 --noarr > /dev/null 2>&1; do
+    echo "waiting for $1"
+    sleep 1;
+  done
+}
+
+# #}
+
 # #{ waitForOdometry()
 
 waitForOdometry() {
-  until timeout 6s rostopic echo /$UAV_NAME/mavros/local_position/odom -n 1 --noarr > /dev/null 2>&1; do
-    echo "waiting for odometry"
-    sleep 1;
-  done
+  if [[ "$OLD_PX4_FW" == "true" ]]; then
+    until timeout 6s rostopic echo /$UAV_NAME/mavros/local_position/odom -n 1 --noarr > /dev/null 2>&1; do
+      echo "waiting for odometry - /$UAV_NAME/mavros/local_position/odom"
+      sleep 1;
+    done
+  else
+    until timeout 6s rostopic echo /$UAV_NAME/mavros/odometry/in -n 1 --noarr > /dev/null 2>&1; do
+      echo "waiting for odometry - /$UAV_NAME/mavros/odometry/in"
+      sleep 1;
+    done
+  fi
 }
 
 # #}

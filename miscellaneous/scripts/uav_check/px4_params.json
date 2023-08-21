@@ -1,0 +1,68 @@
+{
+    "SENS_EN_LL40LS":{
+        "valid_values":[
+            "2"
+            ],
+        "error_message":"Set this parameter to I2C if you use a Garmin lidar as a rangefinder to measure height!"
+    },
+    "DSHOT_CONFIG":{
+        "valid_values":[
+            "150",
+            "300",
+            "600",
+            "1200"
+            ],
+        "error_message":"Setup DSHOT on the Pixhawk, DSHOT is critical for correct operations of the UAV!"
+    },
+	"SYS_USE_IO":{
+        "valid_values":[
+            "0"
+            ],
+        "error_message":"Set this parameter to IO PWM disabled, otherwise DSHOT will not work."
+    },
+	"SYS_HAS_MAG":{
+        "valid_values":[
+            "1"
+            ],
+        "error_message":"Magnetometer is disabled - set this paramter to Yes and calibrate magnetometer."
+    },
+	"CBRK_IO_SAFETY":{
+        "valid_values":[
+            "0"
+            ],
+        "error_message":"Set this parameter to 0, otherwise safety button will not work."
+    },
+	"RC_MAP_FAILSAFE":{
+        "valid_values":[
+            "0",
+            "2"
+            ],
+        "error_message":"If you use R81 receiver, set this parameter to 0. For Optima, set it to 2, otherwise RC loss failsafe will not work. Test the failsafe."
+    },
+	"RC_FAILS_THR":{
+        "valid_values":[
+            "0",
+            "950"
+            ],
+        "error_message":"If you use R81 receiver, set this parameter to 0. For Optima, set it to 950, otherwise RC loss failsafe will not work. Test the failsafe."
+    },
+	"CAL_MAG0_PRIO":{
+        "valid_values":[
+            "1"
+            ],
+        "error_message":"Internal magnetometer priority - set to 'Min' when using Pixhawk 6X/6C, or newer firmware (1.13.2-3). You can ignore this if you run Pixhawk 4 on 1.11.2"
+    },
+	"CAL_MAG1_PRIO":{
+        "valid_values":[
+            "100"
+            ],
+        "error_message":"External magnetometer priority - set to 'Max' when using Pixhawk 6X/6C, or newer firmware (1.13.2-3). You can ignore this if you run Pixhawk 4 on 1.11.2"
+    },
+	"SENS_MAG_MODE":{
+        "valid_values":[
+            "1"
+            ],
+        "error_message":"Set to 'Publish primary magnetometer' when using Pixhawk 6X/6C, or newer firmware (1.13.2-3). You can ignore this if you run Pixhawk 4 on 1.11.2"
+    }
+}
+
