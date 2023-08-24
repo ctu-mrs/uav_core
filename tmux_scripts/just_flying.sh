@@ -37,8 +37,6 @@ pre_input="mkdir -p $MAIN_DIR/$PROJECT_NAME"
 input=(
   'Rosbag' 'waitForOffboard; rosrun mrs_uav_general record.sh
 '
-  'Nimbro' 'waitForRos; roslaunch mrs_uav_general nimbro.launch
-'
   'Sensors' 'waitForRos; roslaunch mrs_uav_general sensors.launch
 '
   'Status' 'waitForRos; roslaunch mrs_uav_status status.launch
