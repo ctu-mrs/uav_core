@@ -1,28 +1,29 @@
-# The MRS UAV system core
+# The old UAV Core
 
-![](.fig/thumbnail.jpg)
+> :warning: **Attention please: This package is no longer maintained!!!**
+>
+> This is an old package that is no longer maintained.
+> The new version of the UAV Core is located [here](https://github.com/ctu-mrs/mrs_uav_core).
+> This repository will be erased soon
 
-| UAV core build status | [![Build Status](https://github.com/ctu-mrs/uav_core/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/uav_core/actions) |
-|-----------------------|--------------------------------------------------------------------------------------------------------------------------------|
-
-| ROS Package                                                                               | 20.04                                                                                                                                                                    |
-|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [mrs_bumper](https://github.com/ctu-mrs/mrs_bumper)                                       | [![Build Status](https://github.com/ctu-mrs/mrs_bumper/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_bumper/actions)                                       |
-| [mrs_lib](https://github.com/ctu-mrs/mrs_lib)                                             | [![Build Status](https://github.com/ctu-mrs/mrs_lib/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_lib/actions)                                             |
-| [mrs_mavros_interface](https://github.com/ctu-mrs/mrs_mavros_interface)                   | [![Build Status](https://github.com/ctu-mrs/mrs_mavros_interface/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_mavros_interface/actions)                   |
-| [mrs_msgs](https://github.com/ctu-mrs/mrs_msgs)                                           | [![Build Status](https://github.com/ctu-mrs/mrs_msgs/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_msgs/actions)                                           |
-| [mrs_rviz_plugins](https://github.com/ctu-mrs/mrs_rviz_plugins)                           | [![Build Status](https://github.com/ctu-mrs/mrs_rviz_plugins/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_rviz_plugins/actions)                           |
-| [mrs_uav_controllers](https://github.com/ctu-mrs/mrs_uav_controllers)                     | [![Build Status](https://github.com/ctu-mrs/mrs_uav_controllers/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_controllers/actions)                     |
-| [mrs_uav_general](https://github.com/ctu-mrs/mrs_uav_general)                             | [![Build Status](https://github.com/ctu-mrs/mrs_uav_general/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_general/actions)                             |
-| [mrs_uav_managers](https://github.com/ctu-mrs/mrs_uav_managers)                           | [![Build Status](https://github.com/ctu-mrs/mrs_uav_managers/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_managers/actions)                           |
-| [mrs_uav_odometry](https://github.com/ctu-mrs/mrs_uav_odometry)                           | [![Build Status](https://github.com/ctu-mrs/mrs_uav_odometry/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_odometry/actions)                           |
-| [mrs_uav_status](https://github.com/ctu-mrs/mrs_uav_status)                               | [![Build Status](https://github.com/ctu-mrs/mrs_uav_status/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_status/actions)                               |
-| [mrs_uav_testing](https://github.com/ctu-mrs/mrs_uav_testing)                             | [![Build Status](https://github.com/ctu-mrs/mrs_uav_testing/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_testing/actions)                             |
-| [mrs_uav_trackers](https://github.com/ctu-mrs/mrs_uav_trackers)                           | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trackers/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trackers/actions)                           |
-| [mrs_uav_trajectory_generation](https://github.com/ctu-mrs/mrs_uav_trajectory_generation) | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/actions) |
-| **Third-party**                                                                           |                                                                                                                                                                          |
-| [nlopt_ros](https://github.com/ctu-mrs/nlopt_ros)                                         |                                                                                                                                                                          |
-| [tf2](https://github.com/ctu-mrs/tf2)                                                     |                                                                                                                                                                          |
+| ROS Package                                                                               |
+|-------------------------------------------------------------------------------------------|
+| [mrs_bumper](https://github.com/ctu-mrs/mrs_bumper)                                       |
+| [mrs_lib](https://github.com/ctu-mrs/mrs_lib)                                             |
+| [mrs_mavros_interface](https://github.com/ctu-mrs/mrs_mavros_interface)                   |
+| [mrs_msgs](https://github.com/ctu-mrs/mrs_msgs)                                           |
+| [mrs_rviz_plugins](https://github.com/ctu-mrs/mrs_rviz_plugins)                           |
+| [mrs_uav_controllers](https://github.com/ctu-mrs/mrs_uav_controllers)                     |
+| [mrs_uav_general](https://github.com/ctu-mrs/mrs_uav_general)                             |
+| [mrs_uav_managers](https://github.com/ctu-mrs/mrs_uav_managers)                           |
+| [mrs_uav_odometry](https://github.com/ctu-mrs/mrs_uav_odometry)                           |
+| [mrs_uav_status](https://github.com/ctu-mrs/mrs_uav_status)                               |
+| [mrs_uav_testing](https://github.com/ctu-mrs/mrs_uav_testing)                             |
+| [mrs_uav_trackers](https://github.com/ctu-mrs/mrs_uav_trackers)                           |
+| [mrs_uav_trajectory_generation](https://github.com/ctu-mrs/mrs_uav_trajectory_generation) |
+| **Third-party**                                                                           |
+| [nlopt_ros](https://github.com/ctu-mrs/nlopt_ros)                                         |
+| [tf2](https://github.com/ctu-mrs/tf2)                                                     |
 
 ## System requirements
 
@@ -30,16 +31,6 @@ Required OS is Ubuntu 20.04 LTS 64-bit or their flavors that can install ROS Noe
 The suggested variant of OS installation is dual boot instead of virtualization that can be slow and can not handle well the simulation GUI.
 We use [Gitman](https://github.com/jacebrowning/gitman) to manage the repository **submodules**.
 The repository are supposed to be compiled by [catkin tools](https://catkin-tools.readthedocs.io).
-
-## Installing uav_core
-
-The preferred way is to install the whole [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system).
-However, if you prefer to install only the *uav_core*, you can do the following:
-
-1. Clone the repository,
-2. place it into your *catkin workspace* ([guide](https://ctu-mrs.github.io/docs/software/catkin/managing_workspaces/managing_workspaces.html)),
-3. call ```installation/install.sh``` to install the dependencies,
-4. build your workspace.
 
 ## Finishing your .bashrc
 

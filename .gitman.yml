@@ -38,7 +38,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_bumper.git
     name: mrs_bumper
-    rev: master
+    rev: old_system
     type: git
     params:
     sparse_paths:
@@ -50,7 +50,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_lib.git
     name: mrs_lib
-    rev: master
+    rev: old_system
     type: git
     params:
     sparse_paths:
@@ -74,7 +74,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_msgs.git
     name: mrs_msgs
-    rev: master
+    rev: old_system
     type: git
     params:
     sparse_paths:
@@ -86,7 +86,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
     name: mrs_rviz_plugins
-    rev: master
+    rev: old_system
     type: git
     params:
     sparse_paths:
@@ -98,7 +98,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_controllers.git
     name: mrs_uav_controllers
-    rev: master
+    rev: old_system
     type: git
     params:
     sparse_paths:
@@ -122,7 +122,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_managers.git
     name: mrs_uav_managers
-    rev: master
+    rev: old_system
     type: git
     params:
     sparse_paths:
@@ -146,7 +146,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_status.git
     name: mrs_uav_status
-    rev: master
+    rev: old_system
     type: git
     params:
     sparse_paths:
@@ -158,7 +158,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_testing.git
     name: mrs_uav_testing
-    rev: master
+    rev: old_system
     type: git
     params:
     sparse_paths:
@@ -170,7 +170,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trackers.git
     name: mrs_uav_trackers
-    rev: master
+    rev: old_system
     type: git
     params:
     sparse_paths:
@@ -182,7 +182,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
     name: mrs_uav_trajectory_generation
-    rev: master
+    rev: old_system
     type: git
     params:
     sparse_paths:
@@ -194,7 +194,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/nlopt_ros
     name: nlopt_ros
-    rev: master
+    rev: old_system
     type: git
     params:
     sparse_paths:
@@ -268,7 +268,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_bumper.git
     name: mrs_bumper
-    rev: a709bbe77d043bc680472c3719ef3445af835d8f
+    rev: 26f88071cbdb1e75f1d77f5f8cc9e60b34637bba
     type: git
     params:
     sparse_paths:
@@ -316,7 +316,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_rviz_plugins.git
     name: mrs_rviz_plugins
-    rev: 4029269ec7c929ed59ad8787f2c07dac80f5249a
+    rev: a92003e58a9e4a6a4ffec1b883147862b26a6372
     type: git
     params:
     sparse_paths:
@@ -340,7 +340,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_general.git
     name: mrs_uav_general
-    rev: 4664c10f7bfcd865c5c4a2abfe76a21fadccd2f5
+    rev: 77ef09346f71884f21e1283e03e11d4a66e7fdbc
     type: git
     params:
     sparse_paths:
@@ -388,7 +388,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_testing.git
     name: mrs_uav_testing
-    rev: b2f7f2b284258182a998ec74f7a33a74f19f1696
+    rev: 7942f7018ef1b21f8ed281ef831bd30c067cc9e0
     type: git
     params:
     sparse_paths:
@@ -412,7 +412,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_uav_trajectory_generation
     name: mrs_uav_trajectory_generation
-    rev: 1f733775a2d4301d9c5fff2aa16255e4948e1d7f
+    rev: 335d7913c912772dc205cec2b45730c08181ca24
     type: git
     params:
     sparse_paths:
@@ -424,7 +424,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/nlopt_ros
     name: nlopt_ros
-    rev: 55bcc48ef16d15c0bd3fcb400a9de750a89e8f6a
+    rev: 5e351e81e8ee0c39d3096f38a0aa990304298631
     type: git
     params:
     sparse_paths:
